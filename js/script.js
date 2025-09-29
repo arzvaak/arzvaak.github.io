@@ -31,39 +31,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
-// Theme Toggle Functionality
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon = document.querySelector('.theme-icon');
-
-// Check for saved theme preference or default to 'dark'
-const currentTheme = localStorage.getItem('theme') || 'dark';
-document.documentElement.setAttribute('data-theme', currentTheme);
-
-// Update icon based on current theme
-function updateThemeIcon(theme) {
-    if (themeIcon) {
-        themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
-    }
-}
-
-// Initialize icon
-updateThemeIcon(currentTheme);
-
-// Theme toggle event listener
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
-        
-        // Add a small animation effect
-        themeToggle.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            themeToggle.style.transform = 'scale(1)';
-        }, 150);
-    });
-}

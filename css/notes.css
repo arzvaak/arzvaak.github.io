@@ -1,5 +1,44 @@
 /* Notes-specific styles */
 
+/* Ensure CSS variables are available */
+:root {
+    --primary-color: #3b82f6;
+    --primary-dark: #2563eb;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --border-color: #374151;
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3);
+}
+
+/* Dark theme overrides for all light backgrounds */
+body {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Override all white and light backgrounds */
+.content-wrapper,
+.notes-content,
+.topic-card,
+.week-card,
+.section-card,
+.note-card,
+.example-card,
+.definition-card,
+.theorem-card,
+.solution-card,
+.content-section,
+.week-overview,
+.topic-overview,
+.focus-overlay,
+.quiz-card,
+.problem-card {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+}
+
 /* Notes Header */
 .notes-header {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
@@ -1067,4 +1106,67 @@ section h3 {
         padding: 20px;
         margin: 20px 0;
     }
+}
+
+/* Universal Dark Theme Override - Place at end to override all light backgrounds */
+* {
+    color: var(--text-primary) !important;
+}
+
+/* Force dark backgrounds for all containers */
+.notes-container,
+.content-wrapper,
+.notes-content,
+.topic-card,
+.week-card,
+.section-card,
+.note-card,
+.example-card,
+.definition-card,
+.theorem-card,
+.solution-card,
+.content-section,
+.week-overview,
+.topic-overview,
+.focus-overlay,
+.quiz-card,
+.problem-card,
+.topic-grid,
+.week-cards-grid,
+.definition-box,
+.example-box,
+.theorem-box,
+.important-note,
+.warning-box,
+.concept-card,
+.property-card,
+.formula-card,
+.visualization,
+.interactive-demo,
+.learning-path-stats,
+.topic-navigation,
+.breadcrumb-nav,
+.topic-progress,
+.notes-section,
+.content-block,
+.topic-content,
+.week-content {
+    background: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Ensure body has dark background */
+.notes-container {
+    background: var(--bg-primary) !important;
+}
+
+/* Fix any remaining light backgrounds */
+div[style*="background"],
+section[style*="background"],
+article[style*="background"],
+.card,
+.panel,
+.container,
+.wrapper {
+    background: var(--bg-secondary) !important;
 }
