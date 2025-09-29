@@ -480,3 +480,419 @@ html {
     color: var(--primary-color);
     font-weight: 500;
 }
+
+/* Topic Content Styling - Added for topic pages */
+.notes-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.topic-progress-header {
+    background: rgba(37, 99, 235, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.topic-breadcrumb {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.topic-breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.topic-breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.topic-progress-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.progress-track {
+    flex: 1;
+    height: 8px;
+    background: rgba(37, 99, 235, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Content Boxes */
+.definition-box {
+    background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
+    border-left: 5px solid var(--primary-color);
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.definition-box h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.example-box {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-left: 5px solid #16a34a;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.example-box h3, .example-box h4 {
+    color: #16a34a;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.important-note {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-left: 5px solid #f59e0b;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.important-note h4 {
+    color: #d97706;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.warning-box {
+    background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+    border-left: 5px solid #ef4444;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.warning-box h4 {
+    color: #dc2626;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/* Properties and Lists */
+.properties-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.property-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.property-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+.property-item h4 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+/* Visualizations */
+.visualization {
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: 12px;
+    margin: 25px 0;
+    border: 2px solid #e2e8f0;
+}
+
+.visualization h4 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.number-line {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.line-segment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.line-segment::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: var(--text-secondary);
+    z-index: 0;
+}
+
+.number {
+    background: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}
+
+.number.negative {
+    background: #fee2e2;
+    border-color: #ef4444;
+    color: #dc2626;
+}
+
+.number.zero {
+    background: #f3f4f6;
+    border-color: #6b7280;
+    color: #374151;
+}
+
+.number.positive {
+    background: #dcfce7;
+    border-color: #16a34a;
+    color: #15803d;
+}
+
+.line-labels {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Interactive Elements */
+.interactive-demo {
+    background: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 25px 0;
+}
+
+.demo-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.demo-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.demo-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.demo-output {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+/* Theorem and Proof Boxes */
+.theorem-box {
+    background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+    border-left: 5px solid #8b5cf6;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.theorem-box h4 {
+    color: #7c3aed;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.proof-box {
+    background: #fffbeb;
+    border-left: 5px solid #f59e0b;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Mathematical Expressions */
+.math-expression {
+    background: #f8fafc;
+    padding: 15px 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 15px 0;
+    border: 1px solid var(--border-color);
+    font-family: 'Times New Roman', serif;
+    font-size: 1.1rem;
+}
+
+/* Practice Problems */
+.practice-problems {
+    background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+}
+
+.practice-problems h3 {
+    color: #be185d;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.problem {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    border-left: 4px solid #ec4899;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1);
+}
+
+.problem h4 {
+    color: #be185d;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.solution {
+    background: #f0f9ff;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: 1px solid #0284c7;
+    display: none;
+}
+
+.solution.show {
+    display: block;
+}
+
+.toggle-solution {
+    background: #ec4899;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.toggle-solution:hover {
+    background: #be185d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px -2px rgb(0 0 0 / 0.1);
+}
+
+/* Enhanced Section Styling */
+section {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+section h3 {
+    color: var(--text-primary);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+/* Additional responsive design for new elements */
+@media (max-width: 768px) {
+    .properties-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .line-segment {
+        gap: 15px;
+    }
+    
+    .number {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .demo-controls {
+        flex-direction: column;
+    }
+    
+    .topic-progress-header {
+        padding: 15px;
+    }
+    
+    .definition-box,
+    .example-box,
+    .important-note,
+    .warning-box,
+    .visualization,
+    .interactive-demo,
+    .theorem-box {
+        padding: 20px;
+        margin: 20px 0;
+    }
+}
