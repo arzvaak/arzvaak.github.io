@@ -6,6 +6,18 @@
 }
 
 :root {
+    --primary-color: #3b82f6;
+    --primary-dark: #2563eb;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --border-color: #374151;
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3);
+}
+
+/* Light theme */
+[data-theme="light"] {
     --primary-color: #2563eb;
     --primary-dark: #1d4ed8;
     --text-primary: #1f2937;
@@ -14,6 +26,16 @@
     --bg-secondary: #f8fafc;
     --border-color: #e5e7eb;
     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+/* Light theme hero overrides */
+[data-theme="light"] .hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+[data-theme="light"] .terms-overview {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
 html {
@@ -48,6 +70,7 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -58,12 +81,14 @@ body {
 
 /* Navigation */
 .navbar {
-    background: white;
+    background: var(--bg-secondary);
     box-shadow: var(--shadow);
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .nav-container {
@@ -99,6 +124,34 @@ body {
     color: var(--primary-color);
 }
 
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+    border-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.theme-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .theme-icon {
+    transform: rotate(20deg);
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -116,10 +169,10 @@ body {
 /* Hero Section */
 .hero {
     position: relative;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     padding: 140px 0 80px;
     text-align: center;
-    color: white;
+    color: var(--text-primary);
     overflow: hidden;
     min-height: 100vh;
     display: flex;
@@ -335,11 +388,11 @@ body {
 /* Sections */
 .subjects, .quizzes, .terms-overview, .qualifier-section {
     padding: 80px 0;
-    background: white;
+    background: var(--bg-primary);
 }
 
 .terms-overview {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
 }
 
 .qualifier-section {
@@ -394,13 +447,13 @@ body {
 }
 
 .subject-card, .quiz-card {
-    background: white;
+    background: var(--bg-secondary);
     padding: 2.5rem;
     border-radius: 1.5rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     text-decoration: none;
     color: var(--text-primary);
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
     border: 1px solid var(--border-color);
     position: relative;
     overflow: hidden;
@@ -424,7 +477,7 @@ body {
 
 .subject-card:hover, .quiz-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     color: var(--text-primary);
 }
 
@@ -491,10 +544,10 @@ body {
 }
 
 .term-card {
-    background: white;
+    background: var(--bg-secondary);
     border-radius: 1.5rem;
     padding: 2.5rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
     position: relative;
     border: 2px solid transparent;
@@ -507,7 +560,7 @@ body {
 
 .term-card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .term-number {
@@ -646,12 +699,17 @@ body {
         left: -100%;
         top: 60px;
         flex-direction: column;
-        background-color: white;
+        background-color: var(--bg-secondary);
         width: 100%;
         text-align: center;
         transition: 0.3s;
         box-shadow: var(--shadow);
         padding: 2rem 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .theme-toggle {
+        margin: 1rem auto 0 auto;
     }
     
     .nav-menu.active {
