@@ -1,5 +1,27 @@
 /* Subject page specific styles */
 
+/* Ensure CSS variables are available */
+:root {
+    --primary-color: #3b82f6;
+    --primary-dark: #2563eb;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --border-color: #374151;
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3);
+}
+
+/* Universal dark theme overrides */
+body {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+*, *::before, *::after {
+    color: var(--text-primary) !important;
+}
+
 /* Subject Header */
 .subject-header {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
@@ -520,4 +542,103 @@
 .action-btn.tertiary:hover {
     background: #7c3aed;
     border-color: #7c3aed;
+}
+
+/* COMPREHENSIVE DARK THEME OVERRIDES FOR ALL LIGHT BACKGROUNDS */
+
+/* Override all subject-specific elements with dark theme */
+.subject-section,
+.terms-grid,
+.term-card,
+.concept-card,
+.topic-list,
+.topic-item,
+.week-card,
+.activity-card,
+.progress-card,
+.stats-card {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Override specific light background colors found in this file */
+[style*="background: #f0f8ff"],
+[style*="background-color: #f0f8ff"],
+[style*="background: #fbbf24"],
+[style*="background-color: #fbbf24"],
+[style*="background: #f59e0b"],
+[style*="background-color: #f59e0b"] {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Pattern-based overrides for any subject-related classes */
+[class*="subject"],
+[class*="term"],
+[class*="concept"],
+[class*="topic"],
+[class*="week"],
+[class*="activity"],
+[class*="progress"],
+[class*="stat"] {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Force all text elements to be visible */
+.term-card h3,
+.term-card p,
+.concept-card h4,
+.concept-card p,
+.topic-item h3,
+.topic-item p,
+.week-card h3,
+.week-card p {
+    color: var(--text-primary) !important;
+}
+
+/* Topics overview page extracted styles (dark-friendly) */
+.topic-navigation-intro {
+    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.learning-path-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.path-stat { text-align: center; }
+.path-stat .stat-number { font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem; }
+.path-stat .stat-label { font-size: 0.9rem; opacity: 0.9; }
+
+.topics-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.topic-overview-card {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    gap: 1rem;
+}
+
+.topic-overview-card.available {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.08);
 }

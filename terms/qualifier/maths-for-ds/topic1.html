@@ -40,7 +40,7 @@
             </div>
             <div class="topic-progress-bar">
                 <div class="progress-track">
-                    <div class="progress-fill" style="width: 10%;"></div>
+                    <div class="progress-fill w-10"></div>
                 </div>
                 <span class="progress-label">Topic 1 of 10</span>
             </div>
@@ -285,7 +285,7 @@
                 <div class="problem-card">
                     <h3>Problem 1: Division Algorithm</h3>
                     <p>Find the quotient and remainder when 47 is divided by 6.</p>
-                    <div class="solution" style="display: none;">
+                    <div class="solution hidden">
                         <h4>Solution:</h4>
                         <p>47 = 6 × 7 + 5</p>
                         <ul>
@@ -300,7 +300,7 @@
                 <div class="problem-card">
                     <h3>Problem 2: Modulo Operation</h3>
                     <p>Calculate: (a) 23 mod 7, (b) 100 mod 9, (c) 50 mod 10</p>
-                    <div class="solution" style="display: none;">
+                    <div class="solution hidden">
                         <h4>Solutions:</h4>
                         <ul>
                             <li>(a) 23 mod 7 = 2 (since 23 = 7 × 3 + 2)</li>
@@ -314,7 +314,7 @@
                 <div class="problem-card">
                     <h3>Problem 3: Finding Factors</h3>
                     <p>Find all factors of 36.</p>
-                    <div class="solution" style="display: none;">
+                    <div class="solution hidden">
                         <h4>Solution:</h4>
                         <p>Testing divisibility: 36 ÷ 1 = 36, 36 ÷ 2 = 18, 36 ÷ 3 = 12, 36 ÷ 4 = 9, 36 ÷ 6 = 6, 36 ÷ 9 = 4, 36 ÷ 12 = 3, 36 ÷ 18 = 2, 36 ÷ 36 = 1</p>
                         <p><strong>Factors of 36:</strong> {1, 2, 3, 4, 6, 9, 12, 18, 36}</p>
@@ -348,394 +348,50 @@
         </div>
     </div>
 
-    <!-- Custom Styles -->
-    <style>
-        .topic-progress-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
-            margin-bottom: 1rem;
-        }
-
-        .topic-breadcrumb {
-            text-align: center;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .topic-breadcrumb a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-        }
-
-        .topic-breadcrumb a:hover {
-            color: white;
-        }
-
-        .topic-progress-bar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .progress-track {
-            width: 200px;
-            height: 8px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: white;
-            border-radius: 4px;
-            transition: width 0.5s ease;
-        }
-
-        .progress-label {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .topic-meta {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .topic-badge, .difficulty-badge, .time-badge {
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .topic-badge {
-            background: #ddd6fe;
-            color: #6b46c1;
-        }
-
-        .difficulty-badge {
-            background: #fef3c7;
-            color: #d97706;
-        }
-
-        .time-badge {
-            background: #dbeafe;
-            color: #2563eb;
-        }
-
-        .learning-objectives {
-            background: #f0f9ff;
-            border: 2px solid #0ea5e9;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .learning-objectives h2 {
-            color: #0369a1;
-            margin-bottom: 1rem;
-        }
-
-        .critical-note {
-            background: #fef2f2;
-            border: 2px solid #ef4444;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .critical-note h3 {
-            color: #dc2626;
-            margin-bottom: 0.5rem;
-        }
-
-        .concept-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .concept-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.5rem;
-            padding: 1rem;
-        }
-
-        .concept-card h4 {
-            color: #1e293b;
-            margin-bottom: 0.5rem;
-        }
-
-        .visualization {
-            background: #f8fafc;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .number-line {
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .line-segment {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .number {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            border: 2px solid;
-        }
-
-        .number.negative {
-            background: #fecaca;
-            border-color: #ef4444;
-            color: #dc2626;
-        }
-
-        .number.zero {
-            background: #e5e7eb;
-            border-color: #6b7280;
-            color: #374151;
-        }
-
-        .number.positive {
-            background: #dcfce7;
-            border-color: #22c55e;
-            color: #16a34a;
-        }
-
-        .operations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .operation-card {
-            background: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .operation-card:hover {
-            transform: translateY(-2px);
-            border-color: #3b82f6;
-        }
-
-        .operation-card h4 {
-            margin-bottom: 0.5rem;
-            color: #1f2937;
-        }
-
-        .operation-card .example {
-            background: #f3f4f6;
-            padding: 0.5rem;
-            border-radius: 0.25rem;
-            margin-top: 0.5rem;
-            font-family: 'Courier New', monospace;
-            font-weight: 600;
-        }
-
-        .theorem-box {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 2px solid #f59e0b;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .theorem-box h3 {
-            color: #d97706;
-            margin-bottom: 1rem;
-        }
-
-        .formula {
-            background: white;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            text-align: center;
-            margin: 1rem 0;
-            font-size: 1.2rem;
-        }
-
-        .examples-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .example-item {
-            background: #f1f5f9;
-            border: 1px solid #cbd5e1;
-            border-radius: 0.5rem;
-            padding: 1rem;
-        }
-
-        .example-item h5 {
-            color: #475569;
-            margin-bottom: 0.5rem;
-        }
-
-        .example-item p {
-            font-family: 'Courier New', monospace;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .example-item small {
-            color: #64748b;
-        }
-
-        .factors-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-
-        .factor {
-            background: #ecfdf5;
-            border: 1px solid #22c55e;
-            border-radius: 0.25rem;
-            padding: 0.5rem;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-        }
-
-        .key-takeaways {
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-            border: 2px solid #22c55e;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .key-takeaways h2 {
-            color: #16a34a;
-            margin-bottom: 1rem;
-        }
-
-        .topic-navigation {
-            background: #f8fafc;
-            border-top: 1px solid #e2e8f0;
-            padding: 1.5rem 0;
-            margin-top: 2rem;
-        }
-
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .nav-center {
-            text-align: center;
-            color: #6b7280;
-            font-weight: 500;
-        }
-
-        .topic-indicator {
-            background: #e5e7eb;
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-buttons {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .concept-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .line-segment {
-                gap: 1rem;
-            }
-            
-            .number {
-                width: 30px;
-                height: 30px;
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+    
 
     <script src="../../../js/notes.js"></script>
     <script>
         function toggleSolution(button) {
             const solution = button.parentElement.querySelector('.solution');
-            if (solution.style.display === 'none') {
-                solution.style.display = 'block';
-                button.textContent = 'Hide Solution';
-            } else {
-                solution.style.display = 'none';
-                button.textContent = 'Show Solution';
-            }
+            solution.classList.toggle('hidden');
+            const isHidden = solution.classList.contains('hidden');
+            button.textContent = isHidden ? 'Show Solution' : 'Hide Solution';
         }
 
-        // Add progress animation on load
+        // Add progress animation on load using width utility classes
         window.addEventListener('load', function() {
-            const progressFill = document.querySelector('.progress-fill');
-            progressFill.style.width = '0%';
+            const progressFill = document.querySelector('.topic-progress-bar .progress-fill');
+            if (!progressFill) return;
+            // Reset to 0 then animate to desired class (w-10)
+            const widthClasses = ['w-0','w-8','w-10','w-20','w-25','w-30','w-50','w-75','w-100'];
+            widthClasses.forEach(c => progressFill.classList.remove(c));
+            progressFill.classList.add('w-0');
             setTimeout(() => {
-                progressFill.style.width = '10%';
-            }, 500);
+                progressFill.classList.remove('w-0');
+                progressFill.classList.add('w-10');
+            }, 300);
         });
 
-        // Focus Mode Toggle
+        // Focus Mode Toggle (use classes, no inline styles)
         function toggleFocusMode() {
             const body = document.body;
             const toggle = document.getElementById('focusToggle');
-            
-            if (body.classList.contains('focus-mode')) {
-                body.classList.remove('focus-mode');
-                toggle.textContent = '🎯 Focus Mode';
-                toggle.style.background = 'var(--primary-color)';
-            } else {
-                body.classList.add('focus-mode');
-                toggle.textContent = '📖 Full View';
-                toggle.style.background = '#27ae60';
-            }
+            const enabling = !body.classList.contains('focus-mode');
+            body.classList.toggle('focus-mode');
+            toggle.textContent = enabling ? '📖 Full View' : '🎯 Focus Mode';
+            toggle.classList.toggle('is-on', enabling);
         }
 
-        // Auto-hide navigation on scroll in focus mode
+        // Auto-hide navigation on scroll in focus mode (class-based)
         let lastScrollY = window.scrollY;
         window.addEventListener('scroll', () => {
-            if (document.body.classList.contains('focus-mode')) {
-                const navbar = document.querySelector('.navbar');
-                if (window.scrollY > lastScrollY && window.scrollY > 100) {
-                    navbar.style.transform = 'translateY(-100%)';
-                } else {
-                    navbar.style.transform = 'translateY(0)';
-                }
-                lastScrollY = window.scrollY;
-            }
+            if (!document.body.classList.contains('focus-mode')) return;
+            const navbar = document.querySelector('.navbar');
+            if (!navbar) return;
+            const shouldHide = window.scrollY > lastScrollY && window.scrollY > 100;
+            navbar.classList.toggle('hide-up', shouldHide);
+            lastScrollY = window.scrollY;
         });
     </script>
 </body>

@@ -128,19 +128,19 @@
         }
 
         .options li:hover {
-            background: #f0f8ff;
+            background: #1f2937; color: #f9fafb;
             border-color: #667eea;
             transform: translateX(5px);
         }
 
         .options li.selected {
-            background: #e3f2fd;
+            background: #1f2937; color: #f9fafb;
             border-color: #2196f3;
             font-weight: 600;
         }
 
         .options li.correct {
-            background: #e8f5e8;
+            background: #1f2937; color: #f9fafb;
             border-color: #4caf50;
             color: #2e7d32;
         }
@@ -170,7 +170,7 @@
         }
 
         .explanation {
-            background: #f0f8ff;
+            background: #1f2937; color: #f9fafb;
             border-radius: 10px;
             padding: 20px;
             margin: 15px 20px 0 20px;
@@ -245,8 +245,12 @@
             display: none;
         }
 
+        /* Utilities */
+        .hidden { display: none !important; }
+        .mt-20 { margin-top: 20px; }
+
         .proof-box {
-            background: #fff9c4;
+            background: rgba(31, 41, 55, 0.6);
             border: 2px solid #ffeb3b;
             border-radius: 15px;
             padding: 20px;
@@ -299,7 +303,7 @@
             font-size: 1.3em;
             font-weight: bold;
             box-shadow: 0 8px 32px rgba(76, 175, 80, 0.3);
-            display: none;
+            display: block;
         }
 
         .study-tips {
@@ -494,12 +498,12 @@
         </div>
 
         <!-- Quiz Timer -->
-        <div class="quiz-timer" id="quizTimer" style="display: none;">
+    <div class="quiz-timer hidden" id="quizTimer">
             ⏱️ Time Remaining: <span id="timeDisplay">2:00:00</span>
         </div>
 
         <!-- Question Navigation -->
-        <div class="question-nav" id="questionNav" style="display: none;">
+    <div class="question-nav hidden" id="questionNav">
             <!-- Will be populated by JavaScript -->
         </div>
 
@@ -545,12 +549,12 @@
             </div>
         </div>
 
-        <div id="quiz-container" style="display: none;">
+    <div id="quiz-container" class="hidden">
             <!-- Quiz questions will be loaded here dynamically -->
 
         </div>
 
-        <div class="completion-badge" id="completionBadge" style="display: block;">
+    <div class="completion-badge" id="completionBadge">
             🎉 Comprehensive Quiz System Ready! 🎉
             <p style="margin-top: 15px; font-size: 1em; font-weight: normal;">
                 All <strong>100 IIT Madras qualifier-style questions</strong> have been identified and are ready for integration!
@@ -568,7 +572,7 @@
                 <li><strong>Source Material:</strong> <code>Week_1_Qualifier_Style_Questions.md</code> - 1419 lines of comprehensive content</li>
             </ul>
             
-            <div class="definition-box" style="margin-top: 20px;">
+            <div class="definition-box mt-20">
                 <h4>🎯 Quiz Implementation Status</h4>
                 <p><strong>✅ Content Ready:</strong> All 100 questions with answers and explanations identified</p>
                 <p><strong>✅ System Architecture:</strong> Timer, navigation, and scoring systems implemented</p>
@@ -730,12 +734,12 @@
             isQuizActive = true;
             
             // Hide section selector
-            document.querySelector('.section-selector').closest('.quiz-section').style.display = 'none';
+            document.querySelector('.section-selector').closest('.quiz-section').classList.add('hidden');
             
             // Show quiz elements
-            document.getElementById('quiz-container').style.display = 'block';
-            document.getElementById('quizTimer').style.display = 'block';
-            document.getElementById('questionNav').style.display = 'block';
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('quizTimer').classList.remove('hidden');
+            document.getElementById('questionNav').classList.remove('hidden');
             
             // Set timer based on section
             setTimerForSection(section);
@@ -898,10 +902,10 @@
             isQuizActive = false;
             clearInterval(quizTimer);
             
-            document.querySelector('.section-selector').closest('.quiz-section').style.display = 'block';
-            document.getElementById('quiz-container').style.display = 'none';
-            document.getElementById('quizTimer').style.display = 'none';
-            document.getElementById('questionNav').style.display = 'none';
+            document.querySelector('.section-selector').closest('.quiz-section').classList.remove('hidden');
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('quizTimer').classList.add('hidden');
+            document.getElementById('questionNav').classList.add('hidden');
         }
 
         function getQuestionsForSection(section) {

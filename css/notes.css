@@ -95,6 +95,80 @@ body {
     opacity: 0.8;
 }
 
+/* Utilities and helpers extracted to remove inline styles */
+.hidden { display: none !important; }
+.text-left { text-align: left !important; }
+.mt-20 { margin-top: 20px !important; }
+.mb-20 { margin-bottom: 20px !important; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.loading-emoji { font-size: 2em; margin-bottom: 20px; }
+
+/* Simple left position utilities for visual points */
+.left-20 { left: 20%; }
+.left-50 { left: 50%; }
+.left-80 { left: 80%; }
+
+/* Topic header progress bar components */
+.topic-progress-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 0; margin-bottom: 1rem; }
+.topic-breadcrumb { text-align: center; margin-bottom: 1rem; font-size: 0.9rem; }
+.topic-breadcrumb a { color: rgba(255,255,255,0.8); text-decoration: none; }
+.topic-breadcrumb a:hover { color: #fff; }
+.topic-progress-bar { display: flex; align-items: center; justify-content: center; gap: 1rem; }
+.progress-track { width: 200px; height: 8px; background: rgba(255,255,255,0.3); border-radius: 4px; overflow: hidden; }
+.topic-progress-bar .progress-fill { background: #fff; }
+.progress-label { font-size: 0.9rem; font-weight: 500; }
+
+/* Topic meta badges */
+.topic-meta { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+.topic-badge, .difficulty-badge, .time-badge { padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.85rem; font-weight: 500; background: var(--bg-secondary); color: var(--text-primary); }
+.topic-badge { color: #6b46c1; }
+.difficulty-badge { color: #d97706; }
+.time-badge { color: #2563eb; }
+
+/* Content boxes and grids used in topics */
+.learning-objectives { background: var(--bg-secondary); color: var(--text-primary); border: 2px solid #0ea5e9; border-radius: 1rem; padding: 1.5rem; margin-bottom: 2rem; }
+.learning-objectives h2 { color: #0369a1; margin-bottom: 1rem; }
+.critical-note { background: var(--bg-secondary); color: var(--text-primary); border: 2px solid #ef4444; border-radius: 1rem; padding: 1.5rem; margin: 1.5rem 0; }
+.critical-note h3 { color: #dc2626; margin-bottom: 0.5rem; }
+.concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.concept-card { background: var(--bg-secondary); color: var(--text-primary); border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 1rem; }
+.concept-card h4 { color: #93c5fd; margin-bottom: 0.5rem; }
+.visualization { background: var(--bg-secondary); color: var(--text-primary); border-radius: 1rem; padding: 1.5rem; margin: 1.5rem 0; }
+.number-line { text-align: center; margin-top: 1rem; }
+.line-segment { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+.number { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; border: 2px solid; }
+.number.negative { background: var(--bg-secondary); color: #dc2626; border-color: #ef4444; }
+.number.zero { background: var(--bg-secondary); color: #374151; border-color: #6b7280; }
+.number.positive { background: var(--bg-secondary); color: #16a34a; border-color: #22c55e; }
+.operations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.operation-card { background: var(--bg-secondary); border: 2px solid #e5e7eb; border-radius: 0.5rem; padding: 1rem; text-align: center; transition: transform 0.3s ease; }
+.operation-card:hover { transform: translateY(-2px); border-color: #3b82f6; }
+.operation-card h4 { margin-bottom: 0.5rem; color: #bfdbfe; }
+.operation-card .example { background: var(--bg-secondary); color: var(--text-primary); padding: 0.5rem; border-radius: 0.25rem; margin-top: 0.5rem; font-family: 'Courier New', monospace; font-weight: 600; }
+.theorem-box { background: linear-gradient(135deg, #78350f 0%, #92400e 100%); border: 2px solid #f59e0b; border-radius: 1rem; padding: 1.5rem; margin: 1.5rem 0; }
+.theorem-box h3 { color: #fde68a; margin-bottom: 1rem; }
+.formula { background: var(--bg-secondary); padding: 1rem; border-radius: 0.5rem; text-align: center; margin: 1rem 0; font-size: 1.2rem; }
+.examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
+.example-item { background: var(--bg-secondary); color: var(--text-primary); border: 1px solid #cbd5e1; border-radius: 0.5rem; padding: 1rem; }
+.example-item h5 { color: #93c5fd; margin-bottom: 0.5rem; }
+.example-item p { font-family: 'Courier New', monospace; font-weight: 600; margin-bottom: 0.5rem; }
+.example-item small { color: #64748b; }
+.factors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin: 1rem 0; }
+.factor { background: var(--bg-secondary); color: var(--text-primary); border: 1px solid #22c55e; border-radius: 0.25rem; padding: 0.5rem; font-family: 'Courier New', monospace; font-size: 0.9rem; }
+.key-takeaways { background: linear-gradient(135deg, rgba(34,197,94,0.15) 0%, rgba(16,185,129,0.15) 100%); border: 2px solid #22c55e; border-radius: 1rem; padding: 1.5rem; margin: 2rem 0; }
+.key-takeaways h2 { color: #16a34a; margin-bottom: 1rem; }
+.topic-navigation { background: var(--bg-secondary); color: var(--text-primary); border-top: 1px solid #e2e8f0; padding: 1.5rem 0; margin-top: 2rem; }
+.nav-buttons { display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto; }
+.nav-center { text-align: center; color: #9ca3af; font-weight: 500; }
+.topic-indicator { background: var(--bg-secondary); color: var(--text-primary); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.9rem; }
+
+@media (max-width: 768px) {
+    .nav-buttons { flex-direction: column; gap: 1rem; }
+    .concept-grid { grid-template-columns: 1fr; }
+    .line-segment { gap: 1rem; }
+    .number { width: 30px; height: 30px; font-size: 0.9rem; }
+}
+
 /* Notes Layout */
 .notes-content {
     padding: 3rem 0;
@@ -1082,6 +1156,9 @@ section h3 {
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
 }
+.focus-toggle.is-on {
+    background: #27ae60;
+}
 
 /* Focus Mode Styles */
 .focus-mode .topic-meta,
@@ -1110,6 +1187,8 @@ section h3 {
 .focus-mode h1, .focus-mode h2, .focus-mode h3 {
     text-align: left;
 }
+.navbar.hide-up { transform: translateY(-100%); transition: transform 0.2s ease; }
+.mt-20 { margin-top: 20px; }
 
 /* Mobile Responsive Updates */
 @media (max-width: 768px) {
@@ -1307,3 +1386,383 @@ p, h1, h2, h3, h4, h5, h6, span, div, section, article, main, aside, header, foo
 *[style*="color: black"] {
     color: var(--text-primary) !important;
 }
+
+/* Fix specific classes that still have light backgrounds */
+.example-item,
+.property-item,
+.operation-card,
+.formula,
+.critical-note,
+.learning-objectives {
+    background: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+.example-item *,
+.property-item *,
+.operation-card *,
+.formula *,
+.critical-note *,
+.learning-objectives * {
+    color: var(--text-primary) !important;
+}
+
+/* Universal override for ALL possible item classes */
+.stat-item,
+.nav-item,
+.week-nav-item,
+.topic-item,
+.content-item,
+.list-item,
+.grid-item,
+.card-item,
+.section-item,
+.menu-item {
+    background: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+.stat-item *,
+.nav-item *,
+.week-nav-item *,
+.topic-item *,
+.content-item *,
+.list-item *,
+.grid-item *,
+.card-item *,
+.section-item *,
+.menu-item * {
+    color: var(--text-primary) !important;
+}
+
+/* Catch-all for any class ending with -item */
+[class*="-item"],
+[class*="-card"],
+[class*="-box"],
+[class*="-container"],
+[class*="-wrapper"] {
+    background: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+[class*="-item"] *,
+[class*="-card"] *,
+[class*="-box"] *,
+[class*="-container"] *,
+[class*="-wrapper"] * {
+    color: var(--text-primary) !important;
+}
+
+/* NUCLEAR OPTION: Override ANY element that might have light backgrounds */
+div[style*="background"],
+span[style*="background"],
+section[style*="background"],
+article[style*="background"],
+p[style*="background"],
+h1[style*="background"],
+h2[style*="background"],
+h3[style*="background"],
+h4[style*="background"],
+h5[style*="background"],
+h6[style*="background"] {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+}
+
+
+/* Additional hard overrides for bright/white translucent cards */
+.step,
+.transformation-steps .step,
+div.step {
+    background: var(--bg-secondary) !important;
+    background-color: var(--bg-secondary) !important;
+    background-image: none !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Catch semi-transparent white backgrounds explicitly */
+*[style*="rgba(255, 255, 255"],
+*[style*="rgba(255,255,255"] {
+    background: var(--bg-secondary) !important;
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Also catch rgb(241, 245, 249) which equals #f1f5f9 */
+*[style*="rgb(241, 245, 249)"] {
+    background: var(--bg-secondary) !important;
+    background-color: var(--bg-secondary) !important;
+}
+/* Force all elements to have light text */
+div, span, p, h1, h2, h3, h4, h5, h6, li, td, th, a, small, strong, em, code, pre {
+    color: var(--text-primary) !important;
+}
+
+/* SPECIFIC OVERRIDES for problematic inline-styled classes */
+.example-item {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+.example-item h5,
+.example-item h4,
+.example-item h3,
+.example-item h2,
+.example-item h1 {
+    color: var(--text-primary) !important;
+}
+
+.example-item p {
+    color: var(--text-primary) !important;
+}
+
+.example-item small {
+    color: var(--text-secondary) !important;
+}
+
+.factor {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--primary-color) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Override all variations of example-item classes */
+.example-item.positive,
+.example-item.negative,
+.example-item.integers,
+.example-item.decimals {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Additional specific overrides for all the problematic classes from attachments */
+.infinite-density,
+.density-step,
+.density-step-1,
+.common-factors,
+.factorization-row,
+.powers,
+.factors,
+.factorization-row-1,
+.factors-1,
+.powers-1,
+.step-card,
+.step-card-1,
+.step-card-2,
+.find-gcd,
+.gcd-result,
+.divide,
+.step,
+.step-1,
+.step-2,
+.demonstration,
+.fraction-equivalence {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Comprehensive formula and mathematical element overrides */
+.formula,
+.formula-card,
+.math-expression,
+.equation,
+.calculation {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Override any remaining light backgrounds with regex-like patterns */
+[class*="example"],
+[class*="factor"],
+[class*="formula"],
+[class*="calculation"],
+[class*="equation"],
+[class*="demo"],
+[class*="sample"],
+[class*="illustration"] {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Factorization specific overrides */
+.factorization-table,
+.factorization-row,
+.factorization-row .number,
+.factorization-row .equals,
+.factorization-row .factors,
+.factorization-row .powers {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Override ANY background with common light colors */
+[style*="background: #f1f5f9"],
+[style*="background-color: #f1f5f9"],
+[style*="background: #ecfdf5"],
+[style*="background-color: #ecfdf5"],
+[style*="background: #eff6ff"],
+[style*="background-color: #eff6ff"],
+[style*="background: #f0f8ff"],
+[style*="background-color: #f0f8ff"],
+[style*="background: #fef2f2"],
+[style*="background-color: #fef2f2"],
+[style*="background: #e0f2fe"],
+[style*="background-color: #e0f2fe"],
+[style*="background: #fff3cd"],
+[style*="background-color: #fff3cd"],
+[style*="background: #f8f9fa"],
+[style*="background-color: #f8f9fa"],
+[style*="background: #ffffff"],
+[style*="background-color: #ffffff"],
+[style*="background: #fff"],
+[style*="background-color: #fff"],
+[style*="background: #ffeaa7"],
+[style*="background-color: #ffeaa7"],
+[style*="background: #dbeafe"],
+[style*="background-color: #dbeafe"],
+[style*="background: #fef3c7"],
+[style*="background-color: #fef3c7"],
+[style*="background: #e3f2fd"],
+[style*="background-color: #e3f2fd"],
+[style*="background: #d4edda"],
+[style*="background-color: #d4edda"],
+[style*="background: #f8d7da"],
+[style*="background-color: #f8d7da"],
+[style*="background: #e0e0e0"],
+[style*="background-color: #e0e0e0"],
+[style*="background: #ddd6fe"],
+[style*="background-color: #ddd6fe"],
+[style*="background: #f0f9ff"],
+[style*="background-color: #f0f9ff"],
+[style*="background: #f8fafc"],
+[style*="background-color: #f8fafc"],
+[style*="background: #fecaca"],
+[style*="background-color: #fecaca"],
+[style*="background: #e5e7eb"],
+[style*="background-color: #e5e7eb"],
+[style*="background: #dcfce7"],
+[style*="background-color: #dcfce7"],
+[style*="background: #f3f4f6"],
+[style*="background-color: #f3f4f6"],
+[style*="background: #fde68a"],
+[style*="background-color: #fde68a"],
+[style*="background: #f0fdf4"],
+[style*="background-color: #f0fdf4"],
+[style*="background: #e0e7ff"],
+[style*="background-color: #e0e7ff"],
+[style*="background: #f1f8e9"],
+[style*="background-color: #f1f8e9"],
+[style*="background: #e8f5e8"],
+[style*="background-color: #e8f5e8"],
+[style*="background: #fff3e0"],
+[style*="background-color: #fff3e0"],
+[style*="background: #ffecb3"],
+[style*="background-color: #ffecb3"],
+[style*="background: #fce4ec"],
+[style*="background-color: #fce4ec"],
+[style*="background: #f8bbd9"],
+[style*="background-color: #f8bbd9"],
+[style*="background: #fff9c4"],
+[style*="background-color: #fff9c4"],
+[style*="background: #ffcdd2"],
+[style*="background-color: #ffcdd2"],
+[style*="background: #c8e6c9"],
+[style*="background-color: #c8e6c9"],
+[style*="background: #f3e5f5"],
+[style*="background-color: #f3e5f5"] {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* ULTIMATE OVERRIDE: Any element with light background patterns */
+[style*="background: #f"],
+[style*="background-color: #f"],
+[style*="background: #e"],
+[style*="background-color: #e"] {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Override any div, span, or container that might still have light backgrounds */
+div[style*="background"],
+span[style*="background"],
+p[style*="background"],
+section[style*="background"],
+article[style*="background"] {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* FINAL NUCLEAR OPTION: Override ALL example-item variations with maximum specificity */
+.example-item,
+.example-item.positive,
+.example-item.negative,
+.example-item.integers,
+.example-item.decimals,
+div.example-item,
+div.example-item.positive,
+div.example-item.negative,
+div.example-item.integers,
+div.example-item.decimals {
+    background: var(--bg-secondary) !important;
+    background-color: var(--bg-secondary) !important;
+    background-image: none !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Force override with even higher specificity using attribute selectors */
+div[class*="example-item"],
+div[class*="factor"],
+div[class*="step"],
+div[class*="density"],
+div[class*="factorization"],
+div[class*="demonstration"],
+div[class*="infinite"],
+div[class*="common"],
+div[class*="divide"],
+div[class*="gcd"],
+div[class*="fraction"] {
+    background: var(--bg-secondary) !important;
+    background-color: var(--bg-secondary) !important;
+    background-image: none !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Use CSS specificity hack with repeated selectors */
+.example-item.example-item.example-item,
+.factor.factor.factor,
+.step-card.step-card.step-card,
+.density-step.density-step.density-step,
+.factorization-row.factorization-row.factorization-row,
+.demonstration.demonstration.demonstration {
+    background: var(--bg-secondary) !important;
+    background-color: var(--bg-secondary) !important;
+    background-image: none !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* ABSOLUTE LAST RESORT: Target by inline style content */
+[style*="background: #dcfce7"] { background: var(--bg-secondary) !important; }
+[style*="background: #fecaca"] { background: var(--bg-secondary) !important; }
+[style*="background: #dbeafe"] { background: var(--bg-secondary) !important; }
+[style*="background: #fef3c7"] { background: var(--bg-secondary) !important; }
+[style*="background-color: #dcfce7"] { background: var(--bg-secondary) !important; }
+[style*="background-color: #fecaca"] { background: var(--bg-secondary) !important; }
+[style*="background-color: #dbeafe"] { background: var(--bg-secondary) !important; }
+[style*="background-color: #fef3c7"] { background: var(--bg-secondary) !important; }
