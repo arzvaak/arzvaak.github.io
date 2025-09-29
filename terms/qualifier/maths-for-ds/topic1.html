@@ -55,7 +55,12 @@
             </div>
         </div>
 
-        <div class="notes-content">
+        <!-- Focus Mode Toggle -->
+        <button class="focus-toggle" onclick="toggleFocusMode()" id="focusToggle">
+            🎯 Focus Mode
+        </button>
+
+        <div class="notes-content clean-content">
             <!-- Learning Objectives -->
             <div class="learning-objectives">
                 <h2>🎯 Learning Objectives</h2>
@@ -701,6 +706,36 @@
             setTimeout(() => {
                 progressFill.style.width = '10%';
             }, 500);
+        });
+
+        // Focus Mode Toggle
+        function toggleFocusMode() {
+            const body = document.body;
+            const toggle = document.getElementById('focusToggle');
+            
+            if (body.classList.contains('focus-mode')) {
+                body.classList.remove('focus-mode');
+                toggle.textContent = '🎯 Focus Mode';
+                toggle.style.background = 'var(--primary-color)';
+            } else {
+                body.classList.add('focus-mode');
+                toggle.textContent = '📖 Full View';
+                toggle.style.background = '#27ae60';
+            }
+        }
+
+        // Auto-hide navigation on scroll in focus mode
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            if (document.body.classList.contains('focus-mode')) {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    navbar.style.transform = 'translateY(0)';
+                }
+                lastScrollY = window.scrollY;
+            }
         });
     </script>
 </body>

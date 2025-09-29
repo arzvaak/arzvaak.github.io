@@ -190,10 +190,209 @@
                 <button onclick="resetQuiz()" style="padding: 8px 20px; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 10px;">Reset Quiz</button>
             </div>
 
+            <!-- Section Navigation -->
+            <div class="section-nav" id="sectionNav" style="display: none;">
+                <div class="section-tabs">
+                    <button class="section-tab active" data-section="all" onclick="showSection('all')">📋 All Sections</button>
+                    <button class="section-tab" data-section="Number Systems" onclick="showSection('Number Systems')">🔢 Numbers (1-20)</button>
+                    <button class="section-tab" data-section="Sets and Cardinality" onclick="showSection('Sets and Cardinality')">📊 Sets (21-40)</button>
+                    <button class="section-tab" data-section="Relations" onclick="showSection('Relations')">🔗 Relations (41-60)</button>
+                    <button class="section-tab" data-section="Functions" onclick="showSection('Functions')">📈 Functions (61-80)</button>
+                    <button class="section-tab" data-section="Prime Numbers" onclick="showSection('Prime Numbers')">🔢 Primes (81-90)</button>
+                    <button class="section-tab" data-section="Countability and Infinity" onclick="showSection('Countability and Infinity')">♾️ Infinity (91-100)</button>
+                </div>
+                
+                <div class="quiz-progress-bar">
+                    <div class="progress-fill" id="overallProgress" style="width: 0%;"></div>
+                </div>
+                <div class="progress-text" id="progressText">0/100 questions completed</div>
+            </div>
+
             <!-- Quiz Main -->
             <div id="quizContent">
-                <!-- Questions will be loaded here by JavaScript -->
+                <div id="loadingIndicator" style="text-align: center; padding: 60px 20px; color: #666;">
+                    <div style="font-size: 2em; margin-bottom: 20px;">🔄</div>
+                    <p>Loading 100 quiz questions...</p>
+                    <div style="width: 200px; height: 4px; background: #e0e0e0; border-radius: 2px; margin: 20px auto; overflow: hidden;">
+                        <div style="width: 100%; height: 100%; background: #3498db; border-radius: 2px; animation: loading 2s ease-in-out infinite;"></div>
+                    </div>
+                </div>
+                
+                <noscript>
+                    <div style="text-align: center; padding: 40px; background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; margin: 20px 0;">
+                        <h3 style="color: #856404;">JavaScript Required</h3>
+                        <p style="color: #856404;">This interactive quiz requires JavaScript to be enabled in your browser.</p>
+                        <p style="color: #856404;">Please enable JavaScript and refresh the page to access the 100 practice questions.</p>
+                    </div>
+                </noscript>
             </div>
+
+            <!-- Section Navigation Controls -->
+            <div class="section-controls" id="sectionControls" style="display: none;">
+                <button id="prevSection" onclick="navigateSection(-1)" class="nav-btn" disabled>← Previous Section</button>
+                <span class="section-info" id="sectionInfo">Section 1 of 6</span>
+                <button id="nextSection" onclick="navigateSection(1)" class="nav-btn">Next Section →</button>
+            </div>
+            
+            <style>
+                @keyframes loading {
+                    0% { transform: translateX(-100%); }
+                    50% { transform: translateX(0%); }
+                    100% { transform: translateX(100%); }
+                }
+
+                /* Section Navigation Styles */
+                .section-nav {
+                    background: white;
+                    padding: 20px;
+                    border-radius: 12px;
+                    margin-bottom: 30px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    position: sticky;
+                    top: 80px;
+                    z-index: 100;
+                }
+
+                .section-tabs {
+                    display: flex;
+                    gap: 10px;
+                    margin-bottom: 20px;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+
+                .section-tab {
+                    padding: 12px 20px;
+                    border: 2px solid #e0e0e0;
+                    border-radius: 25px;
+                    background: white;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                    color: #666;
+                }
+
+                .section-tab:hover {
+                    border-color: #3498db;
+                    color: #3498db;
+                    transform: translateY(-2px);
+                }
+
+                .section-tab.active {
+                    background: #3498db;
+                    border-color: #3498db;
+                    color: white;
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+                }
+
+                .quiz-progress-bar {
+                    width: 100%;
+                    height: 8px;
+                    background: #e0e0e0;
+                    border-radius: 4px;
+                    overflow: hidden;
+                    margin-bottom: 10px;
+                }
+
+                .quiz-progress-bar .progress-fill {
+                    height: 100%;
+                    background: linear-gradient(90deg, #10b981, #059669);
+                    transition: width 0.5s ease;
+                }
+
+                .progress-text {
+                    text-align: center;
+                    font-size: 0.9rem;
+                    color: #666;
+                    font-weight: 500;
+                }
+
+                .section-controls {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: 40px;
+                    padding: 20px;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+
+                .nav-btn {
+                    padding: 12px 24px;
+                    background: #3498db;
+                    color: white;
+                    border: none;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                }
+
+                .nav-btn:hover:not(:disabled) {
+                    background: #2980b9;
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+                }
+
+                .nav-btn:disabled {
+                    background: #bdc3c7;
+                    cursor: not-allowed;
+                    transform: none;
+                }
+
+                .section-info {
+                    font-weight: 500;
+                    color: #2c3e50;
+                }
+
+                /* Enhanced Question Cards */
+                .question-card {
+                    background: white !important;
+                    padding: 30px !important;
+                    margin-bottom: 25px !important;
+                    border-radius: 15px !important;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.08) !important;
+                    border: 1px solid #f0f0f0 !important;
+                    transition: all 0.3s ease !important;
+                }
+
+                .question-card:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.12) !important;
+                }
+
+                .question-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 20px;
+                    padding-bottom: 15px;
+                    border-bottom: 2px solid #f8f9fa;
+                }
+
+                /* Mobile Responsive */
+                @media (max-width: 768px) {
+                    .section-tabs {
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    
+                    .section-tab {
+                        width: 100%;
+                        max-width: 300px;
+                        text-align: center;
+                    }
+                    
+                    .section-controls {
+                        flex-direction: column;
+                        gap: 15px;
+                        text-align: center;
+                    }
+                }
+            </style>
         </div>
     </section>
 
@@ -1133,11 +1332,16 @@
         let userAnswers = {};
         let filteredQuestions = [...quizData];
         let currentFilter = { part: 'all', difficulty: 'all' };
+        let currentSection = 'all';
+        let sectionOrder = ['Number Systems', 'Sets and Cardinality', 'Relations', 'Functions', 'Prime Numbers', 'Countability and Infinity'];
 
         // Initialize Quiz
         function initQuiz() {
-            renderQuestions();
-            updateStats();
+            console.log('Quiz initialized with', quizData.length, 'questions');
+            document.getElementById('sectionNav').style.display = 'block';
+            document.getElementById('sectionControls').style.display = 'flex';
+            showSection('Number Systems'); // Start with first section
+            updateOverallProgress();
             // Typeset math after rendering
             if (window.MathJax) {
                 MathJax.typesetPromise();
@@ -1147,7 +1351,25 @@
         // Render Questions
         function renderQuestions() {
             const container = document.getElementById('quizContent');
+            if (!container) {
+                console.error('Quiz container not found!');
+                return;
+            }
+            
+            console.log('Rendering', filteredQuestions.length, 'questions');
+            
+            // Hide loading indicator
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            if (loadingIndicator) {
+                loadingIndicator.style.display = 'none';
+            }
+            
             container.innerHTML = '';
+
+            if (filteredQuestions.length === 0) {
+                container.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">No questions match the current filters.</div>';
+                return;
+            }
 
             filteredQuestions.forEach(q => {
                 const questionDiv = document.createElement('div');
@@ -1215,6 +1437,7 @@
             // Show feedback
             showFeedback(questionId);
             updateStats();
+            updateOverallProgress();
 
             // Typeset math in explanation
             if (window.MathJax) {
@@ -1312,6 +1535,74 @@
         function closeResults() {
             document.getElementById('resultsModal').style.display = 'none';
         }
+
+        // Show Section
+        function showSection(sectionName) {
+            currentSection = sectionName;
+            
+            // Update active tab
+            document.querySelectorAll('.section-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.section === sectionName) {
+                    tab.classList.add('active');
+                }
+            });
+            
+            // Filter questions by section
+            if (sectionName === 'all') {
+                filteredQuestions = [...quizData];
+            } else {
+                filteredQuestions = quizData.filter(q => q.part === sectionName);
+            }
+            
+            renderQuestions();
+            updateSectionNavigation();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Navigate Between Sections
+        function navigateSection(direction) {
+            if (currentSection === 'all') return;
+            
+            const currentIndex = sectionOrder.indexOf(currentSection);
+            const newIndex = currentIndex + direction;
+            
+            if (newIndex >= 0 && newIndex < sectionOrder.length) {
+                showSection(sectionOrder[newIndex]);
+            }
+        }
+
+        // Update Section Navigation
+        function updateSectionNavigation() {
+            const currentIndex = sectionOrder.indexOf(currentSection);
+            const prevBtn = document.getElementById('prevSection');
+            const nextBtn = document.getElementById('nextSection');
+            const sectionInfo = document.getElementById('sectionInfo');
+            
+            if (currentSection === 'all') {
+                prevBtn.disabled = true;
+                nextBtn.disabled = true;
+                sectionInfo.textContent = 'All Sections';
+            } else {
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === sectionOrder.length - 1;
+                sectionInfo.textContent = `Section ${currentIndex + 1} of ${sectionOrder.length}`;
+            }
+        }
+
+        // Update Overall Progress
+        function updateOverallProgress() {
+            const totalQuestions = quizData.length;
+            const answeredQuestions = Object.keys(userAnswers).length;
+            const progressPercent = (answeredQuestions / totalQuestions) * 100;
+            
+            document.getElementById('overallProgress').style.width = progressPercent + '%';
+            document.getElementById('progressText').textContent = `${answeredQuestions}/${totalQuestions} questions completed`;
+        }
+
+
 
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', initQuiz);
