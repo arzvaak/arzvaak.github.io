@@ -110,7 +110,7 @@ body {
 
 /* Table of Contents */
 .toc {
-    background: white;
+    background: var(--bg-secondary);
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: var(--shadow);
@@ -163,7 +163,7 @@ body {
 
 /* Main Content */
 .notes-main {
-    background: white;
+    background: var(--bg-secondary);
     border-radius: 1rem;
     box-shadow: var(--shadow);
     overflow: hidden;
@@ -209,17 +209,17 @@ body {
 }
 
 .properties-box {
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    border-left-color: #10b981;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    border-left-color: var(--text-primary);
 }
 
 .example-box {
-    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     border-left-color: #f59e0b;
 }
 
 .operations-box {
-    background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     border-left-color: #ec4899;
 }
 
@@ -251,7 +251,7 @@ body {
 }
 
 .formula-card {
-    background: white;
+    background: var(--bg-secondary);
     padding: 1.5rem;
     border-radius: 0.75rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -338,7 +338,7 @@ body {
 
 /* Mini Quiz */
 .mini-quiz {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     padding: 2rem;
     border-radius: 1rem;
     border: 2px solid var(--border-color);
@@ -362,7 +362,7 @@ body {
 }
 
 .quiz-option {
-    background: white;
+    background: var(--bg-secondary);
     border: 2px solid var(--border-color);
     padding: 1rem;
     border-radius: 0.5rem;
@@ -379,7 +379,7 @@ body {
 .quiz-option.correct {
     background: #10b981;
     color: white;
-    border-color: #10b981;
+    border-color: var(--text-primary);
 }
 
 .quiz-option.wrong {
@@ -396,14 +396,14 @@ body {
 
 .correct-feedback {
     background: #dcfce7;
-    color: #166534;
+    color: var(--text-primary);
     border-left: 4px solid #10b981;
     padding: 1rem;
     margin: 0;
 }
 
 .wrong-feedback {
-    background: #fef2f2;
+    background: var(--bg-secondary);
     color: #991b1b;
     border-left: 4px solid #ef4444;
     padding: 1rem;
@@ -566,7 +566,7 @@ html {
 
 /* Content Boxes */
 .definition-box {
-    background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     border-left: 5px solid var(--primary-color);
     padding: 25px;
     margin: 25px 0;
@@ -581,8 +581,19 @@ html {
     font-size: 1.2rem;
 }
 
+.definition-box,
+.definition-box *,
+.definition-box p,
+.definition-box span,
+.definition-box div,
+.definition-box li,
+.definition-box td,
+.definition-box th {
+    color: var(--text-primary) !important;
+}
+
 .example-box {
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     border-left: 5px solid #16a34a;
     padding: 25px;
     margin: 25px 0;
@@ -591,13 +602,24 @@ html {
 }
 
 .example-box h3, .example-box h4 {
-    color: #16a34a;
+    color: var(--text-primary);
     margin-top: 0;
     margin-bottom: 15px;
 }
 
+.example-box,
+.example-box *,
+.example-box p,
+.example-box span,
+.example-box div,
+.example-box li,
+.example-box td,
+.example-box th {
+    color: var(--text-primary) !important;
+}
+
 .important-note {
-    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     border-left: 5px solid #f59e0b;
     padding: 25px;
     margin: 25px 0;
@@ -611,8 +633,19 @@ html {
     margin-bottom: 15px;
 }
 
+.important-note,
+.important-note *,
+.important-note p,
+.important-note span,
+.important-note div,
+.important-note li,
+.important-note td,
+.important-note th {
+    color: var(--text-primary) !important;
+}
+
 .warning-box {
-    background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     border-left: 5px solid #ef4444;
     padding: 25px;
     margin: 25px 0;
@@ -626,6 +659,17 @@ html {
     margin-bottom: 15px;
 }
 
+.warning-box,
+.warning-box *,
+.warning-box p,
+.warning-box span,
+.warning-box div,
+.warning-box li,
+.warning-box td,
+.warning-box th {
+    color: var(--text-primary) !important;
+}
+
 /* Properties and Lists */
 .properties-list {
     display: grid;
@@ -635,7 +679,7 @@ html {
 }
 
 .property-item {
-    background: white;
+    background: var(--bg-secondary);
     padding: 20px;
     border-radius: 10px;
     border: 1px solid var(--border-color);
@@ -656,7 +700,7 @@ html {
 
 /* Visualizations */
 .visualization {
-    background: #f8fafc;
+    background: var(--bg-secondary);
     padding: 25px;
     border-radius: 12px;
     margin: 25px 0;
@@ -696,7 +740,7 @@ html {
 }
 
 .number {
-    background: white;
+    background: var(--bg-secondary);
     border: 2px solid var(--primary-color);
     border-radius: 50%;
     width: 40px;
@@ -710,21 +754,21 @@ html {
 }
 
 .number.negative {
-    background: #fee2e2;
+    background: var(--bg-secondary);
     border-color: #ef4444;
     color: #dc2626;
 }
 
 .number.zero {
-    background: #f3f4f6;
+    background: var(--bg-secondary);
     border-color: #6b7280;
     color: #374151;
 }
 
 .number.positive {
     background: #dcfce7;
-    border-color: #16a34a;
-    color: #15803d;
+    border-color: var(--text-primary);
+    color: var(--text-primary);
 }
 
 .line-labels {
@@ -741,7 +785,7 @@ html {
 
 /* Interactive Elements */
 .interactive-demo {
-    background: white;
+    background: var(--bg-secondary);
     border: 2px solid var(--primary-color);
     border-radius: 12px;
     padding: 25px;
@@ -772,7 +816,7 @@ html {
 }
 
 .demo-output {
-    background: #f8fafc;
+    background: var(--bg-secondary);
     padding: 15px;
     border-radius: 8px;
     border: 1px solid var(--border-color);
@@ -782,7 +826,7 @@ html {
 
 /* Theorem and Proof Boxes */
 .theorem-box {
-    background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     border-left: 5px solid #8b5cf6;
     padding: 25px;
     margin: 25px 0;
@@ -796,8 +840,19 @@ html {
     margin-bottom: 15px;
 }
 
+.theorem-box,
+.theorem-box *,
+.theorem-box p,
+.theorem-box span,
+.theorem-box div,
+.theorem-box li,
+.theorem-box td,
+.theorem-box th {
+    color: var(--text-primary) !important;
+}
+
 .proof-box {
-    background: #fffbeb;
+    background: var(--bg-secondary);
     border-left: 5px solid #f59e0b;
     padding: 20px;
     margin: 20px 0;
@@ -809,7 +864,7 @@ html {
 
 /* Mathematical Expressions */
 .math-expression {
-    background: #f8fafc;
+    background: var(--bg-secondary);
     padding: 15px 20px;
     border-radius: 8px;
     text-align: center;
@@ -821,7 +876,7 @@ html {
 
 /* Practice Problems */
 .practice-problems {
-    background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     border-radius: 15px;
     padding: 30px;
     margin: 30px 0;
@@ -835,7 +890,7 @@ html {
 }
 
 .problem {
-    background: white;
+    background: var(--bg-secondary);
     padding: 20px;
     margin: 20px 0;
     border-radius: 10px;
@@ -850,7 +905,7 @@ html {
 }
 
 .solution {
-    background: #f0f9ff;
+    background: var(--bg-secondary);
     padding: 15px;
     margin-top: 15px;
     border-radius: 8px;
@@ -926,7 +981,7 @@ section h3 {
 
 /* Simplified Learning Objectives */
 .learning-objectives {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     padding: 25px;
     border-radius: 12px;
     margin: 30px 0;
@@ -961,7 +1016,7 @@ section h3 {
 }
 
 .concept-card {
-    background: white;
+    background: var(--bg-secondary);
     padding: 20px;
     border-radius: 8px;
     border: 1px solid var(--border-color);
@@ -987,7 +1042,7 @@ section h3 {
 
 /* Simplified Critical Notes */
 .critical-note {
-    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     border: 1px solid #f0ad4e;
     border-radius: 8px;
     padding: 20px;
@@ -1167,6 +1222,88 @@ article[style*="background"],
 .card,
 .panel,
 .container,
-.wrapper {
+.wrapper,
+.content,
+.main,
+.section,
+.block,
+.item,
+.element,
+.box,
+.area,
+.region,
+.zone {
     background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Force dark theme on all possible elements */
+body, html {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Ensure all common elements are dark */
+p, h1, h2, h3, h4, h5, h6, span, div, section, article, main, aside, header, footer, nav {
+    color: var(--text-primary) !important;
+}
+
+/* Override any inline styles that might set light backgrounds */
+*[style*="background-color: white"],
+*[style*="background-color: #fff"],
+*[style*="background-color: #f"],
+*[style*="background: white"],
+*[style*="background: #fff"],
+*[style*="background: #f"] {
+    background: var(--bg-secondary) !important;
+}
+
+/* FINAL OVERRIDE: Ensure ALL content in content boxes is visible */
+.concept-box,
+.properties-box,
+.example-box,
+.operations-box,
+.definition-box,
+.important-note,
+.warning-box,
+.theorem-box,
+.proof-box,
+.visualization,
+.interactive-demo,
+.topic-card,
+.week-card,
+.content-section,
+.notes-content,
+.topic-content,
+.week-content {
+    background: var(--bg-secondary) !important;
+}
+
+.concept-box *,
+.properties-box *,
+.example-box *,
+.operations-box *,
+.definition-box *,
+.important-note *,
+.warning-box *,
+.theorem-box *,
+.proof-box *,
+.visualization *,
+.interactive-demo *,
+.topic-card *,
+.week-card *,
+.content-section *,
+.notes-content *,
+.topic-content *,
+.week-content * {
+    color: var(--text-primary) !important;
+}
+
+/* Override any remaining dark text colors */
+*[style*="color: #000"],
+*[style*="color: #111"],
+*[style*="color: #222"],
+*[style*="color: #333"],
+*[style*="color: black"] {
+    color: var(--text-primary) !important;
 }
