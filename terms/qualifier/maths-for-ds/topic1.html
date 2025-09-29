@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 1: Natural Numbers and Integers | Mathematics for Data Science</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/notes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../../index.html">📚 IITM Notes</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="../maths-for-ds.html" class="nav-link">Math for DS</a>
+                <a href="topics-overview.html" class="nav-link">Topics Overview</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="notes-container">
+        <!-- Topic Progress Header -->
+        <div class="topic-progress-header">
+            <div class="topic-breadcrumb">
+                <a href="../../../index.html">Home</a> > 
+                <a href="../maths-for-ds.html">Math for DS</a> > 
+                <a href="topics-overview.html">Topics</a> >
+                <span>Topic 1</span>
+            </div>
+            <div class="topic-progress-bar">
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 10%;"></div>
+                </div>
+                <span class="progress-label">Topic 1 of 10</span>
+            </div>
+        </div>
+
+        <div class="notes-header">
+            <h1>🔢 Topic 1: Natural Numbers and Integers</h1>
+            <div class="topic-meta">
+                <span class="topic-badge">Topic 1/10</span>
+                <span class="difficulty-badge">⭐ Foundation</span>
+                <span class="time-badge">⏱️ ~15 min</span>
+            </div>
+        </div>
+
+        <div class="notes-content">
+            <!-- Learning Objectives -->
+            <div class="learning-objectives">
+                <h2>🎯 Learning Objectives</h2>
+                <ul>
+                    <li>Understand the definition and properties of natural numbers (ℕ)</li>
+                    <li>Learn about integers (ℤ) and their relationship to natural numbers</li>
+                    <li>Master basic arithmetic operations and their properties</li>
+                    <li>Understand division, quotient, remainder, and modulo operation</li>
+                    <li>Explore divisibility and factors</li>
+                </ul>
+            </div>
+
+            <!-- Section 1.1: Natural Numbers -->
+            <section id="natural-numbers">
+                <h2>1.1 Natural Numbers (ℕ)</h2>
+                
+                <div class="critical-note">
+                    <h3>🚨 CRITICAL COURSE-SPECIFIC CONVENTION</h3>
+                    <p>In this course, natural numbers <strong>INCLUDE 0</strong>.</p>
+                </div>
+
+                <div class="definition-box">
+                    <h3>📚 Definition</h3>
+                    <p><strong>Natural Numbers:</strong> ℕ = {0, 1, 2, 3, 4, ...}</p>
+                </div>
+
+                <h3>Key Concepts</h3>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>🔢 Purpose</h4>
+                        <p>Natural numbers are used for <strong>counting</strong> and represent abstract quantities.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🇮🇳 Historical Note</h4>
+                        <p>The number <strong>0 is of Indian origin</strong> and is crucial for our place value numbering system.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🎭 Abstract Nature</h4>
+                        <p>Numbers like 7 represent what is common between different collections (7 balls, 7 pencils).</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>⭕ Zero</h4>
+                        <p>Zero represents "nothing to count" but is essential for mathematics.</p>
+                    </div>
+                </div>
+
+                <div class="important-note">
+                    <h4>📝 Important Note</h4>
+                    <p>Some textbooks exclude 0 from natural numbers, but <strong>THIS COURSE INCLUDES IT</strong>. Always remember this convention for exams and assignments.</p>
+                </div>
+            </section>
+
+            <!-- Section 1.2: Integers -->
+            <section id="integers">
+                <h2>1.2 Integers (ℤ)</h2>
+                
+                <div class="definition-box">
+                    <h3>📚 Definition</h3>
+                    <p><strong>Integers:</strong> ℤ = {..., -3, -2, -1, 0, 1, 2, 3, ...}</p>
+                </div>
+
+                <h3>Key Properties</h3>
+                <div class="properties-list">
+                    <div class="property-item">
+                        <h4>🔗 Extension</h4>
+                        <p>Integers extend natural numbers with <strong>negative numbers</strong></p>
+                    </div>
+                    <div class="property-item">
+                        <h4>⊆ Relationship</h4>
+                        <p>All natural numbers are integers: ℕ ⊆ ℤ</p>
+                    </div>
+                    <div class="property-item">
+                        <h4>📏 Discrete Nature</h4>
+                        <p>Integers are <strong>discrete</strong>: every integer (except boundaries) has a unique "next" and "previous" integer</p>
+                    </div>
+                </div>
+
+                <div class="visualization">
+                    <h4>📊 Number Line Visualization</h4>
+                    <div class="number-line">
+                        <div class="line-segment">
+                            <span class="number negative">-3</span>
+                            <span class="number negative">-2</span>
+                            <span class="number negative">-1</span>
+                            <span class="number zero">0</span>
+                            <span class="number positive">1</span>
+                            <span class="number positive">2</span>
+                            <span class="number positive">3</span>
+                        </div>
+                        <div class="line-labels">
+                            <span class="label">Negative Integers</span>
+                            <span class="label">Natural Numbers (ℕ)</span>
+                            <span class="label">Positive Integers</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 1.3: Arithmetic Operations -->
+            <section id="arithmetic-operations">
+                <h2>1.3 Arithmetic Operations</h2>
+                
+                <h3>Basic Operations on Integers</h3>
+                <div class="operations-grid">
+                    <div class="operation-card">
+                        <h4>➕ Addition (+)</h4>
+                        <p>Combining quantities</p>
+                        <div class="example">Example: 5 + 3 = 8</div>
+                    </div>
+                    <div class="operation-card">
+                        <h4>➖ Subtraction (-)</h4>
+                        <p>Finding difference</p>
+                        <div class="example">Example: 10 - 4 = 6</div>
+                    </div>
+                    <div class="operation-card">
+                        <h4>✖️ Multiplication (×)</h4>
+                        <p>Repeated addition</p>
+                        <div class="example">Example: 4 × 3 = 12</div>
+                    </div>
+                    <div class="operation-card">
+                        <h4>➗ Division (÷)</h4>
+                        <p>Splitting into equal parts</p>
+                        <div class="example">Example: 15 ÷ 3 = 5</div>
+                    </div>
+                    <div class="operation-card">
+                        <h4>🔼 Exponentiation (^)</h4>
+                        <p>Repeated multiplication</p>
+                        <div class="example">Example: 2³ = 8</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 1.4: Division Algorithm -->
+            <section id="division-algorithm">
+                <h2>1.4 Division with Quotient and Remainder</h2>
+                
+                <div class="theorem-box">
+                    <h3>🏛️ Division Algorithm</h3>
+                    <p>For integers <em>a</em> and <em>b</em> (where b ≠ 0):</p>
+                    <div class="formula">
+                        $$a = b \times q + r$$
+                    </div>
+                    <p>where:</p>
+                    <ul>
+                        <li><strong>q</strong> = quotient (integer number of times b goes into a)</li>
+                        <li><strong>r</strong> = remainder (what's left over)</li>
+                        <li><strong>0 ≤ r < b</strong></li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Example</h4>
+                    <p>Divide 17 by 5:</p>
+                    <div class="step">17 = 5 × 3 + 2</div>
+                    <ul>
+                        <li>Quotient (q) = 3</li>
+                        <li>Remainder (r) = 2</li>
+                    </ul>
+                </div>
+
+                <h3>Modulo Operation</h3>
+                <div class="definition-box">
+                    <h4>📚 Definition</h4>
+                    <p><strong>a mod b</strong> = remainder when a is divided by b</p>
+                </div>
+
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <h5>Example 1:</h5>
+                        <p>17 mod 5 = 2</p>
+                        <small>Since 17 = 5 × 3 + 2</small>
+                    </div>
+                    <div class="example-item">
+                        <h5>Example 2:</h5>
+                        <p>20 mod 6 = 2</p>
+                        <small>Since 20 = 6 × 3 + 2</small>
+                    </div>
+                    <div class="example-item">
+                        <h5>Example 3:</h5>
+                        <p>15 mod 3 = 0</p>
+                        <small>Since 15 = 3 × 5 + 0</small>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 1.5: Divisibility -->
+            <section id="divisibility">
+                <h2>1.5 Divisibility</h2>
+                
+                <div class="definition-box">
+                    <h3>📚 Definition</h3>
+                    <p>We say <strong>a | b</strong> (a divides b) if a mod b = 0</p>
+                    <p>This means b is divisible by a with no remainder.</p>
+                </div>
+
+                <h3>Factors</h3>
+                <div class="concept-explanation">
+                    <p><strong>Factors of a number n</strong> are all numbers that divide n evenly (with remainder 0).</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Example: Factors of 24</h4>
+                    <p>Let's find all numbers that divide 24:</p>
+                    <div class="factors-grid">
+                        <div class="factor">1 | 24 ✓ (24 ÷ 1 = 24)</div>
+                        <div class="factor">2 | 24 ✓ (24 ÷ 2 = 12)</div>
+                        <div class="factor">3 | 24 ✓ (24 ÷ 3 = 8)</div>
+                        <div class="factor">4 | 24 ✓ (24 ÷ 4 = 6)</div>
+                        <div class="factor">6 | 24 ✓ (24 ÷ 6 = 4)</div>
+                        <div class="factor">8 | 24 ✓ (24 ÷ 8 = 3)</div>
+                        <div class="factor">12 | 24 ✓ (24 ÷ 12 = 2)</div>
+                        <div class="factor">24 | 24 ✓ (24 ÷ 24 = 1)</div>
+                    </div>
+                    <p><strong>Factors of 24:</strong> {1, 2, 3, 4, 6, 8, 12, 24}</p>
+                </div>
+            </section>
+
+            <!-- Practice Problems -->
+            <section class="practice-section">
+                <h2>🏃‍♂️ Practice Problems</h2>
+                
+                <div class="problem-card">
+                    <h3>Problem 1: Division Algorithm</h3>
+                    <p>Find the quotient and remainder when 47 is divided by 6.</p>
+                    <div class="solution" style="display: none;">
+                        <h4>Solution:</h4>
+                        <p>47 = 6 × 7 + 5</p>
+                        <ul>
+                            <li>Quotient = 7</li>
+                            <li>Remainder = 5</li>
+                            <li>Verification: 6 × 7 + 5 = 42 + 5 = 47 ✓</li>
+                        </ul>
+                    </div>
+                    <button onclick="toggleSolution(this)" class="toggle-solution">Show Solution</button>
+                </div>
+
+                <div class="problem-card">
+                    <h3>Problem 2: Modulo Operation</h3>
+                    <p>Calculate: (a) 23 mod 7, (b) 100 mod 9, (c) 50 mod 10</p>
+                    <div class="solution" style="display: none;">
+                        <h4>Solutions:</h4>
+                        <ul>
+                            <li>(a) 23 mod 7 = 2 (since 23 = 7 × 3 + 2)</li>
+                            <li>(b) 100 mod 9 = 1 (since 100 = 9 × 11 + 1)</li>
+                            <li>(c) 50 mod 10 = 0 (since 50 = 10 × 5 + 0)</li>
+                        </ul>
+                    </div>
+                    <button onclick="toggleSolution(this)" class="toggle-solution">Show Solution</button>
+                </div>
+
+                <div class="problem-card">
+                    <h3>Problem 3: Finding Factors</h3>
+                    <p>Find all factors of 36.</p>
+                    <div class="solution" style="display: none;">
+                        <h4>Solution:</h4>
+                        <p>Testing divisibility: 36 ÷ 1 = 36, 36 ÷ 2 = 18, 36 ÷ 3 = 12, 36 ÷ 4 = 9, 36 ÷ 6 = 6, 36 ÷ 9 = 4, 36 ÷ 12 = 3, 36 ÷ 18 = 2, 36 ÷ 36 = 1</p>
+                        <p><strong>Factors of 36:</strong> {1, 2, 3, 4, 6, 9, 12, 18, 36}</p>
+                    </div>
+                    <button onclick="toggleSolution(this)" class="toggle-solution">Show Solution</button>
+                </div>
+            </section>
+
+            <!-- Key Takeaways -->
+            <div class="key-takeaways">
+                <h2>🔑 Key Takeaways</h2>
+                <ul>
+                    <li><strong>Natural numbers include 0</strong> in this course: ℕ = {0, 1, 2, 3, ...}</li>
+                    <li><strong>Integers extend natural numbers</strong> with negatives: ℤ = {..., -2, -1, 0, 1, 2, ...}</li>
+                    <li><strong>Division algorithm:</strong> a = b × q + r, where 0 ≤ r < b</li>
+                    <li><strong>Modulo operation</strong> gives the remainder of division</li>
+                    <li><strong>Divisibility:</strong> a | b means a divides b with no remainder</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Navigation Footer -->
+        <div class="topic-navigation">
+            <div class="nav-buttons">
+                <a href="topics-overview.html" class="nav-btn secondary">← Topics Overview</a>
+                <div class="nav-center">
+                    <span class="topic-indicator">1 / 10</span>
+                </div>
+                <a href="topic2.html" class="nav-btn primary">Next Topic: Rational Numbers →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Styles -->
+    <style>
+        .topic-progress-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+        }
+
+        .topic-breadcrumb {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .topic-breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+
+        .topic-breadcrumb a:hover {
+            color: white;
+        }
+
+        .topic-progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .progress-track {
+            width: 200px;
+            height: 8px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .topic-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .topic-badge, .difficulty-badge, .time-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .topic-badge {
+            background: #ddd6fe;
+            color: #6b46c1;
+        }
+
+        .difficulty-badge {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .time-badge {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+
+        .learning-objectives {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .learning-objectives h2 {
+            color: #0369a1;
+            margin-bottom: 1rem;
+        }
+
+        .critical-note {
+            background: #fef2f2;
+            border: 2px solid #ef4444;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .critical-note h3 {
+            color: #dc2626;
+            margin-bottom: 0.5rem;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .concept-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .concept-card h4 {
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .visualization {
+            background: #f8fafc;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .number-line {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .line-segment {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            border: 2px solid;
+        }
+
+        .number.negative {
+            background: #fecaca;
+            border-color: #ef4444;
+            color: #dc2626;
+        }
+
+        .number.zero {
+            background: #e5e7eb;
+            border-color: #6b7280;
+            color: #374151;
+        }
+
+        .number.positive {
+            background: #dcfce7;
+            border-color: #22c55e;
+            color: #16a34a;
+        }
+
+        .operations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .operation-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .operation-card:hover {
+            transform: translateY(-2px);
+            border-color: #3b82f6;
+        }
+
+        .operation-card h4 {
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .operation-card .example {
+            background: #f3f4f6;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            margin-top: 0.5rem;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        .theorem-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .theorem-box h3 {
+            color: #d97706;
+            margin-bottom: 1rem;
+        }
+
+        .formula {
+            background: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .example-item {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .example-item h5 {
+            color: #475569;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-item p {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-item small {
+            color: #64748b;
+        }
+
+        .factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .factor {
+            background: #ecfdf5;
+            border: 1px solid #22c55e;
+            border-radius: 0.25rem;
+            padding: 0.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .key-takeaways {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .key-takeaways h2 {
+            color: #16a34a;
+            margin-bottom: 1rem;
+        }
+
+        .topic-navigation {
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .nav-center {
+            text-align: center;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .topic-indicator {
+            background: #e5e7eb;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .line-segment {
+                gap: 1rem;
+            }
+            
+            .number {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+
+    <script src="../../../js/notes.js"></script>
+    <script>
+        function toggleSolution(button) {
+            const solution = button.parentElement.querySelector('.solution');
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+            }
+        }
+
+        // Add progress animation on load
+        window.addEventListener('load', function() {
+            const progressFill = document.querySelector('.progress-fill');
+            progressFill.style.width = '0%';
+            setTimeout(() => {
+                progressFill.style.width = '10%';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

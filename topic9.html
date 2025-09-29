@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 9: Degrees of Infinity - Mathematics for Data Science</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .topic-header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .topic-header h1 {
+            margin: 0 0 15px 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .topic-number {
+            font-size: 1.2em;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        .learning-objectives {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4a5568;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: #2d3748;
+            margin-top: 25px;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-left: 5px solid #2196f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e8 100%);
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffecb3 100%);
+            border-left: 5px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .cantor-box {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            border: 2px solid #e91e63;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .bijection-demo {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .bijection-mapping {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .set-column {
+            text-align: center;
+        }
+
+        .arrow {
+            font-size: 1.5em;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .diagonal-demo {
+            background: #fff9c4;
+            border: 2px solid #ffeb3b;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .binary-table {
+            font-family: 'Courier New', monospace;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .diagonal-highlight {
+            background: #ffcdd2;
+            font-weight: bold;
+        }
+
+        .cardinality-hierarchy {
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+            border: 2px solid #4caf50;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .hierarchy-level {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #4caf50;
+        }
+
+        .practice-problems {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .problem {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 4px solid #e91e63;
+        }
+
+        .solution {
+            background: #f0f8ff;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .toggle-solution {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-solution:hover {
+            background: #c2185b;
+            transform: translateY(-2px);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 20px;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 120px;
+            justify-content: center;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            height: 8px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #4caf50, #45a049);
+            height: 100%;
+            width: 90%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .objectives-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .objectives-list li {
+            background: #f0f8ff;
+            margin: 10px 0;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+            position: relative;
+        }
+
+        .objectives-list li::before {
+            content: "✓";
+            color: #4caf50;
+            font-weight: bold;
+            position: absolute;
+            left: -5px;
+        }
+
+        .hypothesis-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffecb3 100%);
+            border: 2px solid #ff9800;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .topic-header h1 {
+                font-size: 2em;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            .navigation {
+                flex-direction: column;
+            }
+
+            .bijection-mapping {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="topic-header">
+            <div class="topic-number">Topic 9 of 10</div>
+            <h1>Degrees of Infinity</h1>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="learning-objectives">
+            <h2>🎯 Learning Objectives</h2>
+            <ul class="objectives-list">
+                <li>Understand the concept of comparing infinite sets using bijections</li>
+                <li>Learn Georg Cantor's revolutionary discoveries about infinity</li>
+                <li>Master the definition and properties of countable sets</li>
+                <li>Prove that ℤ and ℚ are countable despite intuition</li>
+                <li>Understand Cantor's diagonalization proof that ℝ is uncountable</li>
+                <li>Grasp the hierarchy of infinite cardinalities and its implications</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>10.1 The Question</h2>
+            
+            <div class="definition-box">
+                <h3>🤔 Are some infinities larger than others?</h3>
+                <ul>
+                    <li>Is |ℕ| < |ℤ|? (Are there more integers than natural numbers?)</li>
+                    <li>Is |ℤ| < |ℚ|? (Are there more rationals than integers?)</li>
+                    <li>Is |ℚ| < |ℝ|? (Are there more reals than rationals?)</li>
+                </ul>
+            </div>
+
+            <div class="cantor-box">
+                <h3>👨‍🔬 Studied by: Georg Cantor (1870s)</h3>
+                <p>Georg Cantor revolutionized mathematics by showing that <strong>not all infinities are equal</strong>. His work initially faced strong opposition but is now fundamental to mathematics.</p>
+                
+                <h4>🔧 Tool: Use bijections to compare infinite sets</h4>
+                <p>Two sets have the same cardinality if and only if there exists a bijection between them.</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>10.2 Countable Sets</h2>
+            
+            <div class="definition-box">
+                <h3>🔑 Definition: Countable Set</h3>
+                <p>A set X is <strong>countable</strong> if there exists a bijection f: ℕ → X</p>
+                
+                <h4>Interpretation:</h4>
+                <ul>
+                    <li>Can enumerate X as {f(0), f(1), f(2), ...}</li>
+                    <li>X can be "counted" via f</li>
+                    <li>X has same cardinality as ℕ</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h3>ℕ is Countable (by definition)</h3>
+                <p>Identity function works: f(n) = n</p>
+                <p>This gives us our baseline for comparison.</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>10.3 Are Integers Countable?</h2>
+            
+            <div class="warning-box">
+                <h3>🤯 Intuition vs Reality</h3>
+                <p><strong>Intuition:</strong> ℤ seems twice as large as ℕ (has negative numbers too)</p>
+                <p><strong>Surprising Result:</strong> ℤ is countable!</p>
+            </div>
+
+            <div class="bijection-demo">
+                <h3>📊 Bijection Strategy</h3>
+                <p>Interleave positive and negative integers. Map ℕ → ℤ as follows:</p>
+
+                <div class="bijection-mapping">
+                    <div class="set-column">
+                        <strong>ℕ</strong><br>
+                        0, 1, 2, 3, 4, 5, 6, ...
+                    </div>
+                    <div class="arrow">↓</div>
+                    <div class="set-column">
+                        <strong>ℤ</strong><br>
+                        0, 1, -1, 2, -2, 3, -3, ...
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h4>Explicit Formula:</h4>
+                    <div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 15px; border-radius: 8px;">
+f(0) = 0<br>
+f(i) = (i+1)/2     if i is odd<br>
+f(i) = -(i/2)      if i is even (and i > 0)
+                    </div>
+                </div>
+            </div>
+
+            <div class="cardinality-hierarchy">
+                <div class="hierarchy-level">
+                    <strong>Conclusion: |ℕ| = |ℤ|</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>10.4 Are Rationals Countable?</h2>
+            
+            <div class="warning-box">
+                <h3>🌊 Initial Intuition</h3>
+                <p>ℚ is <strong>dense</strong>, ℤ is <strong>discrete</strong> → ℚ might be larger</p>
+                <p>But this intuition is wrong!</p>
+            </div>
+
+            <div class="bijection-demo">
+                <h3>🔗 Key Observation</h3>
+                <p>There's an obvious bijection ℤ × ℤ ↔ ℚ</p>
+                <ul>
+                    <li>Every rational p/q corresponds to pair (p, q)</li>
+                    <li>So |ℚ| = |ℤ × ℤ|</li>
+                </ul>
+
+                <h3>📐 Strategy: Show ℕ × ℕ is countable</h3>
+                <p>Use <strong>diagonal enumeration</strong> of ℕ × ℕ:</p>
+
+                <div class="binary-table">
+                    <strong>Diagonal Enumeration Pattern:</strong><br><br>
+(0,0) → 0<br>
+(1,0), (0,1) → 1, 2<br>
+(2,0), (1,1), (0,2) → 3, 4, 5<br>
+(3,0), (2,1), (1,2), (0,3) → 6, 7, 8, 9<br>
+(4,0), (3,1), (2,2), (1,3), (0,4) → 10, 11, 12, 13, 14<br>
+...
+                </div>
+
+                <p>This systematic enumeration shows we can count all pairs!</p>
+            </div>
+
+            <div class="cardinality-hierarchy">
+                <div class="hierarchy-level">
+                    <strong>Result: ℚ is countable!</strong>
+                </div>
+                <div class="hierarchy-level">
+                    <strong>Surprising Conclusion: |ℕ| = |ℤ| = |ℚ|</strong><br>
+                    <small>Despite density, rationals have same cardinality as integers!</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>10.5 Are Real Numbers Countable?</h2>
+            
+            <div class="cantor-box">
+                <h3>💥 Revolutionary Claim</h3>
+                <p><strong>ℝ is NOT countable</strong></p>
+                <p>This was Cantor's most shocking discovery!</p>
+            </div>
+
+            <div class="diagonal-demo">
+                <h3>🔍 Cantor's Diagonalization Proof</h3>
+                
+                <div class="example-box">
+                    <h4>Step 1: Representation</h4>
+                    <p>Represent real numbers in [0,1) as infinite binary sequences</p>
+                    <ul>
+                        <li>Each real number ↔ infinite sequence of 0s and 1s</li>
+                        <li>Example: 0.101001... represents a specific real</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <h4>Step 2: Assume Countability</h4>
+                    <p>Assume (for contradiction) all such sequences can be enumerated:</p>
+                    
+                    <div class="binary-table">
+s₁ = 0.<span class="diagonal-highlight">1</span>01001...<br>
+s₂ = 0.0<span class="diagonal-highlight">1</span>1100...<br>
+s₃ = 0.10<span class="diagonal-highlight">0</span>101...<br>
+s₄ = 0.110<span class="diagonal-highlight">1</span>01...<br>
+s₅ = 0.0101<span class="diagonal-highlight">0</span>1...<br>
+...
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h4>Step 3: Construct Diagonal</h4>
+                    <p>Create new sequence d = d₁d₂d₃d₄d₅... where:</p>
+                    <ul>
+                        <li>d₁ ≠ b₁ (differs from s₁ in position 1)</li>
+                        <li>d₂ ≠ b₂ (differs from s₂ in position 2)</li>
+                        <li>d₃ ≠ b₃ (differs from s₃ in position 3)</li>
+                        <li>...</li>
+                        <li><strong>d differs from EVERY sequence in the list!</strong></li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <h4>Step 4: Contradiction</h4>
+                    <ul>
+                        <li>d is a valid sequence, but not in our "complete" enumeration</li>
+                        <li>Therefore, no such enumeration exists</li>
+                        <li><strong>ℝ is uncountable!</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>10.6 Implications</h2>
+            
+            <div class="cardinality-hierarchy">
+                <h3>📊 Cardinality Hierarchy</h3>
+                
+                <div class="hierarchy-level">
+                    <strong>Countable Infinities:</strong><br>
+                    |ℕ| = |ℤ| = |ℚ| (all countable)
+                </div>
+                
+                <div class="hierarchy-level">
+                    <strong>Uncountable Infinities:</strong><br>
+                    |ℝ| > |ℚ| (reals are uncountable)
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h3>🌟 About Irrational Numbers</h3>
+                <ul>
+                    <li>ℚ is countable</li>
+                    <li>ℝ = ℚ ∪ {irrationals}</li>
+                    <li>ℝ is uncountable</li>
+                    <li><strong>Therefore: Irrational numbers are uncountable</strong></li>
+                    <li>There are <strong>VASTLY</strong> more irrational numbers than rational numbers!</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h3>🔍 Even Tiny Intervals</h3>
+                <ul>
+                    <li>Even the tiny interval (0, 1) is uncountable</li>
+                    <li>Any non-trivial interval of reals is uncountable</li>
+                    <li>This shows how "dense" the irrationals really are</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>10.7 Continuum Hypothesis</h2>
+            
+            <div class="hypothesis-box">
+                <h3>❓ The Ultimate Question</h3>
+                <p><strong>Question:</strong> Is there a set whose cardinality is strictly between |ℕ| and |ℝ|?</p>
+                
+                <h4>🏛️ Historical Importance:</h4>
+                <ul>
+                    <li>Posed by Cantor in late 1800s</li>
+                    <li>One of the most important open questions in set theory</li>
+                    <li>Listed as <strong>Hilbert's First Problem</strong> (1900)</li>
+                </ul>
+
+                <h4>🎯 Resolution by Paul Cohen (1960s):</h4>
+                <p>Proved the Continuum Hypothesis is <strong>independent</strong> of set theory axioms</p>
+                <ul>
+                    <li>Cannot be proven true or false from standard axioms</li>
+                    <li>One of the most profound results in mathematical logic</li>
+                    <li>Shows the limitations of axiomatic systems</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="practice-problems">
+            <h2>🧮 Practice Problems</h2>
+            
+            <div class="problem">
+                <h3>Problem 1: Bijection Construction</h3>
+                <p>Show that the set of even natural numbers {0, 2, 4, 6, 8, ...} is countable by constructing an explicit bijection with ℕ.</p>
+                <button class="toggle-solution" onclick="toggleSolution(this)">Show Solution</button>
+                <div class="solution">
+                    <h4>Solution:</h4>
+                    <p><strong>Bijection f: ℕ → {even naturals}</strong></p>
+                    <p><strong>f(n) = 2n</strong></p>
+                    <ul>
+                        <li>f(0) = 0</li>
+                        <li>f(1) = 2</li>
+                        <li>f(2) = 4</li>
+                        <li>f(3) = 6</li>
+                        <li>...</li>
+                    </ul>
+                    <p>This is clearly injective (different inputs give different outputs) and surjective (every even natural is 2n for some n). Therefore, the even naturals are countable.</p>
+                </div>
+            </div>
+
+            <div class="problem">
+                <h3>Problem 2: Understanding Cardinalities</h3>
+                <p>Explain why |ℕ × ℕ| = |ℕ| even though ℕ × ℕ seems "two-dimensional".</p>
+                <button class="toggle-solution" onclick="toggleSolution(this)">Show Solution</button>
+                <div class="solution">
+                    <h4>Solution:</h4>
+                    <p>The diagonal enumeration shows we can systematically count all pairs:</p>
+                    <ol>
+                        <li><strong>Organize by sum:</strong> Group pairs (a,b) by their sum a+b</li>
+                        <li><strong>Within each group,</strong> enumerate systematically</li>
+                        <li><strong>This creates a bijection</strong> ℕ → ℕ × ℕ</li>
+                    </ol>
+                    <p><strong>Key insight:</strong> Even though ℕ × ℕ appears "bigger" (two-dimensional), we can still count all pairs in a systematic way. Cardinality depends on the existence of a bijection, not on intuitive "size."</p>
+                </div>
+            </div>
+
+            <div class="problem">
+                <h3>Problem 3: Diagonalization Understanding</h3>
+                <p>In Cantor's diagonalization proof, why can't the diagonal sequence d be in our original enumeration?</p>
+                <button class="toggle-solution" onclick="toggleSolution(this)">Show Solution</button>
+                <div class="solution">
+                    <h4>Solution:</h4>
+                    <p><strong>By construction, d cannot be anywhere in the list:</strong></p>
+                    <ul>
+                        <li><strong>d ≠ s₁</strong> because they differ in position 1</li>
+                        <li><strong>d ≠ s₂</strong> because they differ in position 2</li>
+                        <li><strong>d ≠ s₃</strong> because they differ in position 3</li>
+                        <li><strong>Generally: d ≠ sₙ</strong> because they differ in position n</li>
+                    </ul>
+                    <p><strong>This is the genius of the proof:</strong> We construct d specifically to differ from every sequence in our supposed "complete" enumeration, showing that no such complete enumeration can exist.</p>
+                </div>
+            </div>
+
+            <div class="problem">
+                <h3>Problem 4: Cardinality Hierarchy</h3>
+                <p>Arrange the following sets in order of increasing cardinality: ℝ, ℚ, ℤ, ℕ, {irrational numbers}.</p>
+                <button class="toggle-solution" onclick="toggleSolution(this)">Show Solution</button>
+                <div class="solution">
+                    <h4>Solution:</h4>
+                    <p><strong>Two groups by cardinality:</strong></p>
+                    
+                    <p><strong>Countable (all equal cardinality):</strong></p>
+                    <ul>
+                        <li>ℕ, ℤ, ℚ all have the same cardinality</li>
+                        <li>|ℕ| = |ℤ| = |ℚ|</li>
+                    </ul>
+                    
+                    <p><strong>Uncountable (larger cardinality):</strong></p>
+                    <ul>
+                        <li>ℝ and {irrational numbers} are both uncountable</li>
+                        <li>|ℝ| = |{irrational numbers}| > |ℚ|</li>
+                    </ul>
+                    
+                    <p><strong>Final order:</strong> ℕ = ℤ = ℚ < ℝ = {irrational numbers}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="topic8.html" class="nav-button">
+                ← Previous: Irrational Numbers
+            </a>
+            <a href="topics-overview.html" class="nav-button">
+                📋 Topics Overview
+            </a>
+            <a href="topic10.html" class="nav-button">
+                Next: Practice Quiz →
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function toggleSolution(button) {
+            const solution = button.nextElementSibling;
+            if (solution.style.display === 'none' || solution.style.display === '') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+                button.style.background = '#757575';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+                button.style.background = '#e91e63';
+            }
+        }
+
+        // Add interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const objectives = document.querySelectorAll('.objectives-list li');
+            objectives.forEach((obj, index) => {
+                obj.style.animationDelay = `${index * 0.1}s`;
+                obj.style.animation = 'slideInFromLeft 0.5s ease forwards';
+            });
+
+            // Animate hierarchy levels
+            const levels = document.querySelectorAll('.hierarchy-level');
+            levels.forEach((level, index) => {
+                level.style.animationDelay = `${index * 0.3}s`;
+                level.style.animation = 'fadeInUp 0.6s ease forwards';
+                level.style.opacity = '0';
+            });
+        });
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInFromLeft {
+                from {
+                    opacity: 0;
+                    transform: translateX(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

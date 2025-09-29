@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 2: Rational Numbers | Mathematics for Data Science</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/notes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../../index.html">📚 IITM Notes</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="../maths-for-ds.html" class="nav-link">Math for DS</a>
+                <a href="topics-overview.html" class="nav-link">Topics Overview</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="notes-container">
+        <!-- Topic Progress Header -->
+        <div class="topic-progress-header">
+            <div class="topic-breadcrumb">
+                <a href="../../../index.html">Home</a> > 
+                <a href="../maths-for-ds.html">Math for DS</a> > 
+                <a href="topics-overview.html">Topics</a> >
+                <span>Topic 2</span>
+            </div>
+            <div class="topic-progress-bar">
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 20%;"></div>
+                </div>
+                <span class="progress-label">Topic 2 of 10</span>
+            </div>
+        </div>
+
+        <div class="notes-header">
+            <h1>🔢 Topic 2: Rational Numbers</h1>
+            <div class="topic-meta">
+                <span class="topic-badge">Topic 2/10</span>
+                <span class="difficulty-badge">⭐⭐ Intermediate</span>
+                <span class="time-badge">⏱️ ~20 min</span>
+            </div>
+        </div>
+
+        <div class="notes-content">
+            <!-- Learning Objectives -->
+            <div class="learning-objectives">
+                <h2>🎯 Learning Objectives</h2>
+                <ul>
+                    <li>Understand the definition and notation of rational numbers (ℚ)</li>
+                    <li>Learn about non-unique representation of rational numbers</li>
+                    <li>Master the concept of reduced form and greatest common divisor</li>
+                    <li>Explore the density property of rational numbers</li>
+                    <li>Understand why rational numbers have no "next" number</li>
+                </ul>
+            </div>
+
+            <!-- Section 2.1: Definition -->
+            <section id="definition">
+                <h2>2.1 Definition</h2>
+                
+                <div class="notation-box">
+                    <h3>📝 Notation</h3>
+                    <p><strong>ℚ</strong> (from "quotient" or "ratio")</p>
+                </div>
+
+                <div class="definition-box">
+                    <h3>📚 Definition</h3>
+                    <p><strong>Rational Number:</strong> Any number that can be expressed as <strong>p/q</strong> where:</p>
+                    <ul>
+                        <li>p, q ∈ ℤ (both are integers)</li>
+                        <li>q ≠ 0 (denominator cannot be zero)</li>
+                    </ul>
+                </div>
+
+                <div class="examples-showcase">
+                    <h3>💡 Examples of Rational Numbers</h3>
+                    <div class="examples-grid">
+                        <div class="example-item positive">
+                            <h4>Positive Fractions</h4>
+                            <p>3/5, 7/8, 22/7</p>
+                        </div>
+                        <div class="example-item negative">
+                            <h4>Negative Fractions</h4>
+                            <p>-7/4, -15/23, -1/3</p>
+                        </div>
+                        <div class="example-item integers">
+                            <h4>Integers as Rationals</h4>
+                            <p>5 = 5/1, -3 = -3/1, 0 = 0/1</p>
+                        </div>
+                        <div class="example-item decimals">
+                            <h4>Terminating Decimals</h4>
+                            <p>0.75 = 3/4, 0.125 = 1/8</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="important-note">
+                    <h4>🔗 Relationship to Integers</h4>
+                    <p>Every integer is a rational number because any integer n can be written as n/1. Therefore: <strong>ℤ ⊆ ℚ</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 2.2: Non-Unique Representation -->
+            <section id="non-unique-representation">
+                <h2>2.2 Non-Unique Representation</h2>
+                
+                <div class="key-property">
+                    <h3>🔑 Key Property</h3>
+                    <p>Rational numbers do <strong>NOT</strong> have unique representations</p>
+                </div>
+
+                <div class="demonstration">
+                    <h3>📊 Demonstration</h3>
+                    <div class="fraction-equivalence">
+                        <div class="central-fraction">3/5</div>
+                        <div class="equivalent-fractions">
+                            <div class="equivalent">6/10</div>
+                            <div class="equivalent">9/15</div>
+                            <div class="equivalent">30/50</div>
+                            <div class="equivalent">-15/-25</div>
+                        </div>
+                    </div>
+                    <p class="explanation">All these fractions represent the same rational number!</p>
+                </div>
+
+                <div class="why-box">
+                    <h3>🤔 Why This Happens</h3>
+                    <p>Multiplying both numerator and denominator by the same non-zero number gives an equivalent fraction:</p>
+                    <div class="formula">
+                        $$\frac{p}{q} = \frac{p \times k}{q \times k} \text{ for any } k \neq 0$$
+                    </div>
+                </div>
+
+                <div class="interactive-example">
+                    <h4>🎮 Interactive Example</h4>
+                    <p>Let's see how 2/3 can be represented in multiple ways:</p>
+                    <div class="transformation-steps">
+                        <div class="step">
+                            <span class="fraction">2/3</span>
+                            <span class="operation">× 2/2</span>
+                            <span class="result">= 4/6</span>
+                        </div>
+                        <div class="step">
+                            <span class="fraction">2/3</span>
+                            <span class="operation">× 5/5</span>
+                            <span class="result">= 10/15</span>
+                        </div>
+                        <div class="step">
+                            <span class="fraction">2/3</span>
+                            <span class="operation">× (-3)/(-3)</span>
+                            <span class="result">= -6/-9</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2.3: Reduced Form -->
+            <section id="reduced-form">
+                <h2>2.3 Reduced Form (Canonical Form)</h2>
+                
+                <div class="definition-box">
+                    <h3>📚 Definition</h3>
+                    <p>A rational number p/q is in <strong>reduced form</strong> when:</p>
+                    <ul>
+                        <li><strong>gcd(p, q) = 1</strong> (p and q have no common factors other than 1)</li>
+                        <li>This gives a <strong>unique representation</strong></li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Example: Reducing 18/60</h4>
+                    <div class="reduction-process">
+                        <div class="step-by-step">
+                            <div class="original">18/60</div>
+                            <div class="arrow">→</div>
+                            <div class="find-gcd">Find gcd(18, 60)</div>
+                            <div class="arrow">→</div>
+                            <div class="gcd-result">gcd = 6</div>
+                            <div class="arrow">→</div>
+                            <div class="divide">18÷6 / 60÷6</div>
+                            <div class="arrow">→</div>
+                            <div class="final">3/10</div>
+                        </div>
+                    </div>
+                    <p><strong>18/60 = 3/10</strong> (in reduced form)</p>
+                </div>
+
+                <div class="uniqueness-note">
+                    <h4>✨ Uniqueness</h4>
+                    <p>Once in reduced form, every rational number has exactly <strong>one</strong> representation (ignoring the sign placement).</p>
+                </div>
+            </section>
+
+            <!-- Section 2.4: Greatest Common Divisor -->
+            <section id="gcd">
+                <h2>2.4 Greatest Common Divisor (GCD)</h2>
+                
+                <div class="definition-box">
+                    <h3>📚 Definition</h3>
+                    <p><strong>gcd(m, n)</strong> is the largest number that divides both m and n</p>
+                </div>
+
+                <h3>Finding GCD using Prime Factorization</h3>
+                <div class="algorithm-steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Find prime factorization of both numbers</h4>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Identify common prime factors</h4>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Multiply the common primes</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detailed-example">
+                    <h4>🔍 Detailed Example: gcd(18, 60)</h4>
+                    <div class="factorization-table">
+                        <div class="factorization-row">
+                            <div class="number">18</div>
+                            <div class="equals">=</div>
+                            <div class="factors">2 × 3 × 3</div>
+                            <div class="powers">= 2¹ × 3²</div>
+                        </div>
+                        <div class="factorization-row">
+                            <div class="number">60</div>
+                            <div class="equals">=</div>
+                            <div class="factors">2 × 2 × 3 × 5</div>
+                            <div class="powers">= 2² × 3¹ × 5¹</div>
+                        </div>
+                    </div>
+                    
+                    <div class="common-factors">
+                        <h5>Common Prime Factors:</h5>
+                        <ul>
+                            <li>2: min(1, 2) = 1, so we take 2¹</li>
+                            <li>3: min(2, 1) = 1, so we take 3¹</li>
+                            <li>5: min(0, 1) = 0, so we don't include 5</li>
+                        </ul>
+                        <p><strong>gcd(18, 60) = 2¹ × 3¹ = 6</strong></p>
+                    </div>
+                </div>
+
+                <div class="algorithm-note">
+                    <h4>📝 Note</h4>
+                    <p>There are more efficient algorithms (like the <strong>Euclidean algorithm</strong>) to find GCD, but prime factorization provides intuitive understanding.</p>
+                </div>
+            </section>
+
+            <!-- Section 2.5: Density -->
+            <section id="density">
+                <h2>2.5 Density of Rational Numbers</h2>
+                
+                <div class="theorem-box">
+                    <h3>🏛️ Theorem</h3>
+                    <p>Rational numbers are <strong>dense</strong></p>
+                </div>
+
+                <div class="definition-box">
+                    <h3>📚 Definition of Density</h3>
+                    <p>Between any two rational numbers, there exists another rational number</p>
+                </div>
+
+                <div class="proof-sketch">
+                    <h3>🔍 Proof Sketch</h3>
+                    <p>For any r < r', the average <strong>(r + r')/2</strong> lies between them</p>
+                    <div class="proof-visualization">
+                        <div class="number-line-dense">
+                            <div class="point" style="left: 20%;">r</div>
+                            <div class="point average" style="left: 50%;">(r + r')/2</div>
+                            <div class="point" style="left: 80%;">r'</div>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="implication-box">
+                    <h3>🎯 Implication</h3>
+                    <p>There is <strong>NO "next" rational number</strong> - unlike integers, we cannot find the immediate successor!</p>
+                </div>
+
+                <div class="density-example">
+                    <h4>💡 Example: Between 1/3 and 1/2</h4>
+                    <div class="density-steps">
+                        <div class="density-step">
+                            <h5>Step 1: Find the average</h5>
+                            <div class="calculation">
+                                $$\frac{\frac{1}{3} + \frac{1}{2}}{2} = \frac{\frac{2+3}{6}}{2} = \frac{5/6}{2} = \frac{5}{12}$$
+                            </div>
+                            <p>So 5/12 lies between 1/3 and 1/2</p>
+                        </div>
+                        
+                        <div class="density-step">
+                            <h5>Step 2: We can continue infinitely!</h5>
+                            <ul>
+                                <li>Between 1/3 and 5/12: average = (1/3 + 5/12)/2 = 3/8</li>
+                                <li>Between 5/12 and 1/2: average = (5/12 + 1/2)/2 = 11/24</li>
+                                <li>Between 3/8 and 5/12: and so on...</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="infinite-density">
+                        <h5>🔄 Infinite Process</h5>
+                        <p>This process can continue forever, showing that there are infinitely many rational numbers between any two rationals!</p>
+                    </div>
+                </div>
+
+                <div class="visual-density">
+                    <h4>👁️ Visual Representation</h4>
+                    <div class="density-number-line">
+                        <div class="rational-points">
+                            <div class="point" data-value="1/3">1/3</div>
+                            <div class="point new" data-value="3/8">3/8</div>
+                            <div class="point new" data-value="5/12">5/12</div>
+                            <div class="point new" data-value="11/24">11/24</div>
+                            <div class="point" data-value="1/2">1/2</div>
+                        </div>
+                        <div class="line-segment"></div>
+                        <p class="caption">New rational numbers keep appearing between existing ones!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Practice Problems -->
+            <section class="practice-section">
+                <h2>🏃‍♂️ Practice Problems</h2>
+                
+                <div class="problem-card">
+                    <h3>Problem 1: Reducing to Lowest Terms</h3>
+                    <p>Reduce the following fractions to their lowest terms:</p>
+                    <p>(a) 24/36  (b) 45/75  (c) 48/64</p>
+                    <div class="solution" style="display: none;">
+                        <h4>Solutions:</h4>
+                        <ul>
+                            <li>(a) gcd(24, 36) = 12, so 24/36 = 2/3</li>
+                            <li>(b) gcd(45, 75) = 15, so 45/75 = 3/5</li>
+                            <li>(c) gcd(48, 64) = 16, so 48/64 = 3/4</li>
+                        </ul>
+                    </div>
+                    <button onclick="toggleSolution(this)" class="toggle-solution">Show Solution</button>
+                </div>
+
+                <div class="problem-card">
+                    <h3>Problem 2: Finding GCD</h3>
+                    <p>Find gcd(120, 180) using prime factorization.</p>
+                    <div class="solution" style="display: none;">
+                        <h4>Solution:</h4>
+                        <ul>
+                            <li>120 = 2³ × 3¹ × 5¹</li>
+                            <li>180 = 2² × 3² × 5¹</li>
+                            <li>Common factors: 2^min(3,2) × 3^min(1,2) × 5^min(1,1)</li>
+                            <li>gcd(120, 180) = 2² × 3¹ × 5¹ = 4 × 3 × 5 = 60</li>
+                        </ul>
+                    </div>
+                    <button onclick="toggleSolution(this)" class="toggle-solution">Show Solution</button>
+                </div>
+
+                <div class="problem-card">
+                    <h3>Problem 3: Density Property</h3>
+                    <p>Find a rational number between 2/5 and 3/7.</p>
+                    <div class="solution" style="display: none;">
+                        <h4>Solution:</h4>
+                        <p>Using the average method:</p>
+                        <ul>
+                            <li>Average = (2/5 + 3/7)/2</li>
+                            <li>First find common denominator: 2/5 = 14/35, 3/7 = 15/35</li>
+                            <li>Average = (14/35 + 15/35)/2 = (29/35)/2 = 29/70</li>
+                            <li>So 29/70 lies between 2/5 and 3/7</li>
+                        </ul>
+                    </div>
+                    <button onclick="toggleSolution(this)" class="toggle-solution">Show Solution</button>
+                </div>
+            </section>
+
+            <!-- Key Takeaways -->
+            <div class="key-takeaways">
+                <h2>🔑 Key Takeaways</h2>
+                <ul>
+                    <li><strong>Rational numbers</strong> are fractions p/q where p, q ∈ ℤ and q ≠ 0</li>
+                    <li><strong>Non-unique representation:</strong> Same rational can be written in infinitely many ways</li>
+                    <li><strong>Reduced form:</strong> Unique representation when gcd(p, q) = 1</li>
+                    <li><strong>GCD:</strong> Found using prime factorization or Euclidean algorithm</li>
+                    <li><strong>Density:</strong> Between any two rationals, there's always another rational</li>
+                    <li><strong>No "next" rational:</strong> Unlike integers, rationals have no immediate successor</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Navigation Footer -->
+        <div class="topic-navigation">
+            <div class="nav-buttons">
+                <a href="topic1.html" class="nav-btn secondary">← Previous: Natural Numbers</a>
+                <div class="nav-center">
+                    <span class="topic-indicator">2 / 10</span>
+                </div>
+                <a href="topic3.html" class="nav-btn primary">Next Topic: Real Numbers →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Styles -->
+    <style>
+        .topic-progress-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+        }
+
+        .topic-breadcrumb {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .topic-breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+
+        .topic-breadcrumb a:hover {
+            color: white;
+        }
+
+        .topic-progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .progress-track {
+            width: 200px;
+            height: 8px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .examples-showcase {
+            margin: 2rem 0;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .example-item {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .example-item.positive {
+            background: #dcfce7;
+            border: 2px solid #22c55e;
+        }
+
+        .example-item.negative {
+            background: #fecaca;
+            border: 2px solid #ef4444;
+        }
+
+        .example-item.integers {
+            background: #dbeafe;
+            border: 2px solid #3b82f6;
+        }
+
+        .example-item.decimals {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+        }
+
+        .example-item h4 {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .example-item p {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .demonstration {
+            background: #f8fafc;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .fraction-equivalence {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .central-fraction {
+            background: #3b82f6;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .equivalent-fractions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .equivalent {
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        .transformation-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .step .fraction, .step .result {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .step .operation {
+            background: #ddd6fe;
+            color: #6b46c1;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .reduction-process {
+            margin: 1.5rem 0;
+        }
+
+        .step-by-step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .step-by-step > div {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
+
+        .original, .final {
+            background: #3b82f6;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .find-gcd, .gcd-result, .divide {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .arrow {
+            color: #6b7280;
+            font-size: 1.5rem;
+        }
+
+        .algorithm-steps {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .step-card {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .step-number {
+            background: #10b981;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .factorization-table {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .factorization-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .factorization-row .number {
+            background: #3b82f6;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .factorization-row .equals {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .factorization-row .factors, .factorization-row .powers {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        .common-factors {
+            background: #ecfdf5;
+            border: 2px solid #22c55e;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .common-factors h5 {
+            color: #16a34a;
+            margin-bottom: 0.5rem;
+        }
+
+        .proof-visualization {
+            margin: 2rem 0;
+        }
+
+        .number-line-dense {
+            position: relative;
+            height: 60px;
+            margin: 2rem 0;
+        }
+
+        .number-line-dense .line {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+        }
+
+        .number-line-dense .point {
+            position: absolute;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            background: #3b82f6;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .number-line-dense .point.average {
+            background: #10b981;
+        }
+
+        .density-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .density-step {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+        }
+
+        .density-step h5 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .calculation {
+            background: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .infinite-density {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .infinite-density h5 {
+            color: #d97706;
+            margin-bottom: 0.5rem;
+        }
+
+        .visual-density {
+            margin: 2rem 0;
+        }
+
+        .density-number-line {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .rational-points {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .rational-points .point {
+            background: #3b82f6;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .rational-points .point.new {
+            background: #10b981;
+            animation: slideIn 0.5s ease;
+        }
+
+        .line-segment {
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+            margin: 1rem 0;
+        }
+
+        .caption {
+            color: #6b7280;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .fraction-equivalence {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .step-by-step {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .algorithm-steps {
+                flex-direction: column;
+            }
+            
+            .factorization-row {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <script src="../../../js/notes.js"></script>
+    <script>
+        function toggleSolution(button) {
+            const solution = button.parentElement.querySelector('.solution');
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+            }
+        }
+
+        // Add progress animation on load
+        window.addEventListener('load', function() {
+            const progressFill = document.querySelector('.progress-fill');
+            progressFill.style.width = '0%';
+            setTimeout(() => {
+                progressFill.style.width = '20%';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

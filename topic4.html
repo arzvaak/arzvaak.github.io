@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 4: Sets - Mathematics for Data Science</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .topic-header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .topic-header h1 {
+            margin: 0 0 15px 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .topic-number {
+            font-size: 1.2em;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        .learning-objectives {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4a5568;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: #2d3748;
+            margin-top: 25px;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-left: 5px solid #2196f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e8 100%);
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffecb3 100%);
+            border-left: 5px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .venn-diagram {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-line;
+            overflow-x: auto;
+        }
+
+        .set-notation {
+            display: inline-block;
+            background: #e8f5e8;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin: 5px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            border: 2px solid #4caf50;
+        }
+
+        .practice-problems {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .problem {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 4px solid #e91e63;
+        }
+
+        .solution {
+            background: #f0f8ff;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .toggle-solution {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-solution:hover {
+            background: #c2185b;
+            transform: translateY(-2px);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 20px;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 120px;
+            justify-content: center;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-button.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            height: 8px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #4caf50, #45a049);
+            height: 100%;
+            width: 40%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .objectives-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .objectives-list li {
+            background: #f0f8ff;
+            margin: 10px 0;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+            position: relative;
+        }
+
+        .objectives-list li::before {
+            content: "✓";
+            color: #4caf50;
+            font-weight: bold;
+            position: absolute;
+            left: -5px;
+        }
+
+        .comprehension-builder {
+            background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #ffeb3b;
+        }
+
+        .interactive-demo {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .demo-button {
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .demo-button:hover {
+            background: #1976d2;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .topic-header h1 {
+                font-size: 2em;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            .navigation {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="topic-header">
+            <div class="topic-number">Topic 4 of 10</div>
+            <h1>Sets</h1>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="learning-objectives">
+            <h2>🎯 Learning Objectives</h2>
+            <ul class="objectives-list">
+                <li>Understand the fundamental concept of sets as collections of objects</li>
+                <li>Master standard number set notations (ℕ, ℤ, ℚ, ℝ)</li>
+                <li>Apply subset relationships and visualize using Venn diagrams</li>
+                <li>Use set comprehension (set builder) notation effectively</li>
+                <li>Work with intervals for real numbers</li>
+                <li>Calculate cardinality for finite and infinite sets</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>5.1 Basic Definition</h2>
+            
+            <div class="definition-box">
+                <h3>🔑 Definition: Set</h3>
+                <p><strong>Informal Definition:</strong> A set is a <strong>collection of items</strong></p>
+                <p>Sets are fundamental mathematical objects that group related items together.</p>
+            </div>
+
+            <div class="example-box">
+                <h3>Examples of Sets</h3>
+                <ul>
+                    <li><strong>Days of week:</strong> {Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday}</li>
+                    <li><strong>Factors of 24:</strong> {1, 2, 3, 4, 6, 8, 12, 24}</li>
+                    <li><strong>Prime numbers below 15:</strong> {2, 3, 5, 7, 11, 13}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>5.2 Standard Number Sets</h2>
+            
+            <div class="interactive-demo">
+                <h3>Number Set Hierarchy</h3>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 20px 0;">
+                    <span class="set-notation">ℕ: {0, 1, 2, 3, ...}</span>
+                    <span class="set-notation">ℤ: {..., -2, -1, 0, 1, 2, ...}</span>
+                    <span class="set-notation">ℚ: {p/q | p, q ∈ ℤ, q ≠ 0}</span>
+                    <span class="set-notation">ℝ: All rationals and irrationals</span>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h3>⚠️ Course Convention</h3>
+                <p><strong>Important:</strong> In this course, <strong>ℕ includes 0</strong></p>
+                <p>ℕ = {0, 1, 2, 3, 4, ...}</p>
+                <p>Some textbooks exclude 0 from natural numbers, but we include it.</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>5.3 Subset Notation</h2>
+            
+            <div class="definition-box">
+                <h3>🔑 Definition: Subset</h3>
+                <p><strong>A ⊆ B</strong> means "A is a subset of B"</p>
+                <p>Every element of A is also in B</p>
+            </div>
+
+            <div class="example-box">
+                <h3>Subset Examples</h3>
+                <ul>
+                    <li><strong>ℕ ⊆ ℤ</strong> (all natural numbers are integers)</li>
+                    <li><strong>ℤ ⊆ ℚ</strong> (all integers are rational)</li>
+                    <li><strong>ℚ ⊆ ℝ</strong> (all rationals are real)</li>
+                    <li><strong>Primes ⊆ ℕ</strong> (all primes are natural numbers)</li>
+                </ul>
+            </div>
+
+            <div class="venn-diagram">
+                <h3>Venn Diagram Representation</h3>
+                <div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 20px; border-radius: 10px;">
+        ℝ (Real Numbers)
+    ┌─────────────────────┐
+    │      ℚ (Rationals)  │
+    │  ┌──────────────┐   │
+    │  │  ℤ (Integers)│   │
+    │  │  ┌────────┐  │   │
+    │  │  │ℕ(Naturals)│  │
+    │  │  └────────┘  │   │
+    │  └──────────────┘   │
+    └─────────────────────┘</div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>5.4 Set Comprehension (Set Builder Notation)</h2>
+            
+            <div class="definition-box">
+                <h3>🔑 General Form</h3>
+                <p><strong>{x | x ∈ S, P(x)}</strong></p>
+                <p>Read as: "the set of all x such that x belongs to S and x satisfies property P"</p>
+                
+                <h4>Components:</h4>
+                <ul>
+                    <li><strong>Generator:</strong> The underlying set (S)</li>
+                    <li><strong>Condition/Filter:</strong> Property P(x) that elements must satisfy</li>
+                </ul>
+            </div>
+
+            <div class="comprehension-builder">
+                <h3>🏗️ Building Sets with Comprehension</h3>
+                
+                <div class="example-box">
+                    <h4>Example 1: Even Natural Numbers</h4>
+                    <p><strong>{n | n ∈ ℕ, n mod 2 = 0}</strong></p>
+                    <p>Or equivalently: <strong>{n | n ∈ ℕ, n is even}</strong></p>
+                    <p>Result: {0, 2, 4, 6, 8, 10, ...}</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>Example 2: Integers Between -6 and 6</h4>
+                    <p><strong>{z | z ∈ ℤ, -6 ≤ z ≤ 6}</strong></p>
+                    <p>Result: {-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6}</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>Example 3: First 500 Natural Numbers</h4>
+                    <p><strong>X = {n | n ∈ ℕ, n < 500}</strong></p>
+                    <p>Result: {0, 1, 2, ..., 499}</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>Example 4: Cubes of First 500 Natural Numbers</h4>
+                    <p><strong>{n³ | n ∈ X}</strong> where X is defined above</p>
+                    <p>Result: {0³, 1³, 2³, ..., 499³} = {0, 1, 8, 27, 64, ...}</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h3>💡 Flexibility in Notation</h3>
+                <ul>
+                    <li>Can write conditions in various equivalent ways</li>
+                    <li>Can use words or mathematical symbols</li>
+                    <li>Precision matters, but readability is important</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>5.5 Intervals (for Real Numbers)</h2>
+            
+            <div class="definition-box">
+                <h3>Types of Intervals</h3>
+                
+                <h4>Closed Interval [a, b]:</h4>
+                <ul>
+                    <li>Includes endpoints</li>
+                    <li>[0, 1] = {r | r ∈ ℝ, 0 ≤ r ≤ 1}</li>
+                    <li>Used for probabilities</li>
+                </ul>
+
+                <h4>Open Interval (a, b):</h4>
+                <ul>
+                    <li>Excludes endpoints</li>
+                    <li>(0, 1) = {r | r ∈ ℝ, 0 < r < 1}</li>
+                </ul>
+
+                <h4>Half-Open Intervals:</h4>
+                <ul>
+                    <li>[a, b) = includes a, excludes b</li>
+                    <li>(a, b] = excludes a, includes b</li>
+                </ul>
+            </div>
+
+            <div class="interactive-demo">
+                <h3>Visual Representation (Number Line)</h3>
+                <p><strong>Filled dot (●)</strong> means included</p>
+                <p><strong>Open dot (○)</strong> means excluded</p>
+                
+                <div style="margin: 20px 0; font-family: 'Courier New', monospace;">
+                    <p>[2, 5]: ●────────● (includes both 2 and 5)</p>
+                    <p>(2, 5): ○────────○ (excludes both 2 and 5)</p>
+                    <p>[2, 5): ●────────○ (includes 2, excludes 5)</p>
+                    <p>(2, 5]: ○────────● (excludes 2, includes 5)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>5.6 Cardinality</h2>
+            
+            <div class="definition-box">
+                <h3>🔑 Definition: Cardinality</h3>
+                <p>The <strong>cardinality</strong> of a set is the number of elements in it</p>
+                <p>Notation: |A| represents the cardinality of set A</p>
+            </div>
+
+            <div class="example-box">
+                <h3>For Finite Sets</h3>
+                <p>Simply count the elements:</p>
+                <ul>
+                    <li>|{1, 2, 3, 4, 5}| = 5</li>
+                    <li>|{a, b, c}| = 3</li>
+                    <li>|{factors of 24}| = |{1, 2, 3, 4, 6, 8, 12, 24}| = 8</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h3>For Infinite Sets</h3>
+                <p>Use <strong>bijections</strong> (covered in later topics)</p>
+                <p>This is how we compare the "sizes" of infinite sets like ℕ, ℤ, ℚ, and ℝ</p>
+            </div>
+        </div>
+
+        <div class="practice-problems">
+            <h2>🧮 Practice Problems</h2>
+            
+            <div class="problem">
+                <h3>Problem 1: Set Builder Notation</h3>
+                <p>Write the following sets using set comprehension notation:</p>
+                <ol>
+                    <li>All odd natural numbers less than 20</li>
+                    <li>All perfect squares between 1 and 100</li>
+                    <li>All negative integers greater than -10</li>
+                </ol>
+                <button class="toggle-solution" onclick="toggleSolution(this)">Show Solution</button>
+                <div class="solution">
+                    <h4>Solutions:</h4>
+                    <ol>
+                        <li><strong>{n | n ∈ ℕ, n < 20, n is odd}</strong> = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19}</li>
+                        <li><strong>{n² | n ∈ ℕ, 1 ≤ n² ≤ 100}</strong> = {1, 4, 9, 16, 25, 36, 49, 64, 81, 100}</li>
+                        <li><strong>{z | z ∈ ℤ, -10 < z < 0}</strong> = {-9, -8, -7, -6, -5, -4, -3, -2, -1}</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="problem">
+                <h3>Problem 2: Subset Relations</h3>
+                <p>Determine if the following statements are true or false:</p>
+                <ol>
+                    <li>ℕ ⊆ ℝ</li>
+                    <li>{2, 4, 6} ⊆ {even natural numbers}</li>
+                    <li>{-1, 0, 1} ⊆ ℕ</li>
+                </ol>
+                <button class="toggle-solution" onclick="toggleSolution(this)">Show Solution</button>
+                <div class="solution">
+                    <h4>Solutions:</h4>
+                    <ol>
+                        <li><strong>True</strong> - All natural numbers are real numbers</li>
+                        <li><strong>True</strong> - 2, 4, 6 are all even natural numbers</li>
+                        <li><strong>False</strong> - -1 is not a natural number (ℕ = {0, 1, 2, 3, ...})</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="problem">
+                <h3>Problem 3: Intervals</h3>
+                <p>Express the following intervals using set comprehension:</p>
+                <ol>
+                    <li>The closed interval [-3, 7]</li>
+                    <li>The half-open interval (0, 1]</li>
+                    <li>All real numbers greater than 5</li>
+                </ol>
+                <button class="toggle-solution" onclick="toggleSolution(this)">Show Solution</button>
+                <div class="solution">
+                    <h4>Solutions:</h4>
+                    <ol>
+                        <li><strong>{r | r ∈ ℝ, -3 ≤ r ≤ 7}</strong></li>
+                        <li><strong>{r | r ∈ ℝ, 0 < r ≤ 1}</strong></li>
+                        <li><strong>{r | r ∈ ℝ, r > 5}</strong> or using interval notation: (5, ∞)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="problem">
+                <h3>Problem 4: Cardinality</h3>
+                <p>Find the cardinality of the following sets:</p>
+                <ol>
+                    <li>A = {n | n ∈ ℕ, n² < 50}</li>
+                    <li>B = {factors of 36}</li>
+                    <li>C = {prime numbers less than 30}</li>
+                </ol>
+                <button class="toggle-solution" onclick="toggleSolution(this)">Show Solution</button>
+                <div class="solution">
+                    <h4>Solutions:</h4>
+                    <ol>
+                        <li><strong>|A| = 8</strong>
+                            <br>A = {0, 1, 2, 3, 4, 5, 6, 7} since 7² = 49 < 50 but 8² = 64 > 50</li>
+                        <li><strong>|B| = 9</strong>
+                            <br>B = {1, 2, 3, 4, 6, 9, 12, 18, 36}</li>
+                        <li><strong>|C| = 10</strong>
+                            <br>C = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="topic3.html" class="nav-button">
+                ← Previous: Real Numbers
+            </a>
+            <a href="topics-overview.html" class="nav-button">
+                📋 Topics Overview
+            </a>
+            <a href="topic5.html" class="nav-button">
+                Next: Relations →
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function toggleSolution(button) {
+            const solution = button.nextElementSibling;
+            if (solution.style.display === 'none' || solution.style.display === '') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+                button.style.background = '#757575';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+                button.style.background = '#e91e63';
+            }
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const objectives = document.querySelectorAll('.objectives-list li');
+            objectives.forEach((obj, index) => {
+                obj.style.animationDelay = `${index * 0.1}s`;
+                obj.style.animation = 'slideInFromLeft 0.5s ease forwards';
+            });
+        });
+
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInFromLeft {
+                from {
+                    opacity: 0;
+                    transform: translateX(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
