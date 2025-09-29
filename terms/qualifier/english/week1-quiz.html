@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Quiz - Week 1 | IITM Notes</title>
+    <meta name="description" content="Interactive quiz for English 1 - Week 1">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../../index.html">📚 IITM Notes</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="../english.html" class="nav-link">Back to English 1</a>
+                <a href="week1-notes.html" class="nav-link">Week 1 Notes</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Quiz Container -->
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <div class="breadcrumb">
+                <a href="../../../index.html">Home</a> > 
+                <a href="../english.html">English 1</a> > 
+                <span>Week 1 Quiz</span>
+            </div>
+            <h1>📝 English Quiz - Week 1</h1>
+            <div class="quiz-meta">
+                <span class="quiz-badge">8 Questions</span>
+                <span class="time-badge">⏱️ 12 minutes</span>
+                <span class="difficulty-badge">📚 Beginner</span>
+            </div>
+        </div>
+
+        <div class="quiz-progress">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+            <span class="progress-text">Question <span id="currentQuestion">1</span> of <span id="totalQuestions">8</span></span>
+        </div>
+
+        <div class="quiz-content" id="quizContent">
+            <!-- Questions will be loaded here -->
+        </div>
+
+        <div class="quiz-controls">
+            <button id="prevBtn" class="quiz-btn secondary" disabled>Previous</button>
+            <button id="nextBtn" class="quiz-btn primary">Next</button>
+            <button id="submitBtn" class="quiz-btn success" style="display: none;">Submit Quiz</button>
+        </div>
+
+        <div id="quizResults" class="quiz-results" style="display: none;">
+            <!-- Results will be shown here -->
+        </div>
+    </div>
+
+    <script src="../../../js/quiz.js"></script>
+    <script>
+        // Quiz data for English Week 1
+        const quizData = {
+            title: "English 1 - Week 1",
+            description: "Test your understanding of academic writing fundamentals",
+            questions: [
+                {
+                    id: 1,
+                    question: "Which of the following is NOT a characteristic of academic writing?",
+                    options: [
+                        "Formal tone",
+                        "Personal opinions without evidence",
+                        "Clear structure", 
+                        "Objective language"
+                    ],
+                    correct: 1,
+                    explanation: "Academic writing should be evidence-based and avoid unsupported personal opinions."
+                },
+                {
+                    id: 2,
+                    question: "What is the correct way to write the following sentence? 'The data shows significant results.'",
+                    options: [
+                        "The data shows significant results.",
+                        "The data show significant results.",
+                        "The data showing significant results.",
+                        "The data shown significant results."
+                    ],
+                    correct: 1,
+                    explanation: "'Data' is plural, so the correct verb form is 'show', not 'shows'."
+                },
+                {
+                    id: 3,
+                    question: "Which of the following is an example of a sentence fragment?",
+                    options: [
+                        "The study was comprehensive.",
+                        "Because the results were significant.",
+                        "Researchers analyzed the data carefully.", 
+                        "The experiment proved successful, and the team celebrated."
+                    ],
+                    correct: 1,
+                    explanation: "This is a fragment because it starts with 'because' but doesn't complete the thought with a main clause."
+                },
+                {
+                    id: 4,
+                    question: "What is the academic word for 'looked at' in the context of research?",
+                    options: [
+                        "Watched",
+                        "Examined",
+                        "Saw",
+                        "Viewed"
+                    ],
+                    correct: 1,
+                    explanation: "'Examined' is the appropriate academic term for systematically studying or analyzing something."
+                },
+                {
+                    id: 5,
+                    question: "How should you correct this comma splice? 'The study was comprehensive, it included 500 participants.'",
+                    options: [
+                        "The study was comprehensive, and it included 500 participants.",
+                        "The study was comprehensive; it included 500 participants.",
+                        "The study was comprehensive. It included 500 participants.",
+                        "All of the above are correct"
+                    ],
+                    correct: 3,
+                    explanation: "All three options correctly fix the comma splice by using proper punctuation to separate the independent clauses."
+                },
+                {
+                    id: 6,
+                    question: "Which word formation pattern is shown in 'analyze → analysis'?",
+                    options: [
+                        "Noun to adjective",
+                        "Adjective to noun", 
+                        "Verb to noun",
+                        "Adverb to verb"
+                    ],
+                    correct: 2,
+                    explanation: "'Analyze' is a verb and 'analysis' is its noun form, showing the verb-to-noun formation pattern."
+                },
+                {
+                    id: 7,
+                    question: "In academic writing, which perspective should you primarily use?",
+                    options: [
+                        "First person (I, we)",
+                        "Second person (you)", 
+                        "Third person (he, she, it, they)",
+                        "It doesn't matter"
+                    ],
+                    correct: 2,
+                    explanation: "Academic writing typically uses third person to maintain objectivity and formality."
+                },
+                {
+                    id: 8,
+                    question: "What does 'empirical' mean in academic contexts?",
+                    options: [
+                        "Based on theory only",
+                        "Based on observation or experience",
+                        "Based on personal opinion",
+                        "Based on historical records"
+                    ],
+                    correct: 1,
+                    explanation: "'Empirical' refers to knowledge derived from observation, experience, or experimentation rather than theory alone."
+                }
+            ]
+        };
+
+        // Initialize the quiz
+        initializeQuiz(quizData);
+    </script>
+</body>
+</html>

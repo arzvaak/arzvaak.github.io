@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computational Thinking Quiz - Week 1 | IITM Notes</title>
+    <meta name="description" content="Interactive quiz for Computational Thinking - Week 1">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../../index.html">📚 IITM Notes</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="../computational-thinking.html" class="nav-link">Back to Computational Thinking</a>
+                <a href="week1-notes.html" class="nav-link">Week 1 Notes</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Quiz Container -->
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <div class="breadcrumb">
+                <a href="../../../index.html">Home</a> > 
+                <a href="../computational-thinking.html">Computational Thinking</a> > 
+                <span>Week 1 Quiz</span>
+            </div>
+            <h1>🧠 Computational Thinking Quiz - Week 1</h1>
+            <div class="quiz-meta">
+                <span class="quiz-badge">10 Questions</span>
+                <span class="time-badge">⏱️ 15 minutes</span>
+                <span class="difficulty-badge">🚀 Beginner</span>
+            </div>
+        </div>
+
+        <div class="quiz-progress">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+            <span class="progress-text">Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span></span>
+        </div>
+
+        <div class="quiz-content" id="quizContent">
+            <!-- Questions will be loaded here -->
+        </div>
+
+        <div class="quiz-controls">
+            <button id="prevBtn" class="quiz-btn secondary" disabled>Previous</button>
+            <button id="nextBtn" class="quiz-btn primary">Next</button>
+            <button id="submitBtn" class="quiz-btn success" style="display: none;">Submit Quiz</button>
+        </div>
+
+        <div id="quizResults" class="quiz-results" style="display: none;">
+            <!-- Results will be shown here -->
+        </div>
+    </div>
+
+    <script src="../../../js/quiz.js"></script>
+    <script>
+        // Quiz data for Computational Thinking Week 1
+        const quizData = {
+            title: "Computational Thinking - Week 1",
+            description: "Test your understanding of computational thinking fundamentals",
+            questions: [
+                {
+                    id: 1,
+                    question: "What are the four pillars of computational thinking?",
+                    options: [
+                        "Decomposition, Pattern Recognition, Abstraction, Algorithms",
+                        "Planning, Implementation, Testing, Documentation",
+                        "Input, Processing, Output, Storage", 
+                        "Analysis, Design, Coding, Debugging"
+                    ],
+                    correct: 0,
+                    explanation: "The four pillars of computational thinking are Decomposition, Pattern Recognition, Abstraction, and Algorithms."
+                },
+                {
+                    id: 2,
+                    question: "What does 'decomposition' mean in computational thinking?",
+                    options: [
+                        "Combining multiple solutions into one",
+                        "Breaking down complex problems into smaller, manageable parts",
+                        "Finding patterns in data",
+                        "Creating step-by-step instructions"
+                    ],
+                    correct: 1,
+                    explanation: "Decomposition involves breaking down complex problems into smaller, more manageable sub-problems that are easier to solve."
+                },
+                {
+                    id: 3,
+                    question: "Which of the following is an example of abstraction?",
+                    options: [
+                        "Writing detailed code for every function",
+                        "A map showing only roads and landmarks, not building details",
+                        "Solving problems step by step",
+                        "Finding similarities between problems"
+                    ],
+                    correct: 1,
+                    explanation: "A map is an example of abstraction because it focuses on essential features (roads, landmarks) while ignoring irrelevant details (building interiors, individual trees)."
+                },
+                {
+                    id: 4,
+                    question: "What is an algorithm?",
+                    options: [
+                        "A computer programming language",
+                        "A step-by-step procedure for solving problems",
+                        "A type of computer hardware",
+                        "A method for finding patterns"
+                    ],
+                    correct: 1,
+                    explanation: "An algorithm is a step-by-step procedure or set of instructions for solving a problem or completing a task."
+                },
+                {
+                    id: 5,
+                    question: "Which characteristic is NOT required for a good algorithm?",
+                    options: [
+                        "Clear and unambiguous steps",
+                        "Must be written in a programming language",
+                        "Well-defined inputs and outputs",
+                        "Must terminate after finite steps"
+                    ],
+                    correct: 1,
+                    explanation: "Algorithms can be written in natural language, pseudocode, or programming languages. Being written in a programming language is not a requirement."
+                },
+                {
+                    id: 6,
+                    question: "In the problem-solving process, what comes after 'Understanding the Problem'?",
+                    options: [
+                        "Implement the solution",
+                        "Review and reflect",
+                        "Plan your approach",
+                        "Test different solutions"
+                    ],
+                    correct: 2,
+                    explanation: "After understanding the problem, the next step is to plan your approach by breaking down the problem and choosing appropriate strategies."
+                },
+                {
+                    id: 7,
+                    question: "What is pattern recognition in computational thinking?",
+                    options: [
+                        "Memorizing common algorithms",
+                        "Identifying similarities and patterns within and between problems",
+                        "Creating visual patterns in code",
+                        "Recognizing programming syntax errors"
+                    ],
+                    correct: 1,
+                    explanation: "Pattern recognition involves identifying similarities, trends, and regularities within and between problems to help solve them more efficiently."
+                },
+                {
+                    id: 8,
+                    question: "What is pseudocode?",
+                    options: [
+                        "Code that contains errors",
+                        "A programming language for beginners",
+                        "A way to describe algorithms using natural language and simple structures",
+                        "Encrypted computer code"
+                    ],
+                    correct: 2,
+                    explanation: "Pseudocode is a method of describing algorithms using natural language and simple programming structures, without following the strict syntax of any particular programming language."
+                },
+                {
+                    id: 9,
+                    question: "Which problem-solving strategy involves starting from the desired outcome and working backwards?",
+                    options: [
+                        "Trial and error",
+                        "Make a list",
+                        "Draw a picture",
+                        "Work backwards"
+                    ],
+                    correct: 3,
+                    explanation: "The 'work backwards' strategy involves starting from the desired outcome or goal and working step by step towards the beginning to find the solution path."
+                },
+                {
+                    id: 10,
+                    question: "What would be the next number in this pattern: 2, 4, 8, 16, 32, ?",
+                    options: [
+                        "48",
+                        "64",
+                        "40", 
+                        "34"
+                    ],
+                    correct: 1,
+                    explanation: "The pattern is that each number is double the previous number (×2). So 32 × 2 = 64."
+                }
+            ]
+        };
+
+        // Initialize the quiz
+        initializeQuiz(quizData);
+    </script>
+</body>
+</html>

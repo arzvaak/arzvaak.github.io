@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics for Data Science - Week 1 | IITM Notes</title>
+    <meta name="description" content="Week 1 notes for Statistics for Data Science - IITM Qualifier">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/notes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../../index.html">📚 IITM Notes</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="../stats-for-ds.html" class="nav-link">Back to Stats for DS</a>
+                <a href="week1-quiz.html" class="nav-link">Week 1 Quiz</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="notes-container">
+        <div class="notes-header">
+            <div class="breadcrumb">
+                <a href="../../../index.html">Home</a> > 
+                <a href="../stats-for-ds.html">Statistics for Data Science</a> > 
+                <span>Week 1 Notes</span>
+            </div>
+            <h1>📊 Week 1: Introduction to Statistics</h1>
+            <div class="notes-meta">
+                <span class="week-badge">Week 1</span>
+                <span class="subject-badge">Statistics for DS</span>
+                <span class="date-badge">📅 Qualifier</span>
+            </div>
+        </div>
+
+        <div class="notes-content">
+            <section id="what-is-statistics">
+                <h2>1.1 What is Statistics? 📈</h2>
+                <p>
+                    Statistics is the science of collecting, organizing, analyzing, interpreting, and presenting data. 
+                    It provides tools and methods to make sense of numerical information and draw meaningful conclusions.
+                </p>
+                
+                <div class="definition-box">
+                    <h3>💡 Key Definition</h3>
+                    <p><strong>Statistics:</strong> A branch of mathematics dealing with the collection, analysis, interpretation, and presentation of masses of numerical data.</p>
+                </div>
+
+                <h3>Types of Statistics</h3>
+                <div class="two-column-grid">
+                    <div class="column">
+                        <h4>🔍 Descriptive Statistics</h4>
+                        <ul>
+                            <li>Summarizes and describes data</li>
+                            <li>Uses measures like mean, median, mode</li>
+                            <li>Visual representations (charts, graphs)</li>
+                            <li>No generalizations beyond the data</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h4>🎯 Inferential Statistics</h4>
+                        <ul>
+                            <li>Makes predictions about populations</li>
+                            <li>Uses sample data to draw conclusions</li>
+                            <li>Hypothesis testing and confidence intervals</li>
+                            <li>Generalizes beyond observed data</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="data-types">
+                <h2>1.2 Data Types & Variables 📋</h2>
+                <p>Understanding different types of data is crucial for choosing appropriate statistical methods.</p>
+
+                <div class="concept-tree">
+                    <h3>🌳 Data Classification</h3>
+                    <div class="tree-structure">
+                        <div class="tree-level-1">
+                            <h4>Data</h4>
+                            <div class="tree-level-2">
+                                <div class="tree-branch">
+                                    <h5>📊 Quantitative (Numerical)</h5>
+                                    <div class="tree-level-3">
+                                        <div class="data-type-card">
+                                            <h6>Discrete</h6>
+                                            <p>Countable values</p>
+                                            <span class="example">Ex: Number of students</span>
+                                        </div>
+                                        <div class="data-type-card">
+                                            <h6>Continuous</h6>
+                                            <p>Any value in a range</p>
+                                            <span class="example">Ex: Height, weight</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tree-branch">
+                                    <h5>📝 Qualitative (Categorical)</h5>
+                                    <div class="tree-level-3">
+                                        <div class="data-type-card">
+                                            <h6>Nominal</h6>
+                                            <p>No natural order</p>
+                                            <span class="example">Ex: Colors, gender</span>
+                                        </div>
+                                        <div class="data-type-card">
+                                            <h6>Ordinal</h6>
+                                            <p>Natural ordering</p>
+                                            <span class="example">Ex: Grades (A, B, C)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="descriptive-stats">
+                <h2>1.3 Descriptive Statistics 📏</h2>
+                <p>Descriptive statistics summarize and describe the main features of a dataset.</p>
+
+                <h3>Measures of Central Tendency</h3>
+                <div class="formula-grid">
+                    <div class="formula-card">
+                        <h4>📍 Mean (Average)</h4>
+                        <div class="formula">
+                            $$\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}$$
+                        </div>
+                        <p>Sum of all values divided by the number of values</p>
+                    </div>
+                    
+                    <div class="formula-card">
+                        <h4>📍 Median</h4>
+                        <div class="formula">
+                            Middle value when data is ordered
+                        </div>
+                        <p>50th percentile of the data</p>
+                    </div>
+                    
+                    <div class="formula-card">
+                        <h4>📍 Mode</h4>
+                        <div class="formula">
+                            Most frequently occurring value
+                        </div>
+                        <p>Peak of the distribution</p>
+                    </div>
+                </div>
+
+                <h3>Measures of Dispersion</h3>
+                <div class="formula-grid">
+                    <div class="formula-card">
+                        <h4>📏 Range</h4>
+                        <div class="formula">
+                            $$Range = Max - Min$$
+                        </div>
+                        <p>Difference between largest and smallest values</p>
+                    </div>
+                    
+                    <div class="formula-card">
+                        <h4>📏 Variance</h4>
+                        <div class="formula">
+                            $$\sigma^2 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n}$$
+                        </div>
+                        <p>Average of squared deviations from mean</p>
+                    </div>
+                    
+                    <div class="formula-card">
+                        <h4>📏 Standard Deviation</h4>
+                        <div class="formula">
+                            $$\sigma = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n}}$$
+                        </div>
+                        <p>Square root of variance</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="practice-section">
+                <h2>🏃‍♂️ Practice Problems</h2>
+                <div class="problem-card">
+                    <h3>Problem 1</h3>
+                    <p>Given the dataset: 2, 4, 6, 8, 10</p>
+                    <p><strong>Calculate:</strong></p>
+                    <ul>
+                        <li>Mean</li>
+                        <li>Median</li>
+                        <li>Range</li>
+                        <li>Standard Deviation</li>
+                    </ul>
+                    <div class="solution" style="display: none;">
+                        <h4>Solution:</h4>
+                        <ul>
+                            <li>Mean = (2+4+6+8+10)/5 = 6</li>
+                            <li>Median = 6</li>
+                            <li>Range = 10-2 = 8</li>
+                            <li>Standard Deviation ≈ 2.83</li>
+                        </ul>
+                    </div>
+                    <button onclick="toggleSolution(this)" class="toggle-solution">Show Solution</button>
+                </div>
+            </section>
+        </div>
+
+        <div class="notes-footer">
+            <div class="navigation-buttons">
+                <a href="../stats-for-ds.html" class="nav-btn prev">← Back to Subject</a>
+                <a href="week1-quiz.html" class="nav-btn next">Take Quiz →</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../js/notes.js"></script>
+    <script>
+        function toggleSolution(button) {
+            const solution = button.parentElement.querySelector('.solution');
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+            }
+        }
+    </script>
+</body>
+</html>

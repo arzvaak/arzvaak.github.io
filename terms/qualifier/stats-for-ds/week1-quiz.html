@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics Quiz - Week 1 | IITM Notes</title>
+    <meta name="description" content="Interactive quiz for Statistics for Data Science - Week 1">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../../index.html">📚 IITM Notes</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="../stats-for-ds.html" class="nav-link">Back to Stats for DS</a>
+                <a href="week1-notes.html" class="nav-link">Week 1 Notes</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Quiz Container -->
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <div class="breadcrumb">
+                <a href="../../../index.html">Home</a> > 
+                <a href="../stats-for-ds.html">Statistics for DS</a> > 
+                <span>Week 1 Quiz</span>
+            </div>
+            <h1>📊 Statistics Quiz - Week 1</h1>
+            <div class="quiz-meta">
+                <span class="quiz-badge">10 Questions</span>
+                <span class="time-badge">⏱️ 15 minutes</span>
+                <span class="difficulty-badge">📈 Beginner</span>
+            </div>
+        </div>
+
+        <div class="quiz-progress">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+            <span class="progress-text">Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span></span>
+        </div>
+
+        <div class="quiz-content" id="quizContent">
+            <!-- Questions will be loaded here -->
+        </div>
+
+        <div class="quiz-controls">
+            <button id="prevBtn" class="quiz-btn secondary" disabled>Previous</button>
+            <button id="nextBtn" class="quiz-btn primary">Next</button>
+            <button id="submitBtn" class="quiz-btn success" style="display: none;">Submit Quiz</button>
+        </div>
+
+        <div id="quizResults" class="quiz-results" style="display: none;">
+            <!-- Results will be shown here -->
+        </div>
+    </div>
+
+    <script src="../../../js/quiz.js"></script>
+    <script>
+        // Quiz data for Statistics Week 1
+        const quizData = {
+            title: "Statistics for Data Science - Week 1",
+            description: "Test your understanding of basic statistical concepts",
+            questions: [
+                {
+                    id: 1,
+                    question: "What is the primary purpose of descriptive statistics?",
+                    options: [
+                        "To make predictions about future data",
+                        "To summarize and describe data characteristics", 
+                        "To test hypotheses",
+                        "To establish causation"
+                    ],
+                    correct: 1,
+                    explanation: "Descriptive statistics focuses on summarizing and describing the main features of a dataset without making inferences about a larger population."
+                },
+                {
+                    id: 2,
+                    question: "Which of the following is an example of discrete quantitative data?",
+                    options: [
+                        "Height of students",
+                        "Weight of objects",
+                        "Number of books in a library",
+                        "Temperature readings"
+                    ],
+                    correct: 2,
+                    explanation: "The number of books is discrete because it can only take whole number values (you can't have 2.5 books)."
+                },
+                {
+                    id: 3,
+                    question: "What is the median of the dataset: 3, 7, 2, 9, 5?",
+                    options: [
+                        "5",
+                        "7", 
+                        "5.2",
+                        "6"
+                    ],
+                    correct: 0,
+                    explanation: "First arrange in order: 2, 3, 5, 7, 9. The median is the middle value, which is 5."
+                },
+                {
+                    id: 4,
+                    question: "Which measure of central tendency is most affected by outliers?",
+                    options: [
+                        "Mode",
+                        "Median",
+                        "Mean",  
+                        "All are equally affected"
+                    ],
+                    correct: 2,
+                    explanation: "The mean is most affected by outliers because it includes all values in the calculation, while median and mode are more resistant to extreme values."
+                },
+                {
+                    id: 5,
+                    question: "What type of data is 'customer satisfaction rating' (Poor, Fair, Good, Excellent)?",
+                    options: [
+                        "Nominal",
+                        "Ordinal",
+                        "Discrete quantitative", 
+                        "Continuous quantitative"
+                    ],
+                    correct: 1,
+                    explanation: "Customer satisfaction ratings have a natural order (Poor < Fair < Good < Excellent), making them ordinal categorical data."
+                },
+                {
+                    id: 6,
+                    question: "The standard deviation is:",
+                    options: [
+                        "The square of variance",
+                        "The square root of variance",
+                        "The same as variance",
+                        "Always larger than variance"
+                    ],
+                    correct: 1,
+                    explanation: "Standard deviation is the square root of variance, providing a measure of spread in the same units as the original data."
+                },
+                {
+                    id: 7,
+                    question: "For the dataset: 1, 2, 2, 3, 4, what is the mode?",
+                    options: [
+                        "1",
+                        "2",
+                        "3",
+                        "There is no mode"
+                    ],
+                    correct: 1,
+                    explanation: "The mode is 2 because it appears twice, more frequently than any other value in the dataset."
+                },
+                {
+                    id: 8,
+                    question: "Range is calculated as:",
+                    options: [
+                        "Mean - Standard deviation",
+                        "Maximum value - Minimum value", 
+                        "Upper quartile - Lower quartile",
+                        "Variance squared"
+                    ],
+                    correct: 1,
+                    explanation: "Range is simply the difference between the highest and lowest values in a dataset."
+                },
+                {
+                    id: 9,
+                    question: "Which of the following is NOT a characteristic of the mean?",
+                    options: [
+                        "It uses all data points in calculation",
+                        "It can be affected by outliers",
+                        "It is always equal to the median",
+                        "It represents the balance point of data"
+                    ],
+                    correct: 2,
+                    explanation: "The mean is not always equal to the median. They are equal only in perfectly symmetric distributions."
+                },
+                {
+                    id: 10,
+                    question: "Inferential statistics is used to:",
+                    options: [
+                        "Describe data using charts and graphs",  
+                        "Calculate mean and standard deviation",
+                        "Make predictions about populations from samples",
+                        "Organize data in tables"
+                    ],
+                    correct: 2,
+                    explanation: "Inferential statistics uses sample data to make inferences, predictions, or generalizations about a larger population."
+                }
+            ]
+        };
+
+        // Initialize the quiz
+        initializeQuiz(quizData);
+    </script>
+</body>
+</html>

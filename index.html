@@ -16,8 +16,8 @@
                 <a href="#home">IITM Notes</a>
             </div>
             <div class="nav-menu" id="navMenu">
-                <a href="#subjects" class="nav-link">Subjects</a>
-                <a href="#quizzes" class="nav-link">Quizzes</a>
+                <a href="#terms" class="nav-link">Course Terms</a>
+                <a href="#qualifier" class="nav-link">Qualifier</a>
             </div>
             <div class="nav-toggle" id="navToggle">
                 <span class="bar"></span>
@@ -31,62 +31,131 @@
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">IITM Qualifier Notes</h1>
-                <p class="hero-subtitle">Clean study materials for your success</p>
+                <h1 class="hero-title">IITM Study Materials</h1>
+                <p class="hero-subtitle">Complete course materials from Qualifier to Degree</p>
                 <div class="hero-buttons">
-                    <a href="#subjects" class="btn btn-primary">Start Studying</a>
+                    <a href="#terms" class="btn btn-primary">Explore Terms</a>
                 </div>
             </div>
         </div>
     </section>
 
 
-
-    <!-- Practice Quizzes Section -->
-    <section id="quizzes" class="quizzes">
+    <!-- Course Terms Overview -->
+    <section id="terms" class="terms-overview">
         <div class="container">
-            <h2 class="section-title">Practice Quizzes</h2>
-            <div class="quiz-grid">
-                <a href="notes/maths-for-ds/quizzes/" class="quiz-card">
-                    <h3>Mathematics</h3>
-                    <p>Test your math skills</p>
-                </a>
-                <a href="notes/stats-for-ds/quizzes/" class="quiz-card">
-                    <h3>Statistics</h3>
-                    <p>Practice statistics problems</p>
-                </a>
-                <a href="notes/english/quizzes/" class="quiz-card">
-                    <h3>English 1</h3>
-                    <p>Improve language skills</p>
-                </a>
-                <a href="notes/computational-thinking/quizzes/" class="quiz-card">
-                    <h3>Computational Thinking</h3>
-                    <p>Logic and problem solving</p>
-                </a>
+            <h2 class="section-title">IITM Course Structure</h2>
+            <p class="section-subtitle">Navigate through your academic journey</p>
+            
+            <div class="terms-timeline">
+                <div class="term-card active">
+                    <div class="term-number">1</div>
+                    <div class="term-content">
+                        <h3>Qualifier</h3>
+                        <p>Foundation subjects to qualify for the degree program</p>
+                        <div class="term-subjects">
+                            <span class="subject-tag">Mathematics for DS</span>
+                            <span class="subject-tag">Statistics for DS</span>
+                            <span class="subject-tag">English 1</span>
+                            <span class="subject-tag">Computational Thinking</span>
+                        </div>
+                        <a href="#qualifier" class="term-link">Start Qualifier →</a>
+                    </div>
+                </div>
+                
+                <div class="term-card">
+                    <div class="term-number">2</div>
+                    <div class="term-content">
+                        <h3>Foundation - Term 1</h3>
+                        <p>Core programming and mathematical foundations</p>
+                        <div class="term-subjects">
+                            <span class="subject-tag">Programming in Python</span>
+                            <span class="subject-tag">Mathematics 1</span>
+                            <span class="subject-tag">Statistics 1</span>
+                            <span class="subject-tag">English 2</span>
+                        </div>
+                        <div class="coming-soon">Coming Soon</div>
+                    </div>
+                </div>
+                
+                <div class="term-card">
+                    <div class="term-number">3</div>
+                    <div class="term-content">
+                        <h3>Foundation - Term 2</h3>
+                        <p>Advanced programming and data structures</p>
+                        <div class="term-subjects">
+                            <span class="subject-tag">Programming in Java</span>
+                            <span class="subject-tag">Database Management</span>
+                            <span class="subject-tag">Mathematics 2</span>
+                            <span class="subject-tag">Statistics 2</span>
+                        </div>
+                        <div class="coming-soon">Coming Soon</div>
+                    </div>
+                </div>
+                
+                <div class="term-card">
+                    <div class="term-number">4</div>
+                    <div class="term-content">
+                        <h3>Diploma Level</h3>
+                        <p>Specialized courses and electives</p>
+                        <div class="term-subjects">
+                            <span class="subject-tag">Data Science</span>
+                            <span class="subject-tag">Machine Learning</span>
+                            <span class="subject-tag">System Commands</span>
+                            <span class="subject-tag">Tools in Data Science</span>
+                        </div>
+                        <div class="coming-soon">Coming Soon</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- IITM Subjects Section -->
-    <section id="subjects" class="subjects">
+    <!-- Qualifier Section -->
+    <section id="qualifier" class="qualifier-section">
         <div class="container">
-            <h2 class="section-title">Study Materials</h2>
+            <h2 class="section-title">Qualifier Subjects</h2>
+            <p class="section-subtitle">Master these subjects to qualify for the degree program</p>
+            
             <div class="subjects-grid">
-                <a href="notes/maths-for-ds/" class="subject-card">
+                <a href="terms/qualifier/maths-for-ds/" class="subject-card">
+                    <div class="subject-icon">📐</div>
                     <h3>Mathematics for Data Science</h3>
-                    <p>Calculus, linear algebra, probability</p>
+                    <p>Calculus, linear algebra, probability theory</p>
+                    <div class="subject-progress">
+                        <div class="progress-bar"><div class="progress-fill" style="width: 25%"></div></div>
+                        <span class="progress-text">1 of 4 weeks</span>
+                    </div>
                 </a>
-                <a href="notes/stats-for-ds/" class="subject-card">
+                
+                <a href="terms/qualifier/stats-for-ds/" class="subject-card">
+                    <div class="subject-icon">📊</div>
                     <h3>Statistics for Data Science</h3>
-                    <p>Statistical concepts and analysis</p>
+                    <p>Statistical concepts, hypothesis testing, regression</p>
+                    <div class="subject-progress">
+                        <div class="progress-bar"><div class="progress-fill" style="width: 25%"></div></div>
+                        <span class="progress-text">1 of 4 weeks</span>
+                    </div>
                 </a>
-                <a href="notes/english/" class="subject-card">
+                
+                <a href="terms/qualifier/english/" class="subject-card">
+                    <div class="subject-icon">📝</div>
                     <h3>English 1</h3>
-                    <p>Academic writing and communication</p>
+                    <p>Academic writing and communication skills</p>
+                    <div class="subject-progress">
+                        <div class="progress-bar"><div class="progress-fill" style="width: 25%"></div></div>
+                        <span class="progress-text">1 of 4 weeks</span>
+                    </div>
                 </a>
-                <a href="notes/computational-thinking/" class="subject-card">
+                
+                <a href="terms/qualifier/computational-thinking/" class="subject-card">
+                    <div class="subject-icon">🧠</div>
                     <h3>Computational Thinking</h3>
-                    <p>Problem-solving and algorithms</p>
+                    <p>Problem-solving and algorithmic thinking</p>
+                    <div class="subject-progress">
+                        <div class="progress-bar"><div class="progress-fill" style="width: 25%"></div></div>
+                        <span class="progress-text">1 of 4 weeks</span>
+                    </div>
                 </a>
             </div>
         </div>
