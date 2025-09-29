@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathematics for Data Science - Week 1 | IITM Notes</title>
-    <meta name="description" content="Week 1 notes for Mathematics for Data Science - IITM Qualifier">
+    <meta name="description" content="Week 1 comprehensive notes for Mathematics for Data Science - IITM Qualifier">
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="stylesheet" href="../../../css/notes.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -35,10 +35,10 @@
     <section class="notes-header">
         <div class="container">
             <div class="breadcrumb">
-                <a href="../../index.html">Home</a> > <a href="../">Notes</a> > <span>Mathematics for Data Science</span>
+                <a href="../../../index.html">Home</a> > <a href="../maths-for-ds.html">Math for DS</a> > <span>Week 1 Notes</span>
             </div>
-            <h1>Mathematics for Data Science</h1>
-            <p class="notes-subtitle">Week 1: Fundamentals of Calculus and Linear Algebra</p>
+            <h1>Week 1 - Mathematics for Data Science 1</h1>
+            <p class="notes-subtitle">Professor: Madhavan Mukund | Institution: Chennai Mathematical Institute</p>
             <div class="progress-bar">
                 <div class="progress-fill" style="width: 25%"></div>
             </div>
@@ -54,169 +54,536 @@
                 <aside class="toc">
                     <h3>Contents</h3>
                     <ul>
-                        <li><a href="#calculus">1. Calculus Fundamentals</a>
+                        <li><a href="#numbers">1. Numbers</a>
                             <ul>
-                                <li><a href="#limits">1.1 Limits & Continuity</a></li>
-                                <li><a href="#derivatives">1.2 Derivatives</a></li>
-                                <li><a href="#integrals">1.3 Basic Integration</a></li>
+                                <li><a href="#natural">1.1 Natural Numbers</a></li>
+                                <li><a href="#integers">1.2 Integers</a></li>
+                                <li><a href="#rationals">1.3 Rational Numbers</a></li>
+                                <li><a href="#reals">1.4 Real Numbers</a></li>
                             </ul>
                         </li>
-                        <li><a href="#linear-algebra">2. Linear Algebra Basics</a>
-                            <ul>
-                                <li><a href="#vectors">2.1 Vectors</a></li>
-                                <li><a href="#matrices">2.2 Matrices</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#quiz">3. Practice Quiz</a></li>
+                        <li><a href="#sets">2. Sets</a></li>
+                        <li><a href="#relations">3. Relations</a></li>
+                        <li><a href="#functions">4. Functions</a></li>
+                        <li><a href="#primes">5. Prime Numbers</a></li>
+                        <li><a href="#irrationals">6. Irrational Numbers</a></li>
+                        <li><a href="#infinity">7. Degrees of Infinity</a></li>
                     </ul>
                 </aside>
 
                 <!-- Main Content -->
                 <main class="notes-main">
-                    <div class="note-section" id="calculus">
-                        <h2>1. Calculus Fundamentals</h2>
-                        
-                        <div class="subsection" id="limits">
-                            <h3>1.1 Limits and Continuity</h3>
-                            
-                            <div class="concept-box">
-                                <h4>Definition of Limit</h4>
-                                <p>The limit of a function f(x) as x approaches a value 'a' is:</p>
+                    <!-- Natural Numbers and Integers -->
+                    <div class="note-section" id="numbers">
+                        <h2>1. Natural Numbers and Integers</h2>
+
+                        <div class="subsection" id="natural">
+                            <h3>1.1 Natural Numbers (ℕ)</h3>
+
+                            <div class="concept-box critical">
+                                <h4>⚠️ CRITICAL COURSE-SPECIFIC CONVENTION</h4>
+                                <p>In this course, natural numbers <strong>INCLUDE 0</strong>.</p>
                                 <div class="math-formula">
-                                    $$\lim_{x \to a} f(x) = L$$
+                                    $$\mathbb{N} = \{0, 1, 2, 3, 4, ...\}$$
                                 </div>
-                                <p>This means f(x) gets arbitrarily close to L as x gets arbitrarily close to a.</p>
+                                <p class="note"><strong>Note:</strong> Some textbooks exclude 0 from natural numbers, but THIS COURSE INCLUDES IT.</p>
                             </div>
 
-                            <div class="properties-box">
-                                <h4>Properties of Limits</h4>
+                            <div class="concept-box">
+                                <h4>Key Concepts</h4>
                                 <ul>
-                                    <li><strong>Sum Rule:</strong> $$\lim_{x \to a} [f(x) + g(x)] = \lim_{x \to a} f(x) + \lim_{x \to a} g(x)$$</li>
-                                    <li><strong>Product Rule:</strong> $$\lim_{x \to a} [f(x) \cdot g(x)] = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)$$</li>
-                                    <li><strong>Quotient Rule:</strong> $$\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}$$ (if denominator ≠ 0)</li>
+                                    <li>Natural numbers are used for <strong>counting</strong></li>
+                                    <li>They represent abstract quantities</li>
+                                    <li>The number <strong>0 is of Indian origin</strong> and is crucial for our place value numbering system</li>
+                                    <li>Numbers like 7 represent what is common between different collections (7 balls, 7 pencils)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="subsection" id="integers">
+                            <h3>1.2 Integers (ℤ)</h3>
+
+                            <div class="concept-box">
+                                <h4>Definition</h4>
+                                <div class="math-formula">
+                                    $$\mathbb{Z} = \{..., -3, -2, -1, 0, 1, 2, 3, ...\}$$
+                                </div>
+                                <h5>Key Properties</h5>
+                                <ul>
+                                    <li>Integers extend natural numbers with <strong>negative numbers</strong></li>
+                                    <li>All natural numbers are integers (ℕ ⊆ ℤ)</li>
+                                    <li>Integers are <strong>discrete</strong>: every integer has a unique "next" and "previous" integer</li>
                                 </ul>
                             </div>
 
-                            <div class="example-box">
-                                <h4>Example Problem</h4>
-                                <p>Find $$\lim_{x \to 2} \frac{x^2 - 4}{x - 2}$$</p>
-                                
-                                <div class="solution-steps">
-                                    <h5>Solution:</h5>
-                                    <div class="step">
-                                        <span class="step-number">1</span>
-                                        <div class="step-content">
-                                            <p>Factor the numerator:</p>
-                                            $$x^2 - 4 = (x+2)(x-2)$$
-                                        </div>
-                                    </div>
-                                    <div class="step">
-                                        <span class="step-number">2</span>
-                                        <div class="step-content">
-                                            <p>Substitute and simplify:</p>
-                                            $$\lim_{x \to 2} \frac{(x+2)(x-2)}{x-2} = \lim_{x \to 2} (x+2)$$
-                                        </div>
-                                    </div>
-                                    <div class="step">
-                                        <span class="step-number">3</span>
-                                        <div class="step-content">
-                                            <p>Evaluate the limit:</p>
-                                            $$\lim_{x \to 2} (x+2) = 2+2 = 4$$
-                                        </div>
-                                    </div>
+                            <div class="properties-box">
+                                <h4>Arithmetic Operations on Integers</h4>
+                                <ol>
+                                    <li><strong>Addition</strong> (+): Combining quantities</li>
+                                    <li><strong>Subtraction</strong> (−): Finding difference</li>
+                                    <li><strong>Multiplication</strong> (×): Repeated addition</li>
+                                    <li><strong>Division</strong> (÷): Splitting into equal parts</li>
+                                    <li><strong>Exponentiation</strong> (m^n): Repeated multiplication</li>
+                                </ol>
+                            </div>
+
+                            <div class="concept-box">
+                                <h4>Division with Quotient and Remainder</h4>
+                                <p>For integers a and b (b ≠ 0):</p>
+                                <div class="math-formula">
+                                    $$a = b \times q + r, \text{ where } 0 \leq r < b$$
+                                </div>
+                                <ul>
+                                    <li><strong>Quotient</strong> (q): The integer number of times b goes into a</li>
+                                    <li><strong>Remainder</strong> (r): What's left over</li>
+                                </ul>
+
+                                <h5>Modulo Operation</h5>
+                                <p><strong>a mod b</strong> = remainder when a is divided by b</p>
+                                <div class="example-box">
+                                    <p><strong>Example:</strong> 17 mod 5 = 2 (since 17 = 5 × 3 + 2)</p>
+                                </div>
+                            </div>
+
+                            <div class="concept-box">
+                                <h4>Divisibility</h4>
+                                <p>We say <strong>a | b</strong> (a divides b) if a mod b = 0</p>
+                                <p><strong>Factors of a number n</strong> are all numbers that divide n</p>
+                                <div class="example-box">
+                                    <p><strong>Example:</strong> Factors of 24 are {1, 2, 3, 4, 6, 8, 12, 24}</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="subsection" id="derivatives">
-                            <h3>1.2 Derivatives</h3>
-                            
+                        <div class="subsection" id="rationals">
+                            <h3>1.3 Rational Numbers (ℚ)</h3>
+
                             <div class="concept-box">
                                 <h4>Definition</h4>
-                                <p>The derivative of f(x) at point x is:</p>
+                                <p>A rational number is any number that can be expressed as <strong>p/q</strong> where:</p>
+                                <ul>
+                                    <li>p, q ∈ ℤ (both are integers)</li>
+                                    <li>q ≠ 0 (denominator cannot be zero)</li>
+                                </ul>
                                 <div class="math-formula">
-                                    $$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
+                                    $$\mathbb{Q} = \left\{\frac{p}{q} \mid p, q \in \mathbb{Z}, q \neq 0\right\}$$
+                                </div>
+                                <div class="example-box">
+                                    <p><strong>Examples:</strong> 3/5, 6/10, -7/4, 18/60</p>
                                 </div>
                             </div>
 
-                            <div class="formula-grid">
-                                <h4>Basic Derivative Rules</h4>
-                                <div class="formula-cards">
-                                    <div class="formula-card">
-                                        <div class="formula-title">Constant Rule</div>
-                                        <div class="formula">$$\frac{d}{dx}(c) = 0$$</div>
-                                    </div>
-                                    <div class="formula-card">
-                                        <div class="formula-title">Power Rule</div>
-                                        <div class="formula">$$\frac{d}{dx}(x^n) = nx^{n-1}$$</div>
-                                    </div>
-                                    <div class="formula-card">
-                                        <div class="formula-title">Exponential</div>
-                                        <div class="formula">$$\frac{d}{dx}(e^x) = e^x$$</div>
-                                    </div>
-                                    <div class="formula-card">
-                                        <div class="formula-title">Logarithm</div>
-                                        <div class="formula">$$\frac{d}{dx}(\ln x) = \frac{1}{x}$$</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="note-section" id="linear-algebra">
-                        <h2>2. Linear Algebra Basics</h2>
-                        
-                        <div class="subsection" id="vectors">
-                            <h3>2.1 Vectors</h3>
-                            
                             <div class="concept-box">
-                                <h4>Vector Definition</h4>
-                                <p>A vector is a mathematical object with both magnitude and direction.</p>
-                                <p>In 2D: $$\vec{v} = \begin{pmatrix} x \\ y \end{pmatrix}$$</p>
-                                <p>In 3D: $$\vec{v} = \begin{pmatrix} x \\ y \\ z \end{pmatrix}$$</p>
+                                <h4>Non-Unique Representation</h4>
+                                <p>Rational numbers do NOT have unique representations</p>
+                                <div class="example-box">
+                                    <p><strong>Example:</strong> 3/5 = 6/10 = 30/50 = ...</p>
+                                    <p><strong>Why?</strong> Multiplying both numerator and denominator by the same non-zero number gives an equivalent fraction</p>
+                                </div>
                             </div>
 
-                            <div class="operations-box">
-                                <h4>Vector Operations</h4>
-                                <div class="operation-grid">
-                                    <div class="operation">
-                                        <h5>Addition</h5>
-                                        $$\vec{a} + \vec{b} = \begin{pmatrix} a_1 + b_1 \\ a_2 + b_2 \end{pmatrix}$$
-                                    </div>
-                                    <div class="operation">
-                                        <h5>Scalar Multiplication</h5>
-                                        $$k\vec{a} = \begin{pmatrix} ka_1 \\ ka_2 \end{pmatrix}$$
-                                    </div>
-                                    <div class="operation">
-                                        <h5>Dot Product</h5>
-                                        $$\vec{a} \cdot \vec{b} = a_1b_1 + a_2b_2$$
-                                    </div>
-                                    <div class="operation">
-                                        <h5>Magnitude</h5>
-                                        $$|\vec{a}| = \sqrt{a_1^2 + a_2^2}$$
-                                    </div>
+                            <div class="concept-box">
+                                <h4>Greatest Common Divisor (GCD)</h4>
+                                <p><strong>Definition:</strong> gcd(m, n) is the largest number that divides both m and n</p>
+
+                                <h5>Finding GCD using Prime Factorization</h5>
+                                <ol>
+                                    <li>Find prime factorization of both numbers</li>
+                                    <li>Identify common prime factors</li>
+                                    <li>Multiply the common primes</li>
+                                </ol>
+
+                                <div class="example-box">
+                                    <h5>Example</h5>
+                                    <ul>
+                                        <li>18 = 2 × 3 × 3</li>
+                                        <li>60 = 2 × 2 × 3 × 5</li>
+                                        <li>Common factors: 2 × 3 = 6</li>
+                                        <li>Therefore, gcd(18, 60) = 6</li>
+                                    </ul>
+                                    <p><strong>Reducing to Lowest Terms:</strong> 18/60 = (18÷6)/(60÷6) = 3/10</p>
                                 </div>
+                            </div>
+
+                            <div class="concept-box">
+                                <h4>Density of Rational Numbers</h4>
+                                <p><strong>Theorem:</strong> Rational numbers are <strong>dense</strong></p>
+                                <p><strong>Definition of Density:</strong> Between any two rational numbers, there exists another rational number</p>
+                                <p><strong>Proof:</strong> For any r < r', the average (r + r')/2 lies between them</p>
+                                <p><strong>Implication:</strong> There is <strong>NO "next" rational number</strong> - unlike integers, we cannot find the immediate successor</p>
+                            </div>
+                        </div>
+
+                        <div class="subsection" id="reals">
+                            <h3>1.4 Real Numbers (ℝ)</h3>
+
+                            <div class="concept-box">
+                                <h4>Beyond Rationals</h4>
+                                <p><strong>Motivation:</strong> Not every point on the number line is a rational number</p>
+                                <p>Example - Square Roots:</p>
+                                <ul>
+                                    <li>Perfect squares: 1, 4, 9, 16, 25, ..., 256, ...</li>
+                                    <li>Their square roots: 1, 2, 3, 4, 5, ..., 16, ...</li>
+                                    <li>But what about √2, √3, √5, √6?</li>
+                                </ul>
+                            </div>
+
+                            <div class="concept-box">
+                                <h4>Real Numbers (ℝ)</h4>
+                                <p><strong>Definition:</strong> ℝ = ℚ ∪ {all irrational numbers}</p>
+                                <ul>
+                                    <li>Real numbers include ALL rational and irrational numbers</li>
+                                    <li>Every point on the number line is a real number</li>
+                                </ul>
+
+                                <h5>Hierarchy</h5>
+                                <div class="math-formula">
+                                    $$\mathbb{N} \subseteq \mathbb{Z} \subseteq \mathbb{Q} \subseteq \mathbb{R}$$
+                                </div>
+                                <ul>
+                                    <li>Every natural number is an integer</li>
+                                    <li>Every integer is a rational number (can write as n/1)</li>
+                                    <li>Every rational number is a real number</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Quick Quiz Section -->
-                    <div class="note-section" id="quiz">
-                        <h2>3. Quick Check</h2>
-                        <div class="mini-quiz">
-                            <div class="quiz-question">
-                                <h4>Test Your Understanding</h4>
-                                <p>What is $$\lim_{x \to 0} \frac{\sin x}{x}$$?</p>
-                                <div class="quiz-options">
-                                    <button class="quiz-option" data-answer="wrong">0</button>
-                                    <button class="quiz-option" data-answer="correct">1</button>
-                                    <button class="quiz-option" data-answer="wrong">∞</button>
-                                    <button class="quiz-option" data-answer="wrong">Undefined</button>
+                    <!-- Sets -->
+                    <div class="note-section" id="sets">
+                        <h2>2. Sets</h2>
+
+                        <div class="concept-box">
+                            <h4>Basic Definition</h4>
+                            <p><strong>Informal Definition:</strong> A set is a <strong>collection of items</strong></p>
+
+                            <h5>Examples</h5>
+                            <ul>
+                                <li>Days of week: {Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday}</li>
+                                <li>Factors of 24: {1, 2, 3, 4, 6, 8, 12, 24}</li>
+                                <li>Prime numbers below 15: {2, 3, 5, 7, 11, 13}</li>
+                            </ul>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Standard Number Sets</h4>
+                            <ul>
+                                <li><strong>ℕ:</strong> Natural numbers = {0, 1, 2, 3, ...}</li>
+                                <li><strong>ℤ:</strong> Integers = {..., -3, -2, -1, 0, 1, 2, 3, ...}</li>
+                                <li><strong>ℚ:</strong> Rational numbers = {p/q | p, q ∈ ℤ, q ≠ 0}</li>
+                                <li><strong>ℝ:</strong> Real numbers = all rationals and irrationals</li>
+                            </ul>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Set Comprehension (Set Builder Notation)</h4>
+                            <p><strong>General Form:</strong> {x | x ∈ S, P(x)}</p>
+                            <p>Read as: "the set of all x such that x belongs to S and x satisfies property P"</p>
+
+                            <h5>Examples</h5>
+                            <div class="example-box">
+                                <ul>
+                                    <li><strong>Even natural numbers:</strong> {n | n ∈ ℕ, n mod 2 = 0}</li>
+                                    <li><strong>Integers between -6 and 6:</strong> {z | z ∈ ℤ, -6 ≤ z ≤ 6}</li>
+                                    <li><strong>First 500 natural numbers:</strong> X = {n | n ∈ ℕ, n < 500} = {0, 1, 2, ..., 499}</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Intervals (for Real Numbers)</h4>
+                            <ul>
+                                <li><strong>Closed Interval [a, b]:</strong> Includes endpoints - [0, 1] = {r | r ∈ ℝ, 0 ≤ r ≤ 1}</li>
+                                <li><strong>Open Interval (a, b):</strong> Excludes endpoints - (0, 1) = {r | r ∈ ℝ, 0 < r < 1}</li>
+                                <li><strong>Half-Open Intervals:</strong> [a, b) or (a, b]</li>
+                            </ul>
+                            <p><strong>Visual Representation:</strong></p>
+                            <ul>
+                                <li>Filled dot (●) means included</li>
+                                <li>Open dot (○) means excluded</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Relations -->
+                    <div class="note-section" id="relations">
+                        <h2>3. Relations</h2>
+
+                        <div class="concept-box">
+                            <h4>Definition</h4>
+                            <p><strong>Binary Relation:</strong> A relation R on sets A and B is a subset of A × B</p>
+                            <p><strong>Cartesian Product</strong> A × B: A × B = {(a, b) | a ∈ A, b ∈ B}</p>
+                            <p><strong>Notation:</strong> If (a, b) ∈ R, we often write a R b</p>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>Example: Divisibility</h4>
+                            <p>R = {(a, b) | a, b ∈ ℕ, a × b = 63}</p>
+                            <p>Elements: (1, 63), (3, 21), (7, 9), (9, 7), (21, 3), (63, 1)</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Properties of Relations</h4>
+                            <ul>
+                                <li><strong>Reflexivity:</strong> Every element relates to itself</li>
+                                <li><strong>Symmetry:</strong> If a relates to b, then b relates to a</li>
+                                <li><strong>Transitivity:</strong> If a relates to b and b relates to c, then a relates to c</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Functions -->
+                    <div class="note-section" id="functions">
+                        <h2>4. Functions</h2>
+
+                        <div class="concept-box">
+                            <h4>Definition</h4>
+                            <p><strong>Function:</strong> A rule that maps inputs to outputs</p>
+                            <p><strong>Notation:</strong></p>
+                            <ul>
+                                <li>x ↦ x² (maps x to x squared)</li>
+                                <li>f(x) = x² (function named f)</li>
+                                <li>f: X → Y (function from set X to set Y)</li>
+                            </ul>
+
+                            <h5>Requirements for Functions</h5>
+                            <ol>
+                                <li><strong>Defined on entire domain:</strong> Every input must have an output</li>
+                                <li><strong>Single-valued:</strong> Each input maps to exactly ONE output</li>
+                            </ol>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Key Terminology</h4>
+                            <ul>
+                                <li><strong>Domain:</strong> The set of all possible <strong>inputs</strong></li>
+                                <li><strong>Codomain:</strong> The set of all possible <strong>output values</strong></li>
+                                <li><strong>Range:</strong> The actual set of values the function <strong>achieves</strong> (range ⊆ codomain)</li>
+                            </ul>
+
+                            <div class="example-box">
+                                <p><strong>Example:</strong> f(x) = x², domain = ℝ, codomain = ℝ</p>
+                                <p>Range = ℝ≥0 = {r | r ∈ ℝ, r ≥ 0} (only non-negative reals)</p>
+                                <p>Range ≠ Codomain (codomain includes negative numbers too)</p>
+                            </div>
+                        </div>
+
+                        <div class="properties-box">
+                            <h4>Types of Functions</h4>
+
+                            <div class="function-type">
+                                <h5>Injective Functions (One-to-One)</h5>
+                                <p><strong>Definition:</strong> Different inputs produce different outputs</p>
+                                <p>If x₁ ≠ x₂, then f(x₁) ≠ f(x₂)</p>
+                                <div class="example-box">
+                                    <p>✓ <strong>Injective:</strong> f(x) = 3x + 5</p>
+                                    <p>✗ <strong>Not Injective:</strong> f(x) = x² (since f(5) = f(-5) = 25)</p>
                                 </div>
-                                <div class="quiz-feedback" style="display: none;">
-                                    <p class="correct-feedback">Correct! This is a fundamental limit in calculus.</p>
-                                    <p class="wrong-feedback">Not quite. This is actually equal to 1 - it's a fundamental limit.</p>
+                            </div>
+
+                            <div class="function-type">
+                                <h5>Surjective Functions (Onto)</h5>
+                                <p><strong>Definition:</strong> Range = Codomain</p>
+                                <p>Every element in codomain has a pre-image</p>
+                                <div class="example-box">
+                                    <p>✓ <strong>Surjective:</strong> f(x) = -7x + 10 (with codomain ℝ)</p>
+                                    <p>✗ <strong>Not Surjective:</strong> f(x) = x² (with codomain ℝ, only produces non-negative values)</p>
                                 </div>
+                            </div>
+
+                            <div class="function-type">
+                                <h5>Bijective Functions (One-to-One Correspondence)</h5>
+                                <p><strong>Definition:</strong> BOTH injective AND surjective</p>
+                                <p>Establishes perfect pairing between domain and codomain</p>
+                                <p><strong>Important:</strong> Used to compare sizes of infinite sets</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prime Numbers -->
+                    <div class="note-section" id="primes">
+                        <h2>5. Prime Numbers</h2>
+
+                        <div class="concept-box critical">
+                            <h4>Definition</h4>
+                            <p><strong>Prime Number:</strong> A number p is prime if:</p>
+                            <ul>
+                                <li>It has <strong>exactly two factors:</strong> 1 and p</li>
+                                <li>p ≠ 1 (1 is NOT prime - it only has one factor)</li>
+                            </ul>
+                            <p><strong>Examples:</strong> 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, ...</p>
+                            <p><strong>First Prime:</strong> 2 (only even prime)</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Fundamental Theorem of Arithmetic</h4>
+                            <p>Every integer greater than 1 can be decomposed into a <strong>unique</strong> product of prime factors</p>
+                            <div class="example-box">
+                                <ul>
+                                    <li>12 = 2 × 2 × 3 = 2² × 3</li>
+                                    <li>126 = 2 × 3 × 3 × 7 = 2 × 3² × 7</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Infinity of Primes</h4>
+                            <p><strong>Theorem:</strong> There are <strong>infinitely many</strong> prime numbers</p>
+                            <ul>
+                                <li>No largest prime exists</li>
+                                <li>Primes continue forever</li>
+                                <li>Gaps between primes can be arbitrarily large</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Irrational Numbers -->
+                    <div class="note-section" id="irrationals">
+                        <h2>6. Irrational Numbers</h2>
+
+                        <div class="concept-box">
+                            <h4>Historical Context</h4>
+                            <p><strong>Ancient Greeks:</strong></p>
+                            <ul>
+                                <li>Pythagoras and followers believed all numbers were rational</li>
+                                <li>Knew diagonal of unit square has length √2</li>
+                                <li>Spent years trying to prove √2 was rational</li>
+                            </ul>
+                            <p><strong>Hippasus (around 500 BCE):</strong></p>
+                            <ul>
+                                <li>First to prove √2 is irrational</li>
+                                <li>Shocked Pythagorean community</li>
+                                <li>Legend: Pythagoreans drowned him to suppress this discovery</li>
+                            </ul>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Proof that √2 is Irrational</h4>
+                            <p><strong>Geometric Insight:</strong> In a unit square (sides of length 1), the diagonal has length √2 by Pythagorean theorem</p>
+
+                            <h5>Proof by Contradiction</h5>
+                            <ol>
+                                <li>Assume √2 = p/q in lowest terms</li>
+                                <li>Square both sides: 2 = p²/q²</li>
+                                <li>Therefore: p² = 2q²</li>
+                                <li>This means p² is even → p is even</li>
+                                <li>Let p = 2k</li>
+                                <li>Then (2k)² = 2q² → 4k² = 2q² → 2k² = q²</li>
+                                <li>This means q² is even → q is even</li>
+                                <li>But if both p and q are even, they weren't in lowest terms!</li>
+                                <li>Contradiction → √2 is irrational</li>
+                            </ol>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Famous Irrational Numbers</h4>
+                            <ul>
+                                <li><strong>√n:</strong> irrational if n is not a perfect square</li>
+                                <li><strong>π (Pi):</strong> π = 3.1415927... (ratio of circumference to diameter)</li>
+                                <li><strong>e (Euler's number):</strong> e = 2.7182818... (base of natural logarithm)</li>
+                            </ul>
+                            <p><strong>Properties:</strong> Infinite, non-repeating decimal expansions</p>
+                        </div>
+                    </div>
+
+                    <!-- Degrees of Infinity -->
+                    <div class="note-section" id="infinity">
+                        <h2>7. Degrees of Infinity</h2>
+
+                        <div class="concept-box">
+                            <h4>The Question</h4>
+                            <p><strong>Are some infinities larger than others?</strong></p>
+                            <p>Studied by Georg Cantor (1870s)</p>
+                            <p><strong>Tool:</strong> Use <strong>bijections</strong> to compare infinite sets</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Countable Sets</h4>
+                            <p><strong>Definition:</strong> A set X is <strong>countable</strong> if there exists a bijection f: ℕ → X</p>
+                            <p>This means X can be "counted" or enumerated as {f(0), f(1), f(2), ...}</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Surprising Results</h4>
+
+                            <div class="result-box">
+                                <h5>ℤ is Countable!</h5>
+                                <p>Despite having negative numbers, ℤ has same cardinality as ℕ</p>
+                                <p><strong>Bijection:</strong> Interleave positive and negative integers</p>
+                                <p>ℕ: 0, 1, 2, 3, 4, 5, 6, 7, 8, ...</p>
+                                <p>ℤ: 0, 1, -1, 2, -2, 3, -3, 4, -4, ...</p>
+                            </div>
+
+                            <div class="result-box">
+                                <h5>ℚ is Countable!</h5>
+                                <p>Despite being dense, ℚ has same cardinality as ℕ</p>
+                                <p><strong>Strategy:</strong> Diagonal enumeration of ℕ × ℕ</p>
+                            </div>
+
+                            <div class="result-box critical">
+                                <h5>ℝ is NOT Countable!</h5>
+                                <p><strong>Cantor's Diagonalization:</strong> Proved no enumeration of ℝ exists</p>
+                                <p>Construct a real number that differs from every number in any assumed enumeration</p>
+                            </div>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Cardinality Hierarchy</h4>
+                            <div class="math-formula">
+                                $$|\mathbb{N}| = |\mathbb{Z}| = |\mathbb{Q}| < |\mathbb{R}|$$
+                            </div>
+                            <p><strong>Important:</strong> Since ℚ is countable and ℝ is uncountable, irrational numbers must be uncountable</p>
+                            <p>There are VASTLY more irrational numbers than rational numbers!</p>
+                        </div>
+
+                        <div class="concept-box">
+                            <h4>Continuum Hypothesis</h4>
+                            <p><strong>Question:</strong> Is there a set whose cardinality is strictly between |ℕ| and |ℝ|?</p>
+                            <p><strong>Resolution by Paul Cohen (1960s):</strong> The Continuum Hypothesis is <strong>independent</strong> of set theory axioms</p>
+                            <p>Cannot be proved OR disproved within standard set theory - both "yes" and "no" are consistent!</p>
+                        </div>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="note-section">
+                        <h2>Key Formulas and Notation Summary</h2>
+
+                        <div class="formula-grid">
+                            <div class="formula-card">
+                                <h4>Number Sets</h4>
+                                <ul>
+                                    <li><strong>ℕ</strong> = {0, 1, 2, 3, ...}</li>
+                                    <li><strong>ℤ</strong> = {..., -2, -1, 0, 1, 2, ...}</li>
+                                    <li><strong>ℚ</strong> = {p/q | p, q ∈ ℤ, q ≠ 0}</li>
+                                    <li><strong>ℝ</strong> = all rational and irrational</li>
+                                </ul>
+                            </div>
+
+                            <div class="formula-card">
+                                <h4>Set Operations</h4>
+                                <ul>
+                                    <li><strong>A ⊆ B:</strong> A is subset of B</li>
+                                    <li><strong>A × B:</strong> Cartesian product</li>
+                                    <li><strong>|A|:</strong> cardinality of A</li>
+                                </ul>
+                            </div>
+
+                            <div class="formula-card">
+                                <h4>Functions</h4>
+                                <ul>
+                                    <li><strong>Injective:</strong> x₁ ≠ x₂ ⇒ f(x₁) ≠ f(x₂)</li>
+                                    <li><strong>Surjective:</strong> range = codomain</li>
+                                    <li><strong>Bijective:</strong> both injective & surjective</li>
+                                </ul>
+                            </div>
+
+                            <div class="formula-card">
+                                <h4>Cardinality</h4>
+                                <ul>
+                                    <li>|ℕ| = |ℤ| = |ℚ| (countable)</li>
+                                    <li>|ℝ| > |ℚ| (uncountable)</li>
+                                    <li>Irrationals are uncountable</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -225,7 +592,7 @@
                     <div class="notes-navigation">
                         <div class="nav-buttons">
                             <button class="nav-btn prev" disabled>← Previous Week</button>
-                            <a href="quizzes/" class="nav-btn quiz">Take Full Quiz</a>
+                            <a href="week1-quiz.html" class="nav-btn quiz">Take Quiz</a>
                             <button class="nav-btn next">Week 2 →</button>
                         </div>
                     </div>
@@ -234,7 +601,6 @@
         </div>
     </section>
 
-    <script src="../../js/script.js"></script>
-    <script src="../../js/notes.js"></script>
+    <script src="../../../js/script.js"></script>
 </body>
 </html>

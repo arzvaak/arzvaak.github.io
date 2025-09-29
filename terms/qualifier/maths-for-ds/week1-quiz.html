@@ -4,19 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathematics Quiz - Week 1 | IITM Notes</title>
-    <meta name="description" content="Interactive quiz for Mathematics for Data Science - Week 1">
+    <meta name="description" content="Interactive quiz for Mathematics for Data Science - Week 1: 100 Qualifier-Style Questions">
     <link rel="stylesheet" href="../../../css/style.css">
     <link rel="stylesheet" href="../../../css/quiz.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        .difficulty-indicator {
+            display: inline-block;
+            color: #f39c12;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        .question-part {
+            background: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        .option {
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .option:hover {
+            background: #f8f9fa;
+            border-color: #3498db;
+        }
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+        .explanation {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin-top: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+        .explanation.show {
+            display: block;
+        }
+        .explanation h4 {
+            margin-top: 0;
+            color: #856404;
+        }
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px 0;
+            border-top: 2px solid #eee;
+        }
+        .filter-controls {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .filter-controls label {
+            margin-right: 15px;
+            font-weight: 500;
+        }
+        .filter-controls select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+        }
+        .progress-stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .stat-box {
+            flex: 1;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="../../../index.html">📚 IITM Notes</a>
+                <a href="../../../index.html">IITM Notes</a>
             </div>
             <div class="nav-menu" id="navMenu">
                 <a href="../../../index.html" class="nav-link">Home</a>
@@ -38,20 +139,24 @@
                 <a href="../../../index.html">Home</a> > <a href="../../">Notes</a> > <a href="../">Math</a> > <span>Quiz</span>
             </div>
             <h1>Mathematics for Data Science</h1>
-            <p class="quiz-subtitle">Week 1 Practice Quiz</p>
-            
-            <div class="quiz-info">
-                <div class="quiz-stat">
-                    <span class="stat-number">10</span>
-                    <span class="stat-label">Questions</span>
+            <p class="quiz-subtitle">Week 1 Practice Quiz - 100 Qualifier-Style Questions</p>
+
+            <div class="progress-stats" id="progressStats">
+                <div class="stat-box">
+                    <div class="stat-number" id="totalQuestions">100</div>
+                    <div class="stat-label">Total Questions</div>
                 </div>
-                <div class="quiz-stat">
-                    <span class="stat-number">15</span>
-                    <span class="stat-label">Minutes</span>
+                <div class="stat-box">
+                    <div class="stat-number" id="answeredCount">0</div>
+                    <div class="stat-label">Answered</div>
                 </div>
-                <div class="quiz-stat">
-                    <span class="stat-number">70%</span>
-                    <span class="stat-label">Pass Score</span>
+                <div class="stat-box">
+                    <div class="stat-number" id="correctCount">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="scorePercent">0%</div>
+                    <div class="stat-label">Score</div>
                 </div>
             </div>
         </div>
@@ -60,63 +165,1156 @@
     <!-- Quiz Container -->
     <section class="quiz-container">
         <div class="container">
-            <div class="quiz-layout">
-                <!-- Quiz Sidebar -->
-                <aside class="quiz-sidebar">
-                    <div class="quiz-progress">
-                        <h3>Progress</h3>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="progressFill"></div>
-                        </div>
-                        <p class="progress-text" id="progressText">Question 1 of 10</p>
-                    </div>
-                    
-                    <div class="quiz-timer">
-                        <h3>Time Remaining</h3>
-                        <div class="timer" id="timer">15:00</div>
-                    </div>
-                    
-                    <div class="question-navigator">
-                        <h3>Questions</h3>
-                        <div class="question-grid" id="questionGrid">
-                            <!-- Generated by JavaScript -->
-                        </div>
-                    </div>
-                </aside>
+            <!-- Filters -->
+            <div class="filter-controls">
+                <label for="partFilter">Filter by Part:</label>
+                <select id="partFilter">
+                    <option value="all">All Parts</option>
+                    <option value="Number Systems">Number Systems</option>
+                    <option value="Sets and Cardinality">Sets and Cardinality</option>
+                    <option value="Relations">Relations</option>
+                    <option value="Functions">Functions</option>
+                    <option value="Prime Numbers">Prime Numbers</option>
+                    <option value="Countability and Infinity">Countability and Infinity</option>
+                </select>
 
-                <!-- Quiz Main -->
-                <main class="quiz-main">
-                    <div class="quiz-question-container" id="questionContainer">
-                        <!-- Questions will be loaded here by JavaScript -->
-                    </div>
-                    
-                    <div class="quiz-controls">
-                        <button class="quiz-btn prev" id="prevBtn" disabled>← Previous</button>
-                        <button class="quiz-btn next" id="nextBtn">Next →</button>
-                        <button class="quiz-btn submit" id="submitBtn" style="display: none;">Submit Quiz</button>
-                    </div>
-                </main>
+                <label for="difficultyFilter">Filter by Difficulty:</label>
+                <select id="difficultyFilter">
+                    <option value="all">All Levels</option>
+                    <option value="1">★ Easy</option>
+                    <option value="2">★★ Medium</option>
+                    <option value="3">★★★ Hard</option>
+                </select>
+
+                <button onclick="applyFilters()" style="padding: 8px 20px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">Apply Filters</button>
+                <button onclick="resetQuiz()" style="padding: 8px 20px; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 10px;">Reset Quiz</button>
+            </div>
+
+            <!-- Quiz Main -->
+            <div id="quizContent">
+                <!-- Questions will be loaded here by JavaScript -->
             </div>
         </div>
     </section>
 
     <!-- Quiz Results Modal -->
-    <div class="quiz-modal" id="resultsModal" style="display: none;">
-        <div class="modal-content">
+    <div class="quiz-modal" id="resultsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+        <div class="modal-content" style="background: white; max-width: 600px; margin: 50px auto; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
             <div class="modal-header">
                 <h2>Quiz Results</h2>
             </div>
             <div class="modal-body" id="resultsBody">
                 <!-- Results will be populated by JavaScript -->
             </div>
-            <div class="modal-footer">
-                <button class="quiz-btn" onclick="retakeQuiz()">Retake Quiz</button>
-                <a href="../index.html" class="quiz-btn primary">Back to Notes</a>
+            <div class="modal-footer" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+                <button onclick="resetQuiz()" style="padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">Retake Quiz</button>
+                <button onclick="closeResults()" style="padding: 10px 20px; background: #95a5a6; color: white; border: none; border-radius: 4px; cursor: pointer;">Close</button>
             </div>
         </div>
     </div>
 
-    <script src="../../../js/script.js"></script>
-    <script src="../../../js/quiz.js"></script>
+    <script>
+        // Quiz Data - 100 Questions
+        const quizData = [
+            // PART 1: NUMBER SYSTEMS (Q1-Q20)
+            {
+                id: 1,
+                part: "Number Systems",
+                difficulty: 1,
+                question: "In this Mathematics for Data Science 1 course, the set of natural numbers ℕ is defined as:",
+                options: ["A) {1, 2, 3, 4, ...}", "B) {0, 1, 2, 3, 4, ...}", "C) {-1, 0, 1, 2, 3, ...}", "D) All positive real numbers"],
+                correctAnswer: 1,
+                explanation: "This is a CRITICAL course-specific convention. In THIS COURSE, 0 ∈ ℕ. While some textbooks exclude 0 from natural numbers, THIS COURSE EXPLICITLY INCLUDES IT."
+            },
+            {
+                id: 2,
+                part: "Number Systems",
+                difficulty: 2,
+                question: "Which statement is FALSE?",
+                options: ["A) Every natural number is an integer", "B) Every integer is a rational number", "C) Every rational number is a real number", "D) Every real number is a rational number"],
+                correctAnswer: 3,
+                explanation: "Statement D is false because there exist irrational numbers (like √2, π, e) which are real but not rational. The correct hierarchy is: ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ."
+            },
+            {
+                id: 3,
+                part: "Number Systems",
+                difficulty: 2,
+                question: "What is 47 mod 7?",
+                options: ["A) 5", "B) 6", "C) 7", "D) 0"],
+                correctAnswer: 0,
+                explanation: "47 = 7 × 6 + 5, so 47 mod 7 = 5."
+            },
+            {
+                id: 4,
+                part: "Number Systems",
+                difficulty: 2,
+                question: "Using prime factorization: 48 = 2⁴ × 3 and 180 = 2² × 3² × 5. What is gcd(48, 180)?",
+                options: ["A) 4", "B) 12", "C) 6", "D) 24"],
+                correctAnswer: 1,
+                explanation: "48 = 2⁴ × 3¹, 180 = 2² × 3² × 5¹. GCD takes minimum powers of common primes. Common primes: 2 and 3. gcd = 2² × 3¹ = 4 × 3 = 12"
+            },
+            {
+                id: 5,
+                part: "Number Systems",
+                difficulty: 3,
+                question: "What is 126/180 in reduced form?",
+                options: ["A) 63/90", "B) 21/30", "C) 7/10", "D) 42/60"],
+                correctAnswer: 2,
+                explanation: "126 = 2 × 3² × 7, 180 = 2² × 3² × 5. gcd(126, 180) = 2 × 3² = 18. Therefore, 126/180 = (126÷18)/(180÷18) = 7/10"
+            },
+            {
+                id: 6,
+                part: "Number Systems",
+                difficulty: 2,
+                question: "Which of the following is irrational?",
+                options: ["A) 0.75", "B) √4", "C) √2", "D) 22/7"],
+                correctAnswer: 2,
+                explanation: "√2 is irrational (proven by Hippasus around 500 BCE). The others: 0.75 = 3/4, √4 = 2, and 22/7 are all rational."
+            },
+            {
+                id: 7,
+                part: "Number Systems",
+                difficulty: 2,
+                question: "What rational number lies exactly halfway between 1/4 and 1/2?",
+                options: ["A) 1/3", "B) 3/8", "C) 2/5", "D) 5/12"],
+                correctAnswer: 1,
+                explanation: "Average = (1/4 + 1/2)/2 = (1/4 + 2/4)/2 = (3/4)/2 = 3/8"
+            },
+            {
+                id: 8,
+                part: "Number Systems",
+                difficulty: 3,
+                question: "What is the prime factorization of 100?",
+                options: ["A) 2² × 5²", "B) 4 × 25", "C) 10²", "D) 2 × 50"],
+                correctAnswer: 0,
+                explanation: "100 = 10 × 10 = (2 × 5) × (2 × 5) = 2² × 5². The other options show factorizations but not PRIME factorizations."
+            },
+            {
+                id: 9,
+                part: "Number Systems",
+                difficulty: 2,
+                question: "If a | 24 and a | 36, which must be true?",
+                options: ["A) a must divide 12", "B) a must divide 60", "C) a must be a factor of gcd(24, 36) = 12", "D) a must be greater than 10"],
+                correctAnswer: 2,
+                explanation: "If a divides both 24 and 36, then a divides their GCD. gcd(24, 36) = 12, so a | 12."
+            },
+            {
+                id: 10,
+                part: "Number Systems",
+                difficulty: 3,
+                question: "If n mod 5 = 3 and n mod 7 = 2, what is the smallest positive value of n?",
+                options: ["A) 23", "B) 16", "C) 9", "D) 2"],
+                correctAnswer: 0,
+                explanation: "Testing values: n = 23 satisfies both conditions: 23 mod 5 = 3 ✓ and 23 mod 7 = 2 ✓"
+            },
+            {
+                id: 11,
+                part: "Number Systems",
+                difficulty: 2,
+                question: "How many integers are there between -10 and 10, inclusive?",
+                options: ["A) 19", "B) 20", "C) 21", "D) 22"],
+                correctAnswer: 2,
+                explanation: "{-10, -9, -8, ..., 0, ..., 8, 9, 10} = 10 negative + 1 zero + 10 positive = 21"
+            },
+            {
+                id: 12,
+                part: "Number Systems",
+                difficulty: 2,
+                question: "What does the interval [0, 1] represent?",
+                options: ["A) {r | r ∈ ℝ, 0 ≤ r ≤ 1}", "B) {r | r ∈ ℝ, 0 < r < 1}", "C) {0, 1}", "D) All integers from 0 to 1"],
+                correctAnswer: 0,
+                explanation: "[0, 1] is a CLOSED interval, including both endpoints. It contains all real numbers from 0 to 1 inclusive."
+            },
+            {
+                id: 13,
+                part: "Number Systems",
+                difficulty: 3,
+                question: "What is gcd(252, 105)?",
+                options: ["A) 7", "B) 21", "C) 3", "D) 15"],
+                correctAnswer: 1,
+                explanation: "252 = 2² × 3² × 7, 105 = 3 × 5 × 7. Common primes: 3 and 7. gcd = 3 × 7 = 21"
+            },
+            {
+                id: 14,
+                part: "Number Systems",
+                difficulty: 2,
+                question: "If 1/a + 1/b = 1/c, and a = 6, b = 3, what is c?",
+                options: ["A) 2", "B) 3", "C) 1.5", "D) 9"],
+                correctAnswer: 0,
+                explanation: "1/6 + 1/3 = 1/6 + 2/6 = 3/6 = 1/2, so c = 2"
+            },
+            {
+                id: 15,
+                part: "Number Systems",
+                difficulty: 2,
+                question: "Which numbers are irrational?",
+                options: ["A) √3, √5, √6", "B) √4, √9, √16", "C) π, e", "D) Both A and C"],
+                correctAnswer: 3,
+                explanation: "√3, √5, √6 are irrational (non-perfect squares), and π, e are famous irrational constants. √4=2, √9=3, √16=4 are all rational."
+            },
+            {
+                id: 16,
+                part: "Number Systems",
+                difficulty: 3,
+                question: "If √5 is irrational, is 2 + √5 rational or irrational?",
+                options: ["A) Rational", "B) Irrational", "C) Could be either", "D) Not enough information"],
+                correctAnswer: 1,
+                explanation: "If 2 + √5 were rational, say equal to p/q, then √5 = p/q - 2 = (p-2q)/q would be rational, contradiction. So 2 + √5 is irrational."
+            },
+            {
+                id: 17,
+                part: "Number Systems",
+                difficulty: 2,
+                question: "Express the relationship: ℕ ___ ℤ ___ ℚ ___ ℝ",
+                options: ["A) = = =", "B) ⊂ ⊂ ⊂", "C) ⊆ ⊆ ⊆", "D) > > >"],
+                correctAnswer: 1,
+                explanation: "Each set is a proper subset of the next. ⊂ means 'proper subset'. Since these are strictly increasing, ⊂ is the correct symbol."
+            },
+            {
+                id: 18,
+                part: "Number Systems",
+                difficulty: 3,
+                question: "Is 0.101001000100001... (pattern continues with increasing zeros) rational?",
+                options: ["A) Yes, it has a pattern", "B) No, the pattern doesn't repeat at fixed intervals", "C) Yes, all decimals are rational", "D) Cannot be determined"],
+                correctAnswer: 1,
+                explanation: "For a decimal to be rational, it must either terminate or have a repeating pattern of fixed length. This decimal has a pattern, but the repeating unit grows indefinitely, so it's NOT periodic with fixed length. Therefore it's irrational."
+            },
+            {
+                id: 19,
+                part: "Number Systems",
+                difficulty: 2,
+                question: "Which expressions correctly describe even integers?",
+                options: ["A) {n | n ∈ ℤ, n = 2k for some k ∈ ℤ}", "B) {n | n ∈ ℤ, n/2 ∈ ℤ}", "C) {n | n ∈ ℤ, n mod 2 = 0}", "D) All of the above"],
+                correctAnswer: 3,
+                explanation: "All three are equivalent correct descriptions of even integers."
+            },
+            {
+                id: 20,
+                part: "Number Systems",
+                difficulty: 2,
+                question: "What is (-17) mod 5?",
+                options: ["A) -2", "B) 3", "C) -3", "D) 2"],
+                correctAnswer: 1,
+                explanation: "-17 = 5 × (-4) + 3, so (-17) mod 5 = 3. The remainder must be non-negative (0-4)."
+            },
+
+            // PART 2: SETS AND CARDINALITY (Q21-Q35)
+            {
+                id: 21,
+                part: "Sets and Cardinality",
+                difficulty: 2,
+                question: "If A = {1, 2, 3} and B = {a, b}, what is the cardinality of the power set of A × B?",
+                options: ["A) 32", "B) 64", "C) 128", "D) 6"],
+                correctAnswer: 1,
+                explanation: "|A| = 3, |B| = 2, so |A × B| = 3 × 2 = 6. Power set of a set with n elements has 2ⁿ elements. |P(A × B)| = 2⁶ = 64"
+            },
+            {
+                id: 22,
+                part: "Sets and Cardinality",
+                difficulty: 3,
+                question: "In a locality of 100 houses that buy newspapers: 64 buy English, 94 buy Tamil, 26 buy both. How many houses buy ONLY English newspapers?",
+                options: ["A) 64", "B) 38", "C) 26", "D) 68"],
+                correctAnswer: 1,
+                explanation: "Houses buying only English = (Total English) - (Both) = 64 - 26 = 38"
+            },
+            {
+                id: 23,
+                part: "Sets and Cardinality",
+                difficulty: 2,
+                question: "What does {x | x ∈ ℕ, x < 10} represent?",
+                options: ["A) {1, 2, 3, 4, 5, 6, 7, 8, 9}", "B) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}", "C) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}", "D) {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}"],
+                correctAnswer: 1,
+                explanation: "Since 0 ∈ ℕ in this course, and x < 10 means x can be 0 through 9."
+            },
+            {
+                id: 24,
+                part: "Sets and Cardinality",
+                difficulty: 2,
+                question: "Which set includes ALL prime numbers that divide 100?",
+                options: ["A) {2, 5, 10}", "B) {2, 5}", "C) {1, 2, 5}", "D) {2, 4, 5, 10, 20, 25, 50}"],
+                correctAnswer: 1,
+                explanation: "100 = 2² × 5². The only primes that divide 100 are 2 and 5."
+            },
+            {
+                id: 25,
+                part: "Sets and Cardinality",
+                difficulty: 2,
+                question: "If A = {1, 2, 3} and B = {3, 4, 5}, what is A ∩ B?",
+                options: ["A) {1, 2, 3, 4, 5}", "B) {3}", "C) {1, 2, 4, 5}", "D) ∅"],
+                correctAnswer: 1,
+                explanation: "Intersection contains only elements in BOTH sets, which is just {3}."
+            },
+            {
+                id: 26,
+                part: "Sets and Cardinality",
+                difficulty: 3,
+                question: "If X = {n³ | n ∈ ℕ, n < 4}, what is X?",
+                options: ["A) {0, 1, 8, 27}", "B) {1, 8, 27}", "C) {0, 1, 8, 27, 64}", "D) {0, 1, 4, 9, 16}"],
+                correctAnswer: 0,
+                explanation: "n < 4 means n ∈ {0, 1, 2, 3}. Their cubes: 0³=0, 1³=1, 2³=8, 3³=27."
+            },
+            {
+                id: 27,
+                part: "Sets and Cardinality",
+                difficulty: 2,
+                question: "Express {0, 1, 4, 9, 16, 25} using set comprehension:",
+                options: ["A) {n² | n ∈ ℕ, n ≤ 5}", "B) {n | n ∈ ℕ, n ≤ 25}", "C) {n² | n ∈ ℕ, 0 ≤ n ≤ 5}", "D) Both A and C"],
+                correctAnswer: 3,
+                explanation: "Both correctly describe the set. A uses n ≤ 5, C uses 0 ≤ n ≤ 5 (redundant since 0 ∈ ℕ in this course)."
+            },
+            {
+                id: 28,
+                part: "Sets and Cardinality",
+                difficulty: 2,
+                question: "A set A has cardinality n. What is the cardinality of its power set?",
+                options: ["A) n", "B) n²", "C) 2ⁿ", "D) n!"],
+                correctAnswer: 2,
+                explanation: "The power set contains all subsets. A set with n elements has 2ⁿ subsets (including ∅ and the set itself)."
+            },
+            {
+                id: 29,
+                part: "Sets and Cardinality",
+                difficulty: 3,
+                question: "What is (0, 1) ∩ [0.5, 2]?",
+                options: ["A) [0.5, 1)", "B) (0.5, 1)", "C) [0.5, 1]", "D) (0, 1)"],
+                correctAnswer: 0,
+                explanation: "(0, 1) excludes 0 and 1. [0.5, 2] includes 0.5 and 2. Intersection: includes 0.5 (from second set), excludes 1 (from first set). Result: [0.5, 1)"
+            },
+            {
+                id: 30,
+                part: "Sets and Cardinality",
+                difficulty: 2,
+                question: "Which is TRUE?",
+                options: ["A) ℕ ⊆ ℤ ⊆ ℚ ⊆ ℝ", "B) ℤ ⊆ ℕ", "C) ℝ ⊆ ℚ", "D) ℚ ⊆ ℤ"],
+                correctAnswer: 0,
+                explanation: "The hierarchy of number systems: naturals ⊂ integers ⊂ rationals ⊂ reals."
+            },
+            {
+                id: 31,
+                part: "Sets and Cardinality",
+                difficulty: 2,
+                question: "How many elements in {x | x ∈ ℤ, -5 < x < 5}?",
+                options: ["A) 9", "B) 10", "C) 11", "D) 8"],
+                correctAnswer: 0,
+                explanation: "{-4, -3, -2, -1, 0, 1, 2, 3, 4} = 9 elements (excludes -5 and 5)"
+            },
+            {
+                id: 32,
+                part: "Sets and Cardinality",
+                difficulty: 2,
+                question: "The Cartesian product ℕ × ℕ represents:",
+                options: ["A) Natural numbers multiplied", "B) All ordered pairs (n, m) where n, m ∈ ℕ", "C) Natural numbers squared", "D) Functions from ℕ to ℕ"],
+                correctAnswer: 1,
+                explanation: "ℕ × ℕ = {(n, m) | n, m ∈ ℕ}, the set of all ordered pairs of natural numbers."
+            },
+            {
+                id: 33,
+                part: "Sets and Cardinality",
+                difficulty: 3,
+                question: "How many elements are in {1, 2, 2, 3, 3, 3}?",
+                options: ["A) 6", "B) 3", "C) 5", "D) 4"],
+                correctAnswer: 1,
+                explanation: "Sets don't have duplicates. {1, 2, 2, 3, 3, 3} = {1, 2, 3}, which has 3 elements."
+            },
+            {
+                id: 34,
+                part: "Sets and Cardinality",
+                difficulty: 2,
+                question: "What's the difference between [a, b] and (a, b)?",
+                options: ["A) [a, b] includes endpoints, (a, b) doesn't", "B) They are the same", "C) [a, b] is for integers, (a, b) is for reals", "D) (a, b) includes endpoints, [a, b] doesn't"],
+                correctAnswer: 0,
+                explanation: "Square brackets mean closed (includes), parentheses mean open (excludes)."
+            },
+            {
+                id: 35,
+                part: "Sets and Cardinality",
+                difficulty: 2,
+                question: "What does ∅ represent?",
+                options: ["A) Zero", "B) Empty set", "C) Undefined", "D) Infinity"],
+                correctAnswer: 1,
+                explanation: "∅ is the empty set, containing no elements. Different from {0} which contains one element."
+            },
+
+            // PART 3: RELATIONS (Q36-Q45)
+            {
+                id: 36,
+                part: "Relations",
+                difficulty: 2,
+                question: "Let S = {Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec}. Define R₁ = {(a,b) | a,b ∈ S, a and b have same last four letters}. Which months are related to December through R₁?",
+                options: ["A) September only", "B) September, October, November", "C) All months ending in 'ber'", "D) September and November"],
+                correctAnswer: 3,
+                explanation: "December ends in 'ember'. September = Sept-ember and November = Nov-ember both share this exact last four letters."
+            },
+            {
+                id: 37,
+                part: "Relations",
+                difficulty: 2,
+                question: "What is a binary relation on sets A and B?",
+                options: ["A) A subset of A × B", "B) A function from A to B", "C) The intersection of A and B", "D) The union of A and B"],
+                correctAnswer: 0,
+                explanation: "A binary relation R on A and B is any subset of A × B."
+            },
+            {
+                id: 38,
+                part: "Relations",
+                difficulty: 2,
+                question: "For the divisor relation on 63, which pairs are included?",
+                options: ["A) (1,63), (3,21), (7,9)", "B) (1,63), (3,21), (7,9), (9,7), (21,3), (63,1)", "C) All (a,b) where a×b = 63", "D) (63,1), (21,3), (9,7)"],
+                correctAnswer: 2,
+                explanation: "The divisor relation includes all ordered pairs (a,b) where a×b = 63. This includes both (7,9) and (9,7), etc."
+            },
+            {
+                id: 39,
+                part: "Relations",
+                difficulty: 2,
+                question: "In the prime power relation {(p, n) | p prime, n = p^m for some m ∈ ℕ}, why is (3, 1) included?",
+                options: ["A) 3 is prime and 1 is natural", "B) 3⁰ = 1", "C) 1 is always included", "D) It's a special case"],
+                correctAnswer: 1,
+                explanation: "Since m ∈ ℕ and 0 ∈ ℕ in this course, m can be 0. Thus 3⁰ = 1, so (3,1) is in the relation."
+            },
+            {
+                id: 40,
+                part: "Relations",
+                difficulty: 3,
+                question: "A relation R on set A is reflexive if:",
+                options: ["A) (a,a) ∈ R for all a ∈ A", "B) If (a,b) ∈ R then (b,a) ∈ R", "C) If (a,b) ∈ R and (b,c) ∈ R then (a,c) ∈ R", "D) R = A × A"],
+                correctAnswer: 0,
+                explanation: "Reflexive means every element relates to itself."
+            },
+            {
+                id: 41,
+                part: "Relations",
+                difficulty: 2,
+                question: "For relation R = {(x, y) | x, y ∈ ℕ, x + y = 10}, how many pairs are in R?",
+                options: ["A) 10", "B) 11", "C) 9", "D) Infinite"],
+                correctAnswer: 1,
+                explanation: "Since 0 ∈ ℕ, the pairs are: (0,10), (1,9), (2,8), ..., (10,0) = 11 pairs."
+            },
+            {
+                id: 42,
+                part: "Relations",
+                difficulty: 2,
+                question: "Which correctly expresses 'primes less than 20'?",
+                options: ["A) {p | p ∈ ℕ, p ≠ 1, factors(p) = {1, p}, p < 20}", "B) {2, 3, 5, 7, 11, 13, 17, 19}", "C) Both are correct", "D) Neither is correct"],
+                correctAnswer: 2,
+                explanation: "Both explicitly list the set and use set comprehension correctly."
+            },
+            {
+                id: 43,
+                part: "Relations",
+                difficulty: 3,
+                question: "If R₁ relates months with same last 4 letters, and R₂ relates months with same number of days, R₃ = {(a,c) | for some b, (a,b) ∈ R₁ and (b,c) ∈ R₂}. Is (December, June) ∈ R₃?",
+                options: ["A) Yes, via September", "B) Yes, via November", "C) No", "D) Cannot determine"],
+                correctAnswer: 0,
+                explanation: "(December, September) ∈ R₁ (both end in 'ember'), and (September, June) ∈ R₂ (both have 30 days), so (December, June) ∈ R₃."
+            },
+            {
+                id: 44,
+                part: "Relations",
+                difficulty: 2,
+                question: "What makes a relation an equivalence relation?",
+                options: ["A) Reflexive only", "B) Symmetric only", "C) Reflexive, symmetric, and transitive", "D) Bijective"],
+                correctAnswer: 2,
+                explanation: "Equivalence relations must satisfy all three properties: reflexive, symmetric, and transitive."
+            },
+            {
+                id: 45,
+                part: "Relations",
+                difficulty: 2,
+                question: "Is every relation a function?",
+                options: ["A) Yes, always", "B) No, only if single-valued and defined on entire domain", "C) Only if reflexive", "D) Only if bijective"],
+                correctAnswer: 1,
+                explanation: "A function is a special relation that is single-valued (each input has exactly one output) and defined on the entire domain."
+            },
+
+            // PART 4: FUNCTIONS (Q46-Q70)
+            {
+                id: 46,
+                part: "Functions",
+                difficulty: 2,
+                question: "For f(x) = x² + 2 with domain ℝ, which is correct?",
+                options: ["A) f is injective", "B) f(-1) = f(1) = 3, so f is not injective", "C) f is surjective", "D) f is bijective"],
+                correctAnswer: 1,
+                explanation: "f(-1) = (-1)² + 2 = 3 and f(1) = 1² + 2 = 3. Since different inputs give same output, f is NOT injective."
+            },
+            {
+                id: 47,
+                part: "Functions",
+                difficulty: 3,
+                question: "Consider f(x) = √(x+2) / (x-3). What is the domain if f must be real-valued?",
+                options: ["A) {x ∈ ℝ | x ≥ -2}", "B) {x ∈ ℝ | x ≥ -2, x ≠ 3}", "C) {x ∈ ℝ | x > -2}", "D) All real numbers"],
+                correctAnswer: 1,
+                explanation: "Need x + 2 ≥ 0 (for square root), so x ≥ -2. Need x - 3 ≠ 0 (can't divide by zero), so x ≠ 3. Domain: {x ∈ ℝ | x ≥ -2, x ≠ 3}"
+            },
+            {
+                id: 48,
+                part: "Functions",
+                difficulty: 2,
+                question: "Which function is injective?",
+                options: ["A) f(x) = x²", "B) f(x) = 3x + 5", "C) f(x) = |x|", "D) f(x) = sin(x)"],
+                correctAnswer: 1,
+                explanation: "Linear functions f(x) = mx + c with m ≠ 0 are injective. The others have f(a) = f(-a) or repeat values."
+            },
+            {
+                id: 49,
+                part: "Functions",
+                difficulty: 2,
+                question: "Is f(x) = 3x + 5 surjective from ℝ to ℝ?",
+                options: ["A) Yes", "B) No", "C) Only if domain is ℤ", "D) Cannot determine"],
+                correctAnswer: 0,
+                explanation: "For any y ∈ ℝ, we can solve y = 3x + 5 to get x = (y-5)/3 ∈ ℝ. So every y is achieved, making f surjective."
+            },
+            {
+                id: 50,
+                part: "Functions",
+                difficulty: 3,
+                question: "Is f(x) = 2x bijective from ℤ to ℤ?",
+                options: ["A) Yes", "B) No, not surjective (odd numbers not in range)", "C) No, not injective", "D) Yes, but only for positive integers"],
+                correctAnswer: 1,
+                explanation: "f(ℤ) = {even integers}. Odd integers like 1, 3, 5 are not in the range, so f is not surjective."
+            },
+            {
+                id: 51,
+                part: "Functions",
+                difficulty: 2,
+                question: "For f(x) = √x, if codomain is ℝ, what is the domain?",
+                options: ["A) ℝ", "B) ℝ≥0", "C) ℝ>0", "D) ℕ"],
+                correctAnswer: 1,
+                explanation: "Square root is only defined for non-negative real numbers if we want real outputs."
+            },
+            {
+                id: 52,
+                part: "Functions",
+                difficulty: 2,
+                question: "What is the range of f(x) = x²?",
+                options: ["A) ℝ", "B) ℝ≥0", "C) ℝ>0", "D) ℤ"],
+                correctAnswer: 1,
+                explanation: "x² is always non-negative, and can equal any non-negative real (including 0)."
+            },
+            {
+                id: 53,
+                part: "Functions",
+                difficulty: 3,
+                question: "If f(x) = k²x + 6 for x < 1 and f(x) = 5kx for x ≥ 1, for what value of k is f continuous at x = 1?",
+                options: ["A) 2", "B) 3", "C) 4", "D) 6"],
+                correctAnswer: 1,
+                explanation: "For continuity at x=1: k²(1) + 6 = 5k(1). Therefore k² + 6 = 5k, so k² - 5k + 6 = 0. Factoring: (k-2)(k-3) = 0, giving k = 2 or k = 3."
+            },
+            {
+                id: 54,
+                part: "Functions",
+                difficulty: 2,
+                question: "If f(x) = x + 1 and g(x) = 2x, what is (f ∘ g)(3)?",
+                options: ["A) 7", "B) 8", "C) 6", "D) 5"],
+                correctAnswer: 0,
+                explanation: "(f ∘ g)(3) = f(g(3)) = f(6) = 6 + 1 = 7"
+            },
+            {
+                id: 55,
+                part: "Functions",
+                difficulty: 2,
+                question: "If f(x) = 3x + 5 is bijective, what is f⁻¹(x)?",
+                options: ["A) (x - 5)/3", "B) x/3 - 5", "C) 3/(x - 5)", "D) (x + 5)/3"],
+                correctAnswer: 0,
+                explanation: "Solve y = 3x + 5 for x: x = (y-5)/3, so f⁻¹(x) = (x-5)/3"
+            },
+            {
+                id: 56,
+                part: "Functions",
+                difficulty: 3,
+                question: "How many bijections exist from {1,2,3} to {a,b,c}?",
+                options: ["A) 3", "B) 6", "C) 9", "D) Infinite"],
+                correctAnswer: 1,
+                explanation: "Bijections are one-to-one correspondences, equivalent to permutations. 3! = 6 bijections."
+            },
+            {
+                id: 57,
+                part: "Functions",
+                difficulty: 2,
+                question: "What is the associated relation for f(x) = x²?",
+                options: ["A) {(x, y) | y = x²}", "B) {(x, y) | x = y²}", "C) {(x, x²) | x ∈ ℝ}", "D) Both A and C"],
+                correctAnswer: 3,
+                explanation: "Both describe the same set of ordered pairs (x, x²)."
+            },
+            {
+                id: 58,
+                part: "Functions",
+                difficulty: 2,
+                question: "By convention, what is √25?",
+                options: ["A) ±5", "B) 5 only", "C) -5 only", "D) 5 or -5 depending on context"],
+                correctAnswer: 1,
+                explanation: "By convention, √x means the POSITIVE square root only."
+            },
+            {
+                id: 59,
+                part: "Functions",
+                difficulty: 3,
+                question: "For the line passing through origin and midpoint of the segment joining (0,-4) and (8,0), what is the slope?",
+                options: ["A) 1/2", "B) -1/2", "C) 2", "D) -2"],
+                correctAnswer: 1,
+                explanation: "Midpoint of (0,-4) and (8,0): ((0+8)/2, (-4+0)/2) = (4, -2). Line through origin (0,0) and (4,-2). Slope = (-2-0)/(4-0) = -2/4 = -1/2"
+            },
+            {
+                id: 60,
+                part: "Functions",
+                difficulty: 2,
+                question: "If f: A → B is bijective, what can we conclude?",
+                options: ["A) |A| > |B|", "B) |A| < |B|", "C) |A| = |B|", "D) Cannot determine"],
+                correctAnswer: 2,
+                explanation: "Bijections establish one-to-one correspondence, so sets have equal cardinality."
+            },
+            {
+                id: 61,
+                part: "Functions",
+                difficulty: 2,
+                question: "For f(x) = 3x + 5, what is f(2)?",
+                options: ["A) 8", "B) 11", "C) 10", "D) 13"],
+                correctAnswer: 1,
+                explanation: "f(2) = 3(2) + 5 = 6 + 5 = 11"
+            },
+            {
+                id: 62,
+                part: "Functions",
+                difficulty: 3,
+                question: "If p(x) is a polynomial and p(2) = 0, what must be true?",
+                options: ["A) (x-2) is a factor of p(x)", "B) (x+2) is a factor of p(x)", "C) x is a factor of p(x)", "D) 2 is a factor of p(x)"],
+                correctAnswer: 0,
+                explanation: "By the Factor Theorem, if p(a) = 0, then (x-a) is a factor. Since p(2) = 0, (x-2) is a factor."
+            },
+            {
+                id: 63,
+                part: "Functions",
+                difficulty: 3,
+                question: "For g(x) = x² - 2x - 3, which values make g(x) = 0?",
+                options: ["A) x = 3 and x = -1", "B) x = 3 and x = 1", "C) x = -3 and x = 1", "D) x = -3 and x = -1"],
+                correctAnswer: 0,
+                explanation: "x² - 2x - 3 = (x-3)(x+1) = 0, so x = 3 or x = -1"
+            },
+            {
+                id: 64,
+                part: "Functions",
+                difficulty: 2,
+                question: "The system x + y = 3 and x - y = 1 has:",
+                options: ["A) No solution", "B) Exactly one solution", "C) Two solutions", "D) Infinitely many solutions"],
+                correctAnswer: 1,
+                explanation: "Adding equations: 2x = 4, so x = 2. Then y = 1. Unique solution: (2,1)."
+            },
+            {
+                id: 65,
+                part: "Functions",
+                difficulty: 2,
+                question: "The mean of the first n natural numbers (1 to n) is:",
+                options: ["A) n", "B) n(n+1)/2", "C) (n+1)/2", "D) n/2"],
+                correctAnswer: 2,
+                explanation: "Sum of first n natural numbers (1 to n) = n(n+1)/2. Mean = sum/count = [n(n+1)/2] / n = (n+1)/2"
+            },
+            {
+                id: 66,
+                part: "Functions",
+                difficulty: 3,
+                question: "Two dice are rolled. What is the probability that the sum is 10?",
+                options: ["A) 1/12", "B) 2/9", "C) 3/36", "D) 1/9"],
+                correctAnswer: 0,
+                explanation: "Ways to get sum of 10: (4,6), (5,5), (6,4) = 3 ways out of 36 total. Probability = 3/36 = 1/12"
+            },
+            {
+                id: 67,
+                part: "Functions",
+                difficulty: 2,
+                question: "If |n-1| - 1 = 0, what are the possible values of n?",
+                options: ["A) 0", "B) 2", "C) 0 and 2", "D) 1"],
+                correctAnswer: 2,
+                explanation: "|n-1| = 1, so n-1 = 1 or n-1 = -1, giving n = 2 or n = 0"
+            },
+            {
+                id: 68,
+                part: "Functions",
+                difficulty: 3,
+                question: "Which is logically equivalent to 'An ant is red or black'?",
+                options: ["A) If an insect is not red or black, it is not an ant", "B) If an insect is an ant, then it is red or black", "C) If an insect is neither red nor black, it is not an ant", "D) All of the above"],
+                correctAnswer: 3,
+                explanation: "All are equivalent forms (contrapositive and restatements) of the original statement."
+            },
+            {
+                id: 69,
+                part: "Functions",
+                difficulty: 2,
+                question: "What is the range of f(x) = 5x² + 3?",
+                options: ["A) ℝ", "B) ℝ≥3", "C) ℝ>3", "D) ℝ≥0"],
+                correctAnswer: 1,
+                explanation: "Since x² ≥ 0, we have 5x² ≥ 0, so 5x² + 3 ≥ 3. The range is [3, ∞)."
+            },
+            {
+                id: 70,
+                part: "Functions",
+                difficulty: 2,
+                question: "If f: A → B is injective, what can we say?",
+                options: ["A) |A| ≤ |B|", "B) |A| ≥ |B|", "C) |A| = |B|", "D) Nothing about cardinalities"],
+                correctAnswer: 0,
+                explanation: "Injective means distinct elements map to distinct elements, so A can't be larger than B."
+            },
+
+            // PART 5: PRIME NUMBERS (Q71-Q80)
+            {
+                id: 71,
+                part: "Prime Numbers",
+                difficulty: 1,
+                question: "What is a prime number?",
+                options: ["A) Any odd number", "B) A number with exactly two factors: 1 and itself", "C) A number greater than 1", "D) A number divisible only by 1"],
+                correctAnswer: 1,
+                explanation: "Primes have exactly two distinct factors: 1 and the number itself."
+            },
+            {
+                id: 72,
+                part: "Prime Numbers",
+                difficulty: 1,
+                question: "Is 1 a prime number?",
+                options: ["A) Yes", "B) No, it has only one factor", "C) Sometimes", "D) Yes, it's the first prime"],
+                correctAnswer: 1,
+                explanation: "1 is NOT prime because it has only ONE factor (itself), not two."
+            },
+            {
+                id: 73,
+                part: "Prime Numbers",
+                difficulty: 2,
+                question: "What is the smallest prime number?",
+                options: ["A) 0", "B) 1", "C) 2", "D) 3"],
+                correctAnswer: 2,
+                explanation: "2 is the smallest and only even prime number."
+            },
+            {
+                id: 74,
+                part: "Prime Numbers",
+                difficulty: 3,
+                question: "If n = 2³ × 3² × 5, how many divisors does n have?",
+                options: ["A) 24", "B) (3+1)(2+1)(1+1) = 24", "C) 10", "D) 30"],
+                correctAnswer: 0,
+                explanation: "Number of divisors = (3+1)(2+1)(1+1) = 4 × 3 × 2 = 24"
+            },
+            {
+                id: 75,
+                part: "Prime Numbers",
+                difficulty: 2,
+                question: "What is the prime factorization of 60?",
+                options: ["A) 2 × 30", "B) 2² × 3 × 5", "C) 4 × 15", "D) 6 × 10"],
+                correctAnswer: 1,
+                explanation: "60 = 2 × 30 = 2 × 2 × 15 = 2 × 2 × 3 × 5 = 2² × 3 × 5"
+            },
+            {
+                id: 76,
+                part: "Prime Numbers",
+                difficulty: 2,
+                question: "What is the Sieve of Eratosthenes used for?",
+                options: ["A) Finding prime factorization", "B) Finding all primes up to n", "C) Finding GCD", "D) Testing primality of large numbers"],
+                correctAnswer: 1,
+                explanation: "The sieve systematically eliminates multiples to find all primes up to a given number."
+            },
+            {
+                id: 77,
+                part: "Prime Numbers",
+                difficulty: 3,
+                question: "Are there infinitely many prime numbers?",
+                options: ["A) No, there are exactly 100", "B) Yes", "C) Unknown", "D) No, finitely many"],
+                correctAnswer: 1,
+                explanation: "Proven by Euclid, there are infinitely many primes."
+            },
+            {
+                id: 78,
+                part: "Prime Numbers",
+                difficulty: 2,
+                question: "What is special about prime factorization?",
+                options: ["A) It exists for all integers > 1", "B) It is unique", "C) Both A and B", "D) It always contains 2"],
+                correctAnswer: 2,
+                explanation: "Fundamental Theorem of Arithmetic: every integer > 1 has a unique prime factorization."
+            },
+            {
+                id: 79,
+                part: "Prime Numbers",
+                difficulty: 2,
+                question: "Is 2 the only even prime?",
+                options: ["A) Yes", "B) No, 4 is also prime", "C) No, there are infinitely many even primes", "D) No, 0 is also an even prime"],
+                correctAnswer: 0,
+                explanation: "All even numbers except 2 are divisible by 2, hence not prime."
+            },
+            {
+                id: 80,
+                part: "Prime Numbers",
+                difficulty: 3,
+                question: "Using prime factorization, what is gcd(72, 108)?",
+                options: ["A) 36", "B) 18", "C) 12", "D) 9"],
+                correctAnswer: 0,
+                explanation: "72 = 2³ × 3², 108 = 2² × 3³. gcd = 2² × 3² = 4 × 9 = 36"
+            },
+
+            // PART 6: COUNTABILITY AND INFINITY (Q81-Q100)
+            {
+                id: 81,
+                part: "Countability and Infinity",
+                difficulty: 1,
+                question: "What is a countable set?",
+                options: ["A) A finite set", "B) A set with a bijection to ℕ", "C) A set we can enumerate", "D) Both B and C"],
+                correctAnswer: 3,
+                explanation: "Countable means can be put in one-to-one correspondence with natural numbers, i.e., can be enumerated."
+            },
+            {
+                id: 82,
+                part: "Countability and Infinity",
+                difficulty: 1,
+                question: "Who systematically studied degrees of infinity?",
+                options: ["A) Pythagoras", "B) Euclid", "C) Georg Cantor", "D) Hippasus"],
+                correctAnswer: 2,
+                explanation: "Georg Cantor developed set theory and studied infinite cardinalities in the 1870s."
+            },
+            {
+                id: 83,
+                part: "Countability and Infinity",
+                difficulty: 2,
+                question: "Is ℕ countable?",
+                options: ["A) No", "B) Yes, by definition", "C) Only if finite", "D) Unknown"],
+                correctAnswer: 1,
+                explanation: "ℕ is countable by definition (identity bijection with itself)."
+            },
+            {
+                id: 84,
+                part: "Countability and Infinity",
+                difficulty: 2,
+                question: "Is ℤ countable?",
+                options: ["A) No, it's twice as large as ℕ", "B) Yes", "C) Only positive integers are countable", "D) Unknown"],
+                correctAnswer: 1,
+                explanation: "Despite including negative numbers, ℤ is countable via enumeration: 0, 1, -1, 2, -2, 3, -3, ..."
+            },
+            {
+                id: 85,
+                part: "Countability and Infinity",
+                difficulty: 3,
+                question: "What bijection proves ℤ is countable?",
+                options: ["A) f(n) = n", "B) f(n) = 2n", "C) f(0)=0, f(i)=(i+1)/2 if odd, f(i)=-i/2 if even", "D) f(n) = -n"],
+                correctAnswer: 2,
+                explanation: "This bijection interleaves positive and negative integers systematically."
+            },
+            {
+                id: 86,
+                part: "Countability and Infinity",
+                difficulty: 2,
+                question: "Is ℚ countable?",
+                options: ["A) No, it's dense", "B) Yes", "C) Only if restricted to [0,1]", "D) Unknown"],
+                correctAnswer: 1,
+                explanation: "Despite density, ℚ is countable via diagonal enumeration of ℕ × ℕ."
+            },
+            {
+                id: 87,
+                part: "Countability and Infinity",
+                difficulty: 3,
+                question: "What technique enumerates ℕ × ℕ?",
+                options: ["A) Vertical listing", "B) Horizontal listing", "C) Diagonal enumeration", "D) Random enumeration"],
+                correctAnswer: 2,
+                explanation: "Cantor's diagonal argument systematically lists all pairs: (0,0), (1,0), (0,1), (2,0), (1,1), (0,2), ..."
+            },
+            {
+                id: 88,
+                part: "Countability and Infinity",
+                difficulty: 2,
+                question: "Is ℝ countable?",
+                options: ["A) Yes", "B) No", "C) Only rationals in ℝ are countable", "D) Unknown"],
+                correctAnswer: 1,
+                explanation: "Cantor proved ℝ is uncountable using diagonalization."
+            },
+            {
+                id: 89,
+                part: "Countability and Infinity",
+                difficulty: 3,
+                question: "What does Cantor's diagonalization prove?",
+                options: ["A) Bijection exists", "B) ℝ is uncountable", "C) ℚ is countable", "D) All sets are countable"],
+                correctAnswer: 1,
+                explanation: "By constructing a real number not in any assumed enumeration, Cantor proved no enumeration of ℝ exists."
+            },
+            {
+                id: 90,
+                part: "Countability and Infinity",
+                difficulty: 2,
+                question: "Compare |ℕ| and |ℤ|:",
+                options: ["A) |ℕ| < |ℤ|", "B) |ℕ| = |ℤ|", "C) |ℕ| > |ℤ|", "D) Cannot compare"],
+                correctAnswer: 1,
+                explanation: "Both are countably infinite, so equal cardinality."
+            },
+            {
+                id: 91,
+                part: "Countability and Infinity",
+                difficulty: 2,
+                question: "Compare |ℤ| and |ℚ|:",
+                options: ["A) |ℤ| < |ℚ|", "B) |ℤ| = |ℚ|", "C) |ℤ| > |ℚ|", "D) Cannot compare"],
+                correctAnswer: 1,
+                explanation: "Both are countably infinite."
+            },
+            {
+                id: 92,
+                part: "Countability and Infinity",
+                difficulty: 3,
+                question: "Compare |ℚ| and |ℝ|:",
+                options: ["A) |ℚ| < |ℝ|", "B) |ℚ| = |ℝ|", "C) |ℚ| > |ℝ|", "D) Cannot compare"],
+                correctAnswer: 0,
+                explanation: "ℚ is countable, ℝ is uncountable, so |ℚ| < |ℝ|."
+            },
+            {
+                id: 93,
+                part: "Countability and Infinity",
+                difficulty: 2,
+                question: "Are irrational numbers countable?",
+                options: ["A) Yes", "B) No, uncountable", "C) Only algebraic irrationals", "D) Unknown"],
+                correctAnswer: 1,
+                explanation: "Since ℝ = ℚ ∪ {irrationals}, and ℝ is uncountable while ℚ is countable, irrationals must be uncountable."
+            },
+            {
+                id: 94,
+                part: "Countability and Infinity",
+                difficulty: 3,
+                question: "What is the Continuum Hypothesis?",
+                options: ["A) ℝ is continuous", "B) Is there a set between |ℕ| and |ℝ| in size?", "C) All sets are countable", "D) ℚ is dense"],
+                correctAnswer: 1,
+                explanation: "The Continuum Hypothesis asks if there exists a set with cardinality strictly between ℕ and ℝ."
+            },
+            {
+                id: 95,
+                part: "Countability and Infinity",
+                difficulty: 3,
+                question: "What did Paul Cohen prove about the Continuum Hypothesis?",
+                options: ["A) It is true", "B) It is false", "C) It is independent of set theory axioms", "D) It is provable"],
+                correctAnswer: 2,
+                explanation: "Cohen showed (1960s) that CH is independent—cannot be proved or disproved from standard set theory axioms."
+            },
+            {
+                id: 96,
+                part: "Countability and Infinity",
+                difficulty: 2,
+                question: "Is ℕ × ℕ countable?",
+                options: ["A) No", "B) Yes, via diagonal enumeration", "C) Only if restricted", "D) Unknown"],
+                correctAnswer: 1,
+                explanation: "Can enumerate systematically by diagonals, proving countability."
+            },
+            {
+                id: 97,
+                part: "Countability and Infinity",
+                difficulty: 3,
+                question: "What is |ℕ ∪ ℤ ∪ ℚ|?",
+                options: ["A) |ℕ|", "B) |ℚ|", "C) Same cardinality (all countable)", "D) |ℝ|"],
+                correctAnswer: 2,
+                explanation: "Union of countable sets is countable, so all have same cardinality as ℕ."
+            },
+            {
+                id: 98,
+                part: "Countability and Infinity",
+                difficulty: 2,
+                question: "Is [0,1] countable?",
+                options: ["A) Yes, it's a small interval", "B) No, it's uncountable", "C) Only if we include just rationals", "D) Yes, we can list all decimals"],
+                correctAnswer: 1,
+                explanation: "[0,1] contains all reals between 0 and 1, which is uncountable."
+            },
+            {
+                id: 99,
+                part: "Countability and Infinity",
+                difficulty: 3,
+                question: "Which has more elements: ℚ or irrationals?",
+                options: ["A) ℚ", "B) Irrationals (uncountably more)", "C) Same", "D) Cannot determine"],
+                correctAnswer: 1,
+                explanation: "ℚ is countable, irrationals are uncountable, so vastly more irrationals."
+            },
+            {
+                id: 100,
+                part: "Countability and Infinity",
+                difficulty: 2,
+                question: "Can we enumerate all real numbers in [0,1]?",
+                options: ["A) Yes", "B) No, Cantor proved it's impossible", "C) Only if we use binary", "D) Only rationals can be enumerated"],
+                correctAnswer: 1,
+                explanation: "Cantor's diagonalization proves no enumeration of [0,1] exists."
+            }
+        ];
+
+        // Quiz State
+        let userAnswers = {};
+        let filteredQuestions = [...quizData];
+        let currentFilter = { part: 'all', difficulty: 'all' };
+
+        // Initialize Quiz
+        function initQuiz() {
+            renderQuestions();
+            updateStats();
+            // Typeset math after rendering
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        // Render Questions
+        function renderQuestions() {
+            const container = document.getElementById('quizContent');
+            container.innerHTML = '';
+
+            filteredQuestions.forEach(q => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-card';
+                questionDiv.style.cssText = 'background: white; padding: 25px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+
+                const difficultyStars = '★'.repeat(q.difficulty);
+
+                questionDiv.innerHTML = `
+                    <div class="question-header">
+                        <span class="question-part">${q.part}</span>
+                        <span class="difficulty-indicator">${difficultyStars}</span>
+                    </div>
+                    <h3 style="margin: 15px 0;">Question ${q.id}</h3>
+                    <p style="font-size: 1.1em; line-height: 1.6; margin: 15px 0;">${q.question}</p>
+                    <div class="options-container">
+                        ${q.options.map((opt, idx) => `
+                            <div class="option" data-question="${q.id}" data-option="${idx}" onclick="selectAnswer(${q.id}, ${idx})">
+                                ${opt}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="explanation" id="explanation-${q.id}">
+                        <h4>Explanation:</h4>
+                        <p>${q.explanation}</p>
+                    </div>
+                `;
+
+                container.appendChild(questionDiv);
+            });
+
+            // Restore user selections
+            Object.keys(userAnswers).forEach(qId => {
+                const answer = userAnswers[qId];
+                const option = document.querySelector(`[data-question="${qId}"][data-option="${answer.selected}"]`);
+                if (option) {
+                    option.classList.add('selected');
+                    if (answer.checked) {
+                        showFeedback(parseInt(qId));
+                    }
+                }
+            });
+        }
+
+        // Select Answer
+        function selectAnswer(questionId, optionIndex) {
+            const question = quizData.find(q => q.id === questionId);
+
+            // Clear previous selection
+            document.querySelectorAll(`[data-question="${questionId}"]`).forEach(opt => {
+                opt.classList.remove('selected', 'correct', 'incorrect');
+            });
+
+            // Mark new selection
+            const selectedOption = document.querySelector(`[data-question="${questionId}"][data-option="${optionIndex}"]`);
+            selectedOption.classList.add('selected');
+
+            // Store answer
+            userAnswers[questionId] = {
+                selected: optionIndex,
+                correct: optionIndex === question.correctAnswer,
+                checked: true
+            };
+
+            // Show feedback
+            showFeedback(questionId);
+            updateStats();
+
+            // Typeset math in explanation
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        // Show Feedback
+        function showFeedback(questionId) {
+            const question = quizData.find(q => q.id === questionId);
+            const answer = userAnswers[questionId];
+
+            document.querySelectorAll(`[data-question="${questionId}"]`).forEach((opt, idx) => {
+                if (idx === question.correctAnswer) {
+                    opt.classList.add('correct');
+                } else if (idx === answer.selected && !answer.correct) {
+                    opt.classList.add('incorrect');
+                }
+            });
+
+            const explanation = document.getElementById(`explanation-${questionId}`);
+            if (explanation) {
+                explanation.classList.add('show');
+            }
+        }
+
+        // Update Stats
+        function updateStats() {
+            const answered = Object.keys(userAnswers).length;
+            const correct = Object.values(userAnswers).filter(a => a.correct).length;
+            const total = filteredQuestions.length;
+            const score = total > 0 ? Math.round((correct / total) * 100) : 0;
+
+            document.getElementById('totalQuestions').textContent = total;
+            document.getElementById('answeredCount').textContent = answered;
+            document.getElementById('correctCount').textContent = correct;
+            document.getElementById('scorePercent').textContent = score + '%';
+        }
+
+        // Apply Filters
+        function applyFilters() {
+            const partFilter = document.getElementById('partFilter').value;
+            const difficultyFilter = document.getElementById('difficultyFilter').value;
+
+            filteredQuestions = quizData.filter(q => {
+                const partMatch = partFilter === 'all' || q.part === partFilter;
+                const diffMatch = difficultyFilter === 'all' || q.difficulty === parseInt(difficultyFilter);
+                return partMatch && diffMatch;
+            });
+
+            renderQuestions();
+            updateStats();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Typeset math after filtering
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        // Reset Quiz
+        function resetQuiz() {
+            if (confirm('Are you sure you want to reset the quiz? All your answers will be cleared.')) {
+                userAnswers = {};
+                filteredQuestions = [...quizData];
+                document.getElementById('partFilter').value = 'all';
+                document.getElementById('difficultyFilter').value = 'all';
+                renderQuestions();
+                updateStats();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Show Results
+        function showResults() {
+            const total = filteredQuestions.length;
+            const answered = Object.keys(userAnswers).length;
+            const correct = Object.values(userAnswers).filter(a => a.correct).length;
+            const score = Math.round((correct / total) * 100);
+
+            const resultsBody = document.getElementById('resultsBody');
+            resultsBody.innerHTML = `
+                <div style="text-align: center;">
+                    <h3 style="font-size: 3em; color: ${score >= 70 ? '#28a745' : '#dc3545'}; margin: 20px 0;">${score}%</h3>
+                    <p style="font-size: 1.2em; margin: 10px 0;">You got <strong>${correct}</strong> out of <strong>${total}</strong> questions correct!</p>
+                    <p style="color: #666; margin: 10px 0;">Answered: ${answered}/${total}</p>
+                    ${score >= 70 ? '<p style="color: #28a745; font-weight: bold;">Great job! You passed!</p>' : '<p style="color: #dc3545;">Keep practicing to improve your score!</p>'}
+                </div>
+            `;
+
+            document.getElementById('resultsModal').style.display = 'flex';
+        }
+
+        // Close Results
+        function closeResults() {
+            document.getElementById('resultsModal').style.display = 'none';
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initQuiz);
+    </script>
 </body>
 </html>

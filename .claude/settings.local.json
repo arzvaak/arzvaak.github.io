@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//i/IITM NOTES PAGES/**)",
+      "Bash(tree:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

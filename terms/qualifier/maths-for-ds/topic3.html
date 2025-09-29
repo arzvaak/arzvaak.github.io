@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 3: Real Numbers and Irrational Numbers | Mathematics for Data Science</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/notes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../../index.html">📚 IITM Notes</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="../maths-for-ds.html" class="nav-link">Math for DS</a>
+                <a href="topics-overview.html" class="nav-link">Topics Overview</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="notes-container">
+        <!-- Topic Progress Header -->
+        <div class="topic-progress-header">
+            <div class="topic-breadcrumb">
+                <a href="../../../index.html">Home</a> >
+                <a href="../maths-for-ds.html">Math for DS</a> >
+                <a href="topics-overview.html">Topics</a> >
+                <span>Topic 3</span>
+            </div>
+            <div class="topic-progress-bar">
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 30%;"></div>
+                </div>
+                <span class="progress-label">Topic 3 of 10</span>
+            </div>
+        </div>
+
+        <div class="notes-header">
+            <h1>∞ Topic 3: Real Numbers and Irrational Numbers</h1>
+            <div class="topic-meta">
+                <span class="topic-badge">Topic 3/10</span>
+                <span class="difficulty-badge">⭐⭐⭐ Advanced</span>
+                <span class="time-badge">⏱️ ~25 min</span>
+            </div>
+        </div>
+
+        <div class="notes-content">
+            <!-- Learning Objectives -->
+            <div class="learning-objectives">
+                <h2>🎯 Learning Objectives</h2>
+                <ul>
+                    <li>Understand the definition and properties of real numbers (ℝ)</li>
+                    <li>Explore the motivation for irrational numbers</li>
+                    <li>Master the proof that √2 is irrational (both geometric and algebraic)</li>
+                    <li>Learn about famous irrational numbers like π and e</li>
+                    <li>Understand decimal expansions and their properties</li>
+                    <li>Discover the historical context of irrational number discovery</li>
+                </ul>
+            </div>
+
+            <!-- Section 3.1: Beyond Rationals -->
+            <section id="beyond-rationals">
+                <h2>3.1 Beyond Rationals - Why We Need More Numbers</h2>
+
+                <div class="motivation-box">
+                    <h3>🤔 The Problem with Rationals</h3>
+                    <p>Are rational numbers enough to represent every point on the number line?</p>
+                    <p>Consider square roots:</p>
+                </div>
+
+                <div class="square-root-exploration">
+                    <h3>📊 Perfect Squares and Their Roots</h3>
+                    <div class="perfect-squares-grid">
+                        <div class="square-pair">
+                            <div class="number">1²</div>
+                            <div class="arrow">→</div>
+                            <div class="result">√1 = 1</div>
+                        </div>
+                        <div class="square-pair">
+                            <div class="number">2²</div>
+                            <div class="arrow">→</div>
+                            <div class="result">√4 = 2</div>
+                        </div>
+                        <div class="square-pair">
+                            <div class="number">3²</div>
+                            <div class="arrow">→</div>
+                            <div class="result">√9 = 3</div>
+                        </div>
+                        <div class="square-pair">
+                            <div class="number">4²</div>
+                            <div class="arrow">→</div>
+                            <div class="result">√16 = 4</div>
+                        </div>
+                        <div class="square-pair">
+                            <div class="number">5²</div>
+                            <div class="arrow">→</div>
+                            <div class="result">√25 = 5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <h3>❓ The Critical Question</h3>
+                    <p>What about √2, √3, √5, √6, √7, √8, ...?</p>
+                    <p>These numbers exist (they have a position on the number line), but are they rational?</p>
+                </div>
+
+                <div class="geometric-motivation">
+                    <h3>📐 Geometric Motivation: The Unit Square</h3>
+                    <div class="unit-square-demo">
+                        <div class="square-diagram">
+                            <div class="square">
+                                <div class="side-label top">1</div>
+                                <div class="side-label right">1</div>
+                                <div class="diagonal">√2</div>
+                                <div class="square-content">
+                                    <span class="diagonal-line"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <p><strong>By Pythagorean Theorem:</strong></p>
+                            <div class="formula">
+                                $$\text{diagonal}^2 = 1^2 + 1^2 = 2$$
+                            </div>
+                            <p>Therefore: <strong>diagonal = √2</strong></p>
+                            <p>This length clearly exists, but is √2 a rational number?</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3.2: Real Numbers Definition -->
+            <section id="real-numbers">
+                <h2>3.2 Real Numbers (ℝ)</h2>
+
+                <div class="definition-box">
+                    <h3>📚 Definition</h3>
+                    <p><strong>Real Numbers (ℝ):</strong> The union of all rational and irrational numbers</p>
+                    <div class="formula">
+                        $$\mathbb{R} = \mathbb{Q} \cup \{\text{all irrational numbers}\}$$
+                    </div>
+                </div>
+
+                <div class="key-property">
+                    <h3>🔑 Key Property</h3>
+                    <p>Every point on the number line corresponds to a <strong>unique</strong> real number</p>
+                    <p>Real numbers <strong>completely fill</strong> the number line with no gaps</p>
+                </div>
+
+                <div class="hierarchy-visualization">
+                    <h3>🏗️ Number System Hierarchy</h3>
+                    <div class="hierarchy-diagram">
+                        <div class="hierarchy-level level-1">
+                            <div class="set-box real">
+                                <h4>Real Numbers (ℝ)</h4>
+                                <p>All points on number line</p>
+                            </div>
+                        </div>
+                        <div class="hierarchy-level level-2">
+                            <div class="set-box rational">
+                                <h4>Rational Numbers (ℚ)</h4>
+                                <p>p/q form</p>
+                            </div>
+                            <div class="set-box irrational">
+                                <h4>Irrational Numbers</h4>
+                                <p>Not expressible as p/q</p>
+                            </div>
+                        </div>
+                        <div class="hierarchy-level level-3">
+                            <div class="set-box integers">
+                                <h4>Integers (ℤ)</h4>
+                                <p>..., -2, -1, 0, 1, 2, ...</p>
+                            </div>
+                        </div>
+                        <div class="hierarchy-level level-4">
+                            <div class="set-box natural">
+                                <h4>Natural Numbers (ℕ)</h4>
+                                <p>0, 1, 2, 3, ...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formula">
+                        $$\mathbb{N} \subseteq \mathbb{Z} \subseteq \mathbb{Q} \subseteq \mathbb{R}$$
+                    </div>
+                </div>
+
+                <div class="important-note">
+                    <h4>💡 Important Distinction</h4>
+                    <p><strong>Rational:</strong> Can be expressed as a fraction p/q (where p, q ∈ ℤ, q ≠ 0)</p>
+                    <p><strong>Irrational:</strong> Cannot be expressed as a fraction - decimal expansion goes on forever without repeating</p>
+                </div>
+            </section>
+
+            <!-- Section 3.3: Historical Context -->
+            <section id="historical-context">
+                <h2>3.3 Historical Discovery of Irrational Numbers</h2>
+
+                <div class="history-box">
+                    <h3>🏛️ Ancient Greece - The Pythagorean Crisis</h3>
+                    <div class="timeline">
+                        <div class="timeline-event">
+                            <div class="timeline-marker">~500 BCE</div>
+                            <div class="timeline-content">
+                                <h4>Pythagorean Belief</h4>
+                                <p>Pythagoras and his followers believed that <strong>"All is number"</strong></p>
+                                <p>By "number," they meant <strong>rational numbers</strong></p>
+                                <p>They thought every length could be expressed as a ratio of integers</p>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="timeline-marker">~500 BCE</div>
+                            <div class="timeline-content">
+                                <h4>The Diagonal Problem</h4>
+                                <p>Pythagoreans knew the diagonal of a unit square had length √2</p>
+                                <p>They spent years trying to prove √2 was rational</p>
+                                <p><strong>Problem:</strong> They couldn't find integers p and q such that p/q = √2</p>
+                            </div>
+                        </div>
+                        <div class="timeline-event shocking">
+                            <div class="timeline-marker">~500 BCE</div>
+                            <div class="timeline-content">
+                                <h4>Hippasus's Discovery</h4>
+                                <p><strong>Hippasus</strong> proved that √2 is irrational</p>
+                                <p>This shattered the Pythagorean worldview!</p>
+                                <p><strong>Legend:</strong> The Pythagoreans were so disturbed by this discovery that they allegedly drowned Hippasus at sea to suppress the truth</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="impact-box">
+                    <h4>🌊 The Impact</h4>
+                    <p>The discovery of irrational numbers was a <strong>crisis</strong> in ancient mathematics</p>
+                    <p>It showed that reality was more complex than previously thought</p>
+                    <p>It forced mathematicians to develop more sophisticated number systems</p>
+                </div>
+            </section>
+
+            <!-- Section 3.4: Proof that √2 is Irrational -->
+            <section id="sqrt2-proof">
+                <h2>3.4 Proof that √2 is Irrational</h2>
+
+                <div class="theorem-box">
+                    <h3>🏛️ Theorem</h3>
+                    <p><strong>√2 is irrational</strong></p>
+                    <p>i.e., there do not exist integers p and q such that √2 = p/q</p>
+                </div>
+
+                <div class="proof-method-box">
+                    <h3>🔍 Proof Method: Proof by Contradiction</h3>
+                    <p>We'll assume √2 IS rational, and show this leads to a logical impossibility</p>
+                </div>
+
+                <div class="detailed-proof">
+                    <h3>📝 Detailed Proof</h3>
+                    <div class="proof-steps">
+                        <div class="proof-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Assumption (to be contradicted)</h4>
+                                <p>Assume √2 is rational</p>
+                                <p>Then we can write: √2 = p/q where p, q ∈ ℤ, q ≠ 0</p>
+                                <p><strong>Important:</strong> We assume p/q is in <strong>lowest terms</strong> (i.e., gcd(p, q) = 1)</p>
+                            </div>
+                        </div>
+
+                        <div class="proof-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Square both sides</h4>
+                                <div class="formula">
+                                    $$\sqrt{2} = \frac{p}{q}$$
+                                    $$2 = \frac{p^2}{q^2}$$
+                                    $$p^2 = 2q^2$$
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="proof-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Deduce that p is even</h4>
+                                <p>From p² = 2q², we see that <strong>p² is even</strong></p>
+                                <p><strong>Fact:</strong> If p² is even, then p must be even</p>
+                                <p>(Because the square of an odd number is always odd)</p>
+                                <p>Therefore, we can write: <strong>p = 2k</strong> for some integer k</p>
+                            </div>
+                        </div>
+
+                        <div class="proof-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Substitute p = 2k</h4>
+                                <div class="formula">
+                                    $$p^2 = 2q^2$$
+                                    $$(2k)^2 = 2q^2$$
+                                    $$4k^2 = 2q^2$$
+                                    $$2k^2 = q^2$$
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="proof-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>Deduce that q is even</h4>
+                                <p>From 2k² = q², we see that <strong>q² is even</strong></p>
+                                <p>Therefore, <strong>q must be even</strong> too</p>
+                            </div>
+                        </div>
+
+                        <div class="proof-step contradiction">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>Contradiction!</h4>
+                                <p>We've shown that both p and q are even</p>
+                                <p>This means they share a common factor of 2</p>
+                                <p>But we assumed p/q was in <strong>lowest terms</strong> (gcd(p, q) = 1)!</p>
+                                <p><strong>This is a CONTRADICTION</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="proof-step conclusion">
+                            <div class="step-number">✓</div>
+                            <div class="step-content">
+                                <h4>Conclusion</h4>
+                                <p>Our assumption must be wrong</p>
+                                <p>Therefore, <strong>√2 cannot be written as p/q</strong></p>
+                                <p><strong>√2 is irrational</strong> ∎</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="why-box">
+                    <h3>💡 Why This Works</h3>
+                    <p>The proof cleverly uses the <strong>uniqueness of prime factorization</strong></p>
+                    <p>When we square both sides, we create an equation where the left side has an odd power of 2, but the right side has an even power of 2</p>
+                    <p>This is impossible if prime factorization is unique!</p>
+                </div>
+            </section>
+
+            <!-- Section 3.5: More Irrational Numbers -->
+            <section id="more-irrationals">
+                <h2>3.5 Famous Irrational Numbers</h2>
+
+                <div class="irrational-gallery">
+                    <h3>🌟 Gallery of Irrationals</h3>
+                    <div class="irrational-grid">
+                        <div class="irrational-card">
+                            <div class="irrational-symbol">√2</div>
+                            <div class="irrational-name">Square Root of 2</div>
+                            <div class="irrational-value">≈ 1.41421356...</div>
+                            <div class="irrational-desc">
+                                <p>Diagonal of unit square</p>
+                                <p>First known irrational number</p>
+                            </div>
+                        </div>
+
+                        <div class="irrational-card">
+                            <div class="irrational-symbol">√3</div>
+                            <div class="irrational-name">Square Root of 3</div>
+                            <div class="irrational-value">≈ 1.73205080...</div>
+                            <div class="irrational-desc">
+                                <p>Height of equilateral triangle with side 2</p>
+                                <p>Proven irrational by similar method</p>
+                            </div>
+                        </div>
+
+                        <div class="irrational-card highlight">
+                            <div class="irrational-symbol">π</div>
+                            <div class="irrational-name">Pi</div>
+                            <div class="irrational-value">≈ 3.14159265...</div>
+                            <div class="irrational-desc">
+                                <p>Ratio of circumference to diameter</p>
+                                <p>Appears throughout mathematics</p>
+                                <p><strong>Proven irrational in 1761</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="irrational-card highlight">
+                            <div class="irrational-symbol">e</div>
+                            <div class="irrational-name">Euler's Number</div>
+                            <div class="irrational-value">≈ 2.71828182...</div>
+                            <div class="irrational-desc">
+                                <p>Base of natural logarithm</p>
+                                <p>e = 1 + 1/1! + 1/2! + 1/3! + ...</p>
+                                <p><strong>Central to calculus</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="irrational-card">
+                            <div class="irrational-symbol">φ</div>
+                            <div class="irrational-name">Golden Ratio</div>
+                            <div class="irrational-value">≈ 1.61803398...</div>
+                            <div class="irrational-desc">
+                                <p>φ = (1 + √5)/2</p>
+                                <p>Appears in art and nature</p>
+                            </div>
+                        </div>
+
+                        <div class="irrational-card">
+                            <div class="irrational-symbol">√n</div>
+                            <div class="irrational-name">General Pattern</div>
+                            <div class="irrational-value">varies</div>
+                            <div class="irrational-desc">
+                                <p><strong>Theorem:</strong> √n is irrational</p>
+                                <p>whenever n is not a perfect square</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="general-theorem">
+                    <h3>🎓 General Theorem</h3>
+                    <div class="theorem-box">
+                        <p><strong>Theorem:</strong> If n is a positive integer that is not a perfect square, then √n is irrational</p>
+                        <p><strong>Proof:</strong> Similar to the proof for √2, using contradiction and prime factorization</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3.6: Properties of Irrational Numbers -->
+            <section id="properties">
+                <h2>3.6 Properties of Irrational Numbers</h2>
+
+                <div class="properties-showcase">
+                    <h3>🔬 Key Properties</h3>
+
+                    <div class="property-card">
+                        <h4>1. Decimal Expansion</h4>
+                        <p>Irrational numbers have <strong>infinite, non-repeating</strong> decimal expansions</p>
+                        <div class="example-box">
+                            <p>√2 = 1.41421356237309504880168872420969807856967...</p>
+                            <p>π = 3.14159265358979323846264338327950288419716...</p>
+                            <p><strong>These go on forever without ever repeating a pattern!</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="property-card">
+                        <h4>2. Rational vs Irrational Decimals</h4>
+                        <div class="comparison-table">
+                            <div class="comparison-row header">
+                                <div class="comparison-cell">Rational Numbers</div>
+                                <div class="comparison-cell">Irrational Numbers</div>
+                            </div>
+                            <div class="comparison-row">
+                                <div class="comparison-cell">
+                                    <p><strong>Terminating</strong> or <strong>repeating</strong> decimals</p>
+                                    <p>1/4 = 0.25 (terminates)</p>
+                                    <p>1/3 = 0.333... (repeats)</p>
+                                    <p>22/7 = 3.142857142857... (repeats)</p>
+                                </div>
+                                <div class="comparison-cell">
+                                    <p><strong>Non-terminating, non-repeating</strong> decimals</p>
+                                    <p>√2 = 1.414213... (never repeats)</p>
+                                    <p>π = 3.141592... (never repeats)</p>
+                                    <p>e = 2.718281... (never repeats)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="property-card">
+                        <h4>3. Closure Properties</h4>
+                        <div class="closure-examples">
+                            <div class="closure-item">
+                                <div class="closure-label">✓ Rational + Rational</div>
+                                <div class="closure-result">= Rational</div>
+                            </div>
+                            <div class="closure-item">
+                                <div class="closure-label">✗ Rational + Irrational</div>
+                                <div class="closure-result">= Irrational</div>
+                                <p class="closure-note">Example: 1 + √2 is irrational</p>
+                            </div>
+                            <div class="closure-item">
+                                <div class="closure-label">? Irrational + Irrational</div>
+                                <div class="closure-result">= Could be either!</div>
+                                <p class="closure-note">√2 + √2 = 2√2 (irrational)</p>
+                                <p class="closure-note">√2 + (-√2) = 0 (rational)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="property-card">
+                        <h4>4. Density Property</h4>
+                        <p>Like rationals, irrational numbers are also <strong>dense</strong></p>
+                        <p>Between any two real numbers, there exist:</p>
+                        <ul>
+                            <li>Infinitely many rational numbers</li>
+                            <li>Infinitely many irrational numbers</li>
+                        </ul>
+                        <p><strong>Surprising fact:</strong> Despite being dense, rational numbers are "countable" while irrational numbers are "uncountable" (covered in later topics)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3.7: Decimal Expansions -->
+            <section id="decimal-expansions">
+                <h2>3.7 Understanding Decimal Expansions</h2>
+
+                <div class="decimal-explanation">
+                    <h3>🔢 How to Identify Number Types</h3>
+
+                    <div class="identification-flowchart">
+                        <div class="flowchart-box start">
+                            <p>Given a decimal expansion</p>
+                        </div>
+                        <div class="flowchart-arrow">↓</div>
+                        <div class="flowchart-box question">
+                            <p>Does it terminate?</p>
+                        </div>
+                        <div class="flowchart-branches">
+                            <div class="flowchart-branch">
+                                <div class="flowchart-arrow">Yes →</div>
+                                <div class="flowchart-box result rational">
+                                    <p><strong>RATIONAL</strong></p>
+                                    <p>Examples: 0.5, 0.75, 3.125</p>
+                                </div>
+                            </div>
+                            <div class="flowchart-branch">
+                                <div class="flowchart-arrow">No →</div>
+                                <div class="flowchart-box question">
+                                    <p>Does it repeat?</p>
+                                </div>
+                                <div class="flowchart-subbranches">
+                                    <div class="flowchart-subbranch">
+                                        <div class="flowchart-arrow">Yes →</div>
+                                        <div class="flowchart-box result rational">
+                                            <p><strong>RATIONAL</strong></p>
+                                            <p>Examples: 0.333..., 0.142857142857...</p>
+                                        </div>
+                                    </div>
+                                    <div class="flowchart-subbranch">
+                                        <div class="flowchart-arrow">No →</div>
+                                        <div class="flowchart-box result irrational">
+                                            <p><strong>IRRATIONAL</strong></p>
+                                            <p>Examples: √2, π, e</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decimal-examples-detailed">
+                    <h3>📊 Detailed Examples</h3>
+
+                    <div class="decimal-example-card">
+                        <h4>Terminating Decimals (Rational)</h4>
+                        <div class="decimal-showcase">
+                            <div class="decimal-item">
+                                <span class="decimal-value">0.5</span>
+                                <span class="decimal-equals">=</span>
+                                <span class="decimal-fraction">1/2</span>
+                            </div>
+                            <div class="decimal-item">
+                                <span class="decimal-value">0.125</span>
+                                <span class="decimal-equals">=</span>
+                                <span class="decimal-fraction">1/8</span>
+                            </div>
+                            <div class="decimal-item">
+                                <span class="decimal-value">3.75</span>
+                                <span class="decimal-equals">=</span>
+                                <span class="decimal-fraction">15/4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="decimal-example-card">
+                        <h4>Repeating Decimals (Rational)</h4>
+                        <div class="decimal-showcase">
+                            <div class="decimal-item">
+                                <span class="decimal-value">0.333...</span>
+                                <span class="decimal-equals">=</span>
+                                <span class="decimal-fraction">1/3</span>
+                            </div>
+                            <div class="decimal-item">
+                                <span class="decimal-value">0.142857142857...</span>
+                                <span class="decimal-equals">=</span>
+                                <span class="decimal-fraction">1/7</span>
+                            </div>
+                            <div class="decimal-item">
+                                <span class="decimal-value">0.181818...</span>
+                                <span class="decimal-equals">=</span>
+                                <span class="decimal-fraction">2/11</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="decimal-example-card">
+                        <h4>Non-repeating Decimals (Irrational)</h4>
+                        <div class="decimal-showcase">
+                            <div class="decimal-item full-width">
+                                <span class="decimal-value">√2 = 1.414213562373095048801688724209698078569671875376948073176...</span>
+                                <p class="decimal-note">No pattern ever repeats</p>
+                            </div>
+                            <div class="decimal-item full-width">
+                                <span class="decimal-value">π = 3.141592653589793238462643383279502884197169399375105820974...</span>
+                                <p class="decimal-note">Goes on forever without repeating</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Practice Problems -->
+            <section class="practice-section">
+                <h2>🏃 Practice Problems</h2>
+
+                <div class="problem-card">
+                    <h3>Problem 1: Identifying Number Types</h3>
+                    <p>Classify each of the following as rational or irrational:</p>
+                    <p>(a) √16  (b) √7  (c) 0.125  (d) 0.121212...  (e) π/2</p>
+                    <div class="solution" style="display: none;">
+                        <h4>Solutions:</h4>
+                        <ul>
+                            <li>(a) √16 = 4, which is <strong>rational</strong> (integer)</li>
+                            <li>(b) √7 is <strong>irrational</strong> (7 is not a perfect square)</li>
+                            <li>(c) 0.125 = 1/8, which is <strong>rational</strong> (terminating decimal)</li>
+                            <li>(d) 0.121212... = 12/99 = 4/33, which is <strong>rational</strong> (repeating decimal)</li>
+                            <li>(e) π/2 is <strong>irrational</strong> (rational number times irrational = irrational)</li>
+                        </ul>
+                    </div>
+                    <button onclick="toggleSolution(this)" class="toggle-solution">Show Solution</button>
+                </div>
+
+                <div class="problem-card">
+                    <h3>Problem 2: Proof Practice</h3>
+                    <p>Using a proof similar to √2, prove that √3 is irrational.</p>
+                    <div class="solution" style="display: none;">
+                        <h4>Solution:</h4>
+                        <ol>
+                            <li>Assume √3 = p/q in lowest terms</li>
+                            <li>Square both sides: 3 = p²/q², so p² = 3q²</li>
+                            <li>p² is divisible by 3, so p is divisible by 3. Write p = 3k</li>
+                            <li>Substitute: (3k)² = 3q², so 9k² = 3q², so 3k² = q²</li>
+                            <li>q² is divisible by 3, so q is divisible by 3</li>
+                            <li>Both p and q are divisible by 3, contradicting lowest terms</li>
+                            <li>Therefore √3 is irrational ∎</li>
+                        </ol>
+                    </div>
+                    <button onclick="toggleSolution(this)" class="toggle-solution">Show Solution</button>
+                </div>
+
+                <div class="problem-card">
+                    <h3>Problem 3: Decimal Expansions</h3>
+                    <p>Which of the following decimal expansions represent rational numbers?</p>
+                    <p>(a) 0.123123123...  (b) 0.123456789101112...  (c) 2.5000...  (d) 0.1011011101111...</p>
+                    <div class="solution" style="display: none;">
+                        <h4>Solutions:</h4>
+                        <ul>
+                            <li>(a) <strong>Rational</strong> - repeating pattern "123"</li>
+                            <li>(b) <strong>Irrational</strong> - pattern changes (counting numbers), doesn't repeat</li>
+                            <li>(c) <strong>Rational</strong> - terminates at 2.5</li>
+                            <li>(d) <strong>Irrational</strong> - number of 1's keeps increasing, no repeating pattern</li>
+                        </ul>
+                    </div>
+                    <button onclick="toggleSolution(this)" class="toggle-solution">Show Solution</button>
+                </div>
+
+                <div class="problem-card">
+                    <h3>Problem 4: Operations with Irrationals</h3>
+                    <p>Determine whether each result is rational or irrational:</p>
+                    <p>(a) √2 + 3  (b) √2 × √8  (c) √5 + (-√5)  (d) 2√3</p>
+                    <div class="solution" style="display: none;">
+                        <h4>Solutions:</h4>
+                        <ul>
+                            <li>(a) <strong>Irrational</strong> - rational + irrational = irrational</li>
+                            <li>(b) √2 × √8 = √16 = 4, which is <strong>rational</strong></li>
+                            <li>(c) √5 + (-√5) = 0, which is <strong>rational</strong></li>
+                            <li>(d) <strong>Irrational</strong> - rational × irrational (where rational ≠ 0) = irrational</li>
+                        </ul>
+                    </div>
+                    <button onclick="toggleSolution(this)" class="toggle-solution">Show Solution</button>
+                </div>
+
+                <div class="problem-card">
+                    <h3>Problem 5: Geometric Application</h3>
+                    <p>A square has diagonal length 10. What is the side length? Is it rational or irrational?</p>
+                    <div class="solution" style="display: none;">
+                        <h4>Solution:</h4>
+                        <p>Let side length = s</p>
+                        <p>By Pythagorean theorem: s² + s² = 10²</p>
+                        <p>2s² = 100</p>
+                        <p>s² = 50</p>
+                        <p>s = √50 = √(25 × 2) = 5√2</p>
+                        <p><strong>Answer:</strong> Side length = 5√2 ≈ 7.071, which is <strong>irrational</strong> (rational times irrational)</p>
+                    </div>
+                    <button onclick="toggleSolution(this)" class="toggle-solution">Show Solution</button>
+                </div>
+            </section>
+
+            <!-- Key Takeaways -->
+            <div class="key-takeaways">
+                <h2>🔑 Key Takeaways</h2>
+                <ul>
+                    <li><strong>Real numbers (ℝ)</strong> include all rational and irrational numbers</li>
+                    <li><strong>Irrational numbers</strong> cannot be expressed as fractions p/q</li>
+                    <li><strong>√2 is irrational</strong> - proven by contradiction using the uniqueness of prime factorization</li>
+                    <li><strong>Decimal test:</strong> Irrational numbers have infinite, non-repeating decimal expansions</li>
+                    <li><strong>Famous irrationals:</strong> √n (n not perfect square), π, e, φ</li>
+                    <li><strong>Historical importance:</strong> Discovery of irrationals shattered Pythagorean beliefs</li>
+                    <li><strong>Hierarchy:</strong> ℕ ⊆ ℤ ⊆ ℚ ⊆ ℝ</li>
+                    <li><strong>Density:</strong> Both rationals and irrationals are dense in the real numbers</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Navigation Footer -->
+        <div class="topic-navigation">
+            <div class="nav-buttons">
+                <a href="topic2.html" class="nav-btn secondary">← Previous: Rational Numbers</a>
+                <div class="nav-center">
+                    <span class="topic-indicator">3 / 10</span>
+                </div>
+                <a href="topic4.html" class="nav-btn primary">Next Topic: Sets and Relations →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Styles -->
+    <style>
+        .topic-progress-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+        }
+
+        .topic-breadcrumb {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .topic-breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+
+        .topic-breadcrumb a:hover {
+            color: white;
+        }
+
+        .topic-progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .progress-track {
+            width: 200px;
+            height: 8px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .motivation-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .motivation-box h3 {
+            color: #d97706;
+            margin-bottom: 1rem;
+        }
+
+        .square-root-exploration {
+            background: #f8fafc;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .perfect-squares-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .square-pair {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 2px solid #e5e7eb;
+        }
+
+        .square-pair .number {
+            background: #3b82f6;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .square-pair .arrow {
+            color: #6b7280;
+            font-size: 1.5rem;
+        }
+
+        .square-pair .result {
+            background: #10b981;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .question-box {
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            border: 2px solid #6366f1;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .question-box h3 {
+            color: #4338ca;
+            margin-bottom: 1rem;
+        }
+
+        .geometric-motivation {
+            margin: 2rem 0;
+        }
+
+        .unit-square-demo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .square-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .square {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .square-content {
+            width: 100%;
+            height: 100%;
+            border: 3px solid #3b82f6;
+            background: #dbeafe;
+            position: relative;
+        }
+
+        .diagonal-line {
+            position: absolute;
+            width: 141%;
+            height: 3px;
+            background: #ef4444;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            transform-origin: center;
+        }
+
+        .side-label {
+            position: absolute;
+            background: #3b82f6;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+        }
+
+        .side-label.top {
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .side-label.right {
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .diagonal {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            background: #ef4444;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .hierarchy-visualization {
+            margin: 2rem 0;
+        }
+
+        .hierarchy-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .hierarchy-level {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .set-box {
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            min-width: 200px;
+            border: 3px solid;
+        }
+
+        .set-box h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .set-box p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .set-box.real {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-color: #ef4444;
+        }
+
+        .set-box.real h4 {
+            color: #dc2626;
+        }
+
+        .set-box.rational {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-color: #3b82f6;
+        }
+
+        .set-box.rational h4 {
+            color: #1e40af;
+        }
+
+        .set-box.irrational {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border-color: #22c55e;
+        }
+
+        .set-box.irrational h4 {
+            color: #15803d;
+        }
+
+        .set-box.integers {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-color: #f59e0b;
+        }
+
+        .set-box.integers h4 {
+            color: #d97706;
+        }
+
+        .set-box.natural {
+            background: linear-gradient(135deg, #e9d5ff 0%, #d8b4fe 100%);
+            border-color: #a855f7;
+        }
+
+        .set-box.natural h4 {
+            color: #7e22ce;
+        }
+
+        .history-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 3px solid #f59e0b;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .history-box h3 {
+            color: #d97706;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .timeline-event {
+            display: flex;
+            gap: 1.5rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .timeline-event.shocking {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        .timeline-marker {
+            background: #3b82f6;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            white-space: nowrap;
+            height: fit-content;
+        }
+
+        .timeline-event.shocking .timeline-marker {
+            background: #ef4444;
+        }
+
+        .timeline-content h4 {
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 2px solid #ef4444;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .impact-box h4 {
+            color: #dc2626;
+            margin-bottom: 1rem;
+        }
+
+        .theorem-box {
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            border: 3px solid #6366f1;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .theorem-box h3 {
+            color: #4338ca;
+            margin-bottom: 1rem;
+        }
+
+        .proof-method-box {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .proof-method-box h3 {
+            color: #d97706;
+            margin-bottom: 0.5rem;
+        }
+
+        .detailed-proof {
+            margin: 2rem 0;
+        }
+
+        .proof-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .proof-step {
+            display: flex;
+            gap: 1.5rem;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .proof-step:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .proof-step.contradiction {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-color: #ef4444;
+        }
+
+        .proof-step.conclusion {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border-color: #22c55e;
+        }
+
+        .step-number {
+            background: #3b82f6;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .proof-step.contradiction .step-number {
+            background: #ef4444;
+        }
+
+        .proof-step.conclusion .step-number {
+            background: #22c55e;
+        }
+
+        .step-content h4 {
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-content p {
+            margin: 0.5rem 0;
+        }
+
+        .why-box {
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            border: 2px solid #6366f1;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .why-box h3 {
+            color: #4338ca;
+            margin-bottom: 1rem;
+        }
+
+        .irrational-gallery {
+            margin: 2rem 0;
+        }
+
+        .irrational-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .irrational-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .irrational-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .irrational-card.highlight {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-color: #f59e0b;
+        }
+
+        .irrational-symbol {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 0.5rem;
+        }
+
+        .irrational-card.highlight .irrational-symbol {
+            color: #d97706;
+        }
+
+        .irrational-name {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .irrational-value {
+            font-family: 'Courier New', monospace;
+            color: #6b7280;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .irrational-desc {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .irrational-desc p {
+            margin: 0.25rem 0;
+        }
+
+        .properties-showcase {
+            margin: 2rem 0;
+        }
+
+        .property-card {
+            background: #f8fafc;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .property-card h4 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            background: #e5e7eb;
+        }
+
+        .comparison-row.header {
+            background: #3b82f6;
+        }
+
+        .comparison-row.header .comparison-cell {
+            background: #3b82f6;
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+        }
+
+        .comparison-cell {
+            background: #f8fafc;
+            padding: 1.5rem;
+        }
+
+        .closure-examples {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .closure-item {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .closure-label {
+            background: #3b82f6;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            min-width: 200px;
+        }
+
+        .closure-result {
+            background: #10b981;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
+
+        .closure-note {
+            flex: 1 1 100%;
+            margin: 0.5rem 0 0 0;
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        .decimal-explanation {
+            margin: 2rem 0;
+        }
+
+        .identification-flowchart {
+            background: #f8fafc;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .flowchart-box {
+            background: white;
+            border: 2px solid #3b82f6;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+
+        .flowchart-box.start {
+            background: #3b82f6;
+            color: white;
+            font-weight: 600;
+        }
+
+        .flowchart-box.question {
+            background: #fef3c7;
+            border-color: #f59e0b;
+        }
+
+        .flowchart-box.result {
+            font-weight: 600;
+        }
+
+        .flowchart-box.result.rational {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1e40af;
+        }
+
+        .flowchart-box.result.irrational {
+            background: #dcfce7;
+            border-color: #22c55e;
+            color: #15803d;
+        }
+
+        .flowchart-arrow {
+            text-align: center;
+            color: #6b7280;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+
+        .flowchart-branches, .flowchart-subbranches {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .flowchart-branch, .flowchart-subbranch {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .decimal-examples-detailed {
+            margin: 2rem 0;
+        }
+
+        .decimal-example-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .decimal-example-card h4 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .decimal-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .decimal-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .decimal-item.full-width {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .decimal-value {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            color: #3b82f6;
+        }
+
+        .decimal-equals {
+            color: #6b7280;
+            font-weight: 600;
+        }
+
+        .decimal-fraction {
+            background: #3b82f6;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+        }
+
+        .decimal-note {
+            color: #6b7280;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin: 0.5rem 0 0 0;
+        }
+
+        @media (max-width: 768px) {
+            .unit-square-demo {
+                grid-template-columns: 1fr;
+            }
+
+            .hierarchy-level {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .set-box {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .irrational-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-row {
+                grid-template-columns: 1fr;
+            }
+
+            .flowchart-branches, .flowchart-subbranches {
+                flex-direction: column;
+            }
+
+            .timeline-event {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+    <script src="../../../js/notes.js"></script>
+    <script>
+        function toggleSolution(button) {
+            const solution = button.parentElement.querySelector('.solution');
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+            }
+        }
+
+        // Add progress animation on load
+        window.addEventListener('load', function() {
+            const progressFill = document.querySelector('.progress-fill');
+            progressFill.style.width = '0%';
+            setTimeout(() => {
+                progressFill.style.width = '30%';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
