@@ -4,182 +4,209 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statistics for Data Science - IITM Notes</title>
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/subject.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#3b82f6', dark: '#2563eb' },
+                        dark: { primary: '#111827', secondary: '#1f2937', border: '#374151' },
+                        text: { primary: '#f9fafb', secondary: '#d1d5db' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Tailwind CDN mode: avoid @apply; styles handled by tw-bridge.js -->
 </head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="../../index.html">📚 IITM Notes</a>
+<body class="bg-dark-primary text-text-primary">
+    <nav class="fixed top-0 w-full bg-dark-secondary shadow-md border-b border-dark-border z-50">
+    <div class="max-w-7xl mx-auto px-5 flex justify-between items-center h-16">
+            <div class="text-2xl font-semibold">
+                <a href="../../index.html" class="text-primary no-underline">📚 IITM Notes</a>
             </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="../../index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../qualifier.html" class="nav-link">Qualifier Subjects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="maths-for-ds.html" class="nav-link">Math for DS</a>
-                </li>
-                <li class="nav-item">
-                    <a href="computational-thinking.html" class="nav-link">Computational Thinking</a>
-                </li>
-                <li class="nav-item">
-                    <a href="english.html" class="nav-link">English 1</a>
-                </li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div id="navMenu" class="hidden md:flex items-center gap-8">
+                <a href="../../index.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Home</a>
+                <a href="../../index.html#qualifier" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Qualifier Subjects</a>
+                <a href="maths-for-ds.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Math for DS</a>
+                <a href="computational-thinking.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Computational Thinking</a>
+                <a href="english.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">English 1</a>
+            </div>
+            <div id="navToggle" class="md:hidden flex flex-col cursor-pointer">
+                <span class="w-6 h-0.5 bg-text-primary my-0.5 transition-all"></span>
+                <span class="w-6 h-0.5 bg-text-primary my-0.5 transition-all"></span>
+                <span class="w-6 h-0.5 bg-text-primary my-0.5 transition-all"></span>
             </div>
         </div>
     </nav>
 
-    <div class="subject-header">
-        <div class="container">
-            <div class="subject-info">
-                <div class="subject-icon">📊</div>
-                <div class="subject-details">
-                    <h1>Statistics for Data Science</h1>
-                    <p class="subject-description">
-                        Fundamentals of statistical analysis, probability theory, and data interpretation for data science applications.
-                    </p>
-                    <div class="subject-meta">
-                        <span class="term-badge">Qualifier</span>
-                        <span class="duration">📅 12 Weeks</span>
-                        <span class="level">📈 Intermediate</span>
+    <div class="pt-20 pb-20 bg-gradient-to-br from-dark-secondary to-dark-primary">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="flex flex-col md:flex-row items-start justify-between gap-10 mb-10">
+                <div class="flex gap-6 items-start">
+                    <div class="text-6xl">📊</div>
+                    <div>
+                        <h1 class="text-5xl font-bold mb-4 tracking-tight">Statistics for Data Science</h1>
+                        <p class="text-xl text-text-secondary mb-6 leading-relaxed max-w-2xl">
+                            Fundamentals of statistical analysis, probability theory, and data interpretation for data science applications.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-dark-primary text-primary px-4 py-2 rounded-full text-sm font-medium border border-primary/30">Qualifier</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">📅 12 Weeks</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">📈 Intermediate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-8">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-primary">1</div>
+                        <div class="text-sm text-text-secondary mt-1">Week Completed</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-primary">25</div>
+                        <div class="text-sm text-text-secondary mt-1">Topics Covered</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-primary">8</div>
+                        <div class="text-sm text-text-secondary mt-1">Progress %</div>
                     </div>
                 </div>
             </div>
-            
-            <div class="subject-stats">
-                <div class="stat-item">
-                    <div class="stat-number">1</div>
-                    <div class="stat-label">Week Completed</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">25</div>
-                    <div class="stat-label">Topics Covered</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">8</div>
-                    <div class="stat-label">Progress %</div>
-                </div>
-            </div>
-        </div>
 
-        <div class="progress-container">
-            <div class="progress-bar">
-                <div class="progress-fill w-8"></div>
+            <div class="mt-8">
+                <div class="w-full h-1.5 bg-dark-secondary rounded-full overflow-hidden mb-2">
+                    <div class="h-full bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-full w-8 transition-all"></div>
+                </div>
+                <span class="text-sm text-text-secondary">Week 1 of 12 completed</span>
             </div>
-            <span class="progress-text">Week 1 of 12 completed</span>
         </div>
     </div>
 
-    <div class="container">
-        <div class="weeks-layout">
-            <nav class="weeks-nav">
-                <div class="nav-header">
-                    <h3>📋 Course Structure</h3>
-                </div>
-                <ul class="week-nav-list">
-                    <li><a href="#week1" class="week-nav-item active">Week 1</a></li>
-                    <li><a href="#week2" class="week-nav-item coming-soon">Week 2</a></li>
-                    <li><a href="#week3" class="week-nav-item coming-soon">Week 3</a></li>
-                    <li><a href="#week4" class="week-nav-item coming-soon">Week 4</a></li>
-                </ul>
-            </nav>
+    <div class="py-20 bg-dark-primary">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <nav class="lg:col-span-1 bg-dark-secondary rounded-3xl p-6 h-fit sticky top-24">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-semibold">📋 Course Structure</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li><a href="#week1" class="block px-4 py-3 rounded-xl bg-primary/20 text-primary font-medium border border-primary/30 no-underline">Week 1</a></li>
+                        <li><a href="#week2" class="block px-4 py-3 rounded-xl hover:bg-dark-primary text-text-secondary transition-all no-underline">Week 2</a></li>
+                        <li><a href="#week3" class="block px-4 py-3 rounded-xl hover:bg-dark-primary text-text-secondary transition-all no-underline">Week 3</a></li>
+                        <li><a href="#week4" class="block px-4 py-3 rounded-xl hover:bg-dark-primary text-text-secondary transition-all no-underline">Week 4</a></li>
+                    </ul>
+                </nav>
 
-            <main class="weeks-content">
+                <main class="lg:col-span-3">
                 <!-- Week 1 -->
-                <section id="week1" class="week-section">
-                    <h2 class="week-title">📊 Week 1: Introduction to Statistics</h2>
-                    
-                    <div class="topics-grid">
-                        <div class="topic-card completed">
-                            <div class="topic-header">
-                                <h3>1.1 What is Statistics?</h3>
-                                <span class="status-badge completed">✅ Completed</span>
+                <section id="week1" class="space-y-8">
+                    <h2 class="text-4xl font-bold mb-8 tracking-tight">📊 Week 1: Introduction to Statistics</h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-dark-secondary rounded-3xl p-10 shadow-xl transition-all hover:-translate-y-2 border border-dark-border">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-semibold">1.1 What is Statistics?</h3>
+                                <span class="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-sm font-medium border border-emerald-500/30">✅</span>
                             </div>
-                            <p>Basic concepts, types of statistics, and applications in data science.</p>
-                            <div class="topic-actions">
-                                <a href="stats-for-ds/week1-notes.html" class="action-btn primary">📝 View Notes</a>
-                                <a href="stats-for-ds/week1-quiz.html" class="action-btn secondary">🧠 Take Quiz</a>
+                            <p class="text-text-secondary mb-6 leading-relaxed">Basic concepts, types of statistics, and applications in data science.</p>
+                            <div class="flex flex-col gap-3">
+                                <a href="stats-for-ds/week1-notes.html" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl no-underline text-center text-sm">📝 View Notes</a>
+                                <a href="stats-for-ds/week1-quiz.html" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border no-underline text-center text-sm">🧠 Take Quiz</a>
                             </div>
                         </div>
 
-                        <div class="topic-card completed">
-                            <div class="topic-header">
-                                <h3>1.2 Data Types & Variables</h3>
-                                <span class="status-badge completed">✅ Completed</span>
+                        <div class="bg-dark-secondary rounded-3xl p-10 shadow-xl transition-all hover:-translate-y-2 border border-dark-border">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-semibold">1.2 Data Types & Variables</h3>
+                                <span class="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-sm font-medium border border-emerald-500/30">✅</span>
                             </div>
-                            <p>Categorical vs numerical data, discrete vs continuous variables.</p>
-                            <div class="topic-actions">
-                                <a href="stats-for-ds/week1-notes.html#data-types" class="action-btn primary">📝 View Notes</a>
-                                <a href="stats-for-ds/week1-quiz.html#data-types" class="action-btn secondary">🧠 Take Quiz</a>
+                            <p class="text-text-secondary mb-6 leading-relaxed">Categorical vs numerical data, discrete vs continuous variables.</p>
+                            <div class="flex flex-col gap-3">
+                                <a href="stats-for-ds/week1-notes.html#data-types" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl no-underline text-center text-sm">📝 View Notes</a>
+                                <a href="stats-for-ds/week1-quiz.html#data-types" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border no-underline text-center text-sm">🧠 Take Quiz</a>
                             </div>
                         </div>
 
-                        <div class="topic-card completed">
-                            <div class="topic-header">
-                                <h3>1.3 Descriptive Statistics</h3>
-                                <span class="status-badge completed">✅ Completed</span>
+                        <div class="bg-dark-secondary rounded-3xl p-10 shadow-xl transition-all hover:-translate-y-2 border border-dark-border">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-semibold">1.3 Descriptive Statistics</h3>
+                                <span class="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-sm font-medium border border-emerald-500/30">✅</span>
                             </div>
-                            <p>Measures of central tendency and dispersion.</p>
-                            <div class="topic-actions">
-                                <a href="stats-for-ds/week1-notes.html#descriptive-stats" class="action-btn primary">📝 View Notes</a>
-                                <a href="stats-for-ds/week1-quiz.html#descriptive-stats" class="action-btn secondary">🧠 Take Quiz</a>
+                            <p class="text-text-secondary mb-6 leading-relaxed">Measures of central tendency and dispersion.</p>
+                            <div class="flex flex-col gap-3">
+                                <a href="stats-for-ds/week1-notes.html#descriptive-stats" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl no-underline text-center text-sm">📝 View Notes</a>
+                                <a href="stats-for-ds/week1-quiz.html#descriptive-stats" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border no-underline text-center text-sm">🧠 Take Quiz</a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="week-summary">
-                        <h4>📈 Week 1 Summary</h4>
-                        <p>This week covers the fundamentals of statistics including data types, basic statistical measures, and their applications in data analysis.</p>
-                        <div class="week-actions">
-                            <button onclick="downloadWeek(1)" class="action-btn outline">📥 Download Week 1</button>
-                        </div>
+                    <div class="bg-dark-secondary rounded-3xl p-10 border border-dark-border">
+                        <h4 class="text-2xl font-semibold mb-4">📈 Week 1 Summary</h4>
+                        <p class="text-text-secondary leading-relaxed mb-6">This week covers the fundamentals of statistics including data types, basic statistical measures, and their applications in data analysis.</p>
+                        <button onclick="downloadWeek(1)" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border">📥 Download Week 1</button>
                     </div>
                 </section>
 
                 <!-- Week 2 - Coming Soon -->
-                <section id="week2" class="week-section coming-soon-section">
-                    <div class="coming-soon-content">
-                        <div class="coming-soon-icon">⏳</div>
-                        <h2>Week 2: Probability Fundamentals</h2>
-                        <p>Coming soon! This week will cover probability theory, basic probability rules, and conditional probability.</p>
-                        <button onclick="notifyMe('Stats Week 2')" class="action-btn primary">🔔 Notify Me</button>
+                <section id="week2" class="mt-16 space-y-8">
+                    <div class="bg-dark-secondary rounded-3xl p-16 border border-dark-border text-center">
+                        <div class="text-7xl mb-6">⏳</div>
+                        <h2 class="text-4xl font-bold mb-4 tracking-tight">Week 2: Probability Fundamentals</h2>
+                        <p class="text-xl text-text-secondary mb-8 max-w-2xl mx-auto leading-relaxed">Coming soon! This week will cover probability theory, basic probability rules, and conditional probability.</p>
+                        <button onclick="notifyMe('Stats Week 2')" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl">🔔 Notify Me</button>
+                        <div class="mt-10 text-left">
+                            <h3 class="text-2xl font-semibold mb-4">Planned Topics</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="bg-dark-primary/50 border border-dark-border rounded-2xl p-4">
+                                    <div class="text-sm text-text-secondary">2.1</div>
+                                    <div class="font-semibold">Sample Space & Events</div>
+                                </div>
+                                <div class="bg-dark-primary/50 border border-dark-border rounded-2xl p-4">
+                                    <div class="text-sm text-text-secondary">2.2</div>
+                                    <div class="font-semibold">Conditional Probability</div>
+                                </div>
+                                <div class="bg-dark-primary/50 border border-dark-border rounded-2xl p-4">
+                                    <div class="text-sm text-text-secondary">2.3</div>
+                                    <div class="font-semibold">Bayes’ Theorem</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
                 <!-- Week 3 - Coming Soon -->
-                <section id="week3" class="week-section coming-soon-section">
-                    <div class="coming-soon-content">
-                        <div class="coming-soon-icon">⏳</div>
-                        <h2>Week 3: Probability Distributions</h2>
-                        <p>Coming soon! This week will explore discrete and continuous probability distributions.</p>
-                        <button onclick="notifyMe('Stats Week 3')" class="action-btn primary">🔔 Notify Me</button>
+                <section id="week3" class="mt-16 space-y-8">
+                    <div class="bg-dark-secondary rounded-3xl p-16 border border-dark-border text-center">
+                        <div class="text-7xl mb-6">⏳</div>
+                        <h2 class="text-4xl font-bold mb-4 tracking-tight">Week 3: Probability Distributions</h2>
+                        <p class="text-xl text-text-secondary mb-8 max-w-2xl mx-auto leading-relaxed">Coming soon! This week will explore discrete and continuous probability distributions.</p>
+                        <button onclick="notifyMe('Stats Week 3')" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl">🔔 Notify Me</button>
                     </div>
                 </section>
 
                 <!-- Week 4 - Coming Soon -->
-                <section id="week4" class="week-section coming-soon-section">
-                    <div class="coming-soon-content">
-                        <div class="coming-soon-icon">⏳</div>
-                        <h2>Week 4: Sampling and Estimation</h2>
-                        <p>Coming soon! This week will cover sampling methods and statistical estimation techniques.</p>
-                        <button onclick="notifyMe('Stats Week 4')" class="action-btn primary">🔔 Notify Me</button>
+                <section id="week4" class="mt-16 space-y-8">
+                    <div class="bg-dark-secondary rounded-3xl p-16 border border-dark-border text-center">
+                        <div class="text-7xl mb-6">⏳</div>
+                        <h2 class="text-4xl font-bold mb-4 tracking-tight">Week 4: Sampling and Estimation</h2>
+                        <p class="text-xl text-text-secondary mb-8 max-w-2xl mx-auto leading-relaxed">Coming soon! This week will cover sampling methods and statistical estimation techniques.</p>
+                        <button onclick="notifyMe('Stats Week 4')" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl">🔔 Notify Me</button>
                     </div>
                 </section>
-            </main>
+                </main>
+            </div>
         </div>
     </div>
 
     <script src="../../js/main.js"></script>
     <script src="../../js/subject.js"></script>
 </body>
+<script src="../../js/tw-bridge.js"></script>
 </html>

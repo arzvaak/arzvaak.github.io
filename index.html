@@ -5,158 +5,213 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IITM Qualifier Notes</title>
     <meta name="description" content="Clean, comprehensive study materials for IITM Qualifier subjects">
-    <link rel="stylesheet" href="css/style.css?v=2024">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#3b82f6', dark: '#2563eb' },
+                        dark: { primary: '#111827', secondary: '#1f2937', border: '#374151' },
+                        text: { primary: '#f9fafb', secondary: '#d1d5db' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background-image: linear-gradient(to right, #FBBF24, #FCD34D);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+        .discord-pattern {
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.05) 10px, rgba(255,255,255,0.05) 20px);
+        }
+        .w-8 { width: 8%; }
+        .w-10 { width: 10%; }
+        .w-20 { width: 20%; }
+        .w-25 { width: 25%; }
+        .w-30 { width: 30%; }
+        .w-50 { width: 50%; }
+        .w-75 { width: 75%; }
+        .w-80 { width: 80%; }
+        .w-100 { width: 100%; }
+    </style>
 </head>
-<body>
+<body class="bg-dark-primary text-text-primary">
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="#home">IITM Notes</a>
+    <nav class="fixed top-0 w-full bg-dark-secondary shadow-md border-b border-dark-border z-50">
+        <div class="max-w-7xl mx-auto px-5 flex justify-between items-center h-15">
+            <div class="text-2xl font-semibold">
+                <a href="#home" class="text-primary no-underline">IITM Notes</a>
             </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="#terms" class="nav-link">Course Terms</a>
-                <a href="#qualifier" class="nav-link">Qualifier</a>
+            <div id="navMenu" class="hidden md:flex items-center gap-8">
+                <a href="#terms" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Course Terms</a>
+                <a href="#qualifier" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Qualifier</a>
             </div>
-            <div class="nav-toggle" id="navToggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div id="navToggle" class="md:hidden flex flex-col cursor-pointer">
+                <span class="w-6 h-0.5 bg-text-primary my-0.5 transition-all"></span>
+                <span class="w-6 h-0.5 bg-text-primary my-0.5 transition-all"></span>
+                <span class="w-6 h-0.5 bg-text-primary my-0.5 transition-all"></span>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background"></div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">
+    <section id="home" class="relative bg-gradient-to-br from-dark-secondary to-dark-primary pt-36 pb-20 text-center overflow-hidden min-h-screen flex flex-col justify-center">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-[20%] left-[20%] w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="absolute top-[30%] right-[20%] w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-[30%] left-[40%] w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-5 relative z-10">
+            <div>
+                <div class="inline-block bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-sm font-medium mb-6 border border-white/30">
                     🎓 IITM Online Degree Programme
                 </div>
-                <h1 class="hero-title">
-                    Master Your <span class="highlight">IITM Journey</span>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight tracking-tight">
+                    Master Your <span class="gradient-text">IITM Journey</span>
                 </h1>
-                <p class="hero-subtitle">
+                <p class="text-xl text-white/90 mb-10 leading-relaxed max-w-2xl mx-auto">
                     Comprehensive study materials, interactive quizzes, and detailed notes for every course. From Qualifier to Degree - we've got you covered.
                 </p>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Practice Questions</div>
+
+                <!-- Stats -->
+                <div class="flex justify-center gap-12 my-10">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-yellow-400 leading-none">100+</div>
+                        <div class="text-sm opacity-80 mt-1">Practice Questions</div>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">10</div>
-                        <div class="stat-label">Topics Covered</div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-yellow-400 leading-none">10</div>
+                        <div class="text-sm opacity-80 mt-1">Topics Covered</div>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Access</div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-yellow-400 leading-none">24/7</div>
+                        <div class="text-sm opacity-80 mt-1">Access</div>
                     </div>
                 </div>
-                <div class="hero-buttons">
-                    <a href="#qualifier" class="btn btn-primary">
+
+                <!-- Buttons -->
+                <div class="flex justify-center gap-6 my-12 flex-wrap">
+                    <a href="#qualifier" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-2xl shadow-lg shadow-blue-600/30 no-underline">
                         <span>🚀 Start Learning</span>
                     </a>
-                    <a href="https://discord.gg/gE2m4Qrdqv" target="_blank" class="btn btn-discord">
-                        <span class="discord-icon">💬</span>
-                        <span>Join Discord Community</span>
+                    <a href="https://discord.gg/gE2m4Qrdqv" target="_blank" class="relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-2xl shadow-lg shadow-indigo-600/30 overflow-hidden no-underline">
+                        <span class="absolute inset-0 discord-pattern opacity-50"></span>
+                        <span class="relative z-10 text-xl">💬</span>
+                        <span class="relative z-10">Join Discord Community</span>
                     </a>
                 </div>
-                <div class="hero-features">
-                    <div class="feature">
-                        <span class="feature-icon">✅</span>
+
+                <!-- Features -->
+                <div class="flex justify-center gap-8 mt-12 flex-wrap">
+                    <div class="flex items-center gap-2 text-base opacity-90">
+                        <span class="text-lg">✅</span>
                         <span>Interactive Quizzes</span>
                     </div>
-                    <div class="feature">
-                        <span class="feature-icon">📚</span>
+                    <div class="flex items-center gap-2 text-base opacity-90">
+                        <span class="text-lg">📚</span>
                         <span>Detailed Notes</span>
                     </div>
-                    <div class="feature">
-                        <span class="feature-icon">📱</span>
+                    <div class="flex items-center gap-2 text-base opacity-90">
+                        <span class="text-lg">📱</span>
                         <span>Mobile Friendly</span>
                     </div>
-                    <div class="feature">
-                        <span class="feature-icon">🎯</span>
+                    <div class="flex items-center gap-2 text-base opacity-90">
+                        <span class="text-lg">🎯</span>
                         <span>Exam Focused</span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hero-scroll">
-            <div class="scroll-indicator">
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
+            <div class="opacity-70 text-sm">
                 <span>Scroll to explore</span>
-                <div class="scroll-arrow">⬇</div>
+                <div class="text-2xl mt-1 animate-bounce-slow">⬇</div>
             </div>
         </div>
     </section>
 
-
     <!-- Course Terms Overview -->
-    <section id="terms" class="terms-overview">
-        <div class="container">
-            <h2 class="section-title">IITM Course Structure</h2>
-            <p class="section-subtitle">Navigate through your academic journey</p>
-            
-            <div class="terms-timeline">
-                <div class="term-card active">
-                    <div class="term-number">1</div>
-                    <div class="term-content">
-                        <h3>Qualifier</h3>
-                        <p>Foundation subjects to qualify for the degree program</p>
-                        <div class="term-subjects">
-                            <span class="subject-tag">Mathematics for DS</span>
-                            <span class="subject-tag">Statistics for DS</span>
-                            <span class="subject-tag">English 1</span>
-                            <span class="subject-tag">Computational Thinking</span>
+    <section id="terms" class="py-20 bg-gradient-to-br from-dark-secondary to-dark-primary">
+        <div class="max-w-7xl mx-auto px-5">
+            <h2 class="text-5xl font-bold text-center mb-4 tracking-tight">IITM Course Structure</h2>
+            <p class="text-xl text-center text-text-secondary mb-14 leading-relaxed max-w-2xl mx-auto">Navigate through your academic journey</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Term 1 - Active -->
+                <div class="bg-dark-secondary rounded-3xl p-10 shadow-xl transition-all hover:-translate-y-2 hover:shadow-2xl relative border-2 border-primary scale-105">
+                    <div class="absolute -top-4 left-10 w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-semibold text-lg">1</div>
+                    <div>
+                        <h3 class="text-2xl mb-4 text-text-primary mt-4">Qualifier</h3>
+                        <p class="text-text-secondary mb-6 leading-relaxed">Foundation subjects to qualify for the degree program</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">Mathematics for DS</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">Statistics for DS</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">English 1</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">Computational Thinking</span>
                         </div>
-                        <a href="#qualifier" class="term-link">Start Qualifier →</a>
+                        <a href="#qualifier" class="text-primary no-underline font-semibold inline-flex items-center gap-2 transition-all hover:gap-4">Start Qualifier →</a>
                     </div>
                 </div>
-                
-                <div class="term-card">
-                    <div class="term-number">2</div>
-                    <div class="term-content">
-                        <h3>Foundation - Term 1</h3>
-                        <p>Core programming and mathematical foundations</p>
-                        <div class="term-subjects">
-                            <span class="subject-tag">Programming in Python</span>
-                            <span class="subject-tag">Mathematics 1</span>
-                            <span class="subject-tag">Statistics 1</span>
-                            <span class="subject-tag">English 2</span>
+
+                <!-- Term 2 -->
+                <div class="bg-dark-secondary rounded-3xl p-10 shadow-xl transition-all hover:-translate-y-2 hover:shadow-2xl relative border-2 border-transparent">
+                    <div class="absolute -top-4 left-10 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-semibold text-lg">2</div>
+                    <div>
+                        <h3 class="text-2xl mb-4 text-text-primary mt-4">Foundation - Term 1</h3>
+                        <p class="text-text-secondary mb-6 leading-relaxed">Core programming and mathematical foundations</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">Programming in Python</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">Mathematics 1</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">Statistics 1</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">English 2</span>
                         </div>
-                        <div class="coming-soon">Coming Soon</div>
+                        <div class="inline-block bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full text-sm font-medium">Coming Soon</div>
                     </div>
                 </div>
-                
-                <div class="term-card">
-                    <div class="term-number">3</div>
-                    <div class="term-content">
-                        <h3>Foundation - Term 2</h3>
-                        <p>Advanced programming and data structures</p>
-                        <div class="term-subjects">
-                            <span class="subject-tag">Programming in Java</span>
-                            <span class="subject-tag">Database Management</span>
-                            <span class="subject-tag">Mathematics 2</span>
-                            <span class="subject-tag">Statistics 2</span>
+
+                <!-- Term 3 -->
+                <div class="bg-dark-secondary rounded-3xl p-10 shadow-xl transition-all hover:-translate-y-2 hover:shadow-2xl relative border-2 border-transparent">
+                    <div class="absolute -top-4 left-10 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-semibold text-lg">3</div>
+                    <div>
+                        <h3 class="text-2xl mb-4 text-text-primary mt-4">Foundation - Term 2</h3>
+                        <p class="text-text-secondary mb-6 leading-relaxed">Advanced programming and data structures</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">Programming in Java</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">Database Management</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">Mathematics 2</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">Statistics 2</span>
                         </div>
-                        <div class="coming-soon">Coming Soon</div>
+                        <div class="inline-block bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full text-sm font-medium">Coming Soon</div>
                     </div>
                 </div>
-                
-                <div class="term-card">
-                    <div class="term-number">4</div>
-                    <div class="term-content">
-                        <h3>Diploma Level</h3>
-                        <p>Specialized courses and electives</p>
-                        <div class="term-subjects">
-                            <span class="subject-tag">Data Science</span>
-                            <span class="subject-tag">Machine Learning</span>
-                            <span class="subject-tag">System Commands</span>
-                            <span class="subject-tag">Tools in Data Science</span>
+
+                <!-- Term 4 -->
+                <div class="bg-dark-secondary rounded-3xl p-10 shadow-xl transition-all hover:-translate-y-2 hover:shadow-2xl relative border-2 border-transparent">
+                    <div class="absolute -top-4 left-10 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-semibold text-lg">4</div>
+                    <div>
+                        <h3 class="text-2xl mb-4 text-text-primary mt-4">Diploma Level</h3>
+                        <p class="text-text-secondary mb-6 leading-relaxed">Specialized courses and electives</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">Data Science</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">Machine Learning</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">System Commands</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">Tools in Data Science</span>
                         </div>
-                        <div class="coming-soon">Coming Soon</div>
+                        <div class="inline-block bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full text-sm font-medium">Coming Soon</div>
                     </div>
                 </div>
             </div>
@@ -164,49 +219,65 @@
     </section>
 
     <!-- Qualifier Section -->
-    <section id="qualifier" class="qualifier-section">
-        <div class="container">
-            <h2 class="section-title">Qualifier Subjects</h2>
-            <p class="section-subtitle">Master these subjects to qualify for the degree program</p>
-            
-            <div class="subjects-grid">
-                <a href="terms/qualifier/maths-for-ds/subject.html" class="subject-card">
-                    <div class="subject-icon">📐</div>
-                    <h3>Mathematics for Data Science</h3>
-                    <p>Set theory, coordinate geometry, quadratic functions, polynomials</p>
-                    <div class="subject-progress">
-                        <div class="progress-bar"><div class="progress-fill w-25"></div></div>
-                        <span class="progress-text">1 of 4 weeks</span>
+    <section id="qualifier" class="py-20 bg-dark-secondary">
+        <div class="max-w-7xl mx-auto px-5">
+            <h2 class="text-5xl font-bold text-center mb-4 tracking-tight">Qualifier Subjects</h2>
+            <p class="text-xl text-center text-text-secondary mb-14 leading-relaxed max-w-2xl mx-auto">Master these subjects to qualify for the degree program</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Math Card -->
+                <a href="terms/qualifier/maths-for-ds/subject.html" class="group block bg-dark-primary p-10 rounded-3xl shadow-xl no-underline text-text-primary transition-all border border-dark-border hover:-translate-y-2 hover:shadow-2xl hover:border-blue-600/70 hover:bg-gradient-to-b hover:from-blue-600/20 hover:to-blue-600/10 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-blue-700 scale-x-0 group-hover:scale-x-100 transition-transform"></div>
+                    <div class="text-5xl mb-4">📐</div>
+                    <h3 class="text-2xl font-semibold mb-4 text-primary">Mathematics for Data Science</h3>
+                    <p class="text-text-secondary text-base leading-relaxed mb-6">Set theory, coordinate geometry, quadratic functions, polynomials</p>
+                    <div class="pt-6 border-t border-dark-border">
+                        <div class="w-full h-1.5 bg-dark-secondary rounded-full overflow-hidden mb-2">
+                            <div class="h-full bg-primary rounded-full w-25 transition-all"></div>
+                        </div>
+                        <span class="text-sm text-text-secondary">1 of 4 weeks</span>
                     </div>
                 </a>
-                
-                <a href="terms/qualifier/stats-for-ds/" class="subject-card">
-                    <div class="subject-icon">📊</div>
-                    <h3>Statistics for Data Science</h3>
-                    <p>Statistical concepts, hypothesis testing, regression</p>
-                    <div class="subject-progress">
-                        <div class="progress-bar"><div class="progress-fill w-25"></div></div>
-                        <span class="progress-text">1 of 4 weeks</span>
+
+                <!-- Stats Card -->
+                <a href="terms/qualifier/stats-for-ds/" class="group block bg-dark-primary p-10 rounded-3xl shadow-xl no-underline text-text-primary transition-all border border-dark-border hover:-translate-y-2 hover:shadow-2xl hover:border-emerald-600/70 hover:bg-gradient-to-b hover:from-emerald-600/20 hover:to-emerald-600/10 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-600 to-emerald-700 scale-x-0 group-hover:scale-x-100 transition-transform"></div>
+                    <div class="text-5xl mb-4">📊</div>
+                    <h3 class="text-2xl font-semibold mb-4 text-primary">Statistics for Data Science</h3>
+                    <p class="text-text-secondary text-base leading-relaxed mb-6">Statistical concepts, hypothesis testing, regression</p>
+                    <div class="pt-6 border-t border-dark-border">
+                        <div class="w-full h-1.5 bg-dark-secondary rounded-full overflow-hidden mb-2">
+                            <div class="h-full bg-primary rounded-full w-25 transition-all"></div>
+                        </div>
+                        <span class="text-sm text-text-secondary">1 of 4 weeks</span>
                     </div>
                 </a>
-                
-                <a href="terms/qualifier/english/" class="subject-card">
-                    <div class="subject-icon">📝</div>
-                    <h3>English 1</h3>
-                    <p>Academic writing and communication skills</p>
-                    <div class="subject-progress">
-                        <div class="progress-bar"><div class="progress-fill w-25"></div></div>
-                        <span class="progress-text">1 of 4 weeks</span>
+
+                <!-- English Card -->
+                <a href="terms/qualifier/english/" class="group block bg-dark-primary p-10 rounded-3xl shadow-xl no-underline text-text-primary transition-all border border-dark-border hover:-translate-y-2 hover:shadow-2xl hover:border-amber-600/70 hover:bg-gradient-to-b hover:from-amber-600/20 hover:to-amber-600/10 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-600 to-amber-700 scale-x-0 group-hover:scale-x-100 transition-transform"></div>
+                    <div class="text-5xl mb-4">📝</div>
+                    <h3 class="text-2xl font-semibold mb-4 text-primary">English 1</h3>
+                    <p class="text-text-secondary text-base leading-relaxed mb-6">Academic writing and communication skills</p>
+                    <div class="pt-6 border-t border-dark-border">
+                        <div class="w-full h-1.5 bg-dark-secondary rounded-full overflow-hidden mb-2">
+                            <div class="h-full bg-primary rounded-full w-25 transition-all"></div>
+                        </div>
+                        <span class="text-sm text-text-secondary">1 of 4 weeks</span>
                     </div>
                 </a>
-                
-                <a href="terms/qualifier/computational-thinking/" class="subject-card">
-                    <div class="subject-icon">🧠</div>
-                    <h3>Computational Thinking</h3>
-                    <p>Problem-solving and algorithmic thinking</p>
-                    <div class="subject-progress">
-                        <div class="progress-bar"><div class="progress-fill w-25"></div></div>
-                        <span class="progress-text">1 of 4 weeks</span>
+
+                <!-- CT Card -->
+                <a href="terms/qualifier/computational-thinking/" class="group block bg-dark-primary p-10 rounded-3xl shadow-xl no-underline text-text-primary transition-all border border-dark-border hover:-translate-y-2 hover:shadow-2xl hover:border-purple-600/70 hover:bg-gradient-to-b hover:from-purple-600/20 hover:to-purple-600/10 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 to-purple-700 scale-x-0 group-hover:scale-x-100 transition-transform"></div>
+                    <div class="text-5xl mb-4">🧠</div>
+                    <h3 class="text-2xl font-semibold mb-4 text-primary">Computational Thinking</h3>
+                    <p class="text-text-secondary text-base leading-relaxed mb-6">Problem-solving and algorithmic thinking</p>
+                    <div class="pt-6 border-t border-dark-border">
+                        <div class="w-full h-1.5 bg-dark-secondary rounded-full overflow-hidden mb-2">
+                            <div class="h-full bg-primary rounded-full w-25 transition-all"></div>
+                        </div>
+                        <span class="text-sm text-text-secondary">1 of 4 weeks</span>
                     </div>
                 </a>
             </div>
@@ -214,11 +285,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 IITM Notes. Study materials for students.</p>
-            </div>
+    <footer class="bg-dark-secondary text-text-primary py-8 text-center border-t border-dark-border">
+        <div class="max-w-7xl mx-auto px-5">
+            <p class="text-sm opacity-80">&copy; 2025 IITM Notes. Study materials for students.</p>
         </div>
     </footer>
 

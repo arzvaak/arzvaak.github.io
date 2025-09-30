@@ -1,0 +1,15 @@
+# Old CSS files (kept for reference)
+css/old/
+
+# Logs
+npm-debug.log*
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.idea/
+*.swp
+*.swo
