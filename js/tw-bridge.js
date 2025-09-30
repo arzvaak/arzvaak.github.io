@@ -1,3 +1,11 @@
+// Early preflight: enforce dark background ASAP to prevent white flash
+try {
+  document.documentElement.style.backgroundColor = 'var(--bg-primary, #111827)';
+  if (document.body) {
+    document.body.style.backgroundColor = 'var(--bg-primary, #111827)';
+  }
+} catch (e) {}
+
 (function () {
   function addClasses(el, cls) {
     if (!el) return;
@@ -9,13 +17,30 @@
   function once() {
     // Base
     addClasses(document.body, 'bg-dark-primary text-text-primary');
+    addClasses(document.body, 'min-h-screen');
     try {
-      // Avoid resetting the 'background' shorthand (it clears background-color to transparent and can flash white).
-      // Only remove background images/gradients and ensure a dark background color is present.
+      // Force a safe dark background on first paint to avoid white flashes.
+      document.documentElement.style.backgroundColor = 'var(--bg-primary, #111827)';
+      document.documentElement.style.colorScheme = 'dark';
+      document.body.style.backgroundColor = 'var(--bg-primary, #111827)';
+      // Remove any gradient backgrounds that may be set by legacy CSS.
       document.body.style.backgroundImage = 'none';
-      if (!document.body.style.backgroundColor) {
-        document.body.style.backgroundColor = 'var(--bg-primary, #111827)';
-      }
+    } catch (e) {}
+
+    // Add preconnect hints to speed up external resources
+    try {
+      var head = document.head || document.getElementsByTagName('head')[0];
+      var ensure = function(href, crossorigin){
+        if ([...head.querySelectorAll('link[rel="preconnect"]').values()].some(function(l){return l.href.indexOf(href) !== -1;})) return;
+        var l = document.createElement('link');
+        l.rel = 'preconnect';
+        l.href = href;
+        if (crossorigin) l.crossOrigin = 'anonymous';
+        head.appendChild(l);
+      };
+      ensure('https://fonts.googleapis.com');
+      ensure('https://fonts.gstatic.com', true);
+      ensure('https://cdn.tailwindcss.com');
     } catch (e) {}
 
     // Provide CSS variable fallbacks for legacy styles that use var(--*)
