@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistics for Data Science - Qualifier | IITM Notes</title>
+    <title>Statistics for Data Science - IITM Notes</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -24,17 +24,19 @@
         }
     </script>
     <!-- Tailwind CDN mode: avoid @apply; styles handled by tw-bridge.js -->
-    <script src="../../js/tw-bridge.js"></script>
 </head>
 <body class="bg-dark-primary text-text-primary">
     <nav class="fixed top-0 w-full bg-dark-secondary shadow-md border-b border-dark-border z-50">
         <div class="max-w-7xl mx-auto px-5 flex justify-between items-center h-16">
             <div class="text-2xl font-semibold">
-                <a href="../../index.html" class="text-primary no-underline">IITM Notes</a>
+                <a href="../../index.html" class="text-primary no-underline">📚 IITM Notes</a>
             </div>
             <div id="navMenu" class="hidden md:flex items-center gap-8">
-                <a href="../../index.html#terms" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Course Terms</a>
-                <a href="../../index.html#qualifier" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Qualifier</a>
+                <a href="../../index.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Home</a>
+                <a href="../../index.html#qualifier" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Qualifier Subjects</a>
+                <a href="maths-for-ds.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Math for DS</a>
+                <a href="english.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">English 1</a>
+                <a href="computational-thinking.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Computational Thinking</a>
             </div>
             <div id="navToggle" class="md:hidden flex flex-col cursor-pointer">
                 <span class="w-6 h-0.5 bg-text-primary my-0.5 transition-all"></span>
@@ -52,12 +54,12 @@
                     <div>
                         <h1 class="text-5xl font-bold mb-4 tracking-tight">Statistics for Data Science</h1>
                         <p class="text-xl text-text-secondary mb-6 leading-relaxed max-w-2xl">
-                            Fundamentals of statistical analysis, probability theory, and data interpretation for data science applications.
+                            Learn the statistical thinking that underpins every data science workflow: sampling, descriptive analysis, measurement scales, and the vocabulary needed for inference.
                         </p>
                         <div class="flex flex-wrap gap-3">
                             <span class="bg-dark-primary text-primary px-4 py-2 rounded-full text-sm font-medium border border-primary/30">Qualifier</span>
-                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">🗓️ 12 Weeks</span>
-                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">📈 Intermediate</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">📅 12 Weeks</span>
+                            <span class="bg-dark-primary text-text-primary px-4 py-2 rounded-full text-sm font-medium">🎯 Intermediate</span>
                         </div>
                     </div>
                 </div>
@@ -68,16 +70,13 @@
                         <div class="text-sm text-text-secondary mt-1">Week Completed</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-4xl font-bold text-primary">25</div>
+                        <div class="text-4xl font-bold text-primary">7</div>
                         <div class="text-sm text-text-secondary mt-1">Topics Covered</div>
                     </div>
                     <div class="text-center">
                         <div class="text-4xl font-bold text-primary">8</div>
                         <div class="text-sm text-text-secondary mt-1">Progress %</div>
                     </div>
-                </div>
-                <div class="flex items-center">
-                    <a href="stats-for-ds/week1-quiz.html#overview" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border no-underline text-center text-sm">🧠 Take Week 1 Quiz</a>
                 </div>
             </div>
 
@@ -95,7 +94,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
                 <nav class="lg:col-span-1 bg-dark-secondary rounded-3xl p-6 h-fit sticky top-24">
                     <div class="mb-6">
-                        <h3 class="text-xl font-semibold">📚 Course Structure</h3>
+                        <h3 class="text-xl font-semibold">📋 Course Structure</h3>
                     </div>
                     <ul class="space-y-2">
                         <li><a href="#week1" class="block px-4 py-3 rounded-xl bg-primary/20 text-primary font-medium border border-primary/30 no-underline">Week 1</a></li>
@@ -108,149 +107,143 @@
                 <main class="lg:col-span-3">
                 <!-- Week 1 -->
                 <section id="week1" class="space-y-8">
-    <h2 class="text-4xl font-bold mb-8 tracking-tight">Week 1: Foundations of Statistics</h2>
+                    <h2 class="text-4xl font-bold mb-8 tracking-tight">📊 Week 1: Foundations of Statistics</h2>
 
-    <div class="text-text-secondary leading-relaxed mb-8">
-        <p>Week 1 is organised into seven self-contained topics. Work through them in order or jump to the area you need. Each topic page contains detailed explanations, worked examples, reflection prompts, and practice checklists.</p>
-        <div class="mt-4 flex flex-wrap gap-4">
-            <a href="stats-for-ds/topics-overview.html" class="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-primary text-white font-semibold no-underline hover:bg-blue-500 transition-colors">Browse all topics</a>
-            <a href="stats-for-ds/topic1.html" class="inline-flex items-center gap-3 px-5 py-3 rounded-full border border-dark-border text-text-primary no-underline hover:border-primary/60 transition-colors">Start with Topic 1</a>
-        </div>
-    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-dark-secondary rounded-3xl p-10 shadow-xl transition-all hover:-translate-y-2 border border-dark-border">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-2xl font-semibold">📚 Interactive Topic Navigation</h3>
+                                <span class="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-sm font-medium border border-emerald-500/30">✅ 7 Topics Available</span>
+                            </div>
+                            <p class="text-text-secondary mb-6 leading-relaxed">Navigate through comprehensive statistics topics with detailed explanations and examples.</p>
+                            <div class="flex flex-col gap-3">
+                                <a href="stats-for-ds/topic1.html" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl no-underline text-center">🚀 Start Learning</a>
+                                <a href="stats-for-ds/week1-quiz.html" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border no-underline text-center">🧠 Take Final Quiz</a>
+                            </div>
+                        </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-dark-secondary rounded-3xl p-8 shadow-xl border border-dark-border">
-            <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-semibold">Topic 1: Introduction to Statistics</h3>
-                <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">15 min</span>
-            </div>
-            <p class="text-text-secondary mb-6">Definition, evolution of the field, and how descriptive and inferential statistics complement each other.</p>
-            <div class="flex flex-col gap-3">
-                <a href="stats-for-ds/topic1.html" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl no-underline text-center text-sm">Read Topic 1</a>
-                <a href="stats-for-ds/week1-quiz.html#overview" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border no-underline text-center text-sm">Warm-up Quiz</a>
-            </div>
-        </div>
-
-        <div class="bg-dark-secondary rounded-3xl p-8 shadow-xl border border-dark-border">
-            <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-semibold">Topic 2: Populations and Samples</h3>
-                <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">18 min</span>
-            </div>
-            <p class="text-text-secondary mb-6">Clarify population vs sample, sampling frames, and practical sampling designs with examples.</p>
-            <div class="flex flex-col gap-3">
-                <a href="stats-for-ds/topic2.html" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl no-underline text-center text-sm">Read Topic 2</a>
-                <a href="stats-for-ds/week1-quiz.html#mcq-practice" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border no-underline text-center text-sm">Practice MCQs</a>
-            </div>
-        </div>
-
-        <div class="bg-dark-secondary rounded-3xl p-8 shadow-xl border border-dark-border">
-            <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-semibold">Topic 3: Purpose of Analysis</h3>
-                <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">12 min</span>
-            </div>
-            <p class="text-text-secondary mb-6">Learn when to rely on descriptive summaries and when inferential tools are required for decisions.</p>
-            <div class="flex flex-col gap-3">
-                <a href="stats-for-ds/topic3.html" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl no-underline text-center text-sm">Read Topic 3</a>
-                <a href="stats-for-ds/week1-quiz.html#written-practice" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border no-underline text-center text-sm">Reflection Prompts</a>
-            </div>
-        </div>
-
-        <div class="bg-dark-secondary rounded-3xl p-8 shadow-xl border border-dark-border">
-            <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-semibold">Topic 4: Data Foundations</h3>
-                <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">15 min</span>
-            </div>
-            <p class="text-text-secondary mb-6">Understand what counts as data, why organisations invest in collection, and how to evaluate published sources.</p>
-            <div class="flex flex-col gap-3">
-                <a href="stats-for-ds/topic4.html" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl no-underline text-center text-sm">Read Topic 4</a>
-                <a href="stats-for-ds/week1-notes.html#topic4" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border no-underline text-center text-sm">See Week Notes</a>
-            </div>
-        </div>
-
-        <div class="bg-dark-secondary rounded-3xl p-8 shadow-xl border border-dark-border">
-            <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-semibold">Topic 5: Organising Data</h3>
-                <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">20 min</span>
-            </div>
-            <p class="text-text-secondary mb-6">Tidy tables, data dictionaries, and quality checks that keep analyses reproducible.</p>
-            <div class="flex flex-col gap-3">
-                <a href="stats-for-ds/topic5.html" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl no-underline text-center text-sm">Read Topic 5</a>
-                <a href="stats-for-ds/week1-notes.html#topic5" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border no-underline text-center text-sm">Revisit Notes</a>
-            </div>
-        </div>
-
-        <div class="bg-dark-secondary rounded-3xl p-8 shadow-xl border border-dark-border">
-            <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-semibold">Topic 6: Types of Data</h3>
-                <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">18 min</span>
-            </div>
-            <p class="text-text-secondary mb-6">Categorical versus numerical, discrete versus continuous, and the difference between cross-sectional and time-series data.</p>
-            <div class="flex flex-col gap-3">
-                <a href="stats-for-ds/topic6.html" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl no-underline text-center text-sm">Read Topic 6</a>
-                <a href="stats-for-ds/week1-quiz.html#mcq-practice" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border no-underline text-center text-sm">Attempt MCQs</a>
-            </div>
-        </div>
-
-        <div class="bg-dark-secondary rounded-3xl p-8 shadow-xl border border-dark-border">
-            <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-semibold">Topic 7: Measurement Scales</h3>
-                <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">20 min</span>
-            </div>
-            <p class="text-text-secondary mb-6">Nominal, ordinal, interval, and ratio scales with examples plus a full Week 1 recap checklist.</p>
-            <div class="flex flex-col gap-3">
-                <a href="stats-for-ds/topic7.html" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl no-underline text-center text-sm">Read Topic 7</a>
-                <a href="stats-for-ds/week1-quiz.html#answer-key" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border no-underline text-center text-sm">Check Answers</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-                <!-- Week 2 - Coming Soon -->
-                <section id="week2" class="mt-16 space-y-8">
-                    <div class="bg-dark-secondary rounded-3xl p-16 border border-dark-border text-center">
-                        <div class="text-7xl mb-6">⏳</div>
-                        <h2 class="text-4xl font-bold mb-4 tracking-tight">Week 2: Probability Fundamentals</h2>
-                        <p class="text-xl text-text-secondary mb-8 max-w-2xl mx-auto leading-relaxed">Coming soon! This week will cover probability theory, basic probability rules, and conditional probability.</p>
-                        <button onclick="notifyMe('Stats Week 2')" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl">🔔 Notify Me</button>
-                        <div class="mt-10 text-left">
-                            <h3 class="text-2xl font-semibold mb-4">Planned Topics</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                <div class="bg-dark-primary/50 border border-dark-border rounded-2xl p-4">
-                                    <div class="text-sm text-text-secondary">2.1</div>
-                                    <div class="font-semibold">Sample Space & Events</div>
-                                </div>
-                                <div class="bg-dark-primary/50 border border-dark-border rounded-2xl p-4">
-                                    <div class="text-sm text-text-secondary">2.2</div>
-                                    <div class="font-semibold">Conditional Probability</div>
-                                </div>
-                                <div class="bg-dark-primary/50 border border-dark-border rounded-2xl p-4">
-                                    <div class="text-sm text-text-secondary">2.3</div>
-                                    <div class="font-semibold">Bayes’ Theorem</div>
-                                </div>
+                        <div class="bg-dark-secondary rounded-3xl p-10 shadow-xl transition-all hover:-translate-y-2 border border-dark-border">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-2xl font-semibold">📋 Topics Overview</h3>
+                                <span class="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-sm font-medium border border-emerald-500/30">✅ Completed</span>
+                            </div>
+                            <p class="text-text-secondary mb-6 leading-relaxed">Statistics introduction, sampling, data foundations, organization, types, and measurement scales.</p>
+                            <div class="flex flex-col gap-3">
+                                <a href="stats-for-ds/topics-overview.html" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl no-underline text-center">📝 View Topics List</a>
+                                <a href="stats-for-ds/week1-notes.html" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border no-underline text-center">📖 Classic View</a>
                             </div>
                         </div>
                     </div>
-                </section>
 
-                <!-- Week 3 - Coming Soon -->
-                <section id="week3" class="mt-16 space-y-8">
-                    <div class="bg-dark-secondary rounded-3xl p-16 border border-dark-border text-center">
-                        <div class="text-7xl mb-6">⏳</div>
-                        <h2 class="text-4xl font-bold mb-4 tracking-tight">Week 3: Probability Distributions</h2>
-                        <p class="text-xl text-text-secondary mb-8 max-w-2xl mx-auto leading-relaxed">Coming soon! This week will explore discrete and continuous probability distributions.</p>
-                        <button onclick="notifyMe('Stats Week 3')" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl">🔔 Notify Me</button>
+                    <!-- Week 1 Topics Grid -->
+                    <div class="bg-dark-secondary rounded-3xl p-10 border border-dark-border">
+                        <h4 class="text-2xl font-semibold mb-6">📚 Topics in Week 1</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <a href="stats-for-ds/topic1.html" class="group no-underline">
+                                <div class="flex items-start gap-3 p-4 rounded-2xl bg-dark-primary/40 hover:bg-dark-primary border border-dark-border hover:border-primary/40 transition">
+                                    <span class="inline-flex items-center justify-center text-xs font-medium px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">1</span>
+                                    <div>
+                                        <div class="font-semibold text-text-primary group-hover:text-white">Introduction to Statistics</div>
+                                        <div class="text-xs text-text-secondary">Topic 1</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="stats-for-ds/topic2.html" class="group no-underline">
+                                <div class="flex items-start gap-3 p-4 rounded-2xl bg-dark-primary/40 hover:bg-dark-primary border border-dark-border hover:border-primary/40 transition">
+                                    <span class="inline-flex items-center justify-center text-xs font-medium px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">2</span>
+                                    <div>
+                                        <div class="font-semibold text-text-primary group-hover:text-white">Populations & Samples</div>
+                                        <div class="text-xs text-text-secondary">Topic 2</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="stats-for-ds/topic3.html" class="group no-underline">
+                                <div class="flex items-start gap-3 p-4 rounded-2xl bg-dark-primary/40 hover:bg-dark-primary border border-dark-border hover:border-primary/40 transition">
+                                    <span class="inline-flex items-center justify-center text-xs font-medium px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">3</span>
+                                    <div>
+                                        <div class="font-semibold text-text-primary group-hover:text-white">Purpose of Analysis</div>
+                                        <div class="text-xs text-text-secondary">Topic 3</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="stats-for-ds/topic4.html" class="group no-underline">
+                                <div class="flex items-start gap-3 p-4 rounded-2xl bg-dark-primary/40 hover:bg-dark-primary border border-dark-border hover:border-primary/40 transition">
+                                    <span class="inline-flex items-center justify-center text-xs font-medium px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">4</span>
+                                    <div>
+                                        <div class="font-semibold text-text-primary group-hover:text-white">Data Foundations</div>
+                                        <div class="text-xs text-text-secondary">Topic 4</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="stats-for-ds/topic5.html" class="group no-underline">
+                                <div class="flex items-start gap-3 p-4 rounded-2xl bg-dark-primary/40 hover:bg-dark-primary border border-dark-border hover:border-primary/40 transition">
+                                    <span class="inline-flex items-center justify-center text-xs font-medium px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">5</span>
+                                    <div>
+                                        <div class="font-semibold text-text-primary group-hover:text-white">Organising Data</div>
+                                        <div class="text-xs text-text-secondary">Topic 5</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="stats-for-ds/topic6.html" class="group no-underline">
+                                <div class="flex items-start gap-3 p-4 rounded-2xl bg-dark-primary/40 hover:bg-dark-primary border border-dark-border hover:border-primary/40 transition">
+                                    <span class="inline-flex items-center justify-center text-xs font-medium px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">6</span>
+                                    <div>
+                                        <div class="font-semibold text-text-primary group-hover:text-white">Types of Data</div>
+                                        <div class="text-xs text-text-secondary">Topic 6</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="stats-for-ds/topic7.html" class="group no-underline">
+                                <div class="flex items-start gap-3 p-4 rounded-2xl bg-dark-primary/40 hover:bg-dark-primary border border-dark-border hover:border-primary/40 transition">
+                                    <span class="inline-flex items-center justify-center text-xs font-medium px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">7</span>
+                                    <div>
+                                        <div class="font-semibold text-text-primary group-hover:text-white">Measurement Scales</div>
+                                        <div class="text-xs text-text-secondary">Topic 7</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="mt-6 text-right">
+                            <a href="stats-for-ds/topics-overview.html" class="text-primary hover:text-primary-dark no-underline font-medium">View full topics overview →</a>
+                        </div>
                     </div>
-                </section>
 
-                <!-- Week 4 - Coming Soon -->
-                <section id="week4" class="mt-16 space-y-8">
-                    <div class="bg-dark-secondary rounded-3xl p-16 border border-dark-border text-center">
-                        <div class="text-7xl mb-6">⏳</div>
-                        <h2 class="text-4xl font-bold mb-4 tracking-tight">Week 4: Sampling and Estimation</h2>
-                        <p class="text-xl text-text-secondary mb-8 max-w-2xl mx-auto leading-relaxed">Coming soon! This week will cover sampling methods and statistical estimation techniques.</p>
-                        <button onclick="notifyMe('Stats Week 4')" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl">🔔 Notify Me</button>
+                    <div class="bg-dark-secondary rounded-3xl p-10 border border-dark-border">
+                        <h4 class="text-2xl font-semibold mb-4">🎯 Week 1 Summary</h4>
+                        <p class="text-text-secondary leading-relaxed mb-6">This week covers fundamental statistical concepts essential for data science, including the definition of statistics, sampling methods, data organization, data types, and measurement scales.</p>
+                        <button onclick="downloadWeek(1)" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-dark-primary text-text-primary font-semibold transition-all hover:bg-dark-border border border-dark-border">📥 Download Week 1</button>
                     </div>
-                </section>
+                    </section>
+
+                    <!-- Week 2 - Coming Soon -->
+                    <section id="week2" class="mt-16 space-y-8">
+                        <div class="bg-dark-secondary rounded-3xl p-16 border border-dark-border text-center">
+                            <div class="text-7xl mb-6">⏳</div>
+                            <h2 class="text-4xl font-bold mb-4 tracking-tight">Week 2: Probability Fundamentals</h2>
+                            <p class="text-xl text-text-secondary mb-8 max-w-2xl mx-auto leading-relaxed">Coming soon! We will cover probability rules, conditional probability, and intuition-building experiments.</p>
+                            <button onclick="notifyMe('Stats Week 2')" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl">🔔 Notify Me</button>
+                        </div>
+                    </section>
+
+                    <!-- Week 3 - Coming Soon -->
+                    <section id="week3" class="mt-16 space-y-8">
+                        <div class="bg-dark-secondary rounded-3xl p-16 border border-dark-border text-center">
+                            <div class="text-7xl mb-6">⏳</div>
+                            <h2 class="text-4xl font-bold mb-4 tracking-tight">Week 3: Probability Distributions</h2>
+                            <p class="text-xl text-text-secondary mb-8 max-w-2xl mx-auto leading-relaxed">Coming soon! We will explore discrete and continuous distributions used throughout data science.</p>
+                            <button onclick="notifyMe('Stats Week 3')" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl">🔔 Notify Me</button>
+                        </div>
+                    </section>
+
+                    <!-- Week 4 - Coming Soon -->
+                    <section id="week4" class="mt-16 space-y-8">
+                        <div class="bg-dark-secondary rounded-3xl p-16 border border-dark-border text-center">
+                            <div class="text-7xl mb-6">⏳</div>
+                            <h2 class="text-4xl font-bold mb-4 tracking-tight">Week 4: Sampling and Estimation</h2>
+                            <p class="text-xl text-text-secondary mb-8 max-w-2xl mx-auto leading-relaxed">Coming soon! Sampling distributions, estimators, and confidence intervals will take centre stage.</p>
+                            <button onclick="notifyMe('Stats Week 4')" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl">🔔 Notify Me</button>
+                        </div>
+                    </section>
                 </main>
             </div>
         </div>
@@ -258,8 +251,6 @@
 
     <script src="../../js/main.js"></script>
     <script src="../../js/subject.js"></script>
+    <script src="../../js/tw-bridge.js"></script>
 </body>
-<script src="../../js/tw-bridge.js"></script>
 </html>
-
-

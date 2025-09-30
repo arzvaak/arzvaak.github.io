@@ -22,19 +22,39 @@
             }
         }
     </script>
+    <style>
+        .gradient-text {
+            background-image: linear-gradient(to right, #FBBF24, #FCD34D);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+        .discord-pattern { background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.05) 10px, rgba(255,255,255,0.05) 20px); }
+        .w-8 { width: 8%; }
+        .w-10 { width: 10%; }
+        .w-15 { width: 15%; }
+        .w-20 { width: 20%; }
+        .w-25 { width: 25%; }
+        .w-30 { width: 30%; }
+        .w-45 { width: 45%; }
+        .w-50 { width: 50%; }
+        .w-60 { width: 60%; }
+        .w-75 { width: 75%; }
+        .w-80 { width: 80%; }
+        .w-90 { width: 90%; }
+        .w-100 { width: 100%; }
+    </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="../../../js/tw-bridge.js"></script>
 </head>
 <body class="bg-dark-primary text-text-primary">
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="../../../index.html">IITM Notes</a>
+                <a href="../../../index.html">📚 IITM Notes</a>
             </div>
             <div class="nav-menu" id="navMenu">
-                <a href="../../../index.html" class="nav-link">Home</a>
-                <a href="../stats-for-ds.html" class="nav-link">Stats for DS</a>
                 <a href="topics-overview.html" class="nav-link">Topics Overview</a>
             </div>
             <div class="nav-toggle" id="navToggle">
@@ -61,19 +81,24 @@
             </div>
         </div>
 
+        <!-- Focus Mode Toggle -->
+        <button class="focus-toggle" onclick="toggleFocusMode()" id="focusToggle">
+            🎯 Focus Mode
+        </button>
+
         <div class="notes-header">
-            <h1>Topic 4: Data Foundations</h1>
+            <h1>📊 Topic 4: Data Foundations</h1>
             <div class="topic-meta">
-                <span class="topic-badge">Data basics</span>
-                <span class="difficulty-badge">Beginner</span>
-                <span class="time-badge">15 min read</span>
+                <span class="topic-badge">Topic 4/7</span>
+                <span class="difficulty-badge">⭐ Beginner</span>
+                <span class="time-badge">⏱️ ~15 min</span>
             </div>
-            <p class="lead-text">Before we can analyse anything we must understand what the data represent, why they were collected, and how trustworthy they are. This topic builds vocabulary for the rest of the course.</p>
+            <p class="topic-lead">Understand what counts as data, why organisations collect it, and how structured versus unstructured formats influence analysis.</p>
         </div>
 
-        <div class="notes-content">
+        <div class="notes-content clean-content">
             <div class="learning-objectives">
-                <h2>Learning Objectives</h2>
+                <h2>🎯 Learning Objectives</h2>
                 <ul>
                     <li>Describe what counts as data in different contexts.</li>
                     <li>List common reasons organisations invest in data collection.</li>
@@ -166,3 +191,4 @@
     <script src="../../../js/notes.js"></script>
 </body>
 </html>
+
