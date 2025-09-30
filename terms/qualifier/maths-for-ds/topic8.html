@@ -53,11 +53,11 @@
     </script>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #111827; /* matte dark to avoid bright gradients */
             min-height: 100vh;
         }
 
@@ -68,14 +68,14 @@
         }
 
         .topic-header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: #1f2937;
+            backdrop-filter: blur(6px);
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
             text-align: center;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #f9fafb;
+            border: 1px solid #374151;
         }
 
         .topic-header h1 {
@@ -91,21 +91,23 @@
         }
 
         .learning-objectives {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
+            background: #1f2937;
+            color: #f9fafb;
             border-radius: 15px;
             padding: 25px;
             margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid #374151;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
         }
 
         .content-section {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
+            background: #1f2937;
+            color: #f9fafb;
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid #374151;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
         }
 
         h2 {
@@ -121,38 +123,38 @@
         }
 
         .definition-box {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            border-left: 5px solid #2196f3;
+            background: #111827;
+            color: #f9fafb;
+            border-left: 5px solid #3b82f6;
             padding: 20px;
             margin: 20px 0;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
         }
 
         .example-box {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            border-left: 5px solid #4caf50;
+            background: #111827;
+            color: #f9fafb;
+            border-left: 5px solid #10b981;
             padding: 20px;
             margin: 20px 0;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
         }
 
         .warning-box {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            border-left: 5px solid #ff9800;
+            background: #111827;
+            color: #f9fafb;
+            border-left: 5px solid #f59e0b;
             padding: 20px;
             margin: 20px 0;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
         }
 
         .historical-box {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
+            background: #1f2937;
+            color: #f9fafb;
             border: 2px solid #e91e63;
             border-radius: 15px;
             padding: 25px;
@@ -196,16 +198,17 @@
         /* Square diagram, diagonal, labels, examples/cards now come from shared css/notes.css */
 
         .practice-problems {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
+            background: #1f2937;
+            color: #f9fafb;
             border-radius: 15px;
             padding: 25px;
             margin: 30px 0;
+            border: 1px solid #374151;
         }
 
         .problem {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
+            background: #111827;
+            color: #f9fafb;
             padding: 20px;
             margin: 15px 0;
             border-radius: 10px;
@@ -221,7 +224,7 @@
         }
 
         .toggle-solution {
-            background: #e91e63;
+            background: #3b82f6;
             color: white;
             border: none;
             padding: 8px 16px;
@@ -231,7 +234,7 @@
             transition: all 0.3s ease;
         }
 
-        .toggle-solution:hover { background: #c2185b; transform: translateY(-2px); }
+    .toggle-solution:hover { background: #2563eb; transform: translateY(-2px); }
 
         .navigation {
             display: flex;
@@ -241,8 +244,8 @@
         }
 
         .nav-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: #1f2937;
+            color: #f9fafb;
             text-decoration: none;
             padding: 15px 30px;
             border-radius: 25px;
@@ -253,19 +256,23 @@
             gap: 10px;
             min-width: 120px;
             justify-content: center;
+            border: 1px solid #374151;
         }
 
         .nav-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background: #374151;
+            border-color: #3b82f6;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
         }
 
         .progress-bar {
-            background: rgba(255, 255, 255, 0.2);
+            background: #1f2937;
             height: 8px;
             border-radius: 10px;
             margin: 20px 0;
             overflow: hidden;
+            border: 1px solid #374151;
         }
 
         /* progress-fill styling comes from shared CSS; width controlled via utility classes */
@@ -293,8 +300,8 @@
         }
 
         .theorem-box {
-            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
-            border: 2px solid #4caf50;
+            background: rgba(16,185,129,0.08);
+            border: 2px solid #10b981;
             border-radius: 15px;
             padding: 25px;
             margin: 20px 0;

@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 5: Organising Data | Statistics for Data Science</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#3b82f6', dark: '#2563eb' },
+                        dark: { primary: '#111827', secondary: '#1f2937', border: '#374151' },
+                        text: { primary: '#f9fafb', secondary: '#d1d5db' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../js/tw-bridge.js"></script>
+</head>
+<body class="bg-dark-primary text-text-primary">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../../index.html">IITM Notes</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="../stats-for-ds.html" class="nav-link">Stats for DS</a>
+                <a href="topics-overview.html" class="nav-link">Topics Overview</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="notes-container">
+        <div class="topic-progress-header">
+            <div class="topic-breadcrumb">
+                <a href="../../../index.html">Home</a> >
+                <a href="../stats-for-ds.html">Stats for DS</a> >
+                <a href="topics-overview.html">Topics</a> >
+                <span>Topic 5</span>
+            </div>
+            <div class="topic-progress-bar">
+                <div class="progress-track">
+                    <div class="progress-fill w-75"></div>
+                </div>
+                <span class="progress-label">Topic 5 of 7</span>
+            </div>
+        </div>
+
+        <div class="notes-header">
+            <h1>Topic 5: Organising Data</h1>
+            <div class="topic-meta">
+                <span class="topic-badge">Data management</span>
+                <span class="difficulty-badge">Applied</span>
+                <span class="time-badge">20 min read</span>
+            </div>
+            <p class="lead-text">Clean organisation enables clear analysis. Learn how statisticians structure datasets, define variables, and curate metadata so that work is reproducible and teams can collaborate.</p>
+        </div>
+
+        <div class="notes-content">
+            <div class="learning-objectives">
+                <h2>Learning Objectives</h2>
+                <ul>
+                    <li>Differentiate between cases (rows) and variables (columns).</li>
+                    <li>Create a simple data dictionary.</li>
+                    <li>Identify and flag data quality issues (missing values, inconsistent units).</li>
+                    <li>Organise categorical information using proper codes.</li>
+                </ul>
+            </div>
+
+            <section id="table-structure">
+                <h2>5.1 Anatomy of a data table</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Cases (observations)</h4>
+                        <p>Each row corresponds to a single unit of analysis: a student, a household, a machine reading. Keep one row per unit to maintain tidy data.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Variables (attributes)</h4>
+                        <p>Columns record characteristics of the unit: exam score, income, temperature. Use consistent types and units.</p>
+                    </div>
+                </div>
+                <pre class="code-block">Case | Student | Programme | EntranceScore | HostelResident
+---- | ------- | --------- | ------------- | --------------
+1    | Anjali  | BSc DS    | 88            | Yes
+2    | Karim   | BSc DS    | 73            | No
+3    | Meera   | Diploma   | 91            | Yes</pre>
+            </section>
+
+            <section id="data-dictionary">
+                <h2>5.2 Building a data dictionary</h2>
+                <p>A data dictionary documents every variable so that future analysts understand its meaning.</p>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Valid values / units</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Student</td>
+                            <td>Full name of learner</td>
+                            <td>Categorical (text)</td>
+                            <td>String</td>
+                            <td>Capitalise first letter</td>
+                        </tr>
+                        <tr>
+                            <td>Programme</td>
+                            <td>Academic track</td>
+                            <td>Categorical (nominal)</td>
+                            <td>{"BSc DS", "BS DS", "Diploma"}</td>
+                            <td>Use standard abbreviations</td>
+                        </tr>
+                        <tr>
+                            <td>EntranceScore</td>
+                            <td>Score in entrance exam</td>
+                            <td>Numerical (ratio)</td>
+                            <td>0–100</td>
+                            <td>Two decimal places allowed</td>
+                        </tr>
+                        <tr>
+                            <td>HostelResident</td>
+                            <td>Whether student lives in hostel</td>
+                            <td>Categorical (binary)</td>
+                            <td>{"Yes", "No"}</td>
+                            <td>Map to 1/0 if model requires numeric</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="data-quality">
+                <h2>5.3 Data quality checks</h2>
+                <ul class="warning-list">
+                    <li><strong>Missing values:</strong> track how many and why they are missing (not recorded vs not applicable).</li>
+                    <li><strong>Inconsistent units:</strong> ensure measurement units are aligned (all weights in kg, not a mix of kg and pounds).</li>
+                    <li><strong>Out-of-range entries:</strong> validate with domain limits (probabilities cannot exceed 1).</li>
+                    <li><strong>Duplicate rows:</strong> identify duplicates using unique identifiers.</li>
+                </ul>
+            </section>
+
+            <section id="categorical-coding">
+                <h2>5.4 Coding categorical variables</h2>
+                <p>Organise categories consistently to avoid typos and analysis errors. Strategies include:</p>
+                <ul class="checklist">
+                    <li>Use enumerated codes (1 = Yes, 0 = No) with a lookup table.</li>
+                    <li>Store ordered categories with explicit order labels (Poor &lt; Fair &lt; Good &lt; Excellent).</li>
+                    <li>Document the meaning of “Other” or “Not Available”.</li>
+                </ul>
+            </section>
+
+            <div class="topic-navigation">
+                <a class="nav-button prev" href="topic4.html">Previous Topic</a>
+                <a class="nav-button overview" href="topics-overview.html">Topics Overview</a>
+                <a class="nav-button next" href="topic6.html">Next Topic</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../js/notes.js"></script>
+</body>
+</html>

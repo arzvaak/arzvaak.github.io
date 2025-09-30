@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 2: Populations and Samples | Statistics for Data Science</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#3b82f6', dark: '#2563eb' },
+                        dark: { primary: '#111827', secondary: '#1f2937', border: '#374151' },
+                        text: { primary: '#f9fafb', secondary: '#d1d5db' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../js/tw-bridge.js"></script>
+</head>
+<body class="bg-dark-primary text-text-primary">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../../index.html">IITM Notes</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="../stats-for-ds.html" class="nav-link">Stats for DS</a>
+                <a href="topics-overview.html" class="nav-link">Topics Overview</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="notes-container">
+        <div class="topic-progress-header">
+            <div class="topic-breadcrumb">
+                <a href="../../../index.html">Home</a> >
+                <a href="../stats-for-ds.html">Stats for DS</a> >
+                <a href="topics-overview.html">Topics</a> >
+                <span>Topic 2</span>
+            </div>
+            <div class="topic-progress-bar">
+                <div class="progress-track">
+                    <div class="progress-fill w-30"></div>
+                </div>
+                <span class="progress-label">Topic 2 of 7</span>
+            </div>
+        </div>
+
+        <div class="notes-header">
+            <h1>Topic 2: Populations and Samples</h1>
+            <div class="topic-meta">
+                <span class="topic-badge">Sampling</span>
+                <span class="difficulty-badge">Core concept</span>
+                <span class="time-badge">18 min read</span>
+            </div>
+            <p class="lead-text">Sound inference starts with clear definitions of the population of interest and the sample we actually observe. This topic clarifies terminology, highlights common pitfalls, and introduces sampling strategies.</p>
+        </div>
+
+        <div class="notes-content">
+            <div class="learning-objectives">
+                <h2>Learning Objectives</h2>
+                <ul>
+                    <li>Define population, census, and sample in precise terms.</li>
+                    <li>Explain what makes a sample representative.</li>
+                    <li>Compare probability and non-probability sampling methods.</li>
+                    <li>Recognise sampling bias and understand how to mitigate it.</li>
+                </ul>
+            </div>
+
+            <section id="key-definitions">
+                <h2>2.1 Key definitions</h2>
+                <div class="two-column-grid">
+                    <div class="column">
+                        <h3>Population</h3>
+                        <p>The complete set of units we wish to describe or understand. Examples include all registered voters in Tamil Nadu, every device manufactured on a production line, or every transaction processed by an app last month.</p>
+                    </div>
+                    <div class="column">
+                        <h3>Sample</h3>
+                        <p>A subset selected from the population for practical analysis. We rely on the sample because observing the entire population is usually impossible or too expensive.</p>
+                    </div>
+                </div>
+                <div class="callout">
+                    <p class="strong">Census</p>
+                    <p>When we collect data from every unit of the population we perform a <em>census</em>. This is rare and reserved for small populations or critical counts such as national censuses held every decade.</p>
+                </div>
+            </section>
+
+            <section id="representativeness">
+                <h2>2.2 Representativeness matters</h2>
+                <p>A sample supports valid inference only when it mirrors key characteristics of the population. Three warning signs:</p>
+                <ul class="warning-list">
+                    <li><strong>Undercoverage:</strong> parts of the population were never sampled (e.g., surveying only urban voters).</li>
+                    <li><strong>Self-selection:</strong> only motivated respondents provide data (e.g., online product reviews skewed toward extreme opinions).</li>
+                    <li><strong>Non-response:</strong> selected units choose not to participate, shifting the sample composition.</li>
+                </ul>
+                <p class="tip">Document the sampling frame (the list from which you sample) and compare known population totals where possible.</p>
+            </section>
+
+            <section id="sampling-methods">
+                <h2>2.3 Sampling methods</h2>
+                <div class="method-grid">
+                    <div class="method-card">
+                        <h3>Simple random sample</h3>
+                        <p>Every unit has equal chance of selection. Implement using random number generators or lottery methods.</p>
+                        <p class="example">Example: using Python's <code>random.sample</code> to pick 200 student IDs from a list of 10,000.</p>
+                    </div>
+                    <div class="method-card">
+                        <h3>Systematic sample</h3>
+                        <p>Select every kth unit after a random start. Works well on ordered lists without periodic patterns.</p>
+                        <p class="example">Example: inspecting every 50th widget leaving an assembly line.</p>
+                    </div>
+                    <div class="method-card">
+                        <h3>Stratified sample</h3>
+                        <p>Divide the population into homogeneous groups (strata) and sample within each group. Ensures representation across key categories.</p>
+                        <p class="example">Example: sampling students by programme (BSc, BS, Diplomas) to compare performance.</p>
+                    </div>
+                    <div class="method-card">
+                        <h3>Cluster sample</h3>
+                        <p>Randomly select clusters (e.g., classrooms, districts) and survey every unit inside selected clusters. Reduces travel cost.</p>
+                        <p class="example">Example: choose five randomly selected schools and interview all teachers in those schools.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sample-size">
+                <h2>2.4 Sample size considerations</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Margin of error</h4>
+                        <p>Larger samples reduce sampling variability, shrinking the margin of error. However, doubling the sample size does not halve the error — pay attention to diminishing returns.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Practical constraints</h4>
+                        <p>Budget, time, and data collection logistics often limit the sample size. Balance these with the need for precision.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Finite population correction</h4>
+                        <p>When sampling without replacement from a small population (say fewer than 10,000 units), adjust the variance estimates using the finite population correction factor.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quality-check">
+                <h2>2.5 Quick self-check</h2>
+                <ol class="checklist">
+                    <li>Have you written a one-line description of the population and the sample?</li>
+                    <li>What units are in the sampling frame? Who might be missing?</li>
+                    <li>Which sampling method is feasible for your study?</li>
+                    <li>How large should the sample be to detect meaningful differences?</li>
+                </ol>
+            </section>
+
+            <div class="topic-navigation">
+                <a class="nav-button prev" href="topic1.html">Previous Topic</a>
+                <a class="nav-button overview" href="topics-overview.html">Topics Overview</a>
+                <a class="nav-button next" href="topic3.html">Next Topic</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../js/notes.js"></script>
+</body>
+</html>

@@ -1124,6 +1124,13 @@
         // Initialize Quiz
         function initQuiz() {
             console.log('Quiz initialized with', quizData.length, 'questions');
+            // Restore saved progress
+            try {
+                const saved = localStorage.getItem('maths_week1_quiz_answers');
+                if (saved) {
+                    userAnswers = JSON.parse(saved);
+                }
+            } catch {}
             document.getElementById('sectionNav').classList.remove('hidden');
             document.getElementById('sectionControls').classList.remove('hidden');
             // Show all questions by default so the full quiz is immediately visible
@@ -1134,6 +1141,29 @@
             if (window.MathJax) {
                 MathJax.typesetPromise();
             }
+
+            // Keyboard navigation: number keys to select options 1-4, PgUp/PgDn to navigate sections
+            window.addEventListener('keydown', (e) => {
+                const n = parseInt(e.key, 10);
+                if (!isNaN(n) && n >= 1 && n <= 9) {
+                    // try apply to the last question in viewport
+                    const cards = Array.from(document.querySelectorAll('[id^="explanation-"]')).map(el => parseInt(el.id.replace('explanation-','')));
+                    if (cards.length) {
+                        const qId = Math.min(...cards); // simplest: top-most rendered id
+                        const opt = document.querySelector(`[data-question="${qId}"][data-option="${n-1}"]`);
+                        if (opt) {
+                            e.preventDefault();
+                            opt.click();
+                        }
+                    }
+                } else if (e.key === 'PageDown') {
+                    e.preventDefault();
+                    navigateSection(1);
+                } else if (e.key === 'PageUp') {
+                    e.preventDefault();
+                    navigateSection(-1);
+                }
+            });
         }
 
         // Manual force-load button
@@ -1247,6 +1277,8 @@
             showFeedback(questionId);
             updateStats();
             updateOverallProgress();
+            // persist
+            try { localStorage.setItem('maths_week1_quiz_answers', JSON.stringify(userAnswers)); } catch {}
 
             // Typeset math in explanation
             if (window.MathJax) {
@@ -1312,6 +1344,7 @@
         function resetQuiz() {
             if (confirm('Are you sure you want to reset the quiz? All your answers will be cleared.')) {
                 userAnswers = {};
+                try { localStorage.removeItem('maths_week1_quiz_answers'); } catch {}
                 filteredQuestions = [...quizData];
                 document.getElementById('partFilter').value = 'all';
                 document.getElementById('difficultyFilter').value = 'all';

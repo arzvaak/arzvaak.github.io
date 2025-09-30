@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statistics Quiz - Week 1 | IITM Notes</title>
-    <meta name="description" content="Interactive quiz for Statistics for Data Science - Week 1">
+    <meta name="description" content="Week 1 practice quiz for Statistics for Data Science - IITM Qualifier">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
@@ -26,198 +26,446 @@
     <!-- Tailwind CDN mode: avoid @apply; styles handled by tw-bridge.js -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        .option.selected { border-color: #3b82f6 !important; background-color: rgba(59,130,246,0.2) !important; }
+        .option.correct { border-color: #10b981 !important; background-color: rgba(16,185,129,0.2) !important; }
+        .option.incorrect { border-color: #ef4444 !important; background-color: rgba(239,68,68,0.2) !important; }
+        .explanation.show { display: block !important; }
+        .hidden { display: none !important; }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#111827">
 </head>
 <body class="bg-dark-primary text-text-primary">
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="../../../index.html">📚 IITM Notes</a>
+    <nav class="fixed top-0 w-full bg-dark-secondary/95 backdrop-blur-md shadow-xl border-b border-dark-border z-50">
+        <div class="max-w-7xl mx-auto px-5 flex justify-between items-center h-16">
+            <div class="text-2xl font-bold">
+                <a href="../../../index.html" class="text-primary hover:text-blue-400 transition-colors">IITM Notes</a>
             </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="../../../index.html" class="nav-link">Home</a>
-                <a href="../stats-for-ds.html" class="nav-link">Back to Stats for DS</a>
-                <a href="week1-notes.html" class="nav-link">Week 1 Notes</a>
-            </div>
-            <div class="nav-toggle" id="navToggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="flex gap-6">
+                <a href="../../../index.html" class="text-text-secondary hover:text-primary transition-colors">Home</a>
+                <a href="../stats-for-ds.html" class="text-text-secondary hover:text-primary transition-colors">Back to Stats for DS</a>
+                <a href="week1-notes.html" class="text-text-secondary hover:text-primary transition-colors">Week 1 Notes</a>
             </div>
         </div>
     </nav>
 
+    <!-- Header -->
+    <section id="overview" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white pt-24 pb-12 shadow-[inset_0_-1px_0_rgba(255,255,255,0.1)]">
+        <div class="max-w-6xl mx-auto px-5">
+            <div class="text-sm mb-4 opacity-90">
+                <a href="../../../index.html" class="hover:text-blue-200">Home</a> > <a href="../stats-for-ds.html" class="hover:text-blue-200">Stats for DS</a> > <span>Quiz</span>
+            </div>
+            <h1 class="text-5xl font-extrabold mb-3">Statistics for Data Science</h1>
+            <p class="text-xl opacity-95">Week 1 Practice Quiz - 6 MCQs plus written prompts</p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8" id="progressStats">
+                <div class="text-center p-4 bg-white/10 rounded-xl backdrop-blur-sm">
+                    <div class="text-4xl font-extrabold" id="totalQuestions">6</div>
+                    <div class="text-sm mt-1 opacity-90">Total MCQs</div>
+                </div>
+                <div class="text-center p-4 bg-white/10 rounded-xl backdrop-blur-sm">
+                    <div class="text-4xl font-extrabold" id="answeredCount">0</div>
+                    <div class="text-sm mt-1 opacity-90">Answered</div>
+                </div>
+                <div class="text-center p-4 bg-white/10 rounded-xl backdrop-blur-sm">
+                    <div class="text-4xl font-extrabold" id="correctCount">0</div>
+                    <div class="text-sm mt-1 opacity-90">Correct</div>
+                </div>
+                <div class="text-center p-4 bg-white/10 rounded-xl backdrop-blur-sm">
+                    <div class="text-4xl font-extrabold" id="scorePercent">0%</div>
+                    <div class="text-sm mt-1 opacity-90">Score</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Quiz Container -->
-    <div class="quiz-container">
-        <div class="quiz-header">
-            <div class="breadcrumb">
-                <a href="../../../index.html">Home</a> > 
-                <a href="../stats-for-ds.html">Statistics for DS</a> > 
-                <span>Week 1 Quiz</span>
+    <section id="mcq-practice" class="bg-dark-primary py-12">
+        <div class="max-w-6xl mx-auto px-5">
+            <div class="w-full bg-dark-secondary rounded-full h-3 overflow-hidden border border-dark-border mb-6">
+                <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-full transition-all duration-500 ease-out" id="overallProgress" style="width: 0%;"></div>
             </div>
-            <h1>📊 Statistics Quiz - Week 1</h1>
-            <div class="quiz-meta">
-                <span class="quiz-badge">10 Questions</span>
-                <span class="time-badge">⏱️ 15 minutes</span>
-                <span class="difficulty-badge">📈 Beginner</span>
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold">Section B: Multiple Choice Questions</h2>
+                <div class="flex gap-3">
+                    <button onclick="resetQuiz()" class="px-4 py-2 rounded-lg border border-blue-400 text-blue-300 hover:bg-blue-500/10 transition-colors">Reset</button>
+                    <button onclick="showResults()" class="px-4 py-2 rounded-lg bg-primary hover:bg-blue-500 transition-colors font-semibold text-white">Show Results</button>
+                </div>
+            </div>
+
+            <p class="text-text-secondary mb-6">Answer the interactive MCQs below. Your progress saves locally so you can revisit later.</p>
+
+            <div id="quizContent" class="space-y-6"></div>
+            <div id="loadingIndicator" class="flex justify-center items-center h-40">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            </div>
+            <p id="progressText" class="text-text-secondary text-sm mt-4">0/6 questions completed</p>
+        </div>
+    </section>
+
+    <!-- Additional Practice -->
+    <section id="written-practice" class="bg-dark-secondary py-14 border-t border-dark-border">
+        <div class="max-w-6xl mx-auto px-5 space-y-10">
+            <div>
+                <h2 class="text-3xl font-bold mb-3">Section A: Quick Concept Checks</h2>
+                <p class="text-text-secondary mb-4">Use these short prompts for rapid recall before attempting the MCQs.</p>
+                <ol class="list-decimal list-inside space-y-2 text-text-primary">
+                    <li>State a one line definition of statistics.</li>
+                    <li>Explain the difference between descriptive and inferential statistics.</li>
+                    <li>Give one example each for a population and a sample.</li>
+                    <li>Describe the difference between a case and a variable.</li>
+                    <li>Distinguish cross sectional and time series data.</li>
+                    <li>List the four scales of measurement.</li>
+                </ol>
+            </div>
+
+            <div>
+                <h2 class="text-3xl font-bold mb-3">Section C: Short Answer Practice</h2>
+                <ol class="list-decimal list-inside space-y-2 text-text-primary">
+                    <li>If nineteen students are surveyed for marks, what is the sample size?</li>
+                    <li>Between any two rational numbers, how many rational numbers can exist?</li>
+                    <li>Write the reduced form of 18/60.</li>
+                    <li>Label each data source as structured or unstructured:
+                        <ul class="list-disc list-inside mt-2 text-text-secondary">
+                            <li>A shopkeeper note with sales written freely.</li>
+                            <li>An Excel sheet with student marks.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div>
+                <h2 class="text-3xl font-bold mb-3">Section D: Applied Dataset</h2>
+                <p class="text-text-secondary mb-4">Use the mini dataset to practice identifying variables and drawing conclusions.</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border border-dark-border rounded-lg overflow-hidden">
+                        <thead class="bg-dark-primary">
+                            <tr>
+                                <th class="px-4 py-2 border-b border-dark-border">Player</th>
+                                <th class="px-4 py-2 border-b border-dark-border">Matches</th>
+                                <th class="px-4 py-2 border-b border-dark-border">Runs</th>
+                                <th class="px-4 py-2 border-b border-dark-border">Batting average</th>
+                                <th class="px-4 py-2 border-b border-dark-border">Wickets</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="px-4 py-2 border-b border-dark-border">Sachin</td>
+                                <td class="px-4 py-2 border-b border-dark-border">463</td>
+                                <td class="px-4 py-2 border-b border-dark-border">18426</td>
+                                <td class="px-4 py-2 border-b border-dark-border">44.8</td>
+                                <td class="px-4 py-2 border-b border-dark-border">154</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 border-b border-dark-border">Kohli</td>
+                                <td class="px-4 py-2 border-b border-dark-border">254</td>
+                                <td class="px-4 py-2 border-b border-dark-border">12040</td>
+                                <td class="px-4 py-2 border-b border-dark-border">59.1</td>
+                                <td class="px-4 py-2 border-b border-dark-border">4</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2">Dhoni</td>
+                                <td class="px-4 py-2">350</td>
+                                <td class="px-4 py-2">10773</td>
+                                <td class="px-4 py-2">50.6</td>
+                                <td class="px-4 py-2">1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ol class="list-decimal list-inside space-y-2 text-text-primary mt-4">
+                    <li>Who has the highest batting average?</li>
+                    <li>Identify one categorical variable in the table.</li>
+                    <li>Would you classify this dataset as descriptive or inferential? Explain briefly.</li>
+                </ol>
+            </div>
+
+            <div id="answer-key">
+                <h2 class="text-3xl font-bold mb-3">Answer Key</h2>
+                <div class="grid md:grid-cols-2 gap-6 text-text-primary">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">MCQ Solutions</h3>
+                        <ul class="space-y-1 text-text-secondary">
+                            <li>Q1: Option B</li>
+                            <li>Q2: Option C</li>
+                            <li>Q3: Option A</li>
+                            <li>Q4: Option C</li>
+                            <li>Q5: Option D</li>
+                            <li>Q6: Option B</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Written prompts</h3>
+                        <ul class="space-y-1 text-text-secondary">
+                            <li>Section A: Refer to Week 1 notes for model explanations.</li>
+                            <li>Section C: Answers - (1) 19, (2) Infinitely many, (3) 3/10, (4) Shopkeeper note is unstructured, Excel sheet is structured.</li>
+                            <li>Section D: Highest average is Kohli, categorical variable is Player, dataset serves descriptive insight.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="quiz-progress">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressBar"></div>
+    <!-- Results Modal -->
+    <div id="resultsModal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
+        <div class="bg-dark-secondary rounded-2xl border border-dark-border max-w-xl w-full mx-5 shadow-2xl">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-dark-border">
+                <h3 class="text-2xl font-bold">MCQ Score</h3>
+                <button onclick="closeResults()" class="text-text-secondary hover:text-white transition-colors text-2xl">&times;</button>
             </div>
-            <span class="progress-text">Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span></span>
-        </div>
-
-        <div class="quiz-content" id="quizContent">
-            <!-- Questions will be loaded here -->
-        </div>
-
-        <div class="quiz-controls">
-            <button id="prevBtn" class="quiz-btn secondary" disabled>Previous</button>
-            <button id="nextBtn" class="quiz-btn primary">Next</button>
-            <button id="submitBtn" class="quiz-btn success hidden">Submit Quiz</button>
-        </div>
-
-    <div id="quizResults" class="quiz-results hidden">
-            <!-- Results will be shown here -->
+            <div class="p-6 space-y-4" id="resultsBody"></div>
         </div>
     </div>
 
-    <script src="../../../js/quiz.js"></script>
-    <script src="../../../js/tw-bridge.js"></script>
     <script>
-        // Quiz data for Statistics Week 1
-        const quizData = {
-            title: "Statistics for Data Science - Week 1",
-            description: "Test your understanding of basic statistical concepts",
-            questions: [
-                {
-                    id: 1,
-                    question: "What is the primary purpose of descriptive statistics?",
-                    options: [
-                        "To make predictions about future data",
-                        "To summarize and describe data characteristics", 
-                        "To test hypotheses",
-                        "To establish causation"
-                    ],
-                    correct: 1,
-                    explanation: "Descriptive statistics focuses on summarizing and describing the main features of a dataset without making inferences about a larger population."
-                },
-                {
-                    id: 2,
-                    question: "Which of the following is an example of discrete quantitative data?",
-                    options: [
-                        "Height of students",
-                        "Weight of objects",
-                        "Number of books in a library",
-                        "Temperature readings"
-                    ],
-                    correct: 2,
-                    explanation: "The number of books is discrete because it can only take whole number values (you can't have 2.5 books)."
-                },
-                {
-                    id: 3,
-                    question: "What is the median of the dataset: 3, 7, 2, 9, 5?",
-                    options: [
-                        "5",
-                        "7", 
-                        "5.2",
-                        "6"
-                    ],
-                    correct: 0,
-                    explanation: "First arrange in order: 2, 3, 5, 7, 9. The median is the middle value, which is 5."
-                },
-                {
-                    id: 4,
-                    question: "Which measure of central tendency is most affected by outliers?",
-                    options: [
-                        "Mode",
-                        "Median",
-                        "Mean",  
-                        "All are equally affected"
-                    ],
-                    correct: 2,
-                    explanation: "The mean is most affected by outliers because it includes all values in the calculation, while median and mode are more resistant to extreme values."
-                },
-                {
-                    id: 5,
-                    question: "What type of data is 'customer satisfaction rating' (Poor, Fair, Good, Excellent)?",
-                    options: [
-                        "Nominal",
-                        "Ordinal",
-                        "Discrete quantitative", 
-                        "Continuous quantitative"
-                    ],
-                    correct: 1,
-                    explanation: "Customer satisfaction ratings have a natural order (Poor < Fair < Good < Excellent), making them ordinal categorical data."
-                },
-                {
-                    id: 6,
-                    question: "The standard deviation is:",
-                    options: [
-                        "The square of variance",
-                        "The square root of variance",
-                        "The same as variance",
-                        "Always larger than variance"
-                    ],
-                    correct: 1,
-                    explanation: "Standard deviation is the square root of variance, providing a measure of spread in the same units as the original data."
-                },
-                {
-                    id: 7,
-                    question: "For the dataset: 1, 2, 2, 3, 4, what is the mode?",
-                    options: [
-                        "1",
-                        "2",
-                        "3",
-                        "There is no mode"
-                    ],
-                    correct: 1,
-                    explanation: "The mode is 2 because it appears twice, more frequently than any other value in the dataset."
-                },
-                {
-                    id: 8,
-                    question: "Range is calculated as:",
-                    options: [
-                        "Mean - Standard deviation",
-                        "Maximum value - Minimum value", 
-                        "Upper quartile - Lower quartile",
-                        "Variance squared"
-                    ],
-                    correct: 1,
-                    explanation: "Range is simply the difference between the highest and lowest values in a dataset."
-                },
-                {
-                    id: 9,
-                    question: "Which of the following is NOT a characteristic of the mean?",
-                    options: [
-                        "It uses all data points in calculation",
-                        "It can be affected by outliers",
-                        "It is always equal to the median",
-                        "It represents the balance point of data"
-                    ],
-                    correct: 2,
-                    explanation: "The mean is not always equal to the median. They are equal only in perfectly symmetric distributions."
-                },
-                {
-                    id: 10,
-                    question: "Inferential statistics is used to:",
-                    options: [
-                        "Describe data using charts and graphs",  
-                        "Calculate mean and standard deviation",
-                        "Make predictions about populations from samples",
-                        "Organize data in tables"
-                    ],
-                    correct: 2,
-                    explanation: "Inferential statistics uses sample data to make inferences, predictions, or generalizations about a larger population."
-                }
-            ]
-        };
+        const quizData = [
+            { id: 1, question: "Which branch of statistics is used to summarize and describe data?", options: [
+                "Inferential statistics",
+                "Descriptive statistics",
+                "Probability theory",
+                "Regression analysis"
+            ], correctAnswer: 1, explanation: "Descriptive statistics summarizes the features of a dataset using tables, charts, and summary measures." },
+            { id: 2, question: "The set of all students in IIT Madras is a:", options: [
+                "Sample",
+                "Variable",
+                "Population",
+                "Case"
+            ], correctAnswer: 2, explanation: "A population is the complete set of units under study. Here that is every IIT Madras student." },
+            { id: 3, question: "Blood group of a student is measured on which scale?", options: [
+                "Nominal",
+                "Ordinal",
+                "Interval",
+                "Ratio"
+            ], correctAnswer: 0, explanation: "Blood groups are categories without an ordering, so they lie on the nominal scale." },
+            { id: 4, question: "Temperature in Celsius is an example of which scale?", options: [
+                "Nominal",
+                "Ordinal",
+                "Interval",
+                "Ratio"
+            ], correctAnswer: 2, explanation: "Celsius measurements have equal spacing but no true zero, which defines the interval scale." },
+            { id: 5, question: "Height of a student in centimetres is recorded on which scale?", options: [
+                "Nominal",
+                "Ordinal",
+                "Interval",
+                "Ratio"
+            ], correctAnswer: 3, explanation: "Height has a true zero and ratios are meaningful, so it is on the ratio scale." },
+            { id: 6, question: "Daily rainfall in Chennai for July 2020 is what type of data?", options: [
+                "Cross sectional",
+                "Time series"
+            ], correctAnswer: 1, explanation: "Measurements taken sequentially over time for the same location form a time series." }
+        ];
 
-        // Initialize the quiz
-        initializeQuiz(quizData);
+        let userAnswers = {};
+
+        function initQuiz() {
+            try {
+                const saved = localStorage.getItem('stats_week1_quiz_answers');
+                if (saved) userAnswers = JSON.parse(saved);
+            } catch {}
+            renderQuestions();
+            updateStats();
+            updateOverallProgress();
+            if (window.MathJax) MathJax.typesetPromise();
+            window.addEventListener('keydown', (e) => {
+                const n = parseInt(e.key, 10);
+                if (!isNaN(n) && n >= 1 && n <= 9) {
+                    const active = document.querySelector('[data-active-question]');
+                    if (active) {
+                        const qId = parseInt(active.getAttribute('data-active-question'));
+                        const opt = document.querySelector(`[data-question="${qId}"][data-option="${n-1}"]`);
+                        if (opt) { e.preventDefault(); opt.click(); }
+                    }
+                }
+            });
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('quizContent');
+            const loading = document.getElementById('loadingIndicator');
+            if (loading) loading.classList.add('hidden');
+            container.innerHTML = '';
+
+            quizData.forEach(q => {
+                const card = document.createElement('div');
+                card.className = 'bg-dark-secondary border border-dark-border rounded-2xl shadow-lg overflow-hidden question-card';
+                card.setAttribute('data-active-question', q.id);
+
+                const header = document.createElement('div');
+                header.className = 'px-6 py-4 border-b border-dark-border flex items-center justify-between';
+                header.innerHTML = `
+                    <div>
+                        <p class="text-sm text-text-secondary uppercase tracking-wide">Question ${q.id}</p>
+                        <h3 class="text-2xl font-semibold text-text-primary">${q.question}</h3>
+                    </div>
+                    <button class="text-sm text-text-secondary hover:text-primary transition-colors" onclick="resetQuestion(${q.id})">Reset</button>
+                `;
+
+                const body = document.createElement('div');
+                body.className = 'px-6 py-4 space-y-3';
+
+                q.options.forEach((option, index) => {
+                    const optionBtn = document.createElement('button');
+                    optionBtn.className = 'w-full text-left p-4 rounded-xl border border-dark-border bg-dark-primary/60 hover:border-primary transition-all option';
+                    optionBtn.setAttribute('data-question', q.id);
+                    optionBtn.setAttribute('data-option', index);
+                    optionBtn.innerHTML = `
+                        <div class="flex items-start gap-3">
+                            <span class="w-8 h-8 flex items-center justify-center rounded-full border border-dark-border text-text-secondary font-semibold">${index + 1}</span>
+                            <span class="text-lg">${option}</span>
+                        </div>
+                    `;
+                    optionBtn.addEventListener('click', () => selectOption(q.id, index));
+
+                    if (userAnswers[q.id] && userAnswers[q.id].selected === index) {
+                        optionBtn.classList.add('selected');
+                        if (userAnswers[q.id].correct) optionBtn.classList.add('correct');
+                        else optionBtn.classList.add('incorrect');
+                    }
+
+                    body.appendChild(optionBtn);
+                });
+
+                const explanation = document.createElement('div');
+                explanation.id = `explanation-${q.id}`;
+                explanation.className = 'mt-4 p-4 rounded-xl bg-dark-primary/60 border border-dark-border hidden';
+                explanation.innerHTML = `
+                    <p class="text-text-secondary"><strong class="text-primary">Explanation:</strong> ${q.explanation}</p>
+                `;
+                body.appendChild(explanation);
+
+                card.appendChild(header);
+                card.appendChild(body);
+                container.appendChild(card);
+            });
+
+            restoreSelections();
+        }
+
+        function selectOption(questionId, optionIndex) {
+            const question = quizData.find(q => q.id === questionId);
+            if (!question) return;
+
+            const correct = question.correctAnswer === optionIndex;
+            userAnswers[questionId] = { selected: optionIndex, correct };
+
+            try {
+                localStorage.setItem('stats_week1_quiz_answers', JSON.stringify(userAnswers));
+            } catch {}
+
+            const options = document.querySelectorAll(`[data-question="${questionId}"]`);
+            options.forEach(opt => {
+                opt.classList.remove('selected', 'correct', 'incorrect');
+            });
+
+            options.forEach(opt => {
+                const idx = parseInt(opt.getAttribute('data-option'), 10);
+                if (idx === optionIndex) {
+                    opt.classList.add('selected');
+                    opt.classList.add(correct ? 'correct' : 'incorrect');
+                }
+            });
+
+            showFeedback(questionId);
+            updateStats();
+            updateOverallProgress();
+        }
+
+        function showFeedback(questionId) {
+            const explanation = document.getElementById(`explanation-${questionId}`);
+            if (explanation) explanation.classList.remove('hidden');
+        }
+
+        function resetQuestion(questionId) {
+            delete userAnswers[questionId];
+            try {
+                localStorage.setItem('stats_week1_quiz_answers', JSON.stringify(userAnswers));
+            } catch {}
+            const options = document.querySelectorAll(`[data-question="${questionId}"]`);
+            options.forEach(opt => opt.classList.remove('selected', 'correct', 'incorrect'));
+            const explanation = document.getElementById(`explanation-${questionId}`);
+            if (explanation) explanation.classList.add('hidden');
+            updateStats();
+            updateOverallProgress();
+        }
+
+        function restoreSelections() {
+            Object.entries(userAnswers).forEach(([id, answer]) => {
+                const qId = parseInt(id, 10);
+                const opt = document.querySelector(`[data-question="${qId}"][data-option="${answer.selected}"]`);
+                if (opt) {
+                    opt.classList.add('selected');
+                    opt.classList.add(answer.correct ? 'correct' : 'incorrect');
+                    showFeedback(qId);
+                }
+            });
+        }
+
+        function updateStats() {
+            const answered = Object.keys(userAnswers).length;
+            const correct = Object.values(userAnswers).filter(a => a.correct).length;
+            const total = quizData.length;
+            const score = total > 0 ? Math.round((correct / total) * 100) : 0;
+            document.getElementById('totalQuestions').textContent = total;
+            document.getElementById('answeredCount').textContent = answered;
+            document.getElementById('correctCount').textContent = correct;
+            document.getElementById('scorePercent').textContent = score + '%';
+        }
+
+        function updateOverallProgress() {
+            const total = quizData.length;
+            const answered = Object.keys(userAnswers).length;
+            const percent = total > 0 ? (answered / total) * 100 : 0;
+            document.getElementById('overallProgress').style.width = percent + '%';
+            document.getElementById('progressText').textContent = `${answered}/${total} questions completed`;
+        }
+
+        function resetQuiz() {
+            if (!confirm('Reset your answers?')) return;
+            userAnswers = {};
+            try { localStorage.removeItem('stats_week1_quiz_answers'); } catch {}
+            renderQuestions();
+            updateStats();
+            updateOverallProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showResults() {
+            const total = quizData.length;
+            const answered = Object.keys(userAnswers).length;
+            const correct = Object.values(userAnswers).filter(a => a.correct).length;
+            const score = total > 0 ? Math.round((correct / total) * 100) : 0;
+            const body = document.getElementById('resultsBody');
+            body.innerHTML = `
+                <div class="text-center">
+                    <h3 class="text-6xl font-extrabold mb-4 ${score >= 70 ? 'text-emerald-400' : 'text-red-400'}">${score}%</h3>
+                    <p class="text-text-primary text-xl mb-2">You answered <strong class="text-primary">${correct}</strong> out of <strong class="text-primary">${total}</strong> MCQs correctly.</p>
+                    <p class="text-text-secondary mb-4">Completed: ${answered}/${total}</p>
+                    ${score >= 70 ? '<p class="text-emerald-400 text-lg font-bold">Nice work! You are quiz ready.</p>' : '<p class="text-red-400 text-lg">Review the notes and try again.</p>'}
+                </div>
+            `;
+            document.getElementById('resultsModal').classList.remove('hidden');
+        }
+
+        function closeResults() {
+            document.getElementById('resultsModal').classList.add('hidden');
+        }
+
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initQuiz); else initQuiz();
     </script>
+
+    <!-- Floating Results button -->
+    <div class="fixed bottom-6 right-5 z-40">
+        <button onclick="showResults()" class="px-5 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold shadow-xl hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-500/50">Show Results</button>
+    </div>
+
+    <script src="../../../js/tw-bridge.js"></script>
 </body>
 </html>
+
+
+

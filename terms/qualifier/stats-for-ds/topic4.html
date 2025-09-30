@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 4: Data Foundations | Statistics for Data Science</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#3b82f6', dark: '#2563eb' },
+                        dark: { primary: '#111827', secondary: '#1f2937', border: '#374151' },
+                        text: { primary: '#f9fafb', secondary: '#d1d5db' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../js/tw-bridge.js"></script>
+</head>
+<body class="bg-dark-primary text-text-primary">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../../index.html">IITM Notes</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="../stats-for-ds.html" class="nav-link">Stats for DS</a>
+                <a href="topics-overview.html" class="nav-link">Topics Overview</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="notes-container">
+        <div class="topic-progress-header">
+            <div class="topic-breadcrumb">
+                <a href="../../../index.html">Home</a> >
+                <a href="../stats-for-ds.html">Stats for DS</a> >
+                <a href="topics-overview.html">Topics</a> >
+                <span>Topic 4</span>
+            </div>
+            <div class="topic-progress-bar">
+                <div class="progress-track">
+                    <div class="progress-fill w-60"></div>
+                </div>
+                <span class="progress-label">Topic 4 of 7</span>
+            </div>
+        </div>
+
+        <div class="notes-header">
+            <h1>Topic 4: Data Foundations</h1>
+            <div class="topic-meta">
+                <span class="topic-badge">Data basics</span>
+                <span class="difficulty-badge">Beginner</span>
+                <span class="time-badge">15 min read</span>
+            </div>
+            <p class="lead-text">Before we can analyse anything we must understand what the data represent, why they were collected, and how trustworthy they are. This topic builds vocabulary for the rest of the course.</p>
+        </div>
+
+        <div class="notes-content">
+            <div class="learning-objectives">
+                <h2>Learning Objectives</h2>
+                <ul>
+                    <li>Describe what counts as data in different contexts.</li>
+                    <li>List common reasons organisations invest in data collection.</li>
+                    <li>Distinguish between primary and secondary data sources.</li>
+                    <li>Explain the difference between structured and unstructured data.</li>
+                </ul>
+            </div>
+
+            <section id="definition">
+                <h2>4.1 What are data?</h2>
+                <p>Data are recorded facts, measurements, or observations made to answer a question. They can be numbers, text, audio, video, or any digital artefact.</p>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Entities</h4>
+                        <p>People, organisations, experiments, and devices all generate data: exam scores, website clicks, lab sensor readings, patient vitals.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Context</h4>
+                        <p>Recording <em>why</em> data were collected is as important as the raw values. Context prevents misinterpretation.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="motivations">
+                <h2>4.2 Why collect data?</h2>
+                <ul class="checklist">
+                    <li><strong>Monitoring:</strong> track performance of a process or policy (e.g., energy usage per campus building).</li>
+                    <li><strong>Exploration:</strong> uncover patterns or clusters in behaviour (e.g., streaming service watch habits).</li>
+                    <li><strong>Regulation:</strong> maintain compliance with standards (e.g., pharmaceutical batch testing).</li>
+                    <li><strong>Prediction:</strong> build models to forecast future demand or risk.</li>
+                </ul>
+            </section>
+
+            <section id="sources">
+                <h2>4.3 Data sources</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Source type</th>
+                            <th>Description</th>
+                            <th>Examples</th>
+                            <th>Advantages</th>
+                            <th>Challenges</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Primary (collected)</td>
+                            <td>Data gathered firsthand for a specific purpose.</td>
+                            <td>Surveys, experiments, observations.</td>
+                            <td>High control over quality and definitions.</td>
+                            <td>Expensive and time-consuming.</td>
+                        </tr>
+                        <tr>
+                            <td>Secondary (published)</td>
+                            <td>Data compiled by someone else and shared.</td>
+                            <td>Government portals, research articles, reports.</td>
+                            <td>Fast access, often large coverage.</td>
+                            <td>Definitions may differ; documentation varies.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="structure">
+                <h2>4.4 Structured vs unstructured data</h2>
+                <div class="two-column-grid">
+                    <div class="column">
+                        <h3>Structured data</h3>
+                        <p>Organised into tables with rows and columns. Easy to search and analyse using SQL, spreadsheets, and statistical software.</p>
+                        <p class="example">Example: admissions dataset with columns for student ID, programme, entrance score, and admission status.</p>
+                    </div>
+                    <div class="column">
+                        <h3>Unstructured data</h3>
+                        <p>Free-form content such as text, images, audio, and video. Requires preprocessing or feature extraction before analysis.</p>
+                        <p class="example">Example: support ticket descriptions or customer feedback voice recordings.</p>
+                    </div>
+                </div>
+                <p class="tip">Many modern projects combine both types: an e-commerce platform may have structured transaction tables plus unstructured product reviews.</p>
+            </section>
+
+            <div class="topic-navigation">
+                <a class="nav-button prev" href="topic3.html">Previous Topic</a>
+                <a class="nav-button overview" href="topics-overview.html">Topics Overview</a>
+                <a class="nav-button next" href="topic5.html">Next Topic</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../js/notes.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 7: Measurement Scales | Statistics for Data Science</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#3b82f6', dark: '#2563eb' },
+                        dark: { primary: '#111827', secondary: '#1f2937', border: '#374151' },
+                        text: { primary: '#f9fafb', secondary: '#d1d5db' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../js/tw-bridge.js"></script>
+</head>
+<body class="bg-dark-primary text-text-primary">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../../index.html">IITM Notes</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="../stats-for-ds.html" class="nav-link">Stats for DS</a>
+                <a href="topics-overview.html" class="nav-link">Topics Overview</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="notes-container">
+        <div class="topic-progress-header">
+            <div class="topic-breadcrumb">
+                <a href="../../../index.html">Home</a> >
+                <a href="../stats-for-ds.html">Stats for DS</a> >
+                <a href="topics-overview.html">Topics</a> >
+                <span>Topic 7</span>
+            </div>
+            <div class="topic-progress-bar">
+                <div class="progress-track">
+                    <div class="progress-fill w-100"></div>
+                </div>
+                <span class="progress-label">Topic 7 of 7</span>
+            </div>
+        </div>
+
+        <div class="notes-header">
+            <h1>Topic 7: Measurement Scales and Summary</h1>
+            <div class="topic-meta">
+                <span class="topic-badge">Scales</span>
+                <span class="difficulty-badge">Applied</span>
+                <span class="time-badge">20 min read</span>
+            </div>
+            <p class="lead-text">Measurement scales determine which mathematical operations make sense and which statistical techniques apply. We close the week by cataloguing the four classical scales and consolidating learning with a recap checklist.</p>
+        </div>
+
+        <div class="notes-content">
+            <div class="learning-objectives">
+                <h2>Learning Objectives</h2>
+                <ul>
+                    <li>Differentiate nominal, ordinal, interval, and ratio scales.</li>
+                    <li>Match real-world examples to each scale.</li>
+                    <li>Select valid summary statistics for each measurement level.</li>
+                    <li>Review the full week with a structured summary.</li>
+                </ul>
+            </div>
+
+            <section id="scales">
+                <h2>7.1 Four classical measurement scales</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Scale</th>
+                            <th>Order?</th>
+                            <th>Equal differences?</th>
+                            <th>Meaningful ratios?</th>
+                            <th>Examples</th>
+                            <th>Valid summaries</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nominal</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>Blood group, type of browser</td>
+                            <td>Counts, mode</td>
+                        </tr>
+                        <tr>
+                            <td>Ordinal</td>
+                            <td>Yes</td>
+                            <td>No fixed spacing</td>
+                            <td>No</td>
+                            <td>Customer satisfaction levels, ranks</td>
+                            <td>Medians, percentiles</td>
+                        </tr>
+                        <tr>
+                            <td>Interval</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>No true zero</td>
+                            <td>Temperature in deg C, calendar years</td>
+                            <td>Mean, standard deviation (with caution)</td>
+                        </tr>
+                        <tr>
+                            <td>Ratio</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Height, weight, income, response time</td>
+                            <td>Mean, variance, coefficient of variation</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="tip">Interval scales allow addition and subtraction but not meaningful ratios because zero is arbitrary. Ratio scales allow all arithmetic operations.</p>
+            </section>
+
+            <section id="choosing-statistics">
+                <h2>7.2 Choosing statistics by scale</h2>
+                <ul class="checklist">
+                    <li>Nominal: use counts, proportions, and chi-square tests.</li>
+                    <li>Ordinal: use medians, order-based charts, and non-parametric tests.</li>
+                    <li>Interval: compare differences; z-scores are meaningful.</li>
+                    <li>Ratio: apply all descriptive statistics, log transforms, and coefficient of variation.</li>
+                </ul>
+            </section>
+
+            <section id="week-summary">
+                <h2>7.3 Week 1 summary</h2>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h3>Foundations</h3>
+                        <p>Statistics helps us learn from data through descriptive and inferential techniques.</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Sampling</h3>
+                        <p>Clear definitions of population and sample plus representative sampling protect against bias.</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Data management</h3>
+                        <p>Understand the context, document variables, and maintain data quality.</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Classification</h3>
+                        <p>Classify variables by type and scale to choose appropriate statistical tools.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="reflection">
+                <h2>7.4 Reflection questions</h2>
+                <ol class="checklist">
+                    <li>Can you articulate the difference between descriptive and inferential statistics without notes?</li>
+                    <li>Given any dataset, can you name the unit of analysis and list the variables?</li>
+                    <li>Are you comfortable identifying the measurement scale of a variable?</li>
+                    <li>Which sampling method would you use for your next project and why?</li>
+                </ol>
+            </section>
+
+            <div class="topic-navigation">
+                <a class="nav-button prev" href="topic6.html">Previous Topic</a>
+                <a class="nav-button overview" href="topics-overview.html">Topics Overview</a>
+                <a class="nav-button next disabled">Next Topic</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../js/notes.js"></script>
+</body>
+</html>

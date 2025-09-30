@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 3: Purpose of Statistical Analysis | Statistics for Data Science</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#3b82f6', dark: '#2563eb' },
+                        dark: { primary: '#111827', secondary: '#1f2937', border: '#374151' },
+                        text: { primary: '#f9fafb', secondary: '#d1d5db' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../js/tw-bridge.js"></script>
+</head>
+<body class="bg-dark-primary text-text-primary">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../../index.html">IITM Notes</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="../stats-for-ds.html" class="nav-link">Stats for DS</a>
+                <a href="topics-overview.html" class="nav-link">Topics Overview</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="notes-container">
+        <div class="topic-progress-header">
+            <div class="topic-breadcrumb">
+                <a href="../../../index.html">Home</a> >
+                <a href="../stats-for-ds.html">Stats for DS</a> >
+                <a href="topics-overview.html">Topics</a> >
+                <span>Topic 3</span>
+            </div>
+            <div class="topic-progress-bar">
+                <div class="progress-track">
+                    <div class="progress-fill w-45"></div>
+                </div>
+                <span class="progress-label">Topic 3 of 7</span>
+            </div>
+        </div>
+
+        <div class="notes-header">
+            <h1>Topic 3: Purpose of Statistical Analysis</h1>
+            <div class="topic-meta">
+                <span class="topic-badge">Motivation</span>
+                <span class="difficulty-badge">Conceptual</span>
+                <span class="time-badge">12 min read</span>
+            </div>
+            <p class="lead-text">Statistics is not collection for collection's sake. Every dataset is analysed either to understand what happened or to predict what could happen. This topic highlights both perspectives and how they feed into the course problems.</p>
+        </div>
+
+        <div class="notes-content">
+            <div class="learning-objectives">
+                <h2>Learning Objectives</h2>
+                <ul>
+                    <li>Explain when descriptive analysis is sufficient.</li>
+                    <li>Explain when inferential tools become necessary.</li>
+                    <li>Map business questions to statistical objectives.</li>
+                    <li>Anticipate the role of uncertainty in decision making.</li>
+                </ul>
+            </div>
+
+            <section id="descriptive">
+                <h2>3.1 Descriptive analysis</h2>
+                <p>Descriptive analysis answers the question <em>"What does the data in my hands say?"</em></p>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Exploratory mindset</h4>
+                        <p>Use descriptive tools when exploring a new dataset, preparing dashboards, or communicating trends without generalising beyond the data.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Common outputs</h4>
+                        <ul>
+                            <li>Frequency tables and pivot charts.</li>
+                            <li>Summary statistics (mean, median, quartiles).</li>
+                            <li>Visualisations such as time series plots and heatmaps.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="example">Example: summarising this semester's quiz scores to identify the toughest question types.</p>
+            </section>
+
+            <section id="inferential">
+                <h2>3.2 Inferential analysis</h2>
+                <p>Inferential analysis extends insight beyond the observed sample. We estimate unknown quantities and assess the strength of evidence.</p>
+                <div class="two-column-grid">
+                    <div class="column">
+                        <h3>Parameter estimation</h3>
+                        <p>Estimating the population mean house price or the proportion of satisfied customers by using the sample statistics as point estimates and pairing them with confidence intervals.</p>
+                    </div>
+                    <div class="column">
+                        <h3>Hypothesis testing</h3>
+                        <p>Framing competing claims (null vs alternative hypothesis) and using test statistics to quantify support for one claim over another.</p>
+                    </div>
+                </div>
+                <p class="note">Inferential conclusions are always probabilistic. Communicate both the estimates and the associated uncertainty.</p>
+            </section>
+
+            <section id="workflow">
+                <h2>3.3 How descriptive and inferential work together</h2>
+                <ol class="workflow-steps">
+                    <li><strong>Profile the sample.</strong> Look for impossible values, missingness, and basic trends.</li>
+                    <li><strong>Pose the inferential question.</strong> Translate the business problem into a statistical statement (e.g., "Has the new ad campaign increased click-through rate?").</li>
+                    <li><strong>Select an appropriate model.</strong> Choose parametric or non-parametric tools depending on the data type and assumptions.</li>
+                    <li><strong>Communicate results.</strong> Report conclusions with an explanation of assumptions and limitations.</li>
+                </ol>
+            </section>
+
+            <section id="decision-making">
+                <h2>3.4 Decisions under uncertainty</h2>
+                <p>Every statistical conclusion feeds a decision. To make responsible decisions:</p>
+                <ul class="checklist">
+                    <li>Quantify uncertainty with intervals, prediction bands, or risk levels.</li>
+                    <li>Perform sensitivity analysis — how would the decision change if the estimate shifts by a small amount?</li>
+                    <li>Consider the cost of errors (false positives vs false negatives).</li>
+                    <li>Document assumptions for future audits.</li>
+                </ul>
+            </section>
+
+            <div class="topic-navigation">
+                <a class="nav-button prev" href="topic2.html">Previous Topic</a>
+                <a class="nav-button overview" href="topics-overview.html">Topics Overview</a>
+                <a class="nav-button next" href="topic4.html">Next Topic</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../js/notes.js"></script>
+</body>
+</html>

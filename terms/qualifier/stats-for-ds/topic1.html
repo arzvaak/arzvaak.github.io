@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 1: Introduction to Statistics | Statistics for Data Science</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#3b82f6', dark: '#2563eb' },
+                        dark: { primary: '#111827', secondary: '#1f2937', border: '#374151' },
+                        text: { primary: '#f9fafb', secondary: '#d1d5db' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../js/tw-bridge.js"></script>
+</head>
+<body class="bg-dark-primary text-text-primary">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../../index.html">IITM Notes</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="../stats-for-ds.html" class="nav-link">Stats for DS</a>
+                <a href="topics-overview.html" class="nav-link">Topics Overview</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="notes-container">
+        <div class="topic-progress-header">
+            <div class="topic-breadcrumb">
+                <a href="../../../index.html">Home</a> >
+                <a href="../stats-for-ds.html">Stats for DS</a> >
+                <a href="topics-overview.html">Topics</a> >
+                <span>Topic 1</span>
+            </div>
+            <div class="topic-progress-bar">
+                <div class="progress-track">
+                    <div class="progress-fill w-15"></div>
+                </div>
+                <span class="progress-label">Topic 1 of 7</span>
+            </div>
+        </div>
+
+        <div class="notes-header">
+            <h1>Topic 1: Introduction to Statistics</h1>
+            <div class="topic-meta">
+                <span class="topic-badge">Foundations</span>
+                <span class="difficulty-badge">Beginner friendly</span>
+                <span class="time-badge">15 min read</span>
+            </div>
+            <p class="lead-text">We start the course by clarifying what statistics is, how the discipline evolved, and why it is central to data science. Use this topic to build intuition before diving into calculations.</p>
+        </div>
+
+        <div class="notes-content">
+            <div class="learning-objectives">
+                <h2>Learning Objectives</h2>
+                <ul>
+                    <li>State a concise definition of statistics in the IITM curriculum.</li>
+                    <li>Describe how the field evolved from accounting ledgers to modern data science.</li>
+                    <li>Differentiate descriptive and inferential statistics with practical examples.</li>
+                    <li>Recognise the connection between statistics and decision making under uncertainty.</li>
+                </ul>
+            </div>
+
+            <section id="definition">
+                <h2>1.1 What is Statistics?</h2>
+                <div class="concept-box">
+                    <h3>Course definition</h3>
+                    <p><strong>Statistics</strong> is the art and science of learning from data: we collect, summarise, analyse, interpret and finally communicate findings so that decisions can be made even when uncertainty is present.</p>
+                </div>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Why "art" and "science"?</h4>
+                        <p>Rigorous probability theory provides the science. Choosing the right model, summarising the story concisely, and convincing stakeholders require judgement — the art.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Key stages</h4>
+                        <ul>
+                            <li>Design a study that captures the question of interest.</li>
+                            <li>Collect data with minimal bias and adequate quality.</li>
+                            <li>Summarise using tables, charts, and numerical descriptors.</li>
+                            <li>Infer patterns beyond the sample and quantify risk.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="evolution">
+                <h2>1.2 Evolution of the field</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-year">19th century</span>
+                        <p>Governments recorded births, deaths, and harvests. Statistics meant "state arithmetic" — keeping careful tallies.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">Early 20th century</span>
+                        <p>Fisher, Pearson, and Gosset formalised experimental design, sampling distributions, and hypothesis tests. Statistics became a toolkit for inference.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">Late 20th century</span>
+                        <p>Computers enabled complex models, resampling, and simulation. Data volumes grew and so did the demand for automation.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">Today</span>
+                        <p>Statistics underpins machine learning workflows: data wrangling, exploratory analysis, feature engineering, and uncertainty quantification.</p>
+                    </div>
+                </div>
+                <p class="note">Keep this historical arc in mind: modern buzzwords still rest on the same principles of careful data collection and valid inference.</p>
+            </section>
+
+            <section id="branches">
+                <h2>1.3 Two complementary branches</h2>
+                <div class="two-column-grid">
+                    <div class="column">
+                        <h3>Descriptive statistics</h3>
+                        <p>Uses tables, charts, and summary numbers to describe the data we collected.</p>
+                        <ul>
+                            <li>Measures of centre (mean, median, mode).</li>
+                            <li>Measures of variation (range, variance, standard deviation).</li>
+                            <li>Data visualisation: bar charts, histograms, scatter plots.</li>
+                        </ul>
+                        <p class="example">Example: summarising daily COVID-19 cases in Chennai during July.</p>
+                    </div>
+                    <div class="column">
+                        <h3>Inferential statistics</h3>
+                        <p>Draws conclusions about a wider population by analysing a sample.</p>
+                        <ul>
+                            <li>Confidence intervals quantify plausible ranges for unknown parameters.</li>
+                            <li>Hypothesis testing assesses evidence for competing claims.</li>
+                            <li>Predictive models estimate future outcomes with known uncertainty.</li>
+                        </ul>
+                        <p class="example">Example: using a sample of customer ratings to estimate the true satisfaction level of all customers.</p>
+                    </div>
+                </div>
+                <div class="callout">
+                    <p>Neither branch stands alone. In practice we start with descriptive statistics to understand the sample, then deploy inferential methods to generalise responsibly.</p>
+                </div>
+            </section>
+
+            <section id="statistics-in-ds">
+                <h2>1.4 Statistics and data science</h2>
+                <p>Within data science pipelines, statistics keeps us honest:</p>
+                <ul class="checklist">
+                    <li><strong>Exploratory data analysis (EDA):</strong> descriptive tools reveal anomalies that could break a model.</li>
+                    <li><strong>Modelling assumptions:</strong> probability distributions describe residuals and guide diagnostics.</li>
+                    <li><strong>Evaluation:</strong> statistical tests compare competing models using hold-out data.</li>
+                    <li><strong>Communication:</strong> confidence statements and risk intervals make stakeholders comfortable acting on results.</li>
+                </ul>
+                <p class="tip">If you are ever unsure of which algorithm to run next, pause and revisit the statistical question: What are we measuring? Who does the sample represent? What uncertainty matters?</p>
+            </section>
+
+            <div class="topic-navigation">
+                <a class="nav-button prev disabled">Previous Topic</a>
+                <a class="nav-button overview" href="topics-overview.html">Topics Overview</a>
+                <a class="nav-button next" href="topic2.html">Next Topic</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../js/notes.js"></script>
+</body>
+</html>

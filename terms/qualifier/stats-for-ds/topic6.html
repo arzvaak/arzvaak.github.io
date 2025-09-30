@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 6: Types of Data | Statistics for Data Science</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#3b82f6', dark: '#2563eb' },
+                        dark: { primary: '#111827', secondary: '#1f2937', border: '#374151' },
+                        text: { primary: '#f9fafb', secondary: '#d1d5db' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../js/tw-bridge.js"></script>
+</head>
+<body class="bg-dark-primary text-text-primary">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../../index.html">IITM Notes</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="../stats-for-ds.html" class="nav-link">Stats for DS</a>
+                <a href="topics-overview.html" class="nav-link">Topics Overview</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="notes-container">
+        <div class="topic-progress-header">
+            <div class="topic-breadcrumb">
+                <a href="../../../index.html">Home</a> >
+                <a href="../stats-for-ds.html">Stats for DS</a> >
+                <a href="topics-overview.html">Topics</a> >
+                <span>Topic 6</span>
+            </div>
+            <div class="topic-progress-bar">
+                <div class="progress-track">
+                    <div class="progress-fill w-90"></div>
+                </div>
+                <span class="progress-label">Topic 6 of 7</span>
+            </div>
+        </div>
+
+        <div class="notes-header">
+            <h1>Topic 6: Types of Data</h1>
+            <div class="topic-meta">
+                <span class="topic-badge">Classification</span>
+                <span class="difficulty-badge">Core</span>
+                <span class="time-badge">18 min read</span>
+            </div>
+            <p class="lead-text">Correctly classifying data types ensures that we apply suitable descriptive displays and inferential methods. This topic covers categorical versus numerical, discrete versus continuous, and cross-sectional versus time series data.</p>
+        </div>
+
+        <div class="notes-content">
+            <div class="learning-objectives">
+                <h2>Learning Objectives</h2>
+                <ul>
+                    <li>Recognise categorical variables and encode them properly.</li>
+                    <li>Distinguish between discrete and continuous numerical variables.</li>
+                    <li>Identify when you are dealing with cross-sectional or time-series data.</li>
+                    <li>Select appropriate visualisations and summaries for each data type.</li>
+                </ul>
+            </div>
+
+            <section id="categorical">
+                <h2>6.1 Categorical data</h2>
+                <p>Categorical variables record group membership.</p>
+                <div class="two-column-grid">
+                    <div class="column">
+                        <h3>Nominal</h3>
+                        <p>Categories without any inherent order.</p>
+                        <ul>
+                            <li>Example: blood group {A, B, AB, O}.</li>
+                            <li>Summary tools: counts, bar charts, pie charts.</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3>Ordinal</h3>
+                        <p>Categories with a natural order but no fixed spacing.</p>
+                        <ul>
+                            <li>Example: service feedback {Poor, Fair, Good, Excellent}.</li>
+                            <li>Summary tools: ordered bar charts, cumulative percentages.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="numerical">
+                <h2>6.2 Numerical data</h2>
+                <div class="two-column-grid">
+                    <div class="column">
+                        <h3>Discrete</h3>
+                        <p>Counts that take isolated values, often integers.</p>
+                        <p class="example">Example: number of calls handled by a support agent.</p>
+                    </div>
+                    <div class="column">
+                        <h3>Continuous</h3>
+                        <p>Measurements that can take any value over an interval.</p>
+                        <p class="example">Example: temperature recorded every hour.</p>
+                    </div>
+                </div>
+                <p class="tip">Visualise discrete data with bar charts or dot plots; continuous data often require histograms or density plots.</p>
+            </section>
+
+            <section id="structure">
+                <h2>6.3 Cross-sectional vs time-series</h2>
+                <div class="two-column-grid">
+                    <div class="column">
+                        <h3>Cross-sectional</h3>
+                        <p>Multiple units observed at a single point in time. Ideal for comparing groups.</p>
+                        <p class="example">Example: income of all IITM students in the 2025 graduating batch.</p>
+                    </div>
+                    <div class="column">
+                        <h3>Time-series</h3>
+                        <p>Single unit observed across time. Ideal for trend and seasonality analysis.</p>
+                        <p class="example">Example: daily rainfall in Chennai during July 2020.</p>
+                    </div>
+                </div>
+                <p class="note">Some datasets combine both dimensions, leading to panel data (multiple units tracked over time). Panel data techniques appear later in the programme.</p>
+            </section>
+
+            <section id="choosing-tools">
+                <h2>6.4 Choosing the right tool</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Data type</th>
+                            <th>Typical summaries</th>
+                            <th>Visualisations</th>
+                            <th>Inferential techniques</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nominal categorical</td>
+                            <td>Counts, proportions, mode</td>
+                            <td>Bar chart, Pareto chart</td>
+                            <td>Chi-square tests for independence</td>
+                        </tr>
+                        <tr>
+                            <td>Ordinal categorical</td>
+                            <td>Medians, percentiles</td>
+                            <td>Ordered bar chart</td>
+                            <td>Non-parametric tests (Mann-Whitney, Kruskal-Wallis)</td>
+                        </tr>
+                        <tr>
+                            <td>Discrete numerical</td>
+                            <td>Mean, variance</td>
+                            <td>Stem-and-leaf, bar chart</td>
+                            <td>Poisson/Binomial models</td>
+                        </tr>
+                        <tr>
+                            <td>Continuous numerical</td>
+                            <td>Mean, standard deviation</td>
+                            <td>Histogram, box plot</td>
+                            <td>t-tests, regression, ANOVA</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <div class="topic-navigation">
+                <a class="nav-button prev" href="topic5.html">Previous Topic</a>
+                <a class="nav-button overview" href="topics-overview.html">Topics Overview</a>
+                <a class="nav-button next" href="topic7.html">Next Topic</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../js/notes.js"></script>
+</body>
+</html>
