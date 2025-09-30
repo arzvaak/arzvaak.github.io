@@ -1095,7 +1095,8 @@
             console.log('Quiz initialized with', quizData.length, 'questions');
             document.getElementById('sectionNav').classList.remove('hidden');
             document.getElementById('sectionControls').classList.remove('hidden');
-            showSection('Number Systems'); // Start with first section
+            // Show all questions by default so the full quiz is immediately visible
+            showSection('all');
             updateOverallProgress();
             // Typeset math after rendering
             if (window.MathJax) {
