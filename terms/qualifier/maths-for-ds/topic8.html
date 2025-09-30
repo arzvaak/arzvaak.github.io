@@ -159,46 +159,7 @@
             margin: 20px 0;
         }
 
-        .square-diagram {
-            display: inline-block;
-            width: 200px;
-            height: 200px;
-            border: 3px solid #333;
-            position: relative;
-            margin: 20px;
-        }
-
-        .diagonal {
-            position: absolute;
-            width: 283px;
-            height: 3px;
-            background: #e91e63;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(45deg);
-            transform-origin: center;
-        }
-
-        .square-label {
-            position: absolute;
-            font-weight: bold;
-        }
-
-        .irrational-examples {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .irrational-card {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            border: 2px solid #ffeb3b;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-        }
+        /* Square diagram, diagonal, labels, examples/cards now come from shared css/notes.css */
 
         .practice-problems {
             background: var(--bg-secondary);
@@ -236,10 +197,7 @@
             transition: all 0.3s ease;
         }
 
-        .toggle-solution:hover {
-            background: #c2185b;
-            transform: translateY(-2px);
-        }
+        .toggle-solution:hover { background: #c2185b; transform: translateY(-2px); }
 
         .navigation {
             display: flex;

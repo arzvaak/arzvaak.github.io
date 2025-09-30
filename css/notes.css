@@ -919,6 +919,25 @@ html {
     transform: translateY(-1px);
 }
 
+/* Objectives list (shared across topics) */
+.objectives-list { list-style: none; padding: 0; }
+.objectives-list li { background: var(--bg-secondary); color: var(--text-primary); margin: 10px 0; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #2196f3; position: relative; }
+.objectives-list li::before { content: "✓"; color: #4caf50; font-weight: 700; position: absolute; left: -5px; }
+
+/* Square diagram visuals (e.g., irrational numbers) */
+.square-diagram { display: inline-block; width: 200px; height: 200px; border: 3px solid #3b82f6; position: relative; margin: 20px; background: #1f2937; color: #f9fafb; }
+.diagonal { position: absolute; width: 283px; height: 3px; background: #e91e63; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(45deg); transform-origin: center; }
+.square-label { position: absolute; font-weight: 700; background: #3b82f6; color: #fff; padding: 0.25rem 0.5rem; border-radius: 0.25rem; }
+
+/* Irrational numbers examples grid/cards */
+.irrational-examples { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0; }
+.irrational-card { background: var(--bg-secondary); color: var(--text-primary); border: 2px solid #ffeb3b; border-radius: 10px; padding: 20px; text-align: center; }
+
+/* Generic navigation buttons (used in topics) */
+.navigation { display: flex; justify-content: space-between; margin-top: 40px; gap: 20px; }
+.nav-button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; text-decoration: none; padding: 15px 30px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; min-width: 120px; justify-content: center; }
+.nav-button:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); }
+
 .demo-output {
     background: var(--bg-secondary);
     padding: 15px;
