@@ -627,6 +627,7 @@ body {
 .progress-fill.w-75 { width: 75%; }
 .progress-fill.w-100 { width: 100%; }
 /* Additional widths */
+.progress-fill.w-80 { width: 80%; }
 .progress-fill.w-0 { width: 0%; }
 .progress-fill.w-8 { width: 8%; }
 .progress-fill.w-10 { width: 10%; }

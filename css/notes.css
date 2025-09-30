@@ -101,12 +101,25 @@ body {
 .mt-20 { margin-top: 20px !important; }
 .mb-20 { margin-bottom: 20px !important; }
 .mx-auto { margin-left: auto; margin-right: auto; }
+.mt-15 { margin-top: 15px !important; }
+.my-20 { margin-top: 20px !important; margin-bottom: 20px !important; }
+.text-normal { font-weight: normal !important; }
+.text-base { font-size: 1em !important; }
 .loading-emoji { font-size: 2em; margin-bottom: 20px; }
 
 /* Simple left position utilities for visual points */
 .left-20 { left: 20%; }
 .left-50 { left: 50%; }
 .left-80 { left: 80%; }
+/* Positional helpers */
+.top-50 { top: 50%; }
+.top--30 { top: -30px; }
+.left--30 { left: -30px; }
+.bottom--50 { bottom: -50px; }
+.right-10 { right: 10px; }
+/* Transform helpers */
+.translate-x--50 { transform: translateX(-50%); }
+.translate-y--50 { transform: translateY(-50%); }
 
 /* Topic header progress bar components */
 .topic-progress-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 0; margin-bottom: 1rem; }
@@ -117,6 +130,23 @@ body {
 .progress-track { width: 200px; height: 8px; background: rgba(255,255,255,0.3); border-radius: 4px; overflow: hidden; }
 .topic-progress-bar .progress-fill { background: #fff; }
 .progress-label { font-size: 0.9rem; font-weight: 500; }
+
+/* Code block utility */
+.code-block {
+    font-family: 'Courier New', monospace;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    white-space: pre;
+}
+
+/* Flex helpers */
+.flex { display: flex !important; }
+.flex-wrap { flex-wrap: wrap !important; }
+.justify-center { justify-content: center !important; }
+.gap-15 { gap: 15px !important; }
 
 /* Topic meta badges */
 .topic-meta { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }

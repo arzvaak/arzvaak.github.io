@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Topic 8: Irrational Numbers - Mathematics for Data Science</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/notes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
@@ -91,7 +94,8 @@
         }
 
         .example-box {
-            background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e8 100%);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
             border-left: 5px solid #4caf50;
             padding: 20px;
             margin: 20px 0;
@@ -125,7 +129,8 @@
         }
 
         .proof-step {
-            background: white;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
             margin: 10px 0;
             padding: 15px;
             border-radius: 8px;
@@ -263,13 +268,7 @@
             overflow: hidden;
         }
 
-        .progress-fill {
-            background: linear-gradient(90deg, #4caf50, #45a049);
-            height: 100%;
-            width: 80%;
-            border-radius: 10px;
-            transition: width 0.3s ease;
-        }
+        /* progress-fill styling comes from shared CSS; width controlled via utility classes */
 
         .objectives-list {
             list-style: none;
@@ -325,12 +324,12 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="topic-header">
+    <div class="container notes-container">
+        <div class="topic-header topic-progress-header">
             <div class="topic-number">Topic 8 of 10</div>
             <h1>Irrational Numbers</h1>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
+            <div class="progress-bar progress-track">
+                <div class="progress-fill w-80"></div>
             </div>
         </div>
 
@@ -374,13 +373,13 @@
         <div class="content-section">
             <h2>9.2 Why √2 is Irrational</h2>
             
-            <div class="geometric-demo">
+            <div class="geometric-demo visualization">
                 <h3>🔺 Geometric Discovery</h3>
                 <div class="square-diagram">
                     <div class="diagonal"></div>
-                    <div class="square-label" style="top: -30px; left: 50%; transform: translateX(-50%);">1</div>
-                    <div class="square-label" style="left: -30px; top: 50%; transform: translateY(-50%);">1</div>
-                    <div class="square-label" style="bottom: -50px; right: 10px;">√2</div>
+                    <div class="square-label top--30 left-50 translate-x--50">1</div>
+                    <div class="square-label left--30 top-50 translate-y--50">1</div>
+                    <div class="square-label bottom--50 right-10">√2</div>
                 </div>
                 <p><strong>Unit square</strong> (sides of length 1)</p>
                 <p>By Pythagorean theorem: 1² + 1² = c²</p>
@@ -632,14 +631,14 @@
     <script>
         function toggleSolution(button) {
             const solution = button.nextElementSibling;
-            if (solution.style.display === 'none' || solution.style.display === '') {
-                solution.style.display = 'block';
-                button.textContent = 'Hide Solution';
-                button.style.background = '#757575';
-            } else {
-                solution.style.display = 'none';
+            if (solution.classList.contains('show')) {
+                solution.classList.remove('show');
                 button.textContent = 'Show Solution';
                 button.style.background = '#e91e63';
+            } else {
+                solution.classList.add('show');
+                button.textContent = 'Hide Solution';
+                button.style.background = '#757575';
             }
         }
 
