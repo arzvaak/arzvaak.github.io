@@ -57,6 +57,8 @@
             <h1>Mathematics for Data Science</h1>
             <p class="quiz-subtitle">Week 1 Practice Quiz - 100 Qualifier-Style Questions</p>
 
+            <div id="quizHealth" class="text-text-secondary text-sm mt-2"></div>
+
             <div class="progress-stats" id="progressStats">
                 <div class="stat-box">
                     <div class="stat-number" id="totalQuestions">100</div>
@@ -104,6 +106,7 @@
 
                 <button onclick="applyFilters()" class="btn btn-primary">Apply Filters</button>
                 <button onclick="resetQuiz()" class="btn btn-danger" id="resetBtn">Reset Quiz</button>
+                <button onclick="loadFullQuiz()" class="btn btn-primary" id="loadAllBtn">Load All 100 Questions</button>
             </div>
 
             <!-- Section Navigation -->
@@ -1090,6 +1093,16 @@
         let currentSection = 'all';
         let sectionOrder = ['Number Systems', 'Sets and Cardinality', 'Relations', 'Functions', 'Prime Numbers', 'Countability and Infinity'];
 
+        // Health banner helper
+        function showHealth(message) {
+            try {
+                const el = document.getElementById('quizHealth');
+                if (el) el.textContent = message;
+            } catch (e) {
+                console.log('Quiz Health:', message);
+            }
+        }
+
         // Initialize Quiz
         function initQuiz() {
             console.log('Quiz initialized with', quizData.length, 'questions');
@@ -1098,9 +1111,30 @@
             // Show all questions by default so the full quiz is immediately visible
             showSection('all');
             updateOverallProgress();
+            showHealth('Loaded ' + quizData.length + ' questions');
             // Typeset math after rendering
             if (window.MathJax) {
                 MathJax.typesetPromise();
+            }
+        }
+
+        // Manual force-load button
+        function loadFullQuiz() {
+            try {
+                currentSection = 'all';
+                filteredQuestions = [...quizData];
+                document.getElementById('sectionNav').classList.remove('hidden');
+                document.getElementById('sectionControls').classList.remove('hidden');
+                renderQuestions();
+                updateStats();
+                updateOverallProgress();
+                showHealth('Loaded ' + filteredQuestions.length + ' questions');
+                if (window.MathJax) {
+                    MathJax.typesetPromise();
+                }
+            } catch (e) {
+                console.error('Failed to load full quiz:', e);
+                alert('Failed to load full quiz: ' + (e && e.message ? e.message : e));
             }
         }
 
@@ -1359,8 +1393,12 @@
 
 
 
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', initQuiz);
+        // Initialize when page loads (robust if DOMContentLoaded already fired)
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initQuiz);
+        } else {
+            initQuiz();
+        }
     </script>
     <script src="../../../js/tw-bridge.js"></script>
 </body>
