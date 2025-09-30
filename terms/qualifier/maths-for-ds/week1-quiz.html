@@ -26,67 +26,83 @@
     <!-- Tailwind CDN mode: avoid @apply; styles handled by tw-bridge.js -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    
+
+    <style>
+        /* Quiz Option States */
+        .option.selected {
+            border-color: #3b82f6 !important;
+            background-color: rgba(59, 130, 246, 0.2) !important;
+        }
+        .option.correct {
+            border-color: #10b981 !important;
+            background-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        .option.incorrect {
+            border-color: #ef4444 !important;
+            background-color: rgba(239, 68, 68, 0.2) !important;
+        }
+        .explanation.show {
+            display: block !important;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
 </head>
 <body class="bg-dark-primary text-text-primary">
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="../../../index.html">IITM Notes</a>
+    <nav class="fixed top-0 w-full bg-dark-secondary/95 backdrop-blur-md shadow-xl border-b border-dark-border z-50">
+        <div class="max-w-7xl mx-auto px-5 flex justify-between items-center h-16">
+            <div class="text-2xl font-bold">
+                <a href="../../../index.html" class="text-primary hover:text-blue-400 transition-colors">IITM Notes</a>
             </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="../../../index.html" class="nav-link">Home</a>
-                <a href="../maths-for-ds.html" class="nav-link">Back to Math for DS</a>
-                <a href="week1-notes.html" class="nav-link">Week 1 Notes</a>
-            </div>
-            <div class="nav-toggle" id="navToggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="flex gap-6">
+                <a href="../../../index.html" class="text-text-secondary hover:text-primary transition-colors">Home</a>
+                <a href="../maths-for-ds.html" class="text-text-secondary hover:text-primary transition-colors">Back to Math for DS</a>
+                <a href="week1-notes.html" class="text-text-secondary hover:text-primary transition-colors">Week 1 Notes</a>
             </div>
         </div>
     </nav>
 
     <!-- Quiz Header -->
-    <section class="quiz-header">
-        <div class="container">
-            <div class="breadcrumb">
-                <a href="../../../index.html">Home</a> > <a href="../../">Notes</a> > <a href="../">Math</a> > <span>Quiz</span>
+    <section class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white pt-24 pb-12">
+        <div class="max-w-6xl mx-auto px-5">
+            <div class="text-sm mb-4 opacity-90">
+                <a href="../../../index.html" class="hover:text-blue-200">Home</a> > <a href="../../" class="hover:text-blue-200">Notes</a> > <a href="../" class="hover:text-blue-200">Math</a> > <span>Quiz</span>
             </div>
-            <h1>Mathematics for Data Science</h1>
-            <p class="quiz-subtitle">Week 1 Practice Quiz - 100 Qualifier-Style Questions</p>
+            <h1 class="text-5xl font-extrabold mb-3">Mathematics for Data Science</h1>
+            <p class="text-xl opacity-95">Week 1 Practice Quiz - 100 Qualifier-Style Questions</p>
 
-            <div id="quizHealth" class="text-text-secondary text-sm mt-2"></div>
+            <div id="quizHealth" class="text-blue-100 text-sm mt-3"></div>
 
-            <div class="progress-stats" id="progressStats">
-                <div class="stat-box">
-                    <div class="stat-number" id="totalQuestions">100</div>
-                    <div class="stat-label">Total Questions</div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8" id="progressStats">
+                <div class="text-center p-4 bg-white/10 rounded-xl backdrop-blur-sm">
+                    <div class="text-4xl font-extrabold" id="totalQuestions">100</div>
+                    <div class="text-sm mt-1 opacity-90">Total Questions</div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-number" id="answeredCount">0</div>
-                    <div class="stat-label">Answered</div>
+                <div class="text-center p-4 bg-white/10 rounded-xl backdrop-blur-sm">
+                    <div class="text-4xl font-extrabold" id="answeredCount">0</div>
+                    <div class="text-sm mt-1 opacity-90">Answered</div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-number" id="correctCount">0</div>
-                    <div class="stat-label">Correct</div>
+                <div class="text-center p-4 bg-white/10 rounded-xl backdrop-blur-sm">
+                    <div class="text-4xl font-extrabold" id="correctCount">0</div>
+                    <div class="text-sm mt-1 opacity-90">Correct</div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-number" id="scorePercent">0%</div>
-                    <div class="stat-label">Score</div>
+                <div class="text-center p-4 bg-white/10 rounded-xl backdrop-blur-sm">
+                    <div class="text-4xl font-extrabold" id="scorePercent">0%</div>
+                    <div class="text-sm mt-1 opacity-90">Score</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Quiz Container -->
-    <section class="quiz-container">
-        <div class="container">
+    <section class="bg-dark-primary py-12">
+        <div class="max-w-6xl mx-auto px-5">
             <!-- Filters -->
-            <div class="filter-controls">
-                <label for="partFilter">Filter by Part:</label>
-                <select id="partFilter">
+            <div class="bg-dark-secondary rounded-xl p-6 mb-6 border border-dark-border flex flex-wrap gap-4 items-center">
+                <label for="partFilter" class="text-text-primary font-semibold">Filter by Part:</label>
+                <select id="partFilter" class="px-4 py-2 bg-dark-primary border border-dark-border rounded-lg text-text-primary focus:border-primary focus:outline-none">
                     <option value="all">All Parts</option>
                     <option value="Number Systems">Number Systems</option>
                     <option value="Sets and Cardinality">Sets and Cardinality</option>
@@ -96,76 +112,78 @@
                     <option value="Countability and Infinity">Countability and Infinity</option>
                 </select>
 
-                <label for="difficultyFilter">Filter by Difficulty:</label>
-                <select id="difficultyFilter">
+                <label for="difficultyFilter" class="text-text-primary font-semibold">Filter by Difficulty:</label>
+                <select id="difficultyFilter" class="px-4 py-2 bg-dark-primary border border-dark-border rounded-lg text-text-primary focus:border-primary focus:outline-none">
                     <option value="all">All Levels</option>
                     <option value="1">★ Easy</option>
                     <option value="2">★★ Medium</option>
                     <option value="3">★★★ Hard</option>
                 </select>
 
-                <button onclick="applyFilters()" class="btn btn-primary">Apply Filters</button>
-                <button onclick="resetQuiz()" class="btn btn-danger" id="resetBtn">Reset Quiz</button>
-                <button onclick="loadFullQuiz()" class="btn btn-primary" id="loadAllBtn">Load All 100 Questions</button>
+                <button onclick="applyFilters()" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg font-semibold transition-all hover:shadow-xl">Apply Filters</button>
+                <button onclick="resetQuiz()" class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-all hover:shadow-xl" id="resetBtn">Reset Quiz</button>
+                <button onclick="loadFullQuiz()" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg font-semibold transition-all hover:shadow-xl" id="loadAllBtn">Load All 100 Questions</button>
             </div>
 
             <!-- Section Navigation -->
-            <div class="section-nav hidden" id="sectionNav">
-                <div class="section-tabs">
-                    <button class="section-tab active" data-section="all" onclick="showSection('all')">📋 All Sections</button>
-                    <button class="section-tab" data-section="Number Systems" onclick="showSection('Number Systems')">🔢 Numbers (1-20)</button>
-                    <button class="section-tab" data-section="Sets and Cardinality" onclick="showSection('Sets and Cardinality')">📊 Sets (21-40)</button>
-                    <button class="section-tab" data-section="Relations" onclick="showSection('Relations')">🔗 Relations (41-60)</button>
-                    <button class="section-tab" data-section="Functions" onclick="showSection('Functions')">📈 Functions (61-80)</button>
-                    <button class="section-tab" data-section="Prime Numbers" onclick="showSection('Prime Numbers')">🔢 Primes (81-90)</button>
-                    <button class="section-tab" data-section="Countability and Infinity" onclick="showSection('Countability and Infinity')">♾️ Infinity (91-100)</button>
+            <div class="mb-8" id="sectionNav">
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <button class="px-4 py-2 bg-primary text-white rounded-lg font-semibold transition-all hover:shadow-lg" data-section="all" onclick="showSection('all')">📋 All Sections</button>
+                    <button class="px-4 py-2 bg-dark-secondary border border-dark-border text-text-primary rounded-lg font-semibold transition-all hover:bg-dark-border hover:border-primary" data-section="Number Systems" onclick="showSection('Number Systems')">🔢 Numbers (1-20)</button>
+                    <button class="px-4 py-2 bg-dark-secondary border border-dark-border text-text-primary rounded-lg font-semibold transition-all hover:bg-dark-border hover:border-primary" data-section="Sets and Cardinality" onclick="showSection('Sets and Cardinality')">📊 Sets (21-40)</button>
+                    <button class="px-4 py-2 bg-dark-secondary border border-dark-border text-text-primary rounded-lg font-semibold transition-all hover:bg-dark-border hover:border-primary" data-section="Relations" onclick="showSection('Relations')">🔗 Relations (41-60)</button>
+                    <button class="px-4 py-2 bg-dark-secondary border border-dark-border text-text-primary rounded-lg font-semibold transition-all hover:bg-dark-border hover:border-primary" data-section="Functions" onclick="showSection('Functions')">📈 Functions (61-80)</button>
+                    <button class="px-4 py-2 bg-dark-secondary border border-dark-border text-text-primary rounded-lg font-semibold transition-all hover:bg-dark-border hover:border-primary" data-section="Prime Numbers" onclick="showSection('Prime Numbers')">🔢 Primes (81-90)</button>
+                    <button class="px-4 py-2 bg-dark-secondary border border-dark-border text-text-primary rounded-lg font-semibold transition-all hover:bg-dark-border hover:border-primary" data-section="Countability and Infinity" onclick="showSection('Countability and Infinity')">♾️ Infinity (91-100)</button>
                 </div>
-                
-                <div class="quiz-progress-bar">
-                    <div class="progress-fill" id="overallProgress"></div>
+
+                <div class="w-full bg-dark-secondary rounded-full h-3 overflow-hidden border border-dark-border">
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 h-full transition-all duration-300" id="overallProgress" style="width: 0%"></div>
                 </div>
-                <div class="progress-text" id="progressText">0/100 questions completed</div>
+                <div class="text-text-secondary text-center text-sm mt-2" id="progressText">0/100 questions completed</div>
             </div>
 
             <!-- Quiz Main -->
             <div id="quizContent">
-                <div id="loadingIndicator" class="loading-indicator">
-                    <div class="loading-emoji">🔄</div>
-                    <p>Loading 100 quiz questions...</p>
-                    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+                <div id="loadingIndicator" class="text-center py-20">
+                    <div class="text-6xl mb-4">🔄</div>
+                    <p class="text-text-primary text-xl mb-4">Loading 100 quiz questions...</p>
+                    <div class="w-64 mx-auto h-2 bg-dark-secondary rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-blue-600 to-indigo-600 animate-pulse"></div>
+                    </div>
                 </div>
-                
+
                 <noscript>
-                    <div class="noscript-card">
-                        <h3>JavaScript Required</h3>
-                        <p>This interactive quiz requires JavaScript to be enabled in your browser.</p>
-                        <p>Please enable JavaScript and refresh the page to access the 100 practice questions.</p>
+                    <div class="bg-red-600/20 border-2 border-red-500 rounded-xl p-8 text-center">
+                        <h3 class="text-2xl font-bold text-red-400 mb-3">JavaScript Required</h3>
+                        <p class="text-text-primary mb-2">This interactive quiz requires JavaScript to be enabled in your browser.</p>
+                        <p class="text-text-secondary">Please enable JavaScript and refresh the page to access the 100 practice questions.</p>
                     </div>
                 </noscript>
             </div>
 
             <!-- Section Navigation Controls -->
-            <div class="section-controls hidden" id="sectionControls">
-                <button id="prevSection" onclick="navigateSection(-1)" class="nav-btn" disabled>← Previous Section</button>
-                <span class="section-info" id="sectionInfo">Section 1 of 6</span>
-                <button id="nextSection" onclick="navigateSection(1)" class="nav-btn">Next Section →</button>
+            <div class="flex justify-between items-center mt-8" id="sectionControls">
+                <button id="prevSection" onclick="navigateSection(-1)" class="px-6 py-3 bg-dark-secondary border border-dark-border text-text-primary rounded-lg font-semibold transition-all hover:bg-primary hover:text-white hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed" disabled>← Previous Section</button>
+                <span class="text-text-primary font-semibold" id="sectionInfo">Section 1 of 6</span>
+                <button id="nextSection" onclick="navigateSection(1)" class="px-6 py-3 bg-dark-secondary border border-dark-border text-text-primary rounded-lg font-semibold transition-all hover:bg-primary hover:text-white hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed">Next Section →</button>
             </div>
-            
+
         </div>
     </section>
 
     <!-- Quiz Results Modal -->
-    <div class="quiz-modal hidden" id="resultsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Quiz Results</h2>
+    <div class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 hidden" id="resultsModal">
+        <div class="bg-dark-secondary rounded-2xl border-2 border-dark-border max-w-2xl w-full mx-4 overflow-hidden shadow-2xl">
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6">
+                <h2 class="text-3xl font-extrabold">Quiz Results</h2>
             </div>
-            <div class="modal-body" id="resultsBody">
+            <div class="p-8" id="resultsBody">
                 <!-- Results will be populated by JavaScript -->
             </div>
-            <div class="modal-footer center">
-                <button onclick="resetQuiz()" class="btn btn-primary">Retake Quiz</button>
-                <button onclick="closeResults()" class="btn btn-secondary">Close</button>
+            <div class="p-6 flex justify-center gap-4 border-t border-dark-border">
+                <button onclick="resetQuiz()" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg font-semibold transition-all hover:shadow-xl">Retake Quiz</button>
+                <button onclick="closeResults()" class="px-8 py-3 bg-dark-primary border border-dark-border text-text-primary rounded-lg font-semibold transition-all hover:bg-dark-border">Close</button>
             </div>
         </div>
     </div>
@@ -1157,33 +1175,35 @@
             container.innerHTML = '';
 
             if (filteredQuestions.length === 0) {
-                container.innerHTML = '<div class="empty-state">No questions match the current filters.</div>';
+                container.innerHTML = '<div class="text-center py-20 bg-dark-secondary rounded-xl border border-dark-border"><p class="text-text-primary text-xl">No questions match the current filters.</p></div>';
                 return;
             }
 
             filteredQuestions.forEach(q => {
                 const questionDiv = document.createElement('div');
-                questionDiv.className = 'question-card';
+                questionDiv.className = 'bg-dark-secondary rounded-2xl p-6 md:p-8 border border-dark-border hover:border-primary/50 transition-all mb-6 shadow-lg';
 
                 const difficultyStars = '★'.repeat(q.difficulty);
 
                 questionDiv.innerHTML = `
-                    <div class="question-header">
-                        <span class="question-part">${q.part}</span>
-                        <span class="difficulty-indicator">${difficultyStars}</span>
+                    <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
+                        <span class="px-4 py-2 bg-blue-600/20 text-blue-400 rounded-full text-sm font-semibold border border-blue-500/30">${q.part}</span>
+                        <span class="px-4 py-2 bg-amber-600/20 text-amber-400 rounded-full text-sm font-semibold border border-amber-500/30">${difficultyStars}</span>
                     </div>
-                    <h3 class="q-title">Question ${q.id}</h3>
-                    <p class="q-text">${q.question}</p>
-                    <div class="options-container">
+                    <h3 class="text-2xl font-bold text-primary mb-3">Question ${q.id}</h3>
+                    <p class="text-text-primary text-lg mb-6 leading-relaxed">${q.question}</p>
+                    <div class="space-y-3">
                         ${q.options.map((opt, idx) => `
-                            <div class="option" data-question="${q.id}" data-option="${idx}" onclick="selectAnswer(${q.id}, ${idx})">
+                            <div class="option p-4 bg-dark-primary border-2 border-dark-border rounded-xl cursor-pointer transition-all hover:border-primary/50 hover:bg-dark-border text-text-primary" data-question="${q.id}" data-option="${idx}" onclick="selectAnswer(${q.id}, ${idx})">
                                 ${opt}
                             </div>
                         `).join('')}
                     </div>
-                    <div class="explanation" id="explanation-${q.id}">
-                        <h4>Explanation:</h4>
-                        <p>${q.explanation}</p>
+                    <div class="explanation mt-6 p-6 bg-gradient-to-br from-emerald-600/10 to-blue-600/10 rounded-xl border border-emerald-500/30 hidden" id="explanation-${q.id}">
+                        <h4 class="text-xl font-bold text-emerald-400 mb-3 flex items-center gap-2">
+                            <span>💡</span> Explanation:
+                        </h4>
+                        <p class="text-text-primary text-base leading-relaxed">${q.explanation}</p>
                     </div>
                 `;
 
@@ -1249,6 +1269,7 @@
 
             const explanation = document.getElementById(`explanation-${questionId}`);
             if (explanation) {
+                explanation.classList.remove('hidden');
                 explanation.classList.add('show');
             }
         }
@@ -1310,10 +1331,10 @@
             const resultsBody = document.getElementById('resultsBody');
             resultsBody.innerHTML = `
                 <div class="text-center">
-                    <h3 class="score-large ${score >= 70 ? 'text-success' : 'text-danger'}">${score}%</h3>
-                    <p class="q-text">You got <strong>${correct}</strong> out of <strong>${total}</strong> questions correct!</p>
-                    <p class="muted">Answered: ${answered}/${total}</p>
-                    ${score >= 70 ? '<p class="text-success bold">Great job! You passed!</p>' : '<p class="text-danger">Keep practicing to improve your score!</p>'}
+                    <h3 class="text-6xl font-extrabold mb-4 ${score >= 70 ? 'text-emerald-400' : 'text-red-400'}">${score}%</h3>
+                    <p class="text-text-primary text-xl mb-2">You got <strong class="text-primary">${correct}</strong> out of <strong class="text-primary">${total}</strong> questions correct!</p>
+                    <p class="text-text-secondary mb-4">Answered: ${answered}/${total}</p>
+                    ${score >= 70 ? '<p class="text-emerald-400 text-lg font-bold">Great job! You passed!</p>' : '<p class="text-red-400 text-lg">Keep practicing to improve your score!</p>'}
                 </div>
             `;
 
@@ -1328,25 +1349,26 @@
         // Show Section
         function showSection(sectionName) {
             currentSection = sectionName;
-            
+
             // Update active tab
-            document.querySelectorAll('.section-tab').forEach(tab => {
-                tab.classList.remove('active');
+            document.querySelectorAll('[data-section]').forEach(tab => {
                 if (tab.dataset.section === sectionName) {
-                    tab.classList.add('active');
+                    tab.className = 'px-4 py-2 bg-primary text-white rounded-lg font-semibold transition-all hover:shadow-lg';
+                } else {
+                    tab.className = 'px-4 py-2 bg-dark-secondary border border-dark-border text-text-primary rounded-lg font-semibold transition-all hover:bg-dark-border hover:border-primary';
                 }
             });
-            
+
             // Filter questions by section
             if (sectionName === 'all') {
                 filteredQuestions = [...quizData];
             } else {
                 filteredQuestions = quizData.filter(q => q.part === sectionName);
             }
-            
+
             renderQuestions();
             updateSectionNavigation();
-            
+
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
