@@ -22,7 +22,8 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--bg-primary);
+            color: var(--text-primary);
             min-height: 100vh;
         }
 
@@ -33,14 +34,13 @@
         }
 
         .topic-header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: var(--bg-secondary);
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
             text-align: center;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
         }
 
         .topic-header h1 {
@@ -266,7 +266,8 @@
         }
 
         .progress-bar {
-            background: rgba(255, 255, 255, 0.2);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
             height: 8px;
             border-radius: 10px;
             margin: 20px 0;
@@ -274,7 +275,7 @@
         }
 
         .progress-fill {
-            background: linear-gradient(90deg, #4caf50, #45a049);
+            background: var(--primary-color);
             height: 100%;
             width: 70%;
             border-radius: 10px;
@@ -287,11 +288,12 @@
         }
 
         .objectives-list li {
-            background: #1f2937; color: #f9fafb;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
             margin: 10px 0;
             padding: 12px 20px;
             border-radius: 8px;
-            border-left: 4px solid #2196f3;
+            border-left: 4px solid var(--primary-color);
             position: relative;
         }
 
@@ -304,8 +306,8 @@
         }
 
         .prime-list {
-            background: rgba(31, 41, 55, 0.6);
-            border: 2px solid #ffeb3b;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             border-radius: 10px;
             padding: 20px;
             margin: 20px 0;
@@ -314,8 +316,8 @@
 
         .prime-number {
             display: inline-block;
-            background: #4caf50;
-            color: white;
+            background: #10b981;
+            color: #062a1f;
             padding: 8px 12px;
             margin: 4px;
             border-radius: 20px;
@@ -323,8 +325,8 @@
         }
 
         .theorem-box {
-            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
-            border: 2px solid #4caf50;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             border-radius: 15px;
             padding: 25px;
             margin: 20px 0;

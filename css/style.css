@@ -10,9 +10,10 @@
     --primary-dark: #2563eb;
     --text-primary: #f9fafb;
     --text-secondary: #d1d5db;
-    --bg-primary: #111827;
-    --bg-secondary: #1f2937;
-    --border-color: #374151;
+    /* Matte dark palette */
+    --bg-primary: #0b0b0e;   /* near-black matte */
+    --bg-secondary: #16181d; /* subtle contrast for cards */
+    --border-color: #272c34; /* low-contrast divider */
     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3);
 }
 
@@ -345,15 +346,18 @@ body {
 }
 
 .terms-overview {
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    /* Matte background to ensure cards pop */
+    background: var(--bg-primary);
 }
 
 .qualifier-section {
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    /* Matte background to ensure cards pop */
+    background: var(--bg-primary);
 }
 
 .subjects {
-    background: var(--bg-secondary);
+    /* Keep section darker than cards so hovercards stand out */
+    background: var(--bg-primary);
 }
 
 .section-title {
@@ -430,8 +434,12 @@ body {
 
 .subject-card:hover, .quiz-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    /* Subtle blue glow + visible border for contrast */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(59, 130, 246, 0.25) inset;
     color: var(--text-primary);
+    border-color: var(--primary-color);
+    /* Blue-tinted hover background so cards pop on matte base */
+    background: linear-gradient(180deg, rgba(59,130,246,0.10), rgba(59,130,246,0.06)), var(--bg-secondary);
 }
 
 .subject-card h3, .quiz-card h3 {
@@ -644,10 +652,11 @@ body {
 
 /* Footer */
 .footer {
-    background: var(--text-primary);
-    color: white;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     padding: 2rem 0;
     text-align: center;
+    border-top: 1px solid var(--border-color);
 }
 
 .footer-content p {
