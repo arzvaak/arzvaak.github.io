@@ -32,7 +32,7 @@
       });
     } catch (e) {}
 
-    // Navbar
+    // Navbar: normalize existing semantic navbar helpers if present
     addToAll('.navbar', 'fixed top-0 w-full bg-dark-secondary shadow-md border-b border-dark-border z-50');
     addToAll('.nav-container', 'max-w-7xl mx-auto px-5 flex justify-between items-center h-16');
     addToAll('.nav-logo a', 'text-primary font-semibold no-underline');
@@ -40,6 +40,60 @@
     addToAll('.nav-link', 'text-text-primary font-medium hover:text-primary transition-colors no-underline');
     addToAll('.nav-toggle', 'md:hidden flex flex-col cursor-pointer');
     addToAll('.bar', 'w-6 h-0.5 bg-text-primary my-0.5 transition-all');
+
+    // Inject a consistent navbar if none exists
+    try {
+      var existingNav = document.querySelector('nav');
+      if (!existingNav) {
+        var navHTML = ''+
+          '<nav class="fixed top-0 w-full bg-dark-secondary shadow-md border-b border-dark-border z-50">'+
+          '  <div class="max-w-7xl mx-auto px-5 flex justify-between items-center h-16">'+
+          '    <div class="text-2xl font-semibold">'+
+          '      <a href="/index.html" class="text-primary no-underline">📚 IITM Notes</a>'+
+          '    </div>'+
+          '    <div id="navMenu" class="hidden md:flex items-center gap-8">'+
+          '      <a href="/index.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Home</a>'+
+          '      <a href="/index.html#qualifier" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Qualifier Subjects</a>'+
+          '      <a href="/terms/qualifier/maths-for-ds.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Math for DS</a>'+
+          '      <a href="/terms/qualifier/stats-for-ds.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Stats for DS</a>'+
+          '      <a href="/terms/qualifier/english.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">English 1</a>'+
+          '      <a href="/terms/qualifier/computational-thinking.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Computational Thinking</a>'+
+          '    </div>'+
+          '    <div id="navToggle" class="md:hidden flex flex-col cursor-pointer" aria-label="Menu" role="button" tabindex="0">'+
+          '      <span class="w-6 h-0.5 bg-text-primary my-0.5 transition-all"></span>'+
+          '      <span class="w-6 h-0.5 bg-text-primary my-0.5 transition-all"></span>'+
+          '      <span class="w-6 h-0.5 bg-text-primary my-0.5 transition-all"></span>'+
+          '    </div>'+
+          '  </div>'+
+          '</nav>';
+        document.body.insertAdjacentHTML('afterbegin', navHTML);
+
+        // Add minimal top spacing if first content block lacks it
+        try {
+          var firstBlock = Array.from(document.body.children).find(function(el){
+            return el && el.tagName !== 'NAV' && el.tagName !== 'SCRIPT' && el.tagName !== 'STYLE';
+          });
+          if (firstBlock) {
+            var cs = getComputedStyle(firstBlock);
+            var currentTop = (parseFloat(cs.marginTop) || 0) + (parseFloat(cs.paddingTop) || 0);
+            if (currentTop < 64) {
+              firstBlock.style.marginTop = '80px';
+            }
+          }
+        } catch (e) {}
+      }
+
+      // Hook up mobile toggle if present
+      var navToggle = document.getElementById('navToggle');
+      var navMenu = document.getElementById('navMenu');
+      if (navToggle && navMenu) {
+        var toggle = function(){ navMenu.classList.toggle('hidden'); };
+        navToggle.addEventListener('click', toggle);
+        navToggle.addEventListener('keydown', function(ev){
+          if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); }
+        });
+      }
+    } catch (e) {}
 
     // Notes/Topic shells
     addToAll('.notes-container', 'max-w-5xl mx-auto px-5 pt-28 pb-16');
