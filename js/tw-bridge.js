@@ -15,9 +15,11 @@ try {
     document.querySelectorAll(selector).forEach(el => addClasses(el, cls));
   }
   function once() {
-    // Base
-    addClasses(document.body, 'bg-dark-primary text-text-primary');
-    addClasses(document.body, 'min-h-screen');
+  // Base
+  addClasses(document.body, 'bg-dark-primary text-text-primary');
+  addClasses(document.body, 'min-h-screen');
+  // Baseline font size for readability across pages
+  addClasses(document.body, 'text-[16px] md:text-[17px]');
     try {
       // Force a safe dark background on first paint to avoid white flashes.
       document.documentElement.style.backgroundColor = 'var(--bg-primary, #111827)';
@@ -129,16 +131,7 @@ try {
           if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); }
         });
       }
-      // Ensure a Quizzes link exists in existing nav menus
-      try {
-        if (navMenu && !navMenu.querySelector('a[href*="week1-quiz.html"]')) {
-          var q = document.createElement('a');
-          q.href = '/terms/qualifier/maths-for-ds/week1-quiz.html';
-          q.textContent = 'Quizzes';
-          addClasses(q, 'text-text-primary font-medium hover:text-primary transition-colors no-underline');
-          navMenu.appendChild(q);
-        }
-      } catch (e) {}
+      // Do not auto-inject global Quizzes link; subject pages manage their own CTAs
     } catch (e) {}
 
     // Notes/Topic shells
@@ -147,6 +140,20 @@ try {
   addToAll('.notes-content', 'bg-dark-secondary rounded-3xl p-6 md:p-8 border border-dark-border shadow-lg leading-relaxed space-y-6');
   addToAll('.notes-header h1', 'tracking-tight');
     addToAll('.clean-content', 'bg-dark-secondary rounded-3xl p-6 md:p-8 border border-dark-border shadow-lg');
+  // Typography: improve readability (font size and line-height)
+  addToAll('.notes-container, .notes-content, .clean-content', 'text-[17px] md:text-[18px] leading-[1.8]');
+  // Headings scale inside notes/topics
+  addToAll('.notes-content h1, .clean-content h1', 'text-3xl md:text-4xl font-bold mb-3');
+  addToAll('.notes-content h2, .clean-content h2', 'text-2xl md:text-3xl font-bold mt-6 mb-2');
+  addToAll('.notes-content h3, .clean-content h3', 'text-xl md:text-2xl font-semibold mt-5 mb-2');
+  addToAll('.notes-content h4, .clean-content h4', 'text-lg md:text-xl font-semibold mt-4 mb-2');
+  // Paragraphs and list items
+  addToAll('.notes-content p, .clean-content p', 'my-3 text-[17px] md:text-[18px]');
+  addToAll('.notes-content ul, .clean-content ul, .notes-content ol, .clean-content ol', 'my-3 space-y-2');
+  addToAll('.notes-content li, .clean-content li', 'text-[17px] md:text-[18px]');
+  // Code blocks and inline code
+  addToAll('.notes-content pre, .clean-content pre, pre', 'bg-dark-primary/60 border border-dark-border rounded-xl p-4 overflow-x-auto text-[15px] md:text-[16px] leading-7');
+  addToAll('.notes-content code, .clean-content code, code', 'bg-dark-primary/60 border border-dark-border rounded px-1.5 py-0.5 text-[15px]');
   // Breadcrumbs common
   addToAll('.breadcrumb a', 'text-text-secondary hover:text-primary');
 
@@ -233,7 +240,7 @@ try {
     // Topics overview legacy page (non-critical)
     schedule(function(){
       addToAll('.topics-overview-page', 'bg-dark-primary text-text-primary min-h-screen');
-      addToAll('.topics-overview-page .container', 'max-w-7xl mx-auto px-5 pt-24 pb-16');
+      addToAll('.topics-overview-page .container', 'max-w-7xl mx-auto px-5 pt-24 pb-16 text-[17px] md:text-[18px] leading-[1.8]');
       addToAll('.section-title', 'text-4xl font-bold mb-2');
       addToAll('.section-subtitle', 'text-text-secondary mb-8');
       addToAll('.topics-overview-grid', 'grid grid-cols-1 md:grid-cols-2 gap-6');
