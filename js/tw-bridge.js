@@ -90,6 +90,7 @@ try {
           '      <a href="/index.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Home</a>'+
           '      <a href="/index.html#qualifier" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Qualifier Subjects</a>'+
           '      <a href="/terms/qualifier/maths-for-ds.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Math for DS</a>'+
+          '      <a href="/terms/qualifier/maths-for-ds/week1-quiz.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Quizzes</a>'+
           '      <a href="/terms/qualifier/stats-for-ds.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Stats for DS</a>'+
           '      <a href="/terms/qualifier/english.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">English 1</a>'+
           '      <a href="/terms/qualifier/computational-thinking.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Computational Thinking</a>'+
@@ -128,6 +129,16 @@ try {
           if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); }
         });
       }
+      // Ensure a Quizzes link exists in existing nav menus
+      try {
+        if (navMenu && !navMenu.querySelector('a[href*="week1-quiz.html"]')) {
+          var q = document.createElement('a');
+          q.href = '/terms/qualifier/maths-for-ds/week1-quiz.html';
+          q.textContent = 'Quizzes';
+          addClasses(q, 'text-text-primary font-medium hover:text-primary transition-colors no-underline');
+          navMenu.appendChild(q);
+        }
+      } catch (e) {}
     } catch (e) {}
 
     // Notes/Topic shells
