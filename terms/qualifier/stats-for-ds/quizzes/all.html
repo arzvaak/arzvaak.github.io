@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics for Data Science — All Questions | IITM Notes</title>
+    <meta name="description" content="Single-page view of all Statistics for Data Science questions (currently Week 1), styled with Tailwind and optimized for dark mode.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#3b82f6', dark: '#2563eb' },
+                        dark: { primary: '#111827', secondary: '#1f2937', border: '#374151' },
+                        text: { primary: '#f9fafb', secondary: '#d1d5db' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Tailwind CDN mode: avoid @apply; styles handled by tw-bridge.js -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../js/tw-bridge.js"></script>
+</head>
+<body class="bg-dark-primary text-text-primary">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-dark-secondary/95 backdrop-blur-md border-b border-dark-border z-50">
+        <div class="max-w-7xl mx-auto px-5 flex justify-between items-center h-16">
+            <div class="text-2xl font-semibold">
+                <a href="../../../index.html" class="text-primary no-underline">📚 IITM Notes</a>
+            </div>
+            <div id="navMenu" class="hidden md:flex items-center gap-8">
+                <a href="../../../index.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Home</a>
+                <a href="../../stats-for-ds.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Stats for DS</a>
+                <a href="../week1-notes.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Week 1 Notes</a>
+                <a href="../week1-quiz.html" class="text-text-primary font-medium hover:text-primary transition-colors no-underline">Week 1 Quiz</a>
+            </div>
+            <div id="navToggle" class="md:hidden flex flex-col cursor-pointer">
+                <span class="w-6 h-0.5 bg-text-primary my-0.5 transition-all"></span>
+                <span class="w-6 h-0.5 bg-text-primary my-0.5 transition-all"></span>
+                <span class="w-6 h-0.5 bg-text-primary my-0.5 transition-all"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-28 pb-10 bg-gradient-to-br from-blue-700 via-indigo-700 to-dark-primary shadow-lg">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="text-sm text-blue-100 mb-4">
+                <a href="../../../index.html" class="hover:text-white transition-colors">Home</a> >
+                <a href="../../stats-for-ds.html" class="hover:text-white transition-colors">Stats for DS</a> >
+                <span class="text-white">All Questions</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3 tracking-tight">All Questions — Statistics for Data Science</h1>
+            <p class="text-lg text-blue-100 max-w-3xl">A single scrolling page listing every question. Currently contains Week 1 MCQs; more weeks will be added as they’re published.</p>
+            <div class="flex flex-wrap gap-3 mt-6">
+                <a href="../week1-quiz.html" class="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-white text-blue-700 font-semibold shadow hover:-translate-y-0.5 transition-transform no-underline">Open Interactive Week 1 Quiz →</a>
+                <a href="../week1-notes.html" class="inline-flex items-center gap-3 px-5 py-3 rounded-full border border-white/40 text-white font-semibold hover:bg-white/10 transition-colors no-underline">Review Week 1 Notes</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- All Questions List -->
+    <main class="py-14 bg-dark-primary">
+        <div class="max-w-6xl mx-auto px-5">
+            <div class="bg-dark-secondary border border-dark-border rounded-3xl p-6 md:p-8 shadow-xl">
+                <div class="flex items-start justify-between gap-6 flex-wrap">
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold mb-2">Week 1 — MCQs</h2>
+                        <p class="text-text-secondary">Descriptive vs Inferential, Populations and Samples, Scales of Measurement, and Data Types.</p>
+                    </div>
+                    <div class="text-sm text-text-secondary">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-dark-primary border border-dark-border">Total Questions: <strong class="ml-1">6</strong></span>
+                    </div>
+                </div>
+
+                <ol class="space-y-6 text-text-primary mt-6">
+                    <li>
+                        <strong>Which branch of statistics is used to summarize and describe data?</strong>
+                        <ul class="list-disc list-inside text-text-secondary text-base mt-2">
+                            <li>Inferential statistics</li>
+                            <li><strong class="text-primary">Descriptive statistics</strong></li>
+                            <li>Probability theory</li>
+                            <li>Regression analysis</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>The set of all students in IIT Madras is a:</strong>
+                        <ul class="list-disc list-inside text-text-secondary text-base mt-2">
+                            <li>Sample</li>
+                            <li>Variable</li>
+                            <li><strong class="text-primary">Population</strong></li>
+                            <li>Case</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Blood group of a student is measured on which scale?</strong>
+                        <ul class="list-disc list-inside text-text-secondary text-base mt-2">
+                            <li><strong class="text-primary">Nominal</strong></li>
+                            <li>Ordinal</li>
+                            <li>Interval</li>
+                            <li>Ratio</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Temperature in Celsius is an example of which scale?</strong>
+                        <ul class="list-disc list-inside text-text-secondary text-base mt-2">
+                            <li>Nominal</li>
+                            <li>Ordinal</li>
+                            <li><strong class="text-primary">Interval</strong></li>
+                            <li>Ratio</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Height of a student in centimetres is recorded on which scale?</strong>
+                        <ul class="list-disc list-inside text-text-secondary text-base mt-2">
+                            <li>Nominal</li>
+                            <li>Ordinal</li>
+                            <li>Interval</li>
+                            <li><strong class="text-primary">Ratio</strong></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Daily rainfall in Chennai for July 2020 is what type of data?</strong>
+                        <ul class="list-disc list-inside text-text-secondary text-base mt-2">
+                            <li>Cross sectional</li>
+                            <li><strong class="text-primary">Time series</strong></li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <a href="../week1-quiz.html" class="px-5 py-3 rounded-full bg-primary text-white font-semibold hover:bg-blue-500 transition-colors no-underline">Try these interactively</a>
+                    <a href="../../stats-for-ds.html#week1" class="px-5 py-3 rounded-full border border-dark-border text-text-primary hover:border-primary/60 transition-colors no-underline">Back to Week 1</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-6 bg-dark-secondary border-t border-dark-border text-center text-sm text-text-secondary">
+        Built for the IITM Qualifier · Statistics for Data Science — All Questions
+    </footer>
+
+    <script src="../../../js/tw-bridge.js"></script>
+</body>
+</html>

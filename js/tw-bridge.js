@@ -279,6 +279,22 @@ try {
       addToAll('.modal-footer', 'flex justify-end gap-3 pt-4 border-t border-dark-border mt-4');
     });
 
+    // Generic table styling for notes/topics (non-critical)
+    schedule(function(){
+      try {
+        document.querySelectorAll('.notes-content table, .clean-content table, table').forEach(function(tbl){
+          addClasses(tbl, 'w-full text-left border border-dark-border rounded-lg overflow-hidden');
+          var thead = tbl.querySelector('thead');
+          if (thead) addClasses(thead, 'bg-dark-primary');
+          tbl.querySelectorAll('thead th').forEach(function(th){ addClasses(th, 'px-4 py-2 border-b border-dark-border text-text-primary'); });
+          tbl.querySelectorAll('tbody td').forEach(function(td){ addClasses(td, 'px-4 py-2 border-b border-dark-border text-text-primary'); });
+          // Zebra striping
+          tbl.querySelectorAll('tbody tr:nth-child(odd)').forEach(function(tr){ addClasses(tr, 'bg-dark-secondary/60'); });
+          tbl.querySelectorAll('tbody tr:nth-child(even)').forEach(function(tr){ addClasses(tr, 'bg-dark-secondary/40'); });
+        });
+      } catch (e) {}
+    });
+
   // Footer navigation buttons on notes pages
   addToAll('.navigation-buttons, .nav-buttons', 'flex items-center justify-between mt-8');
     addToAll('.nav-btn', 'inline-flex items-center gap-2 px-5 py-3 rounded-full border');
