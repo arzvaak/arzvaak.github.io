@@ -10,10 +10,9 @@
     --primary-dark: #2563eb;
     --text-primary: #f9fafb;
     --text-secondary: #d1d5db;
-    /* Matte dark palette */
-    --bg-primary: #0b0b0e;   /* near-black matte */
-    --bg-secondary: #16181d; /* subtle contrast for cards */
-    --border-color: #272c34; /* low-contrast divider */
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --border-color: #374151;
     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3);
 }
 
@@ -346,17 +345,14 @@ body {
 }
 
 .terms-overview {
-    /* Matte background to ensure cards pop */
-    background: var(--bg-primary);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
 }
 
 .qualifier-section {
-    /* Matte background to ensure cards pop */
-    background: var(--bg-primary);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
 }
 
 .subjects {
-    /* Keep section darker than cards so hovercards stand out */
     background: var(--bg-primary);
 }
 
@@ -404,14 +400,14 @@ body {
 }
 
 .subject-card, .quiz-card {
-    background: linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(10,12,18,0.45) 100%), var(--bg-secondary);
+    background: var(--bg-secondary);
     padding: 2.5rem;
     border-radius: 1.5rem;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     text-decoration: none;
     color: var(--text-primary);
     transition: all 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(148,163,184,0.15);
+    border: 1px solid var(--border-color);
     position: relative;
     overflow: hidden;
 }
@@ -433,11 +429,11 @@ body {
 }
 
 .subject-card:hover, .quiz-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 26px 52px rgba(15, 23, 42, 0.6), 0 0 0 1px rgba(59, 130, 246, 0.55) inset, 0 0 40px rgba(59, 130, 246, 0.28);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     color: var(--text-primary);
-    border-color: rgba(96, 165, 250, 0.65);
-    background: linear-gradient(155deg, rgba(59,130,246,0.42) 0%, rgba(29,78,216,0.26) 50%, rgba(9,11,17,0.92) 100%), var(--bg-secondary);
+    border-color: rgba(59, 130, 246, 0.7);
+    background: linear-gradient(180deg, rgba(59,130,246,0.18) 0%, rgba(59,130,246,0.10) 100%), var(--bg-secondary);
 }
 
 .subject-card h3, .quiz-card h3 {
