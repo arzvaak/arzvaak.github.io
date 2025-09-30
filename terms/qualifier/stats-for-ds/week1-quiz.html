@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statistics Quiz - Week 1 | IITM Notes</title>
-    <meta name="description" content="Week 1 practice quiz for Statistics for Data Science - IITM Qualifier">
+    <meta name="description" content="Statistics for Data Science - Week 1 Qualifier-style practice quiz with persistence and keyboard shortcuts">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
@@ -65,7 +65,7 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8" id="progressStats">
                 <div class="text-center p-4 bg-white/10 rounded-xl backdrop-blur-sm">
                     <div class="text-4xl font-extrabold" id="totalQuestions">6</div>
-                    <div class="text-sm mt-1 opacity-90">Total MCQs</div>
+                    <div class="text-sm mt-1 opacity-90">Total Questions</div>
                 </div>
                 <div class="text-center p-4 bg-white/10 rounded-xl backdrop-blur-sm">
                     <div class="text-4xl font-extrabold" id="answeredCount">0</div>
@@ -86,15 +86,17 @@
     <!-- Quiz Container -->
     <section id="mcq-practice" class="bg-dark-primary py-12">
         <div class="max-w-6xl mx-auto px-5">
-            <div class="w-full bg-dark-secondary rounded-full h-3 overflow-hidden border border-dark-border mb-6">
-                <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-full transition-all duration-500 ease-out" id="overallProgress" style="width: 0%;"></div>
-            </div>
-            <div class="flex items-center justify-between mb-8">
-                <h2 class="text-3xl font-bold">Section B: Multiple Choice Questions</h2>
-                <div class="flex gap-3">
-                    <button onclick="resetQuiz()" class="px-4 py-2 rounded-lg border border-blue-400 text-blue-300 hover:bg-blue-500/10 transition-colors">Reset</button>
-                    <button onclick="showResults()" class="px-4 py-2 rounded-lg bg-primary hover:bg-blue-500 transition-colors font-semibold text-white">Show Results</button>
-                </div>
+            <!-- Filters/Controls to match Maths quiz styling -->
+            <div class="bg-dark-secondary/80 backdrop-blur-md sticky top-16 z-40 rounded-xl p-4 md:p-6 mb-6 border border-dark-border flex flex-wrap gap-3 md:gap-4 items-center shadow-lg">
+                <label for="difficultyFilter" class="text-text-primary font-semibold">Filter by Difficulty:</label>
+                <select id="difficultyFilter" class="px-3 md:px-4 py-2 bg-dark-primary border border-dark-border rounded-lg text-text-primary focus:border-primary focus:outline-none">
+                    <option value="all">All Levels</option>
+                    <option value="1">★ Easy</option>
+                    <option value="2">★★ Medium</option>
+                    <option value="3">★★★ Hard</option>
+                </select>
+                <button onclick="applyFilters()" class="px-4 md:px-6 py-2.5 md:py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg font-semibold transition-all hover:shadow-xl">Apply</button>
+                <button onclick="resetQuiz()" class="px-4 md:px-6 py-2.5 md:py-3 bg-red-600/90 hover:bg-red-600 text-white rounded-lg font-semibold transition-all hover:shadow-xl" id="resetBtn">Reset</button>
             </div>
 
             <p class="text-text-secondary mb-6">Answer the interactive MCQs below. Your progress saves locally so you can revisit later.</p>
@@ -103,7 +105,10 @@
             <div id="loadingIndicator" class="flex justify-center items-center h-40">
                 <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
-            <p id="progressText" class="text-text-secondary text-sm mt-4">0/6 questions completed</p>
+            <div class="w-full bg-dark-secondary rounded-full h-3 overflow-hidden border border-dark-border mt-6">
+                <div class="bg-gradient-to-r from-blue-600 to-indigo-600 h-full transition-all duration-300" id="overallProgress" style="width: 0%"></div>
+            </div>
+            <p id="progressText" class="text-text-secondary text-sm mt-2">0/6 questions completed</p>
         </div>
     </section>
 
@@ -229,35 +234,35 @@
                 "Descriptive statistics",
                 "Probability theory",
                 "Regression analysis"
-            ], correctAnswer: 1, explanation: "Descriptive statistics summarizes the features of a dataset using tables, charts, and summary measures." },
+            ], correctAnswer: 1, explanation: "Descriptive statistics summarizes the features of a dataset using tables, charts, and summary measures.", difficulty: 1 },
             { id: 2, question: "The set of all students in IIT Madras is a:", options: [
                 "Sample",
                 "Variable",
                 "Population",
                 "Case"
-            ], correctAnswer: 2, explanation: "A population is the complete set of units under study. Here that is every IIT Madras student." },
+            ], correctAnswer: 2, explanation: "A population is the complete set of units under study. Here that is every IIT Madras student.", difficulty: 1 },
             { id: 3, question: "Blood group of a student is measured on which scale?", options: [
                 "Nominal",
                 "Ordinal",
                 "Interval",
                 "Ratio"
-            ], correctAnswer: 0, explanation: "Blood groups are categories without an ordering, so they lie on the nominal scale." },
+            ], correctAnswer: 0, explanation: "Blood groups are categories without an ordering, so they lie on the nominal scale.", difficulty: 2 },
             { id: 4, question: "Temperature in Celsius is an example of which scale?", options: [
                 "Nominal",
                 "Ordinal",
                 "Interval",
                 "Ratio"
-            ], correctAnswer: 2, explanation: "Celsius measurements have equal spacing but no true zero, which defines the interval scale." },
+            ], correctAnswer: 2, explanation: "Celsius measurements have equal spacing but no true zero, which defines the interval scale.", difficulty: 2 },
             { id: 5, question: "Height of a student in centimetres is recorded on which scale?", options: [
                 "Nominal",
                 "Ordinal",
                 "Interval",
                 "Ratio"
-            ], correctAnswer: 3, explanation: "Height has a true zero and ratios are meaningful, so it is on the ratio scale." },
+            ], correctAnswer: 3, explanation: "Height has a true zero and ratios are meaningful, so it is on the ratio scale.", difficulty: 2 },
             { id: 6, question: "Daily rainfall in Chennai for July 2020 is what type of data?", options: [
                 "Cross sectional",
                 "Time series"
-            ], correctAnswer: 1, explanation: "Measurements taken sequentially over time for the same location form a time series." }
+            ], correctAnswer: 1, explanation: "Measurements taken sequentially over time for the same location form a time series.", difficulty: 1 }
         ];
 
         let userAnswers = {};
@@ -274,9 +279,9 @@
             window.addEventListener('keydown', (e) => {
                 const n = parseInt(e.key, 10);
                 if (!isNaN(n) && n >= 1 && n <= 9) {
-                    const active = document.querySelector('[data-active-question]');
-                    if (active) {
-                        const qId = parseInt(active.getAttribute('data-active-question'));
+                    const cards = Array.from(document.querySelectorAll('[id^="explanation-"]')).map(el => parseInt(el.id.replace('explanation-','')));
+                    if (cards.length) {
+                        const qId = Math.min(...cards);
                         const opt = document.querySelector(`[data-question="${qId}"][data-option="${n-1}"]`);
                         if (opt) { e.preventDefault(); opt.click(); }
                     }
@@ -332,9 +337,10 @@
 
                 const explanation = document.createElement('div');
                 explanation.id = `explanation-${q.id}`;
-                explanation.className = 'mt-4 p-4 rounded-xl bg-dark-primary/60 border border-dark-border hidden';
+                explanation.className = 'explanation mt-4 p-6 bg-gradient-to-br from-emerald-600/10 to-blue-600/10 rounded-xl border border-emerald-500/30 hidden';
                 explanation.innerHTML = `
-                    <p class="text-text-secondary"><strong class="text-primary">Explanation:</strong> ${q.explanation}</p>
+                    <h4 class="text-xl font-bold text-emerald-400 mb-3 flex items-center gap-2"><span>💡</span> Explanation:</h4>
+                    <p class="text-text-primary text-base leading-relaxed">${q.explanation}</p>
                 `;
                 body.appendChild(explanation);
 
@@ -453,6 +459,25 @@
 
         function closeResults() {
             document.getElementById('resultsModal').classList.add('hidden');
+        }
+
+        function applyFilters() {
+            const diff = document.getElementById('difficultyFilter').value;
+            // In this small quiz we simply hide/show by difficulty after render
+            // Re-render to rebuild cards, then hide those not matching
+            renderQuestions();
+            if (diff !== 'all') {
+                const want = parseInt(diff, 10);
+                quizData.forEach(q => {
+                    if (q.difficulty !== want) {
+                        const card = document.querySelector(`[data-active-question="${q.id}"]`);
+                        if (card) card.classList.add('hidden');
+                    }
+                });
+            }
+            updateStats();
+            updateOverallProgress();
+            if (window.MathJax) MathJax.typesetPromise();
         }
 
         if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initQuiz); else initQuiz();
